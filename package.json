@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/node": "^18.15.11",
     "vitepress": "1.0.0-alpha.64"
   },
   "scripts": {
