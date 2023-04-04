@@ -9,16 +9,26 @@ export default defineConfig({
   ],
   themeConfig: {
     logo: '/assets/favicon.ico',
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '主页', link: '/' },
-      { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
+      { text: '开始', link: '/' },
+      { text: '主页', link: '/home/main', activeMatch: '/home' },
+      // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
 
     sidebar: {
+      '/home': [
+        {
+          text: '主页',
+          collapsed: false,
+          items:
+            [
+              { text: '首页', link: '/home/main' },
+            ]
+        },
+      ],
       '/aboutMe': [
         {
-          text: '个人简介',
+          text: '关于我',
           collapsed: false,
           items:
             [
@@ -30,12 +40,13 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/Yjk0010/Docs' }
     ],
 
     footer: {
       message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
       copyright: 'Copyright © 2023-present <a href="https://github.com/Yjk0010">KingKe Yan</a>'
     }
-  }
+
+  },
 })
