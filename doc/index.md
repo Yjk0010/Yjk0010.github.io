@@ -3,15 +3,17 @@
 layout: home
 
 hero:
-  name: "KingKe Blog"
-  text: "Some simple notes"
-  tagline: Impossible promises become shackles
+  name: KingKe Yan 博客
+  text: (°ー°〃)
+  tagline: 总结，记录
+  image:
+    src: /assets/logo.png
   actions:
     - theme: brand
-      text: Take a look
+      text: 来吧展示
       link: /aboutMe/main
     - theme: alt
-      text: Look at the blogger
+      text: 瞻仰一下博主
       link: /aboutMe/main
 
 features:
