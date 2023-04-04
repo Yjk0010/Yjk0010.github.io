@@ -1,5 +1,10 @@
 import { defineConfig } from 'vitepress'
-import generateSidebar from './sidebar';
+import home from "./sidebar/home"
+import html from "./sidebar/html"
+import css from "./sidebar/css"
+import js from "./sidebar/js"
+import ts from "./sidebar/ts"
+import webpack from "./sidebar/webpack"
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -21,89 +26,25 @@ export default defineConfig({
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
 
-    sidebar: generateSidebar(),
-    //  {
-    //   '/home': [
-    //     {
-    //       text: '主页',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: '(•̀ᴗ•́)و ̑̑', link: '/home/main' },
-    //         ]
-    //     },
-    //     {
-    //       text: '小知识',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: 'markdown 语法', link: '/home/md' },
-    //           { text: '浏览器', link: '/home/browser' },
-    //         ]
-    //     },
-    //   ],
-    //   '/html': [
-    //     {
-    //       text: '主页',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: '首页', link: '/html/main' },
-    //         ]
-    //     },
-    //   ],
-    //   '/css': [
-    //     {
-    //       text: '主页',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: '首页', link: '/css/main' },
-    //         ]
-    //     },
-    //   ],
-    //   '/js': [
-    //     {
-    //       text: '主页',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: '首页', link: '/js/main' },
-    //         ]
-    //     },
-    //   ],
-    //   '/ts': [
-    //     {
-    //       text: '主页',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: '首页', link: '/ts/main' },
-    //         ]
-    //     },
-    //   ],
-    //   '/webpack': [
-    //     {
-    //       text: '主页',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: '首页', link: '/webpack/main' },
-    //         ]
-    //     },
-    //   ],
-    //   '/aboutMe': [
-    //     {
-    //       text: '关于我',
-    //       collapsed: false,
-    //       items:
-    //         [
-    //           { text: '首页', link: '/aboutMe/main' },
-    //           { text: '个人简介', link: '/aboutMe/selfDesc' },
-    //         ]
-    //     },
-    //   ]
-    // },
+    sidebar: {
+      '/home': home,
+      '/html': html,
+      '/css': css,
+      '/js': js,
+      '/ts': ts,
+      '/webpack': webpack,
+      '/aboutMe': [
+        {
+          text: '关于我',
+          collapsed: false,
+          items:
+            [
+              { text: '首页', link: '/aboutMe/main' },
+              { text: '个人简介', link: '/aboutMe/selfDesc' },
+            ]
+        },
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Yjk0010/Docs' }
