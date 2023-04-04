@@ -12,11 +12,66 @@ export default defineConfig({
     nav: [
       { text: '开始', link: '/' },
       { text: '主页', link: '/home/main', activeMatch: '/home' },
+      { text: 'HTML', link: '/html/main', activeMatch: '/html' },
+      { text: 'CSS', link: '/css/main', activeMatch: '/css' },
+      { text: 'JAVASCRIPT', link: '/js/main', activeMatch: '/js' },
+      { text: 'TYPESCRIPT', link: '/ts/main', activeMatch: '/ts' },
+      { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
 
     sidebar: {
       '/home': [
+        {
+          text: '主页',
+          collapsed: false,
+          items:
+            [
+              { text: '首页', link: '/home/main' },
+            ]
+        },
+      ],
+      '/html': [
+        {
+          text: '主页',
+          collapsed: false,
+          items:
+            [
+              { text: '首页', link: '/home/main' },
+            ]
+        },
+      ],
+      '/css': [
+        {
+          text: '主页',
+          collapsed: false,
+          items:
+            [
+              { text: '首页', link: '/home/main' },
+            ]
+        },
+      ],
+      '/js': [
+        {
+          text: '主页',
+          collapsed: false,
+          items:
+            [
+              { text: '首页', link: '/home/main' },
+            ]
+        },
+      ],
+      '/ts': [
+        {
+          text: '主页',
+          collapsed: false,
+          items:
+            [
+              { text: '首页', link: '/home/main' },
+            ]
+        },
+      ],
+      '/webpack': [
         {
           text: '主页',
           collapsed: false,

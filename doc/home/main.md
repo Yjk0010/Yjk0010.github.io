@@ -1,10 +1,10 @@
 # 主页记录
 
-## vitePress 文档地址
+## vitePress
 
-- [vitePress](https://vitepress.dev/)
+- [vitePress](https://vitepress.dev/)文档
 
-## md 文件书写规范
+## md 规范
 
 ## 标题
 
