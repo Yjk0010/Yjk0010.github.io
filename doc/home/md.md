@@ -28,34 +28,28 @@
 
 ## 颜色加粗
 
-<span class="color-green">vite 绿</span>
+<span class="color-success">主色绿</span>
 
 ```markdown
-<span class="color-green">vite 绿</span>
+<span class="color-success">主色绿</span>
 ```
 
-<span class="color-red-light">不是太明艳的红</span>
+<span class="color-error">来个红</span>
 
 ```markdown
-<span class="color-red-light">不是太明艳的红</span>
+<span class="color-error">来个红</span>
 ```
 
-<span class="color-red-dark">浅浅的红</span>
+<span class="color-warn">淡淡的黄</span>
 
 ```markdown
-<span class="color-red-dark">浅浅的红</span>
+<span class="color-warn">淡淡的黄</span>
 ```
 
-<span class="color-yellow">淡淡的黄</span>
+<span class="color-info">男人魅力蓝</span>
 
 ```markdown
-<span class="color-yellow">淡淡的黄</span>
-```
-
-<span class="color-blue">男人魅力蓝</span>
-
-```markdown
-<span class="color-blue">男人魅力蓝</span>
+<span class="color-info">男人魅力蓝</span>
 ```
 
 ## 加粗

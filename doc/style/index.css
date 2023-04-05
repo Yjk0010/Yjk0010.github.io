@@ -1,20 +1,16 @@
-.color-green {
+.color-success {
   color: #10b981;
   font-weight: bold;
 }
-.color-red-light {
-  color: #d1484f;
+.color-info {
+  color: #0383ae;
   font-weight: bold;
 }
-.color-red-dark {
-  color: #fc9d9a;
-  font-weight: bold;
-}
-.color-yellow {
+.color-warn {
   color: #e69b02;
   font-weight: bold;
 }
-.color-blue {
-  color: #0383ae;
+.color-error {
+  color: #f43f5e;
   font-weight: bold;
 }

@@ -14,6 +14,7 @@ export default [
       [
         { text: 'markdown 语法', link: '/home/md' },
         { text: '浏览器', link: '/home/browser' },
+        { text: '路径的写法', link: '/home/route' },
       ]
   },
 ]
