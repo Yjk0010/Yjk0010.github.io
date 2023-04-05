@@ -9,6 +9,7 @@ import webpack from "./sidebar/webpack"
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "KingKe Blog",
+  lang: 'zh-CN',
   description: "Some simple notes",
   head: [
     ['link', { rel: "icon", href: "/assets/favicon.ico" }],
@@ -25,7 +26,6 @@ export default defineConfig({
       { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
-
     sidebar: {
       '/home': home,
       '/html': html,
