@@ -26,6 +26,38 @@
 > > 引用 1
 ```
 
+## 颜色加粗
+
+<span class="color-green">vite 绿</span>
+
+```markdown
+<span class="color-green">vite 绿</span>
+```
+
+<span class="color-red-light">不是太明艳的红</span>
+
+```markdown
+<span class="color-red-light">不是太明艳的红</span>
+```
+
+<span class="color-red-dark">浅浅的红</span>
+
+```markdown
+<span class="color-red-dark">浅浅的红</span>
+```
+
+<span class="color-yellow">淡淡的黄</span>
+
+```markdown
+<span class="color-yellow">淡淡的黄</span>
+```
+
+<span class="color-blue">男人魅力蓝</span>
+
+```markdown
+<span class="color-blue">男人魅力蓝</span>
+```
+
 ## 加粗
 
 不加粗**加粗**
@@ -76,10 +108,10 @@
 
 ## 图片
 
-![logo](../assets/logo.png "这是头像")
+![logo](/assets/logo.png "这是头像")
 
 ```markdown
-![logo](../assets/logo.png "这是头像")
+![logo](/assets/logo.png "这是头像")
 ```
 
 ## 超链接

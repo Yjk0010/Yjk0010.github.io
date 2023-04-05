@@ -1,0 +1,20 @@
+.color-green {
+  color: #10b981;
+  font-weight: bold;
+}
+.color-red-light {
+  color: #d1484f;
+  font-weight: bold;
+}
+.color-red-dark {
+  color: #fc9d9a;
+  font-weight: bold;
+}
+.color-yellow {
+  color: #e69b02;
+  font-weight: bold;
+}
+.color-blue {
+  color: #0383ae;
+  font-weight: bold;
+}

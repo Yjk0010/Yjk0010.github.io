@@ -1,0 +1,8 @@
+{
+  "MD033": {
+    "allowed_elements": [
+      "h2",
+      "span"
+    ]
+  }
+}

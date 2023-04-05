@@ -13,7 +13,9 @@ export default defineConfig({
   description: "Some simple notes",
   head: [
     ['link', { rel: "icon", href: "/assets/favicon.ico" }],
+    ['link', { rel: 'stylesheet', href: '/style/index.css' }]
   ],
+
   themeConfig: {
     logo: '/assets/favicon.ico',
     nav: [
@@ -53,7 +55,7 @@ export default defineConfig({
     footer: {
       message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
       copyright: 'Copyright © 2023-present <a href="https://github.com/Yjk0010">KingKe Yan</a>'
-    }
+    },
 
   },
 })
