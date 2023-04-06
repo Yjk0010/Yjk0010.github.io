@@ -16,7 +16,9 @@
 
 ## href 属性
 
-> hyper reference：通常表示跳转地址
+> 全称 hyper reference
+>
+> > 通常表示跳转地址
 
 - 普通链接
 
@@ -34,7 +36,8 @@
 <h2 id="chapter2">章节2</h2>
 ```
 
-1. 就是在 `Url` 后置上面添加 `#chapter1` 页面就主动滚动到 `id` 是 `chapter1` 的位置了
+- 就是在 `Url` 后置上面添加 `#chapter1` 页面就主动滚动到 `id` 是 `chapter1` 的位置了
+- 右侧导航栏展示当前效果
 
 ## id 属性
 
@@ -55,14 +58,14 @@ target 的取值：
 
 <a href="javascript:alert('你好！')"> 弹出：你好！ </a>
 
-<a href="mailto:804981497@qq.com"> 点击给我发送邮件 </a>
+<a href="mailto:yanjinke2008@gmail.com"> 点击给我发送邮件 </a>
 
 <a href="tel:13601834080"> 点击给我拨打电话 </a>
 
 ```html
 <a href="javascript:alert('你好！')"> 弹出：你好！ </a>
 
-<a href="mailto:804981497@qq.com"> 点击给我发送邮件 </a>
+<a href="mailto:yanjinke2008@gmail.com"> 点击给我发送邮件 </a>
 
 <a href="tel:13601834080"> 点击给我拨打电话 </a>
 ```
