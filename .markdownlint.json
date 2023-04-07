@@ -36,6 +36,8 @@
       "tbody",
       "tfoot",
       "meta",
+      "style",
+      "link",
       "tr",
       "th",
       "td"
