@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as n,N as l}from"./chunks/framework.7e203a6d.js";const e="/assets/logo.png",g=JSON.parse('{"title":"markdown 语法","description":"","frontmatter":{},"headers":[],"relativePath":"home/md.md"}'),o={name:"home/md.md"},t=l("",58),p=[t];function c(i,r,d,h,y,C){return s(),n("div",null,p)}const m=a(o,[["render",c]]);export{g as __pageData,m as default};
