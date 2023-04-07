@@ -14,3 +14,7 @@
   color: #f43f5e;
   font-weight: bold;
 }
+
+input {
+  background-color: rgba(0, 0, 0, 0.3);
+}

@@ -20,6 +20,9 @@ export default [
         { text: '多媒体 元素', link: '/html/eleVideo' },
         { text: '列表 元素', link: '/html/eleList' },
         { text: 'iframe 元素', link: '/html/eleIframe' },
+        { text: '表单 元素', link: '/html/eleForm' },
+        { text: '表格 元素', link: '/html/eleTable' },
+        { text: '其他 元素', link: '/html/eleOther' },
       ]
   },
 ]

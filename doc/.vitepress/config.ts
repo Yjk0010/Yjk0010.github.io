@@ -13,7 +13,8 @@ export default defineConfig({
   description: "Some simple notes",
   head: [
     ['link', { rel: "icon", href: "/assets/favicon.ico" }],
-    ['link', { rel: 'stylesheet', href: '/style/index.css' }]
+    ['link', { rel: 'stylesheet', href: '/style/index.css' }],
+    ['link', { rel: 'stylesheet', href: '/style/ele.css' }]
   ],
 
   themeConfig: {

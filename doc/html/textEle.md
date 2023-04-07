@@ -37,9 +37,6 @@ lorem，乱数假文，没有任何实际含义的文字
 ## span 无语义
 
 > 没有语义，仅用于设置样式
->
-> 以前: 某些元素在显示时会独占一行（块级元素），而某些元素不会（行级元素）
-> 到了 HTML5，已经弃用这种说法。
 
 三原色包含：<span style="color:red">红</span>、<span style="color:green">绿</span>、<span style="color:blue">蓝</span>
 

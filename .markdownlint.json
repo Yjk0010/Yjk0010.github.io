@@ -23,12 +23,30 @@
       "li",
       "pre",
       "iframe",
-      "form"
+      "form",
+      "label",
+      "input",
+      "fieldset",
+      "legend",
+      "datalist",
+      "option",
+      "table",
+      "caption",
+      "thead",
+      "tbody",
+      "tfoot",
+      "meta",
+      "tr",
+      "th",
+      "td"
     ]
   },
   "MD013": {
     "heading_line_length": 256,
     "code_block_line_length": 256,
     "line_length": 256
+  },
+  "MD024": {
+    "allow_different_nesting": true
   }
 }
