@@ -6,8 +6,8 @@
     "vitepress": "1.0.0-alpha.64"
   },
   "scripts": {
-    "d:dev": "vitepress dev doc",
-    "d:build": "vitepress build doc",
+    "dd": "vitepress dev doc",
+    "db": "vitepress build doc",
     "docs:dev": "vitepress dev doc",
     "docs:build": "vitepress build doc",
     "docs:preview": "vitepress preview doc"
