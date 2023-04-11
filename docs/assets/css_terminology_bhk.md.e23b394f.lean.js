@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,N as l}from"./chunks/framework.7e203a6d.js";const d=JSON.parse('{"title":"包含块","description":"","frontmatter":{},"headers":[],"relativePath":"css/terminology/bhk.md"}'),p={name:"css/terminology/bhk.md"},o=l("",64),t=[o];function e(c,r,D,y,F,C){return n(),a("div",null,t)}const A=s(p,[["render",e]]);export{d as __pageData,A as default};
