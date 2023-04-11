@@ -8,8 +8,8 @@
   // Example:
   "Print to copy text color error": {
     "scope": "markdown",
-    "prefix": "md-color-error",
-    "body": ["<span class=\"color-error\">${1:$CLIPBOARD}</span>"],
+    "prefix": "mderror",
+    "body": [" <span class=\"color-error\">${1:$CLIPBOARD}</span> "],
     "description": "md output to markdown"
   }
 }

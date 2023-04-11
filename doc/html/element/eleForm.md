@@ -1,7 +1,7 @@
 # 表单元素
 
 <style>
-  @import "../style/form.css"
+  @import "../../style/form.css"
 </style>
 
 一系列元素, 主要用于收集用户数据

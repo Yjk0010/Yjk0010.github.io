@@ -8,8 +8,8 @@
   // Example:
   "Print to copy text color success": {
     "scope": "markdown",
-    "prefix": "md-color-success",
-    "body": ["<span class=\"color-success\">${1:$CLIPBOARD}</span>"],
+    "prefix": "mdsuccess",
+    "body": [" <span class=\"color-success\">${1:$CLIPBOARD}</span> "],
     "description": "md output to markdown"
   }
 }
