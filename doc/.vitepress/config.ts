@@ -14,7 +14,6 @@ export default defineConfig({
   head: [
     ['link', { rel: "icon", href: "/assets/favicon.ico" }],
     ['link', { rel: 'stylesheet', href: '/style/index.css' }],
-    ['link', { rel: 'stylesheet', href: '/style/ele.css' }]
   ],
 
   themeConfig: {
