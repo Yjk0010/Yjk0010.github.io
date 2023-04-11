@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as o,N as t}from"./chunks/framework.7e203a6d.js";const m=JSON.parse('{"title":"多媒体元素","description":"","frontmatter":{},"headers":[],"relativePath":"html/eleVideo.md"}'),i={name:"html/eleVideo.md"},r=t("",10),d=[r];function l(n,s,c,p,_,h){return a(),o("div",null,d)}const f=e(i,[["render",l]]);export{m as __pageData,f as default};

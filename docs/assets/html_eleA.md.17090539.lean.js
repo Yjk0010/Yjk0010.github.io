@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as l,N as o}from"./chunks/framework.7e203a6d.js";const h=JSON.parse('{"title":"a 元素","description":"","frontmatter":{},"headers":[],"relativePath":"html/eleA.md"}'),n={name:"html/eleA.md"},p=o("",21),e=[p];function t(c,r,D,F,i,y){return a(),l("div",null,e)}const u=s(n,[["render",t]]);export{h as __pageData,u as default};

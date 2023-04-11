@@ -1,1 +1,0 @@
-import{_ as a,o,c as e,N as l}from"./chunks/framework.7e203a6d.js";const b=JSON.parse('{"title":"层叠 Cascading","description":"","frontmatter":{},"headers":[],"relativePath":"css/terminology/Cascading.md"}'),t={name:"css/terminology/Cascading.md"},s=l("",20),i=[s];function c(r,n,p,d,h,u){return o(),e("div",null,i)}const q=a(t,[["render",c]]);export{b as __pageData,q as default};

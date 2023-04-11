@@ -1,0 +1,1 @@
+import{_ as t,o as d,c as e,N as o}from"./chunks/framework.7e203a6d.js";const p=JSON.parse('{"title":"表格","description":"","frontmatter":{},"headers":[],"relativePath":"html/element/eleTable.md"}'),c={name:"html/element/eleTable.md"},r=o("",10),a=[r];function l(h,i,n,b,s,_){return d(),e("div",null,a)}const u=t(c,[["render",l]]);export{p as __pageData,u as default};
