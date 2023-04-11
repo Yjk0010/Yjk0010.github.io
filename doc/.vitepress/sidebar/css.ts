@@ -22,6 +22,7 @@ export default [
     collapsed: false,
     items:
       [
+        { text: '属计算过程', link: '/css/attr/attrCalcProcess' },
         { text: '属性值', link: '/css/attr/main' },
       ]
   },
