@@ -9,6 +9,6 @@
     "dd": "vitepress dev doc",
     "db": "vitepress build doc",
     "dpv": "vitepress preview doc",
-    "github": "node doc/move.js"
+    "github": "vitepress build doc"
   }
 }
