@@ -28,28 +28,28 @@
 
 ## 颜色加粗
 
-<span class="color-success">主色绿</span>
+<span class="color-tip">主色绿</span>
 
 ```markdown
-<span class="color-success">主色绿</span>
+<span class="color-tip">主色绿</span>
 ```
 
-<span class="color-error">来个红</span>
+<span class="color-danger">来个红</span>
 
 ```markdown
-<span class="color-error">来个红</span>
+<span class="color-danger">来个红</span>
 ```
 
-<span class="color-warn">淡淡的黄</span>
+<span class="color-warning">淡淡的黄</span>
 
 ```markdown
-<span class="color-warn">淡淡的黄</span>
+<span class="color-warning">淡淡的黄</span>
 ```
 
-<span class="color-info">男人魅力蓝</span>
+<span class="color-info">男人深沉灰</span>
 
 ```markdown
-<span class="color-info">男人魅力蓝</span>
+<span class="color-info">男人深沉灰</span>
 ```
 
 ## 徽章
@@ -57,25 +57,25 @@
 ### Badge<Badge type="info">badge</Badge>
 
 ```markdown
-### Badge<Badge type="info">badge</Badge>
+Badge<Badge type="info">badge</Badge>
 ```
 
 ### Badge<Badge type="tip">badge</Badge>
 
 ```markdown
-### Badge<Badge type="tip">badge</Badge>
+Badge<Badge type="tip">badge</Badge>
 ```
 
 ### Badge<Badge type="warning">badge</Badge>
 
 ```markdown
-### Badge<Badge type="warning">badge</Badge>
+Badge<Badge type="warning">badge</Badge>
 ```
 
 ### Badge<Badge type="danger">badge</Badge>
 
 ```markdown
-### Badge<Badge type="danger">badge</Badge>
+Badge<Badge type="danger">badge</Badge>
 ```
 
 ## 加粗
@@ -114,6 +114,16 @@
 
 ```markdown
 ::: danger 错误
+123456
+:::
+```
+
+::: info 提示
+123456
+:::
+
+```markdown
+::: info 提示
 123456
 :::
 ```

@@ -22,7 +22,7 @@
 
 - 普通链接
 
-  1. 值里面写了<span class="color-success">协议名称</span>`http` 或者 `https` 那无所谓
+  1. 值里面写了<span class="color-tip">协议名称</span>`http` 或者 `https` 那无所谓
   2. 如果没写 当前网站是什么协议 访问出去就是什么协议
   3. `http` 和 `https` 是不能相互访问的 一般网站都是通过 `nginx` 之类的配置实现的 <span class="color-info">均可访问</span>
 

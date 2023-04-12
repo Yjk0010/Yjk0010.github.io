@@ -9,7 +9,7 @@
   "Print to copy text color warn": {
     "scope": "markdown",
     "prefix": "mdwarn",
-    "body": [" <span class=\"color-warn\">${1:$CLIPBOARD}</span> "],
+    "body": [" <span class=\"color-warning\">${1:$CLIPBOARD}</span> "],
     "description": "md output to markdown"
   }
 }

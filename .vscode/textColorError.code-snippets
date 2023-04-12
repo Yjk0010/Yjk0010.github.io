@@ -9,7 +9,7 @@
   "Print to copy text color error": {
     "scope": "markdown",
     "prefix": "mderror",
-    "body": [" <span class=\"color-error\">${1:$CLIPBOARD}</span> "],
+    "body": [" <span class=\"color-danger\">${1:$CLIPBOARD}</span> "],
     "description": "md output to markdown"
   }
 }

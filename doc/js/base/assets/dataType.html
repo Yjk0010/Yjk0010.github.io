@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dataType</title>
+</head>
+
+<body>
+  <script>
+    const typeArr = [
+      {
+        label: 'undefined',
+        value: undefined,
+        valueText: 'undefined',
+        constructor: undefined
+      },
+      {
+        label: 'null',
+        value: null,
+        valueText: 'null',
+        constructor: null
+      },
+      {
+        label: 'number',
+        value: 1,
+        valueText: '1',
+        constructor: Number
+      },
+      {
+        label: 'string',
+        value: '1',
+        valueText: "'1'",
+        constructor: String
+      },
+      {
+        label: 'boolean',
+        value: true,
+        valueText: 'true',
+        constructor: Boolean
+      },
+      {
+        label: 'object',
+        value: {},
+        valueText: '{}',
+        constructor: Object
+      },
+      {
+        label: 'array',
+        value: [],
+        valueText: '[]',
+        constructor: Array
+      },
+      {
+        label: 'function',
+        value: () => { },
+        valueText: '() => { }',
+        constructor: Function
+      },
+      {
+        label: 'date',
+        value: new Date(),
+        valueText: 'new Date()',
+        constructor: Date
+      },
+      {
+        label: 'regexp',
+        value: /1/,
+        valueText: '/1/',
+        constructor: RegExp
+      },
+      {
+        label: 'symbol',
+        value: Symbol(1),
+        valueText: 'Symbol(1)',
+        constructor: Symbol
+      },
+      {
+        label: 'bigint',
+        value: BigInt(1),
+        valueText: 'BigInt(1)',
+        constructor: BigInt
+      },
+      {
+        label: 'map',
+        value: new Map(),
+        valueText: 'new Map()',
+        constructor: Map
+      },
+      {
+        label: 'set',
+        value: new Set(),
+        valueText: 'new Set()',
+        constructor: Set
+      },
+    ];
+    typeArr.forEach(item => {
+      // console.log(item.label, `|`, `typeof ${item.valueText}`, `|`, typeof item.value);
+      // console.log(item.label, `|`, `${item.valueText} instanceof ${item?.constructor?.name} `, `->`, item.value instanceof item?.constructor);
+      // console.log(item.label, `|`, `(${item.valueText}).constructor === ${item.constructor?.name}`, `->`, (item.value)?.constructor === item.constructor);
+      console.log(item.label, `|`, `Object.prototype.toString.call(${item.valueText})`, `->`, Object.prototype.toString.call(item.value));
+    })
+  </script>
+</body>
+
+</html>

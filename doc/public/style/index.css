@@ -1,20 +1,25 @@
-.color-success {
-  color: #10b981;
+.color-tip {
+  color: var(--vp-c-green-light);
   font-weight: bold;
 }
 .color-info {
-  color: #0383ae;
+  color: var(--vp-c-text-2);
   font-weight: bold;
 }
-.color-warn {
-  color: #e69b02;
+.color-warning {
+  color: var(--vp-c-yellow-light);
   font-weight: bold;
 }
-.color-error {
-  color: #f43f5e;
+.color-danger {
+  color: var(--vp-c-red-light);
   font-weight: bold;
 }
 
 input {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+em {
+  color: var(--vp-c-yellow-light);
+  font-weight: bold;
 }

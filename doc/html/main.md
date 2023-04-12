@@ -4,7 +4,7 @@
 
 ### 全称: Hyper Text Markup Language
 
-> 查询 <span class="color-success">HTML</span> 最新消息 传送门 [MDN HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+> 查询 <span class="color-tip">HTML</span> 最新消息 传送门 [MDN HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
 
 HTML 是 W3C 组织定义的语言标准：HTML 是用于描述<span class="color-info">页面结构</span>结构的语言。
 
@@ -91,7 +91,7 @@ HTML 是 W3C 组织定义的语言标准：HTML 是用于描述<span class="colo
 
 ## 标准的文档结构
 
-HTML： <span class="color-warn">\<!DOCTYPE <span class="color-error">html</span>
+HTML： <span class="color-warning">\<!DOCTYPE <span class="color-danger">html</span>
 \></span>
 
 文档声明，告诉浏览器，当前文档使用的 HTML 标准是 HTML5。
@@ -159,11 +159,11 @@ UTF-8 是 Unicode 编码的一个版本
 
 容器元素：该元素代表一个块区域，内部用于放置其他元素
 
-### <span class="color-success">div 元素</span>
+### <span class="color-tip">div 元素</span>
 
 没有语义
 
-### <span class="color-success">语义化容器元素</span>
+### <span class="color-tip">语义化容器元素</span>
 
 `header`: 通常用于表示页头，也可以用于表示文章的头部
 
@@ -193,6 +193,6 @@ UTF-8 是 Unicode 编码的一个版本
 ## 行块盒
 
 > 以前: 某些元素在显示时会独占一行（块级元素），而某些元素不会（行级元素）
-> 到了 HTML5，<span class="color-error">已经弃用这种说法。</span>
+> 到了 HTML5，<span class="color-danger">已经弃用这种说法。</span>
 >
 > 现在称为 `行盒` 和 `块盒`
