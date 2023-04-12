@@ -11,6 +11,6 @@
   - <span class="color-info">link 引用 CSS 时, 在页面载入时同时加载</span>
   - <span class="color-warn">@import 需要页面网页完全载入以后加载。</span>
   - <span class="color-info">link 是 XHTML 标签, 无兼容问题</span>
-  - <span class="color-warn">@import 是在 CSS2.1 提出的, 低版本的浏览器不支持。</span>
+  - <span class="color-warn">@import 是在 CSS 2.1 提出的, 低版本的浏览器不支持。</span>
   - <span class="color-info">link 支持使用 Javascript 控制 DOM 去改变样式</span>
   - <span class="color-warn">@import 不支持。</span>
