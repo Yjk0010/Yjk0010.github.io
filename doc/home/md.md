@@ -28,22 +28,22 @@
 
 ## 颜色加粗
 
-<span class="color-success">主色绿</span>
+<span class="color-tip">主色绿</span>
 
 ```markdown
-<span class="color-success">主色绿</span>
+<span class="color-tip">主色绿</span>
 ```
 
-<span class="color-error">来个红</span>
+<span class="color-danger">来个红</span>
 
 ```markdown
-<span class="color-error">来个红</span>
+<span class="color-danger">来个红</span>
 ```
 
-<span class="color-warn">淡淡的黄</span>
+<span class="color-warning">淡淡的黄</span>
 
 ```markdown
-<span class="color-warn">淡淡的黄</span>
+<span class="color-warning">淡淡的黄</span>
 ```
 
 <span class="color-info">男人魅力蓝</span>
@@ -114,6 +114,16 @@
 
 ```markdown
 ::: danger 错误
+123456
+:::
+```
+
+::: info 提示
+123456
+:::
+
+```markdown
+::: info 提示
 123456
 :::
 ```

@@ -2,13 +2,13 @@
 
 > 我们所书写的任何一个 HTML 元素，实际上都有完整的一整套 CSS 样式
 >
-> 这个可以从这边 chrome 控制台 element 随便选中一个元素 标签右边点击 <span class="color-success">computed</span>
+> 这个可以从这边 chrome 控制台 element 随便选中一个元素 标签右边点击 <span class="color-tip">computed</span>
 >
 > 选中 `show all` 可以看到所有的计算好的属性
 
 ![image-20220813143500066](./assets/computedSytle.jpg)
 
-> 所以就是 <span class="color-warn">我们所书写的任何一个 HTML 元素，实际上都有完整的一整套 CSS 样式</span>
+> 所以就是 <span class="color-warning">我们所书写的任何一个 HTML 元素，实际上都有完整的一整套 CSS 样式</span>
 
 ## 属性的计算过程
 
@@ -95,7 +95,7 @@
 
 ![image](./assets/computedSytle-7.jpg)
 
-因为这里并不涉及到选中 p 元素声明 color 值，而是从父元素上面继承到 color 对应的值，因此这里是 <span class="color-warn">谁近就听谁</span> 的，初学者往往会产生混淆，又去比较权重，但是这里根本不会涉及到权重比较，因为压根儿就没有选中到 p 元素。
+因为这里并不涉及到选中 p 元素声明 color 值，而是从父元素上面继承到 color 对应的值，因此这里是 <span class="color-warning">谁近就听谁</span> 的，初学者往往会产生混淆，又去比较权重，但是这里根本不会涉及到权重比较，因为压根儿就没有选中到 p 元素。
 第二个就是哪些属性能够继承？
 关于这一点的话，大家可以在 MDN 上面很轻松的查阅到。例如我们以 text-align 为例，如下图所示：
 ![image](./assets/computedSytle-8.jpg)

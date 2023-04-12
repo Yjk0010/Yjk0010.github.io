@@ -9,7 +9,7 @@
   "Print to copy text color success": {
     "scope": "markdown",
     "prefix": "mdsuccess",
-    "body": [" <span class=\"color-success\">${1:$CLIPBOARD}</span> "],
+    "body": [" <span class=\"color-tip\">${1:$CLIPBOARD}</span> "],
     "description": "md output to markdown"
   }
 }
