@@ -1,3 +1,5 @@
+// 本用来动态生成部署github 后边使用 github action 之后这玩意就废了
+
 //生成github需要的文件目录
 const fs = require("fs");
 const path = require("path");
@@ -42,6 +44,6 @@ const deleteDir = (dirPath) => {
 };
 
 // 删除 docs 目录及其下所有文件和子目录
-deleteDir("docs");
+deleteDir("/docs");
 // 复制 src 目录下的所有文件和文件夹到 dist 目录下
-copyDir("doc/.vitepress/dist", "docs");
+copyDir("/doc/.vitepress/dist", "docs");
