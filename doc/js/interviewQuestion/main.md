@@ -5,8 +5,8 @@
 > 首先 Undefined 和 Null 都是基本数据类型, 这两个基本数据类型
 > 分别都只有一个值, 就是 undefined 和 null。
 
-- `undefined` 代表的含义是 <span class="color-danger">未定义</span>
-- `null` 代表的含义是 <span class="color-tip">空对象</span>
+- `undefined` 代表的含义是 <span class="cor-da">未定义</span>
+- `null` 代表的含义是 <span class="cor-tip">空对象</span>
 
   > 一般变量声明了但还没有定义的时候会返回 undefined
   >

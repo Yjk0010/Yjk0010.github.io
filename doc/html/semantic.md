@@ -16,13 +16,13 @@
 | body   |  网页主体  |
 | footer |  网页页脚  |
 
-- 所有元素与<span class="color-tip">展示效果</span>无关
+- 所有元素与<span class="cor-tip">展示效果</span>无关
 
 元素展示到页面中的效果，应该由 CSS 决定。
 
 因为浏览器带有默认的 CSS 样式，所以每个元素有一些默认样式。
 
-<span class="color-warning">重要：选择什么元素，取决于内容的含义，而不是显示出的效果</span>
+<span class="cor-wa">重要：选择什么元素，取决于内容的含义，而不是显示出的效果</span>
 
 ## 为什么需要语义化？
 

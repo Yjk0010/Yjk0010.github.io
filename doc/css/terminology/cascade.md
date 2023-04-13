@@ -22,10 +22,10 @@
 
 - 具体规则: 通过选择器，计算出一个 4 位数`（x x x x）`
 
-1. <span class="color-tip">千位: </span>如果是内联样式，记 1，否则记 0
-2. <span class="color-danger">百位: </span>等于选择器中所有 id 选择器的数量
-3. <span class="color-warning">十位: </span>等于选择器中所有类选择器、属性选择器、伪类选择器的数量
-4. <span class="color-info">个位: </span>等于选择器中所有元素选择器、伪元素选择器的数量
+1. <span class="cor-tip">千位: </span>如果是内联样式，记 1，否则记 0
+2. <span class="cor-da">百位: </span>等于选择器中所有 id 选择器的数量
+3. <span class="cor-wa">十位: </span>等于选择器中所有类选择器、属性选择器、伪类选择器的数量
+4. <span class="cor-in">个位: </span>等于选择器中所有元素选择器、伪元素选择器的数量
 
 ## 比较源次序
 

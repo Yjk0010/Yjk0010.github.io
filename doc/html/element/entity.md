@@ -11,31 +11,31 @@
 
 ## 常用实体字符
 
-- 小于符号 <span class="color-info">&lt;</span>
+- 小于符号 <span class="cor-in">&lt;</span>
 
 ```html
 &lt;
 ```
 
-- 大于符号 <span class="color-info">&gt;</span>
+- 大于符号 <span class="cor-in">&gt;</span>
 
 ```html
 &gt;
 ```
 
-- 空格符号 <span class="color-info">&nbsp;</span>
+- 空格符号 <span class="cor-in">&nbsp;</span>
 
 ```html
 &nbsp;
 ```
 
-- 版权符号 <span class="color-info">&copy;</span>
+- 版权符号 <span class="cor-in">&copy;</span>
 
 ```html
 &copy;
 ```
 
-- &符号 <span class="color-info">&amp;</span>
+- &符号 <span class="cor-in">&amp;</span>
 
 ```html
 &amp;

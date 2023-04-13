@@ -28,28 +28,28 @@
 
 ## 颜色加粗
 
-<span class="color-tip">主色绿</span>
+<span class="cor-tip">主色绿</span>
 
 ```markdown
-<span class="color-tip">主色绿</span>
+<span class="cor-tip">主色绿</span>
 ```
 
-<span class="color-danger">来个红</span>
+<span class="cor-da">来个红</span>
 
 ```markdown
-<span class="color-danger">来个红</span>
+<span class="cor-da">来个红</span>
 ```
 
-<span class="color-warning">淡淡的黄</span>
+<span class="cor-wa">淡淡的黄</span>
 
 ```markdown
-<span class="color-warning">淡淡的黄</span>
+<span class="cor-wa">淡淡的黄</span>
 ```
 
-<span class="color-info">男人深沉灰</span>
+<span class="cor-in">男人深沉灰</span>
 
 ```markdown
-<span class="color-info">男人深沉灰</span>
+<span class="cor-in">男人深沉灰</span>
 ```
 
 ## 徽章

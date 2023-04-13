@@ -1,16 +1,16 @@
-.color-tip {
+.cor-tip {
   color: var(--vp-c-green-light);
   font-weight: bold;
 }
-.color-info {
+.cor-in {
   color: var(--vp-c-text-2);
   font-weight: bold;
 }
-.color-warning {
+.cor-wa {
   color: var(--vp-c-yellow-light);
   font-weight: bold;
 }
-.color-danger {
+.cor-da {
   color: var(--vp-c-red-light);
   font-weight: bold;
 }
@@ -20,6 +20,11 @@ input {
 }
 
 em {
-  color: var(--vp-c-yellow-light);
+  color: #409eff;
+  font-weight: bold;
+}
+
+strong {
+  color: #02a8a2;
   font-weight: bold;
 }

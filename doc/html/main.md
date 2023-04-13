@@ -4,9 +4,9 @@
 
 ### 全称: Hyper Text Markup Language
 
-> 查询 <span class="color-tip">HTML</span> 最新消息 传送门 [MDN HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+> 查询 <span class="cor-tip">HTML</span> 最新消息 传送门 [MDN HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
 
-HTML 是 W3C 组织定义的语言标准：HTML 是用于描述<span class="color-info">页面结构</span>结构的语言。
+HTML 是 W3C 组织定义的语言标准：HTML 是用于描述<span class="cor-in">页面结构</span>结构的语言。
 
 ## 网页基础模版
 
@@ -55,7 +55,7 @@ HTML 是 W3C 组织定义的语言标准：HTML 是用于描述<span class="colo
 - 局部属性：某些元素特有的属性
 - 全局属性：所有元素通用
 
-  有些元素没有结束标记，这样的元素叫做：<span class="color-info">空元素</span>
+  有些元素没有结束标记，这样的元素叫做：<span class="cor-in">空元素</span>
 
 ```html
 <meta charset="UTF-8" />
@@ -91,12 +91,12 @@ HTML 是 W3C 组织定义的语言标准：HTML 是用于描述<span class="colo
 
 ## 标准的文档结构
 
-HTML： <span class="color-warning">\<!DOCTYPE <span class="color-danger">html</span>
+HTML： <span class="cor-wa">\<!DOCTYPE <span class="cor-da">html</span>
 \></span>
 
 文档声明，告诉浏览器，当前文档使用的 HTML 标准是 HTML5。
 
-不写文档声明，将导致浏览器进入<span class="color-info">怪异渲染模式。</span>
+不写文档声明，将导致浏览器进入<span class="cor-in">怪异渲染模式。</span>
 
 ### 根元素 - html
 
@@ -111,7 +111,7 @@ HTML： <span class="color-warning">\<!DOCTYPE <span class="color-danger">html</
 ### lang 属性
 
 > language，全局属性，表示该元素内部使用的文字是使用哪一种自然语言书写而成的。  
-> `cmn-hans` <span class="color-info">简体中文</span>
+> `cmn-hans` <span class="cor-in">简体中文</span>
 
 ```html
 <head lang="cmn-hans"> </head>
@@ -159,11 +159,11 @@ UTF-8 是 Unicode 编码的一个版本
 
 容器元素：该元素代表一个块区域，内部用于放置其他元素
 
-### <span class="color-tip">div 元素</span>
+### <span class="cor-tip">div 元素</span>
 
 没有语义
 
-### <span class="color-tip">语义化容器元素</span>
+### <span class="cor-tip">语义化容器元素</span>
 
 `header`: 通常用于表示页头，也可以用于表示文章的头部
 
@@ -193,6 +193,6 @@ UTF-8 是 Unicode 编码的一个版本
 ## 行块盒
 
 > 以前: 某些元素在显示时会独占一行（块级元素），而某些元素不会（行级元素）
-> 到了 HTML5，<span class="color-danger">已经弃用这种说法。</span>
+> 到了 HTML5，<span class="cor-da">已经弃用这种说法。</span>
 >
 > 现在称为 `行盒` 和 `块盒`

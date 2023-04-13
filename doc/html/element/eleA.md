@@ -22,9 +22,9 @@
 
 - 普通链接
 
-  1. 值里面写了<span class="color-tip">协议名称</span>`http` 或者 `https` 那无所谓
+  1. 值里面写了<span class="cor-tip">协议名称</span>`http` 或者 `https` 那无所谓
   2. 如果没写 当前网站是什么协议 访问出去就是什么协议
-  3. `http` 和 `https` 是不能相互访问的 一般网站都是通过 `nginx` 之类的配置实现的 <span class="color-info">均可访问</span>
+  3. `http` 和 `https` 是不能相互访问的 一般网站都是通过 `nginx` 之类的配置实现的 <span class="cor-in">均可访问</span>
 
 - 锚链接
 
@@ -70,8 +70,8 @@ target 的取值：
 <a href="tel:13601834080"> 点击给我拨打电话 </a>
 ```
 
-- <span class="color-info">执行 JS 代码</span> `javascript:`
-- <span class="color-info">发送邮件</span> `mailto:`
+- <span class="cor-in">执行 JS 代码</span> `javascript:`
+- <span class="cor-in">发送邮件</span> `mailto:`
   要求用户计算机上安装有邮件发送软件
-- <span class="color-info">拨号</span> `tel:`
+- <span class="cor-in">拨号</span> `tel:`
   要求用户计算机上安装有拨号软件，或使用的是移动端访问

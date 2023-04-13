@@ -33,10 +33,10 @@
   3. poly 多边形
 
 - coords
-  给热点区域设定具体的<span class="color-info">坐标值</span>。这个值的数值和意义取决于这个值所描述的形状属性。
-  - 对于<span class="color-warning">圆形</span>，这个值是 `x,y,r`，这里的 `x,y` 是一对确定圆的中心的坐标而 `r` 则表示的是半径值。
-  - 对于<span class="color-warning">矩形</span>，这个 coords 值为两个 `X,Y` 对：左上、右下。
-  - 对于<span class="color-warning">多边形</span>，这个值是用 `x,y` 对表示的多边形的每一个点：`x1,y1,x2,y2,x3,y3` 等等。
+  给热点区域设定具体的<span class="cor-in">坐标值</span>。这个值的数值和意义取决于这个值所描述的形状属性。
+  - 对于<span class="cor-wa">圆形</span>，这个值是 `x,y,r`，这里的 `x,y` 是一对确定圆的中心的坐标而 `r` 则表示的是半径值。
+  - 对于<span class="cor-wa">矩形</span>，这个 coords 值为两个 `X,Y` 对：左上、右下。
+  - 对于<span class="cor-wa">多边形</span>，这个值是用 `x,y` 对表示的多边形的每一个点：`x1,y1,x2,y2,x3,y3` 等等。
 
 ### figure 图形
 

@@ -6,10 +6,10 @@
   // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
   // Placeholders with the same ids are connected.
   // Example:
-  "Print to text color info": {
+  "Print to text color nameb": {
     "scope": "markdown",
-    "prefix": "coinfo",
-    "body": ["<span class=\"cor-in\">${1:$CLIPBOARD}</span>"],
+    "prefix": "mdnameb",
+    "body": ["_${1:$CLIPBOARD}_"],
     "description": "md output to markdown"
   }
 }

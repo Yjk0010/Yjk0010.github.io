@@ -25,35 +25,35 @@
   - 堆区内存一般由开发着分配释放，若开发者不释放，程序结束时可
     能由垃圾回收机制回收。
 
-## <span class="color-tip">Undefined</span>
+## <span class="cor-tip">Undefined</span>
 
 > 未定义（Undefined）: 表示一个未被定义的值。在变量被声明但未被赋值时，它的值为 undefined。
 
-## <span class="color-tip">Null</span>
+## <span class="cor-tip">Null</span>
 
 > 空值（Null）: 表示一个空的值。可以将变量赋值为 null 来表示它是空的。
 
-## <span class="color-tip">Boolean</span>
+## <span class="cor-tip">Boolean</span>
 
 > 布尔（Boolean）: 用于表示逻辑上的真或假。有两个值：true 和 false。
 
-## <span class="color-tip">Number</span>
+## <span class="cor-tip">Number</span>
 
 > 数字（Number）: 用于表示数字，可以是整数或者浮点数。例如：42，3.14。
 
-## <span class="color-tip">String</span>
+## <span class="cor-tip">String</span>
 
 > 字符串（String）: 用于表示文本数据。例如："hello"，"world"。
 
-## <span class="color-tip">Object</span>
+## <span class="cor-tip">Object</span>
 
 > 对象（Object）: 是一种复合数据类型，可以用来表示任何对象。对象由一组属性（属性名和属性值）组成。例如：{ name: "张三", age: 18 }。
 
-## <span class="color-tip">Symbol</span>
+## <span class="cor-tip">Symbol</span>
 
 > Symbol: 表示一个独一无二的值，用于对象属性的键。
 
-## <span class="color-tip">BigInt</span>
+## <span class="cor-tip">BigInt</span>
 
 > BigInt: 用于表示任意精度的整数，可以超出 JavaScript 中 Number 类型所能表示的范围。
 
