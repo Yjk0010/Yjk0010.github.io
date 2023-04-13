@@ -2,15 +2,15 @@
 
 ## 数据类型的介绍以及存储
 
-> JavaScript 共有八种数据类型，分别是 Undefined, Null, Boolean,
-> Number, String, Object, Symbol, BigInt
+> JavaScript 共有 <span class="cor-da">八种</span> 数据类型，分别是 **Undefined, Null, Boolean,
+> Number, String, Object, Symbol, BigInt**
 
 - 两种类型的区别在于存储位置的不同：
-  - 栈：原始数据类型（Undefined、Null、Boolean、Number、String）
-  - 堆：引用数据类型（对象、数组和函数）
-- 原始数据类型直接存储在栈（stack）中的简单数据段，占据空间
+  - 栈：<span class="cor-wa">原始数据类型(Undefined、Null、Boolean、Number、String)</span>
+  - 堆：<span class="cor-tip">引用数据类型(对象、数组和函数)</span>
+- 原始数据类型直接存储在栈`stack`中的简单数据段，占据空间
   小、大小固定，属于被频繁使用数据，所以放入栈中存储
-- 引用数据类型存储在堆（heap）中的对象，占据空间大、大小不固
+- 引用数据类型存储在堆`heap`中的对象，占据空间大、大小不固
   定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈
   中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引
   用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体。
@@ -27,35 +27,35 @@
 
 ## <span class="cor-tip">Undefined</span>
 
-> 未定义（Undefined）: 表示一个未被定义的值。在变量被声明但未被赋值时，它的值为 undefined。
+_未定义(Undefined): 表示一个未被定义的值。在变量被声明但未被赋值时，它的值为 undefined。_
 
 ## <span class="cor-tip">Null</span>
 
-> 空值（Null）: 表示一个空的值。可以将变量赋值为 null 来表示它是空的。
+_空值(Null): 表示一个空的值。可以将变量赋值为 null 来表示它是空的。_
 
 ## <span class="cor-tip">Boolean</span>
 
-> 布尔（Boolean）: 用于表示逻辑上的真或假。有两个值：true 和 false。
+_布尔(Boolean): 用于表示逻辑上的真或假。有两个值：true 和 false。_
 
 ## <span class="cor-tip">Number</span>
 
-> 数字（Number）: 用于表示数字，可以是整数或者浮点数。例如：42，3.14。
+_数字(Number): 用于表示数字，可以是整数或者浮点数。例如：42，3.14。_
 
 ## <span class="cor-tip">String</span>
 
-> 字符串（String）: 用于表示文本数据。例如："hello"，"world"。
+_字符串(String): 用于表示文本数据。例如："hello"，"world"。_
 
 ## <span class="cor-tip">Object</span>
 
-> 对象（Object）: 是一种复合数据类型，可以用来表示任何对象。对象由一组属性（属性名和属性值）组成。例如：{ name: "张三", age: 18 }。
+_对象(Object): 是一种复合数据类型，可以用来表示任何对象。对象由一组属性(属性名和属性值)组成。例如：{ name: "张三", age: 18 }。_
 
 ## <span class="cor-tip">Symbol</span>
 
-> Symbol: 表示一个独一无二的值，用于对象属性的键。
+_Symbol: 表示一个独一无二的值，用于对象属性的键。_
 
 ## <span class="cor-tip">BigInt</span>
 
-> BigInt: 用于表示任意精度的整数，可以超出 JavaScript 中 Number 类型所能表示的范围。
+_BigInt: 用于表示任意精度的整数，可以超出 JavaScript 中 Number 类型所能表示的范围。_
 
 ## 数据类型检测的方式
 

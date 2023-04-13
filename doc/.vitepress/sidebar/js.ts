@@ -13,6 +13,7 @@ export default [
     items:
       [
         { text: '数据类型', link: '/js/base/dataType' },
+        { text: '特性', link: '/js/base/feature' },
       ]
   },
   {
