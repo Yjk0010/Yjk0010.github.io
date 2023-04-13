@@ -7,8 +7,8 @@
   },
   "scripts": {
     "dd": "vitepress dev doc",
-    "db": "vitepress build doc",
-    "dpv": "vitepress preview doc",
-    "github": "vitepress build doc"
+    "docs:dev": "vitepress dev doc",
+    "docs:build": "vitepress build doc",
+    "docs:preview": "vitepress preview doc"
   }
 }
