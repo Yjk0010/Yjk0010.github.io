@@ -12,6 +12,7 @@ export default [
     collapsed: false,
     items:
       [
+        { text: '规范', link: '/js/base/criterion' },
         { text: '数据类型', link: '/js/base/dataType' },
         { text: '特性', link: '/js/base/feature' },
       ]
