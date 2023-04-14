@@ -26,27 +26,27 @@
 
 ## 语言规范
 
-使用严格模式 "use strict"
+<span class="cor-tip">推荐</span> 严格模式 "use strict"
 
-将 **JavaScript** 代码放在外部文件中，不要将其嵌入到 **HTML** 中
+<span class="cor-da">避免</span> 将 `JavaScript` 嵌入到 `HTML` 中, <span class="cor-tip">推荐</span> 将 `JavaScript` 代码放在外部文件中，
 
-使用 _var, let 或 const_ 关键字声明变量，<span class="cor-da">避免</span> 使用**全局变量**
+<span class="cor-da">避免</span> 使用 `全局变量` , <span class="cor-tip">推荐</span> 使用 _var, let 或 const_ 关键字声明变量，
 
-<span class="cor-da">避免</span> 使用 **eval()** 方法
+<span class="cor-da">避免</span> 使用 `eval()` 方法
 
-<span class="cor-da">避免</span> 在循环中创建新对象
+<span class="cor-da">避免</span> 在 `循环中创建新对象`
 
-<span class="cor-da">避免</span> 使用 **with** 语句
+<span class="cor-da">避免</span> 使用 `with` 语句
 
-尽量使用 **=== 和 !==** 运算符代替 **== 和 !=** 运算符
+<span class="cor-da">避免</span> `== 和 !=` <span class="cor-tip">推荐</span> 使用 _=== 和 !==_
 
-<span class="cor-da">避免</span> **在条件语句中进行赋值**操作
+<span class="cor-da">避免</span> `在条件语句中进行赋值`操作
 
-<span class="cor-da">避免</span> 使用不必要的分号。
+<span class="cor-da">避免</span> 使用 `不必要的分号`。
 
 ## 代码风格
 
-使用**驼峰命名法**来命名 _变量、函数、对象_ 等
+<span class="cor-tip">推荐</span> 使用 `驼峰命名法` 来命名 _变量、函数、对象_ 等
 
 使用一个 **Tab** 缩进代码，而不是**空格**
 
