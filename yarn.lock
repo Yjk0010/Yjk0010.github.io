@@ -163,6 +163,13 @@
   "resolved" "https://registry.npmjs.org/@types/node/-/node-18.15.11.tgz"
   "version" "18.15.11"
 
+"@types/vue@^2.0.0":
+  "integrity" "sha512-WDElkBv/o4lVwu6wYHB06AXs4Xo2fwDjJUpvPRc1QQdzkUSiGFjrYuSCy8raxLE5FObgKq8ND7R5gSZTFLK60w=="
+  "resolved" "https://registry.npmjs.org/@types/vue/-/vue-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "vue" "*"
+
 "@types/web-bluetooth@^0.0.16":
   "integrity" "sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ=="
   "resolved" "https://registry.npmjs.org/@types/web-bluetooth/-/web-bluetooth-0.0.16.tgz"
@@ -628,7 +635,7 @@
   "resolved" "https://registry.npmjs.org/vue-demi/-/vue-demi-0.13.11.tgz"
   "version" "0.13.11"
 
-"vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.25", "vue@^3.2.47", "vue@3.2.47":
+"vue@*", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.25", "vue@^3.2.47", "vue@3.2.47":
   "integrity" "sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.47.tgz"
   "version" "3.2.47"

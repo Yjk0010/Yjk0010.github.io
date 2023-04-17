@@ -14,7 +14,11 @@ export default [
       [
         { text: '规范', link: '/js/base/criterion' },
         { text: '数据类型', link: '/js/base/dataType' },
+<<<<<<< HEAD
         { text: '特性', link: '/js/base/feature' },
+=======
+        { text: 'toFixed不精确', link: '/js/base/toFixed' },
+>>>>>>> master
       ]
   },
   {
