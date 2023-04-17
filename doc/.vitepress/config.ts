@@ -5,6 +5,7 @@ import css from "./sidebar/css"
 import js from "./sidebar/js"
 import ts from "./sidebar/ts"
 import webpack from "./sidebar/webpack"
+import componentDocs from "./sidebar/componentDocs"
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -26,6 +27,7 @@ export default defineConfig({
       { text: 'JAVASCRIPT', link: '/js/main', activeMatch: '/js' },
       { text: 'TYPESCRIPT', link: '/ts/main', activeMatch: '/ts' },
       { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
+      { text: '组件', link: '/componentDocs/main', activeMatch: '/componentDocs' },
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
     sidebar: {
@@ -35,6 +37,7 @@ export default defineConfig({
       '/js': js,
       '/ts': ts,
       '/webpack': webpack,
+      '/componentDocs': componentDocs,
       '/aboutMe': [
         {
           text: '关于我',
