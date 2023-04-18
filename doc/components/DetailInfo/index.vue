@@ -11,8 +11,11 @@
   </div>
 </template>
 
-<script setup>
-import { defineProps } from "vue";
+<script setup lang="ts">
+interface infoConfigItem {
+  label: string;
+  key: string;
+}
 const propsData = defineProps({
   infoConfig: {
     type: Array,

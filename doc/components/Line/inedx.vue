@@ -5,49 +5,40 @@
 -->
 
 <template>
-  <div class="jk-line">
-    <div class="jk-line-text">
+  <div class="line">
+    <div class="line-text line-left">
       {{ title }}
     </div>
-    <div class="jk-line" :style="computedLineStyle"></div>
-    <div class="jk-line-text">
+    <div class="line" :style="computedLineStyle"></div>
+    <div class="line-text line-center">
       {{ lineWidth }}
     </div>
-    <div class="jk-line" :style="computedLineStyle"></div>
-    <div class="jk-line-text">
+    <div class="line" :style="computedLineStyle"></div>
+    <div class="line-text line-right">
       {{ lineStyle }}
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed } from "vue";
-const props = defineProps({
-  title: {
-    type: String,
-    default: "",
-  },
-  // 位置
-  position: {
-    type: String,
-    default: "left",
-  },
-  // 线宽度
-  lineWidth: {
-    type: Number,
-    default: 1,
-  },
-  // 默认颜色
-  color: {
-    type: String,
-    default: "rgba(220,220,220,0.4)",
-  },
-  // 线条样式
-  lineStyle: {
-    type: String,
-    default: "solid",
-  },
-});
+import type { position, numberRange10, color, lineStyle } from "/types";
+const props = withDefaults(
+  defineProps<{
+    title?: string;
+    position?: position;
+    lineWidth?: numberRange10;
+    color?: color;
+    lineStyle?: lineStyle;
+  }>(),
+  {
+    title: "",
+    position: "left",
+    lineWidth: 1,
+    color: "rgb(220, 220, 220)",
+    lineStyle: "solid",
+  }
+);
 // 计算属性 计算生成lineStyle 样式
 
 const computedLineStyle = computed(() => {
@@ -59,8 +50,21 @@ const computedLineStyle = computed(() => {
 </script>
 
 <style lang="less" scoped>
-.jk-line {
+.line {
   display: flex;
   align-items: center;
+  .line-text {
+    font-weight: bold;
+  }
+  &-left {
+    margin-right: 12px;
+  }
+  &-center {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  &-right {
+    margin-left: 12px;
+  }
 }
 </style>

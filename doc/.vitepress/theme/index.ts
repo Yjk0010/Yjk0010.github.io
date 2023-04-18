@@ -1,9 +1,13 @@
+import type { Theme } from 'vitepress'
 import DefaultTheme from "vitepress/theme";
+
 import Badge from "/components/Badge/index.vue";
 
-export default {
+const theme: Theme = {
   ...DefaultTheme,
-  enhanceApp({ app }) {
+  enhanceApp ({ app }) {
     app.component("Badge", Badge);
   },
 };
+
+export default theme

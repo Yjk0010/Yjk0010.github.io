@@ -12,6 +12,7 @@ export default [
     collapsed: false,
     items:
       [
+        { text: '线条', link: '/componentDocs/self/line' },
         { text: '详情展示', link: '/componentDocs/self/detailInfo' },
       ]
   },
