@@ -21,12 +21,11 @@ jobs:
         with:
           node-version: 16
           cache: npm
-      - name: create pnpm environment
-        run: npm install -g pnpm
-      - name: install packages
-        run: pnpm install
-      - name: Build docs
-        run: pnpm docs:build
+      - name: use pnpm to install and build
+        run: |
+          npm install -g pnpm
+          pnpm install
+          pnpm docs:build
       - uses: actions/configure-pages@v2
       - uses: actions/upload-pages-artifact@v1
         with:
