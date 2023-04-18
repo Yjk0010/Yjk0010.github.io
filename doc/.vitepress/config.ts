@@ -52,11 +52,11 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Yjk0010/Docs' }
+      { icon: 'github', link: 'https://github.com/Yjk0010/Yjk0010.github.io' }
     ],
 
     footer: {
-      message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
+      message: 'Released under the <a href="https://github.com/Yjk0010/Yjk0010.github.io/blob/master/LICENSE">MIT License</a>.',
       copyright: 'Copyright © 2023-present <a href="https://github.com/Yjk0010">Jinke Yan</a>'
     },
   },
