@@ -9,7 +9,7 @@ import componentDocs from "./sidebar/componentDocs"
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "KingKe Blog",
+  title: "Jinke Blog",
   lang: 'zh-CN',
   description: "Some simple notes",
   head: [
@@ -57,7 +57,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the <a href="https://github.com/vuejs/vitepress/blob/main/LICENSE">MIT License</a>.',
-      copyright: 'Copyright © 2023-present <a href="https://github.com/Yjk0010">KingKe Yan</a>'
+      copyright: 'Copyright © 2023-present <a href="https://github.com/Yjk0010">Jinke Yan</a>'
     },
   },
 

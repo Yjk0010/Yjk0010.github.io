@@ -1,3 +1,3 @@
-# KingKe Blog
+# Jinke Blog
 
 ## Some simple notes
