@@ -1,1 +1,0 @@
-import{_ as a,o as s,c as l,N as e}from"./chunks/framework.72c3014c.js";const _=JSON.parse('{"title":"HTML 实体","description":"","frontmatter":{},"headers":[],"relativePath":"html/element/entity.md"}'),n={name:"html/element/entity.md"},t=e("",16),p=[t];function o(c,i,r,d,h,m){return s(),l("div",null,p)}const g=a(n,[["render",o]]);export{_ as __pageData,g as default};

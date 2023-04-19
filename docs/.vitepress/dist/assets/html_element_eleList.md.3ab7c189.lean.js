@@ -1,1 +1,0 @@
-import{_ as s,o as l,c as a,N as n}from"./chunks/framework.72c3014c.js";const C=JSON.parse('{"title":"列表元素","description":"","frontmatter":{},"headers":[],"relativePath":"html/element/eleList.md"}'),p={name:"html/element/eleList.md"},o=n("",21),t=[o];function e(c,r,F,D,i,y){return l(),a("div",null,t)}const A=s(p,[["render",e]]);export{C as __pageData,A as default};

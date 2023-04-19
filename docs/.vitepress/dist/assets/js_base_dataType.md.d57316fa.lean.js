@@ -1,1 +1,0 @@
-import{_ as s,o as a,c as n,N as l}from"./chunks/framework.72c3014c.js";const i=JSON.parse('{"title":"数据类型","description":"","frontmatter":{},"headers":[],"relativePath":"js/base/dataType.md"}'),o={name:"js/base/dataType.md"},p=l("",33),t=[p];function e(c,D,r,y,F,C){return a(),n("div",null,t)}const u=s(o,[["render",e]]);export{i as __pageData,u as default};

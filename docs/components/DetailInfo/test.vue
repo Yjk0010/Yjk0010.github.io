@@ -7,8 +7,8 @@
   ></jkDetailInfo>
 </template>
 
-<script setup>
-import jkDetailInfo from "/components/detailInfo/index.vue";
+<script setup lang="ts">
+import jkDetailInfo from "./index.vue";
 import { ref, reactive } from "vue";
 const col = ref(2);
 const info = reactive({
