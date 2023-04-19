@@ -1,0 +1,1 @@
+import{_ as a,o as e,c as o,N as t}from"./chunks/framework.72c3014c.js";const m=JSON.parse('{"title":"路径的写法","description":"","frontmatter":{},"headers":[],"relativePath":"home/route.md"}'),l={name:"home/route.md"},s=t("",16),n=[s];function p(c,r,i,d,h,u){return e(),o("div",null,n)}const b=a(l,[["render",p]]);export{m as __pageData,b as default};

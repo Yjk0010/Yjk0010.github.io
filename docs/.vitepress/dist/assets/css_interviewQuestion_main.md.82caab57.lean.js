@@ -1,0 +1,1 @@
+import{_ as a,o as i,c as s,N as n}from"./chunks/framework.72c3014c.js";const h=JSON.parse('{"title":"面试题","description":"","frontmatter":{},"headers":[],"relativePath":"css/interviewQuestion/main.md"}'),e={name:"css/interviewQuestion/main.md"},t=n("",5),l=[t];function o(r,c,p,_,d,m){return i(),s("div",null,l)}const u=a(e,[["render",o]]);export{h as __pageData,u as default};

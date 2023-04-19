@@ -1,0 +1,1 @@
+import{_ as a,o as s,c as e,N as o}from"./chunks/framework.72c3014c.js";const m=JSON.parse('{"title":"书写","description":"","frontmatter":{},"headers":[],"relativePath":"js/base/criterion.md"}'),n={name:"js/base/criterion.md"},p=o("",30),t=[p];function c(l,r,i,d,h,u){return s(),e("div",null,t)}const _=a(n,[["render",c]]);export{m as __pageData,_ as default};

@@ -1,0 +1,1 @@
+import{_ as a,o as s,c as o,N as e}from"./chunks/framework.72c3014c.js";const b=JSON.parse('{"title":"JS 语言特性","description":"","frontmatter":{},"headers":[],"relativePath":"js/base/feature.md"}'),t={name:"js/base/feature.md"},p=e("",23),r=[p];function n(c,l,i,d,_,h){return s(),o("div",null,r)}const q=a(t,[["render",n]]);export{b as __pageData,q as default};

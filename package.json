@@ -1,15 +1,17 @@
 {
   "license": "MIT",
   "devDependencies": {
+    "@types/less": "^3.0.3",
     "@types/node": "^18.15.11",
-    "@types/vue": "^2.0.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "less": "^4.1.3",
     "vitepress": "1.0.0-alpha.64"
   },
   "scripts": {
-    "dd": "vitepress dev doc",
-    "docs:dev": "vitepress dev doc",
-    "docs:build": "vitepress build doc",
-    "docs:preview": "vitepress preview doc"
+    "dd": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "tsc-watch": "tsc --watch"
   }
 }

@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as a,N as l}from"./chunks/framework.72c3014c.js";const m=JSON.parse('{"title":"语义化","description":"","frontmatter":{},"headers":[],"relativePath":"html/semantic.md"}'),i={name:"html/semantic.md"},r=l("",16),d=[r];function n(o,p,s,c,h,_){return e(),a("div",null,d)}const x=t(i,[["render",n]]);export{m as __pageData,x as default};
