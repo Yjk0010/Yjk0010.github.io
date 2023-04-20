@@ -1,6 +1,6 @@
 {
   "name": "Jinke Yan's Blob",
-  "version": "1.0.1",
+  "version": "1.0.0-alpha.11",
   "description": "A blog used to record one's (programmer's) learning content and share it with everyone",
   "devDependencies": {
     "@types/less": "^3.0.3",
