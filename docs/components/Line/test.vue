@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import jkLine from "/components/Line/index.vue";
-import slotTsx from "/components/Line/index.tsx";
+import slotTsx from "./index.tsx";
 </script>
 
 <template>

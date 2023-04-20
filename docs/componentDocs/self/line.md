@@ -1,6 +1,6 @@
 ## 线
 
-<script setup>
+<script setup lang="ts">
 import Line from "/components/Line/test.vue"
 </script>
 

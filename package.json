@@ -1,4 +1,6 @@
 {
+  "name": "Jinke Yan's Blob",
+  "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
     "@types/less": "^3.0.3",
@@ -8,11 +10,9 @@
     "vitepress": "1.0.0-alpha.64"
   },
   "scripts": {
-    "dd": "vitepress dev docs",
-    "bd": "vitepress build docs",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
     "tsc": "tsc",
     "tsc--w": "tsc --watch"
   }

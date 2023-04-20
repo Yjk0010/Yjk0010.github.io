@@ -15,10 +15,10 @@
     "types": ["vitepress", "less"],
     "baseUrl": "./",
     "paths": {
-      "/*": ["docs/*"]
+      "docs/*": ["docs/*"]
     },
     "lib": ["ESNext", "DOM", "DOM.Iterable"]
   },
-  "include": ["docs/**/*", "docs/.vitepress/**/*"],
+  "include": ["docs/**/*", ".vitepress/**/*"],
   "exclude": ["node_modules"]
 }

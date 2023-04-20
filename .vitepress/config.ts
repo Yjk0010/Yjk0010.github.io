@@ -12,6 +12,7 @@ import componentDocs from "./sidebar/componentDocs"
 export default defineConfig({
   title: "Jinke Blog",
   lang: 'zh-CN',
+  srcDir: 'docs',
   description: "Some simple notes",
   head: [
     ['link', { rel: "icon", href: "/assets/favicon.ico" }],
