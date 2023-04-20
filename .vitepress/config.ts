@@ -5,6 +5,7 @@ import html from "./sidebar/html"
 import css from "./sidebar/css"
 import js from "./sidebar/js"
 import ts from "./sidebar/ts"
+import vue from "./sidebar/vue"
 import webpack from "./sidebar/webpack"
 import componentDocs from "./sidebar/componentDocs"
 
@@ -29,6 +30,7 @@ export default defineConfig({
       { text: 'CSS', link: '/css/main', activeMatch: '/css' },
       { text: 'JAVASCRIPT', link: '/js/main', activeMatch: '/js' },
       { text: 'TYPESCRIPT', link: '/ts/main', activeMatch: '/ts' },
+      { text: 'VUE', link: '/vue/main', activeMatch: '/vue' },
       { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
       { text: '组件', link: '/componentDocs/main', activeMatch: '/componentDocs' },
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
@@ -39,6 +41,7 @@ export default defineConfig({
       '/css': css,
       '/js': js,
       '/ts': ts,
+      '/vue': vue,
       '/webpack': webpack,
       '/componentDocs': componentDocs,
       '/aboutMe': [

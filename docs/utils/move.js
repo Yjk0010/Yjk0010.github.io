@@ -44,6 +44,6 @@ const deleteDir = (dirPath) => {
 };
 
 // 删除 docs 目录及其下所有文件和子目录
-deleteDir("/docs");
+// deleteDir("/docs");
 // 复制 src 目录下的所有文件和文件夹到 dist 目录下
-copyDir("/doc/.vitepress/dist", "docs");
+// copyDir("/doc/.vitepress/dist", "docs");

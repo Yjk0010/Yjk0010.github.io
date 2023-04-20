@@ -1,7 +1,7 @@
 {
   "name": "Jinke Yan's Blob",
   "version": "1.0.0",
-  "license": "MIT",
+  "description": "A blog used to record one's (programmer's) learning content and share it with everyone",
   "devDependencies": {
     "@types/less": "^3.0.3",
     "@types/node": "^18.15.11",
@@ -15,5 +15,34 @@
     "preview": "vitepress preview",
     "tsc": "tsc",
     "tsc--w": "tsc --watch"
+  },
+  "author": {
+    "name": "Jinke Yan",
+    "email": "yanjinke2008@gmail.com",
+    "url": "https://github.com/yjk0010"
+  },
+  "homepage": "https://yjk0010.github.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yjk0010/Yjk0010.github.io.git"
+  },
+  "bugs": "https://github.com/Yjk0010/Yjk0010.github.io/issues",
+  "private": true,
+  "license": "MIT",
+  "keywords": [
+    "MIT",
+    "html",
+    "css",
+    "javaScript",
+    "typescript",
+    "vue",
+    "vitepress",
+    "blog"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0",
+    "yarn": ">=1.22.0",
+    "pnpm": ">=6.0.0"
   }
 }
