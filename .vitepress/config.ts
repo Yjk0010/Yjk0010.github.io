@@ -23,6 +23,7 @@ export default defineConfig({
 
   themeConfig: {
     logo: '/assets/favicon.ico',
+    outline: [2, 3],
     nav: [
       { text: '开始', link: '/' },
       { text: '主页', link: '/home/main', activeMatch: '/home' },
@@ -75,5 +76,10 @@ export default defineConfig({
         localsConvention: 'camelCase'
       }
     },
+    server: {
+      hmr: {
+        overlay: false
+      }
+    }
   }
 })
