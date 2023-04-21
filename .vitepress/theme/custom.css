@@ -26,3 +26,7 @@
 * {
   word-spacing: 0.4rem;
 }
+
+.vp-doc [class*="language-"] code .highlighted {
+  padding: 0 30px;
+}
