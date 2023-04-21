@@ -24,7 +24,7 @@ console.log("===我是分割线===");
 
 所以 `vue2` 使用了 _Object.defineProperty_ 来实现访问控制
 
-> 这里用 `let v = obj.a` 是为了方式 get 调用 死循环
+> 这里用 `let v = obj.a` 是为了防止 get 调用 死循环
 
 ```javascript
 let v = obj.a;

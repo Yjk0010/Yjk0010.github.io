@@ -22,3 +22,7 @@
     "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
 }
+
+* {
+  word-spacing: 0.4rem;
+}
