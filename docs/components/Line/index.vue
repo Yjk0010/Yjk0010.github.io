@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import type { position, numberRange10, color, lineStyle } from "/types";
+import type { position, numberRange10, color, lineStyle } from "docs/types";
 interface Props {
   lineTitle: string | string[];
   linePosition: position | position[];
