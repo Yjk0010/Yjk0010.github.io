@@ -2,6 +2,10 @@
 
 ## <span class="cor-da">核心</span> Object.defineProperty <Badge type="tip">vue2</Badge> Proxy <Badge type="tip">vue3</Badge>
 
+::: tip 提示
+开发控制台可以看到当前页面代码输出结果 对前端来说更直观
+:::
+
 ## <span class="cor-tip">vue2</span> 数据响应式实现
 
 <script>
@@ -31,6 +35,7 @@ console.log("输出 a = ", obj1.a);
 ```
 
 :::
+
 但是这样访问我们无法获得访问动作
 
 所以 `vue2` 使用了 _Object.defineProperty_ 来实现访问控制

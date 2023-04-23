@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import home from "./sidebar/home"
+import browser from "./sidebar/browser"
 import html from "./sidebar/html"
 import css from "./sidebar/css"
 import js from "./sidebar/js"
@@ -27,6 +28,7 @@ export default defineConfig({
     nav: [
       { text: '开始', link: '/' },
       { text: '主页', link: '/home/main', activeMatch: '/home' },
+      { text: '浏览器', link: '/browser/main', activeMatch: '/browser' },
       { text: 'HTML', link: '/html/main', activeMatch: '/html' },
       { text: 'CSS', link: '/css/main', activeMatch: '/css' },
       { text: 'JAVASCRIPT', link: '/js/main', activeMatch: '/js' },
@@ -38,6 +40,7 @@ export default defineConfig({
     ],
     sidebar: {
       '/home': home,
+      '/browser': browser,
       '/html': html,
       '/css': css,
       '/js': js,

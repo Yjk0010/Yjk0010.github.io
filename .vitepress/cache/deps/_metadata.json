@@ -1,13 +1,23 @@
 {
-  "hash": "5fb317d0",
-  "browserHash": "1ee89174",
+  "hash": "3c156d37",
+  "browserHash": "cf08eb4f",
   "optimized": {
     "vue": {
-      "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../node_modules/.pnpm/vue@3.2.47/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "38694dea",
+      "fileHash": "67ff1501",
       "needsInterop": false
+    },
+    "flowchart.js": {
+      "src": "../../../node_modules/.pnpm/flowchart.js@1.17.1/node_modules/flowchart.js/index.js",
+      "file": "flowchart__js.js",
+      "fileHash": "f6f8f08f",
+      "needsInterop": true
     }
   },
-  "chunks": {}
+  "chunks": {
+    "chunk-RSJERJUL": {
+      "file": "chunk-RSJERJUL.js"
+    }
+  }
 }

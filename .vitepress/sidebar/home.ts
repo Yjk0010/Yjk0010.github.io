@@ -13,8 +13,7 @@ export default [
     items:
       [
         { text: 'markdown 语法', link: '/home/md' },
-        { text: '浏览器', link: '/home/browser' },
-        { text: '浏览器大战', link: '/home/browserWars' },
+        { text: 'HTTP', link: '/home/http' },
         { text: '路径的写法', link: '/home/route' },
       ]
   },
