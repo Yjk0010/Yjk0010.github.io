@@ -233,3 +233,23 @@ var a = 15;
 ```markdown
 [[toc]]
 ```
+
+## 流程图
+
+<flowchart :chart="
+`
+start=>start: 开始
+e=>end: 结束
+op1=>operation: 操作1
+op2=>operation: 操作2
+cond=>condition: 条件1
+c2=>condition: 条件2
+io=>inputoutput: 输入输出
+para=>parallel: 并行
+start->op1->cond
+cond(no)->para
+cond(yes, right)->c2
+c2(true, top)->io
+c2(false)->e
+para(path2, right)->op2->e
+`"></flowchart>
