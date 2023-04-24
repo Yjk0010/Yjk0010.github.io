@@ -14,7 +14,7 @@
     "less": "^4.1.3",
     "mermaid": "^10.1.0",
     "npm": "^9.6.5",
-    "vitepress": "1.0.0-alpha.73",
+    "vitepress": "1.0.0-alpha.73"
   },
   "scripts": {
     "dev": "vitepress dev",
