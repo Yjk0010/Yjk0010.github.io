@@ -12,7 +12,7 @@ export default [
     collapsed: false,
     items:
       [
-        { text: 'markdown 语法', link: '/home/md' },
+        { text: 'vitepress markdown 语法', link: '/home/md' },
         { text: 'HTTP', link: '/home/http' },
         { text: '路径的写法', link: '/home/route' },
       ]

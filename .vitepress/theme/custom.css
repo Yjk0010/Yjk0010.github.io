@@ -27,6 +27,10 @@
   word-spacing: 0.4rem;
 }
 
-.vp-doc [class*="language-"] code .highlighted {
-  padding: 0 30px;
+.vp-doc
+  [class*="language-"]
+  code
+  .highlighted
+  span[style="color:#F07178;"]:first-child {
+  margin-left: 7px;
 }
