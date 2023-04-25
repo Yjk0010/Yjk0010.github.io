@@ -1,10 +1,12 @@
 export default [
   {
-    text: '主页',
+    text: 'Main Page',
     collapsed: false,
     items:
       [
-        { text: '首页', link: '/css/main' },
+        { text: '介绍', link: '/css/main' },
+        { text: '小知识点', link: '/css/base/main' },
+        { text: '优化', link: '/css/base/optimize' },
       ]
   },
   {
@@ -20,20 +22,11 @@ export default [
   },
   {
     text: '属性',
-    collapsed: true,
+    collapsed: false,
     items:
       [
         { text: '属计算过程', link: '/css/attr/attrCalcProcess' },
         { text: '属性值', link: '/css/attr/main' },
-      ]
-  },
-  {
-    text: '面试题',
-    collapsed: false,
-    items:
-      [
-        { text: '短面试题', link: '/css/interviewQuestion/main' },
-        { text: '优化', link: '/css/interviewQuestion/optimize' },
       ]
   },
 ]

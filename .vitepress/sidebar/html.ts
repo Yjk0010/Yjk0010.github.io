@@ -1,16 +1,17 @@
 export default [
   {
-    text: '基础',
+    text: 'Main Page',
     collapsed: false,
     items:
       [
-        { text: '首页介绍', link: '/html/main' },
-        { text: '语义化', link: '/html/semantic' },
+        { text: '介绍', link: '/html/main' },
+        { text: '语义化', link: '/html/base/semantic' },
+        { text: '小知识点', link: '/html/base/littleCase' },
       ]
   },
   {
     text: '元素',
-    collapsed: true,
+    collapsed: false,
     items:
       [
         { text: '文本元素', link: '/html/element/textEle' },
@@ -23,14 +24,6 @@ export default [
         { text: '表单 元素', link: '/html/element/eleForm' },
         { text: '表格 元素', link: '/html/element/eleTable' },
         { text: '其他 元素', link: '/html/element/eleOther' },
-      ]
-  },
-  {
-    text: '面试题',
-    collapsed: false,
-    items:
-      [
-        { text: '短面试题', link: '/html/interviewQuestion/main' },
       ]
   },
 ]

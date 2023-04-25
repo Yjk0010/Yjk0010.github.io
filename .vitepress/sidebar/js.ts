@@ -1,10 +1,11 @@
 export default [
   {
-    text: '主页',
+    text: 'Main Page',
     collapsed: false,
     items:
       [
-        { text: '首页', link: '/js/main' },
+        { text: '介绍', link: '/js/main' },
+        { text: '小知识点', link: '/js/base/littleCase' },
       ]
   },
   {
@@ -16,14 +17,6 @@ export default [
         { text: '数据类型', link: '/js/base/dataType' },
         { text: '特性', link: '/js/base/feature' },
         { text: 'toFixed不精确', link: '/js/base/toFixed' },
-      ]
-  },
-  {
-    text: '面试题',
-    collapsed: false,
-    items:
-      [
-        { text: '短面试题', link: '/js/interviewQuestion/main' },
       ]
   },
 ]

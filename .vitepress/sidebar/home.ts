@@ -1,6 +1,6 @@
 export default [
   {
-    text: '主页',
+    text: 'Main Page',
     collapsed: false,
     items:
       [

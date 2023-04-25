@@ -1,10 +1,10 @@
 export default [
   {
-    text: '主页',
+    text: 'Main Page',
     collapsed: false,
     items:
       [
-        { text: '首页', link: '/componentDocs/main' },
+        { text: '介绍', link: '/componentDocs/main' },
       ]
   },
   {

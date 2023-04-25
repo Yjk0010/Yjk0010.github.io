@@ -8,21 +8,21 @@
 
 ## DOCTYPE(⽂档类型) 的作⽤
 
-> `DOCTYPE` 是 `HTML5` 中一种标准通用标记语言的文档类型声明, 它的目
-> 的是告诉浏览器(解析器)应该以什么样(`html` 或 `xhtml`)的文档类
-> 型定义来解析文档, 不同的渲染模式会影响浏览器对 CSS 代码甚⾄ JavaScript 脚本的解析。  
-> <span class="cor-da">它必须声明在 HTML ⽂档的第⼀⾏。</span>
-> 浏览器渲染页面的两种模式
->
-> 可通过 `document.compatMode`获取
->
-> `CSS1Compat`: <span class="cor-tip">标准模式(Strick mode)</span>  
-> 默认模式, 浏览器使用 W3C 的标准解析渲染页面。  
-> 在标准模式中, 浏览器以其支持的最高标准呈现页面。
->
-> `BackCompat`: <span class="cor-wa">怪异模式(混杂模式)(Quick mode)</span>  
-> 浏览器使用自己的怪异模式解析渲染页面。  
-> 在怪异模式中, 页面以一种比较宽松的向后兼容的方式显示。
+`DOCTYPE` 是 `HTML5` 中一种标准通用标记语言的文档类型声明, 它的目
+的是告诉浏览器(解析器)应该以什么样(`html` 或 `xhtml`)的文档类
+型定义来解析文档, 不同的渲染模式会影响浏览器对 CSS 代码甚⾄ JavaScript 脚本的解析。  
+ <span class="cor-da">它必须声明在 HTML ⽂档的第⼀⾏。</span>
+浏览器渲染页面的两种模式
+
+可通过 `document.compatMode`获取
+
+`CSS1Compat`: <span class="cor-tip">标准模式(Strick mode)</span>  
+ 默认模式, 浏览器使用 W3C 的标准解析渲染页面。  
+ 在标准模式中, 浏览器以其支持的最高标准呈现页面。
+
+`BackCompat`: <span class="cor-wa">怪异模式(混杂模式)(Quick mode)</span>  
+ 浏览器使用自己的怪异模式解析渲染页面。  
+ 在怪异模式中, 页面以一种比较宽松的向后兼容的方式显示。
 
 ## script 标签中 defer 和 async 的区别
 
