@@ -242,7 +242,7 @@ var a = 15;
 ```
 ````
 
-## 代码块中的行突出显示
+## 代码块中的高亮行
 
 ```javascript{1,3,5-6,8}
 var a = 1;
@@ -254,15 +254,6 @@ var a = 6;
 var a = 7;
 var a = 8;
 var a = 9;
-var a = 10; // [!code hl]
-var a = 11;
-var a = 12; // [!code hl:2]
-var a = 13;
-var a = 14; // [!code ++]
-var a = 15; // [!code --]
-var a = 16; // [!code focus]
-var a = 17; // [!code error]
-var a = 18; // [!code warning]
 ```
 
 ````markdown
@@ -276,6 +267,25 @@ var a = 6;
 var a = 7;
 var a = 8;
 var a = 9;
+```
+````
+
+## 代码块中的特殊行
+
+```javascript
+var a = 10; // [!code hl]
+var a = 11;
+var a = 12; // [!code hl:2]
+var a = 13;
+var a = 14; // [!code ++]
+var a = 15; // [!code --]
+var a = 16; // [!code focus]
+var a = 17; // [!code error]
+var a = 18; // [!code warning]
+```
+
+````markdown
+```javascript
 var a = 10; // [!code  hl]
 var a = 11;
 var a = 12; // [!code  hl:2]
@@ -316,44 +326,4 @@ var a = 18; // [!code  warning]
 
 ```markdown
 [[toc]]
-```
-
-## 流程图
-
-<flowchart :chart="
-`
-start=>start: 开始
-e=>end: 结束
-op1=>operation: 操作1
-op2=>operation: 操作2
-cond=>condition: 条件1
-c2=>condition: 条件2
-io=>inputoutput: 输入输出
-para=>parallel: 并行
-start->op1->cond
-cond(no)->para
-cond(yes, right)->c2
-c2(true)->op2
-c2(false)->e
-para(path2, right)->op2->e
-`"></flowchart>
-
-```markdown
-<flowchart :chart="
-`
-start=>start: 开始
-e=>end: 结束
-op1=>operation: 操作1
-op2=>operation: 操作2
-cond=>condition: 条件1
-c2=>condition: 条件2
-io=>inputoutput: 输入输出
-para=>parallel: 并行
-start->op1->cond
-cond(no)->para
-cond(yes, right)->c2
-c2(true)->op2
-c2(false)->e
-para(path2, right)->op2->e
-`"></flowchart>
 ```
