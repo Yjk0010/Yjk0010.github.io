@@ -1,6 +1,5 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from "vitepress/theme";
-import ElementPlus from 'element-plus'
 
 import Badge from "/components/Badge/index.vue";
 import Line from "/components/Line/index.vue";
@@ -13,7 +12,6 @@ const theme: Theme = {
   enhanceApp({ app }) {
     app.component("Badge", Badge);
     app.component("Line", Line);
-    app.use(ElementPlus);
   },
 };
 
