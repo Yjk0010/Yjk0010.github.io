@@ -6,38 +6,101 @@
 <template>
   <div class="detailInfo">
     <template v-for="item in infoConfig">
-      <div>{{ item.label }}</div>
+      <template v-if="item.type === 'line'">
+        <DetailLine
+          style="width: 100%; margin-bottom: 12px"
+          :key="item.key + item.label"
+          :title="item.label"
+          :location="item.location"
+          v-if="show(info[item.key], item, info)"
+        ></DetailLine>
+      </template>
+      <div
+        :key="item.key + item.label"
+        class="detail-info-item"
+        :style="{ width: `${100 / (item.col || col)}%` }"
+        v-else-if="show(info[item.key], item, info)"
+      >
+        <span
+          :style="{ width: `${labelWidth}` }"
+          :class="['label', { colon: colon }]"
+          >{{
+            item.labelCustomRender
+              ? item.labelCustomRender(item.label, info[item.key], item, info)
+              : item.label
+          }}</span
+        >
+        <span v-if="item.slotName" style="flex: 1">
+          <slot
+            :name="item.slotName"
+            :text="info[item.key]"
+            :record="item"
+            :info="info"
+          ></slot>
+        </span>
+        <span
+          v-else
+          :class="['value', 'nowrap', { wrap: item.wrap }]"
+          :title="item.ellipsis ? valueCustomRender(item) : ''"
+          v-html="valueCustomRender(item)"
+        ></span>
+      </div>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
+import DetailLine from "../Line/index.vue";
 interface infoConfigItem {
-  label: string;
   key: string;
+  type?: string;
+  label?: string;
+  show?: boolean | Function;
+  customRender?: Function;
+  labelCustomRender?: Function;
+  slotName?: string;
+  wrap?: boolean;
+  ellipsis?: boolean;
+  location?: string;
+  col?: number;
 }
-const propsData = defineProps({
-  infoConfig: {
-    type: Array,
-    default: () => [],
-  },
-  info: {
-    type: Object,
-    default: () => {},
-  },
-  col: {
-    type: Number,
-    default: 3,
-  },
-  labelWidth: {
-    type: String,
-    default: "80px",
-  },
-  colon: {
-    type: Boolean,
-    default: true,
-  },
-});
+const props = withDefaults(
+  defineProps<{
+    infoConfig: infoConfigItem[];
+    info: any;
+    col?: number;
+    labelWidth?: string;
+    colon?: boolean;
+  }>(),
+  {
+    infoConfig: () => [],
+    info: () => {},
+    col: 3,
+    labelWidth: "80px",
+    colon: true,
+  }
+);
+
+const show = (
+  text: string,
+  item: infoConfigItem,
+  info: { [key: string]: any }
+): Boolean => {
+  if (typeof item.show === "function") {
+    return item.show(text, item, info);
+  } else {
+    return item.show === undefined ? true : item.show;
+  }
+};
+
+const valueCustomRender = (record: infoConfigItem): string => {
+  const { key, customRender } = record;
+  return customRender
+    ? customRender(props.info[key], record, props.info)
+    : [null, undefined, ""].includes(props.info[key])
+    ? "--"
+    : props.info[key];
+};
 </script>
 
 <style lang="less" scoped>

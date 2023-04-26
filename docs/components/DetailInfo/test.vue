@@ -5,6 +5,7 @@
     :col="col"
     :infoConfig="infoConfig"
   ></jkDetailInfo>
+  <a-button>123456</a-button>
 </template>
 
 <script setup lang="ts">
@@ -22,12 +23,12 @@ const infoConfig = [
   {
     label: "主备模式",
     key: "zbms",
-    row: 1,
+    col: 1,
   },
   {
     label: "设备地址",
     key: "sbdz",
-    row: 1,
+    col: 1,
   },
   {
     label: "预设主机地址",
