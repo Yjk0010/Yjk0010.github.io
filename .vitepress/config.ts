@@ -83,12 +83,14 @@ export default defineConfig({
     plugins: [
       vueJsx(),
       AutoImport({
-        resolvers: [ElementPlusResolver()],
+        resolvers: [ElementPlusResolver({
+          importStyle: "sass",
+        })],
       }),
       Components({
         dts: true,
-        resolvers: [ElementPlusResolver({ ssr: true })],
-      })
+        resolvers: [ElementPlusResolver({ ssr: true, importStyle: "sass" })],
+      }),
     ],
     css: {
       modules: {
