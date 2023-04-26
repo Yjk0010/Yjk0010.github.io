@@ -1,9 +1,9 @@
-/// <reference types="less" />
-declare module '*.module.less' {
-  const less: {
+/// <reference types="scss" />
+declare module '*.module.scss' {
+  const scss: {
     readonly [key: string]: string
   }
-  export default less
+  export default scss
 }
 /// <reference types="css" />
 declare module '*.module.css' {

@@ -1,7 +1,7 @@
 import { defineComponent, useSlots } from "vue";
 import type { PropType } from "vue";
 import type { position, numberRange10, color, lineStyle } from "docs/types";
-import style from "./style.module.less";
+import style from "./style.module.scss";
 
 interface Props {
   lineTitle: string | string[];

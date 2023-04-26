@@ -34,3 +34,8 @@
   span[style="color:#F07178;"]:first-child {
   margin-left: 7px;
 }
+
+.el-button + .el-button,
+.el-badge {
+  margin-left: 12px;
+}

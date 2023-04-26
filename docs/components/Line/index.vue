@@ -69,6 +69,6 @@ const viewTitle = (position: position): string => {
 };
 </script>
 
-<style lang="less" scoped>
-@import url("./style.module.less");
+<style lang="scss" scoped>
+@import "./style.module.scss";
 </style>

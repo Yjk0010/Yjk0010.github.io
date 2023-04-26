@@ -80,7 +80,10 @@ export default defineConfig({
     css: {
       modules: {
         localsConvention: 'camelCase'
-      }
+      },
+      preprocessorOptions: {
+
+      },
     },
     server: {
       hmr: {

@@ -8,11 +8,11 @@
     <template v-for="item in infoConfig">
       <template v-if="item.type === 'line'">
         <DetailLine
+          v-if="show(info[item.key], item, info)"
           style="width: 100%; margin-bottom: 12px"
           :key="item.key + item.label"
           :title="item.label"
-          :location="item.location"
-          v-if="show(info[item.key], item, info)"
+          :position="item.position"
         ></DetailLine>
       </template>
       <div
@@ -33,8 +33,8 @@
         <span v-if="item.slotName" style="flex: 1">
           <slot
             :name="item.slotName"
-            :text="info[item.key]"
-            :record="item"
+            :value="info[item.key]"
+            :item="item"
             :info="info"
           ></slot>
         </span>
@@ -51,19 +51,7 @@
 
 <script setup lang="ts">
 import DetailLine from "../Line/index.vue";
-interface infoConfigItem {
-  key: string;
-  type?: string;
-  label?: string;
-  show?: boolean | Function;
-  customRender?: Function;
-  labelCustomRender?: Function;
-  slotName?: string;
-  wrap?: boolean;
-  ellipsis?: boolean;
-  location?: string;
-  col?: number;
-}
+import type { infoConfigItem } from "docs/types";
 const props = withDefaults(
   defineProps<{
     infoConfig: infoConfigItem[];
@@ -93,17 +81,17 @@ const show = (
   }
 };
 
-const valueCustomRender = (record: infoConfigItem): string => {
-  const { key, customRender } = record;
+const valueCustomRender = (item: infoConfigItem): string => {
+  const { key, customRender } = item;
   return customRender
-    ? customRender(props.info[key], record, props.info)
+    ? customRender(props.info[key], item, props.info)
     : [null, undefined, ""].includes(props.info[key])
     ? "--"
     : props.info[key];
 };
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .detailInfo {
   padding: 16px;
   display: flex;

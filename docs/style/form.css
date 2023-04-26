@@ -1,5 +1,9 @@
 input:focus {
-  background-color: #10b981;
+  background-color: #c68323;
+}
+
+.radio-item {
+  cursor: pointer;
 }
 
 .radio-item .radio {
@@ -12,11 +16,11 @@ input:focus {
 }
 
 .radio-item input:checked + .radio {
-  border-color: #008c8c;
+  border-color: #d3286a;
 }
 
 .radio-item input:checked ~ span {
-  color: #008c8c;
+  color: #d3286a;
 }
 
 .radio-item input:checked + .radio::after {
@@ -24,7 +28,7 @@ input:focus {
   display: block;
   width: 4px;
   height: 4px;
-  background: #008c8c;
+  background: #d3286a;
   margin-left: 2.5px;
   margin-top: 3px;
   border-radius: 50%;
