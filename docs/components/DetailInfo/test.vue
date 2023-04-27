@@ -1,8 +1,9 @@
 <template>
-  <el-button type="primary" @click="handleIsShow">{{
-    isShow ? "show is show" : "show is hide"
-  }}</el-button>
-  <el-button>123456456</el-button>
+  <el-badge :value="+isShow" class="item">
+    <el-button type="default" @click="handleIsShow">{{
+      isShow ? "show is show" : "show is hide"
+    }}</el-button>
+  </el-badge>
   <DetailInfo
     :info="info"
     labelWidth="180px"

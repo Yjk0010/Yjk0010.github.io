@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitepress'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import home from "./sidebar/home"
 import browser from "./sidebar/browser"
 import html from "./sidebar/html"
@@ -74,15 +77,24 @@ export default defineConfig({
   },
 
   vite: {
+    build: {
+      minify: false
+    },
     plugins: [
       vueJsx(),
+      AutoImport({
+        resolvers: [ElementPlusResolver({
+          importStyle: "sass",
+        })],
+      }),
+      Components({
+        dts: true,
+        resolvers: [ElementPlusResolver({ ssr: true, importStyle: "sass" })],
+      }),
     ],
     css: {
       modules: {
         localsConvention: 'camelCase'
-      },
-      preprocessorOptions: {
-
       },
     },
     server: {

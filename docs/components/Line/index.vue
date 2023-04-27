@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import type { StyleValue } from "vue";
 import type { position, numberRange10, color, lineStyle } from "docs/types";
 interface Props {
   lineTitle: string | string[];
@@ -45,7 +46,7 @@ const props = withDefaults(
 );
 //  计算属性 计算生成lineStyle 样式
 
-const computedLineStyle = computed(() => {
+const computedLineStyle = computed<StyleValue>(() => {
   return {
     flex: 1,
     borderTop: `${props.lineWidth}px ${props.lineStyle} ${props.color}`,
