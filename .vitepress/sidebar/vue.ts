@@ -8,4 +8,12 @@ export default [
         { text: 'vue3 PK vue2', link: '/vue/vue3PKvue2/main' },
       ]
   },
+  {
+    text: '知识点',
+    collapsed: false,
+    items:
+      [
+        { text: '小知识', link: '/vue/base/main' },
+      ]
+  },
 ]
