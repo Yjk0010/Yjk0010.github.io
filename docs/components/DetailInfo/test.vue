@@ -1,6 +1,6 @@
 <template>
   <el-badge :value="+isShow" class="item">
-    <el-button type="primary" @click="handleIsShow">{{
+    <el-button type="default" @click="handleIsShow">{{
       isShow ? "show is show" : "show is hide"
     }}</el-button>
   </el-badge>

@@ -1,12 +1,13 @@
-import { defineComponent, useSlots } from "vue";
+import { defineComponent, computed } from "vue";
 import type { PropType } from "vue";
 import type { position, numberRange10, color, lineStyle } from "docs/types";
 import style from "./style.module.scss";
 
 interface Props {
   lineTitle: string | string[];
-  linePosition: position | position[];
+  linePosition: position | position[] | "line";
 }
+type domType = position | "line";
 export default defineComponent({
   name: "Line",
   props: {
@@ -31,19 +32,47 @@ export default defineComponent({
       default: "solid",
     },
   },
-  setup(prop) {
+  setup(props) {
     // 获取插槽数据
-    const slots = useSlots();
+    const computedLineStyle = computed(() => {
+      return {
+        flex: 1,
+        borderTop: `${props.lineWidth}px ${props.lineStyle} ${props.color}`,
+      };
+    });
+    const isShow = (position: position): boolean => {
+      const positionArray = Array.isArray(props.position)
+        ? props.position
+        : [props.position];
+      return positionArray.includes(position);
+    };
+    const viewTitle = (position: position): string => {
+      const titleArray = Array.isArray(props.title)
+        ? props.title
+        : [props.title];
+      const positionArray = Array.isArray(props.position)
+        ? props.position
+        : [props.position];
+      return titleArray[
+        Math.min(titleArray.length - 1, positionArray.indexOf(position))
+      ];
+    };
 
+    const itemTypeArr: domType[] = ["left", "line", "center", "line", "right"];
     // 渲染组件
     return () => (
       <div class={style.line}>
-        {prop.position}
-        {/* 渲染默认插槽 */}
-        <p>{slots.default ? slots.default() : ""}</p>
-
-        {/* 渲染命名插槽 */}
-        <p>{slots.msg ? slots.msg() : ""}</p>
+        {itemTypeArr.map((item) => {
+          return item === "line" ? (
+            <div class={style.line} style={computedLineStyle.value}></div>
+          ) : (
+            isShow(item) && (
+              <div class={(style.lineText, style[`line-${item}`])}>
+                {viewTitle(item)}
+              </div>
+            )
+          );
+        })}
       </div>
     );
   },

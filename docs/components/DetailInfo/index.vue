@@ -10,13 +10,13 @@
         <DetailLine
           v-if="show(info[item.key], item, info)"
           style="width: 100%; margin-bottom: 12px"
-          :key="item.key + item.label"
+          :key="item.key"
           :title="item.label"
           :position="item.position"
         ></DetailLine>
       </template>
       <div
-        :key="item.key + item.label"
+        :key="item.key"
         class="detail-info-item"
         :style="{ width: `${100 / (item.col || col)}%` }"
         v-else-if="show(info[item.key], item, info)"
