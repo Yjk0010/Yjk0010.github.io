@@ -17,6 +17,7 @@ export default [
         { text: '数据类型', link: '/js/base/dataType' },
         { text: '特性', link: '/js/base/feature' },
         { text: 'toFixed不精确', link: '/js/base/toFixed' },
+        { text: '防抖和节流', link: '/js/base/debAndThr' },
       ]
   },
 ]
