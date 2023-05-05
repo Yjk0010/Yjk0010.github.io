@@ -1,7 +1,7 @@
 {
-  "name": "Jinke Yan's Blob",
+  "name": "Jinke Yan's Blog",
   "version": "1.0.0-alpha.12",
-  "description": "A blog used to record one's (programmer's) learning content and share it with everyone",
+  "description": "A blog used to record personal learning content and share it with everyone",
   "dependencies": {
     "element-plus": "^2.3.4",
     "vue": "^3.2.47"
