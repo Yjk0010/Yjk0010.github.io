@@ -29,6 +29,9 @@ export default defineConfig({
   themeConfig: {
     logo: '/assets/favicon.ico',
     outline: [2, 3],
+    search: {
+      provider: 'local'
+    },
     nav: [
       { text: '开始', link: '/' },
       { text: '主页', link: '/home/main', activeMatch: '/home' },
