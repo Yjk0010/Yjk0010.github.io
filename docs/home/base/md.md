@@ -54,28 +54,28 @@
 
 ## 徽章
 
-### Badge<Badge type="info">badge</Badge>
+### info<Badge type="info">badge</Badge>
 
 ```markdown
-Badge<Badge type="info">badge</Badge>
+info<Badge type="info">badge</Badge>
 ```
 
-### Badge<Badge type="tip">badge</Badge>
+### tip<Badge type="tip">badge</Badge>
 
 ```markdown
-Badge<Badge type="tip">badge</Badge>
+tip<Badge type="tip">badge</Badge>
 ```
 
-### Badge<Badge type="warning">badge</Badge>
+### warning<Badge type="warning">badge</Badge>
 
 ```markdown
-Badge<Badge type="warning">badge</Badge>
+warning<Badge type="warning">badge</Badge>
 ```
 
-### Badge<Badge type="danger">badge</Badge>
+### danger<Badge type="danger">badge</Badge>
 
 ```markdown
-Badge<Badge type="danger">badge</Badge>
+danger<Badge type="danger">badge</Badge>
 ```
 
 ## 加粗

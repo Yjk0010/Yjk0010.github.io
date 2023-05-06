@@ -13,7 +13,7 @@ hero:
       text: 来吧展示
       link: /home/main
     - theme: alt
-      text: 瞻仰一下博主
+      text: 围观一下博主
       link: /aboutMe/main
 
 features:

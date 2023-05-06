@@ -20,5 +20,13 @@ export default [
         { text: '防抖和节流', link: '/js/base/debAndThr' },
       ]
   },
+  {
+    text: '变态题',
+    collapsed: false,
+    items:
+      [
+        { text: '变态题', link: '/js/AbnormalQ/44Q' },
+      ]
+  }
 ]
 
