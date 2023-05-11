@@ -6,6 +6,7 @@ export default [
       [
         { text: '介绍', link: '/vue/main' },
         { text: 'vue3 PK vue2', link: '/vue/vue3PKvue2/main' },
+        { text: 'vue3 中的 jsx 写法', link: '/vue/vueJsx' },
       ]
   },
   {
