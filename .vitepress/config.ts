@@ -22,9 +22,7 @@ export default defineConfig({
   description: "Some simple notes",
   head: [
     ['link', { rel: "icon", href: "/assets/favicon.ico" }],
-    ['link', { rel: 'stylesheet', href: '/style/index.css' }],
   ],
-  // 给 @/ 映射到 doc/ 目录
 
   themeConfig: {
     logo: '/assets/favicon.ico',

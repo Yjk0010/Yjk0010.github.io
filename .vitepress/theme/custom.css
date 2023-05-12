@@ -39,3 +39,34 @@
 .el-badge {
   margin-left: 12px;
 }
+
+.cor-tip {
+  color: var(--vp-c-green-light);
+  font-weight: bold;
+}
+.cor-in {
+  color: var(--vp-c-text-2);
+  font-weight: bold;
+}
+.cor-wa {
+  color: var(--vp-c-yellow-light);
+  font-weight: bold;
+}
+.cor-da {
+  color: var(--vp-c-red-light);
+  font-weight: bold;
+}
+
+input {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+em {
+  color: #09a0ec;
+  font-weight: bold;
+}
+
+strong {
+  color: #cf8fef;
+  font-weight: bold;
+}
