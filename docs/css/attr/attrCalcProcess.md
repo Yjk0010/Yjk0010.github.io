@@ -6,7 +6,7 @@
 >
 > 选中 `show all` 可以看到所有的计算好的属性
 
-![image-20220813143500066](./assets/computedSytle.jpg)
+![image-20220813143500066](../assets/computedSytle.jpg)
 
 > 所以就是 <span class="cor-wa">我们所书写的任何一个 HTML 元素，实际上都有完整的一整套 CSS 样式</span>
 
@@ -29,7 +29,7 @@
 
 这里我们声明了 p 元素为红色，那么就会应用此属性设置。
 当然，除了作者样式表，一般浏览器还会存在“用户代理样式表”，简单来讲就是浏览器内置了一套样式表。
-![image](./assets/computedSytle-2.jpg)
+![image](../assets/computedSytle-2.jpg)
 
 在上面的示例中，作者样式表中设置了 color 属性，而用户代理样式表（浏览器提供的样式表）中设置了诸如 display、margin-block-start、margin-block-end、margin-inline-start、margin-inline-end 等属性对应的值。
 这些值目前来讲也没有什么冲突，因此最终就会应用这些属性值。
@@ -55,7 +55,7 @@
 我们来看一个示例。
 例如现在有`页面作者样式表`和`用户代理样式表`中存在属性的冲突，那么会以`作者样式表`优先。
 
-![image](./assets/computedSytle-3.jpg)
+![image](../assets/computedSytle-3.jpg)
 
 可以明显的看到，`作者样式表`和`用户代理样式表`中同时存在的 display 属性的设置，最终`作者样式表`干掉了`用户代理样式表`中冲突的属性。  
 这就是第一步，根据不同源的重要性来决定应用哪一个源的样式。
@@ -66,7 +66,7 @@
 
 在上面的代码中，同属于**页面作者样式**，源的重要性是相同的，此时会以选择器的权重来比较重要性。
 很明显，上面的选择器的权重要大于下面的选择器，因此最终标题呈现为 `50px` 。
-![image](./assets/computedSytle-4.jpg)
+![image](../assets/computedSytle-4.jpg)
 
 可以看到，落败的作者样式在 _Elements>Styles_ 中会被划掉。
 有关选择器权重的计算方式，不清楚的同学，可以进入此传送门：[MDN Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
@@ -77,7 +77,7 @@
 > 此时就会进入第三个步骤，比较样式声明的次序。
 
 这里的代码中，同样都是`页面作者样式`，`选择器的权重也相同`，此时位于下面的样式声明会层叠掉上面的那一条样式声明，最终会应用 `40px` 这一条属性值。
-![image](./assets/computedSytle-5.jpg)
+![image](../assets/computedSytle-5.jpg)
 
 至此，样式声明中存在冲突的所有情况，就全部被解决了。
 
@@ -88,17 +88,17 @@
 > _No、No、No_，别急，此时还有第三个步骤，那就是使用继承而来的值。
 
 在上面的代码中，我们针对 div 设置了 color 属性值为红色，而针对 p 元素我们没有声明任何的属性，但是由于 color 是可以继承的，因此 p 元素从最近的 div 身上继承到了 color 属性的值。
-![image](./assets/computedSytle-6.jpg)
+![image](../assets/computedSytle-6.jpg)
 
 这里有两个点需要注意一下。
 首先第一个是我强调了是 `最近的` div 元素，看下面的例子：
 
-![image](./assets/computedSytle-7.jpg)
+![image](../assets/computedSytle-7.jpg)
 
 因为这里并不涉及到选中 p 元素声明 color 值，而是从父元素上面继承到 color 对应的值，因此这里是 <span class="cor-wa">谁近就听谁</span> 的，初学者往往会产生混淆，又去比较权重，但是这里根本不会涉及到权重比较，因为压根儿就没有选中到 p 元素。
 第二个就是哪些属性能够继承？
 关于这一点的话，大家可以在 MDN 上面很轻松的查阅到。例如我们以 text-align 为例，如下图所示：
-![image](./assets/computedSytle-8.jpg)
+![image](../assets/computedSytle-8.jpg)
 
 ## 使用默认值
 
@@ -130,7 +130,7 @@
 大家能说出为什么会呈现这样的结果么？
 
 解答如下：
-![image](./assets/computedSytle-9.jpg)
+![image](../assets/computedSytle-9.jpg)
 
 ::: warning 答案解释
 实际上原因很简单，因为 a 元素在用户代理样式表中已经设置了 color 属性对应的值，因此会应用此声明值。而在 p 元素中无论是作者样式表还是用户代理样式表，都没有对此属性进行声明，然而由于 color 属性是可以继承的，因此最终 p 元素的 color 属性值通过继承来自于父元素。

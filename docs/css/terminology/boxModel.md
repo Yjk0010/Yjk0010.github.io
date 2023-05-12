@@ -17,7 +17,7 @@ display 默认值为 inline
 
 ## 盒子的组成部分
 
-![image](./assets/box-0.jpg)
+![image](../assets/box-0.jpg)
 
 > 无论是行盒、还是块盒, 都由下面几个部分组成, 从内到外分别是：
 
@@ -34,7 +34,7 @@ display 默认值为 inline
 2. `border-box`(MDN 推荐) [MDN box-sizing](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing)
 
 下面是他们的不同
-![image](./assets/box-1.jpg)
+![image](../assets/box-1.jpg)
 这边盒子的大小就是当前 `content` 的大小
-![image](./assets/box-2.jpg)
+![image](../assets/box-2.jpg)
 这边盒子的大小就是当前 `content` + `padding` + `border` 的大小

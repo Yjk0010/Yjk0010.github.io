@@ -9,7 +9,7 @@
 ## <span class="cor-tip">vue2</span> 数据响应式实现
 
 <script>
-import "./assets/vue2PKvue3.js"
+import "./vue2PKvue3_js.js"
 </script>
 
 ### 响应式基础
