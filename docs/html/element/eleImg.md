@@ -60,92 +60,107 @@
   </p>
 </figure>
 
+<script setup>
+const areaList = [
+  {
+      shape: 'circle',
+      coords: "282,660,56",
+      href: "https://baike.baidu.com/item/%E6%9C%A8%E6%98%9F/222105",
+      target: "_blank",
+      title: "木星"
+    },
+    {
+      shape: 'circle',
+      coords: "282,422,48",
+      href: "https://baike.baidu.com/item/%E5%9C%9F%E6%98%9F/136354",
+      target: "_blank",
+      title: "土星"
+    },
+    {
+      shape: 'circle',
+      coords: "282,336,22",
+      href: "https://baike.baidu.com/item/%E5%A4%A9%E7%8E%8B%E6%98%9F/21805",
+      target: "_blank",
+      title: "天王星"
+    },
+    {
+      shape: 'circle',
+      coords: "282,278,22",
+      href: "https://baike.baidu.com/item/%E6%B5%B7%E7%8E%8B%E6%98%9F/30351",
+      target: "_blank",
+      title: "海王星"
+    },
+    {
+      shape: 'circle',
+      coords: "282,794,10",
+      href: "https://baike.baidu.com/item/%E7%81%AB%E6%98%9F/5627",
+      target: "_blank",
+      title: "火星"
+    },
+    {
+      shape: 'circle',
+      coords: "282,822,14",
+      href: "https://baike.baidu.com/item/%E5%9C%B0%E7%90%83/6431",
+      target: "_blank",
+      title: "地球"
+    },
+    {
+      shape: 'circle',
+      coords: "282,850,12",
+      href: "https://baike.baidu.com/item/%E9%87%91%E6%98%9F/19410",
+      target: "_blank",
+      title: "金星"
+    },
+    {
+      shape: 'circle',
+      coords: "282,878,10",
+      href: "https://baike.baidu.com/item/%E6%B0%B4%E6%98%9F/135917",
+      target: "_blank",
+      title: "水星"
+    },
+    {
+      shape: 'rect',
+      coords: "128,930,440,1000",
+      href: "https://baike.baidu.com/item/%E5%A4%AA%E9%98%B3/24010",
+      target: "_blank",
+      title: "太阳"
+    },
+    {
+      shape: 'poly',
+      coords: "135,169,248,146,248,183,140,197",
+      href: "https://baike.baidu.com/item/%E6%9F%AF%E4%BC%8A%E4%BC%AF%E5%B8%A6",
+      target: "_blank",
+      title: "柯伊伯带"
+    },
+    {
+      shape: 'poly',
+      coords: "127,52,237,36,243,67,131,84",
+      href: "https://baike.baidu.com/item/%E5%A5%A5%E5%B0%94%E7%89%B9%E4%BA%91",
+      target: "_blank",
+      title: "奥尔特云"
+    },
+    {
+      shape: 'poly',
+      coords: "90,90,102,38,126,82,142,141,110,149",
+      href: "https://baike.baidu.com/item/%E9%95%BF%E5%91%A8%E6%9C%9F%E5%BD%97%E6%98%9F",
+      target: "_blank",
+      title: "长周期彗星"
+    }
+]
+</script>
+
 <map name="solarMap">
   <area
-    shape="circle"
-    coords="282,660,56"
-    href="https://baike.baidu.com/item/%E6%9C%A8%E6%98%9F/222105"
-    target="_blank"
-    data-title="木星"
-  />
-  <area
-    shape="circle"
-    coords="282,422,48"
-    href="https://baike.baidu.com/item/%E5%9C%9F%E6%98%9F/136354"
-    target="_blank"
-    data-title="土星"
-  />
-  <area
-    shape="circle"
-    coords="282,336,22"
-    href="https://baike.baidu.com/item/%E5%A4%A9%E7%8E%8B%E6%98%9F/21805"
-    target="_blank"
-    data-title="天王星"
-  />
-  <area
-    shape="circle"
-    coords="282,278,22"
-    href="https://baike.baidu.com/item/%E6%B5%B7%E7%8E%8B%E6%98%9F/30351"
-    target="_blank"
-    data-title="海王星"
-  />
-  <area
-    shape="circle"
-    coords="282,794,10"
-    href="https://baike.baidu.com/item/%E7%81%AB%E6%98%9F/5627"
-    target="_blank"
-    data-title="火星"
-  />
-  <area
-    shape="circle"
-    coords="282,822,14"
-    href="https://baike.baidu.com/item/%E5%9C%B0%E7%90%83/6431"
-    target="_blank"
-    data-title="地球"
-  />
-  <area
-    shape="circle"
-    coords="282,850,12"
-    href="https://baike.baidu.com/item/%E9%87%91%E6%98%9F/19410"
-    target="_blank"
-    data-title="金星"
-  />
-  <area
-    shape="circle"
-    coords="282,878,10"
-    href="https://baike.baidu.com/item/%E6%B0%B4%E6%98%9F/135917"
-    target="_blank"
-    data-title="水星"
-  />
-  <area
-    shape="rect"
-    coords="128,930,440,1000"
-    href="https://baike.baidu.com/item/%E5%A4%AA%E9%98%B3/24010"
-    target="_blank"
-    data-title="太阳"
-  />
-  <area
-    shape="poly"
-    coords="135,169,248,146,248,183,140,197"
-    href="https://baike.baidu.com/item/%E6%9F%AF%E4%BC%8A%E4%BC%AF%E5%B8%A6"
-    target="_blank"
-    data-title="柯伊伯带"
-  />
-  <area
-    shape="poly"
-    coords="127,52,237,36,243,67,131,84"
-    href="https://baike.baidu.com/item/%E5%A5%A5%E5%B0%94%E7%89%B9%E4%BA%91"
-    target="_blank"
-    data-title="奥尔特云"
-  />
-  <area
-    shape="poly"
-    coords="90,90,102,38,126,82,142,141,110,149"
-    href="https://baike.baidu.com/item/%E9%95%BF%E5%91%A8%E6%9C%9F%E5%BD%97%E6%98%9F"
-    target="_blank"
-    data-title="长周期彗星"
+    v-for="item in areaList"
+    :shape="item.shape"
+    :coords="item.coords"
+    :href="item.href"
+    :target="item.target"
+    :data-title="item.title"
   />
 </map>
+
+::: details 代码展示
 
 ```html
 <figure>
@@ -164,88 +179,103 @@
 
 <map name="solarMap">
   <area
-    shape="circle"
-    coords="282,660,56"
-    href="https://baike.baidu.com/item/%E6%9C%A8%E6%98%9F/222105"
-    target="_blank"
-    data-title="木星"
-  />
-  <area
-    shape="circle"
-    coords="282,422,48"
-    href="https://baike.baidu.com/item/%E5%9C%9F%E6%98%9F/136354"
-    target="_blank"
-    data-title="土星"
-  />
-  <area
-    shape="circle"
-    coords="282,336,22"
-    href="https://baike.baidu.com/item/%E5%A4%A9%E7%8E%8B%E6%98%9F/21805"
-    target="_blank"
-    data-title="天王星"
-  />
-  <area
-    shape="circle"
-    coords="282,278,22"
-    href="https://baike.baidu.com/item/%E6%B5%B7%E7%8E%8B%E6%98%9F/30351"
-    target="_blank"
-    data-title="海王星"
-  />
-  <area
-    shape="circle"
-    coords="282,794,10"
-    href="https://baike.baidu.com/item/%E7%81%AB%E6%98%9F/5627"
-    target="_blank"
-    data-title="火星"
-  />
-  <area
-    shape="circle"
-    coords="282,822,14"
-    href="https://baike.baidu.com/item/%E5%9C%B0%E7%90%83/6431"
-    target="_blank"
-    data-title="地球"
-  />
-  <area
-    shape="circle"
-    coords="282,850,12"
-    href="https://baike.baidu.com/item/%E9%87%91%E6%98%9F/19410"
-    target="_blank"
-    data-title="金星"
-  />
-  <area
-    shape="circle"
-    coords="282,878,10"
-    href="https://baike.baidu.com/item/%E6%B0%B4%E6%98%9F/135917"
-    target="_blank"
-    data-title="水星"
-  />
-  <area
-    shape="rect"
-    coords="128,930,440,1000"
-    href="https://baike.baidu.com/item/%E5%A4%AA%E9%98%B3/24010"
-    target="_blank"
-    data-title="太阳"
-  />
-  <area
-    shape="poly"
-    coords="135,169,248,146,248,183,140,197"
-    href="https://baike.baidu.com/item/%E6%9F%AF%E4%BC%8A%E4%BC%AF%E5%B8%A6"
-    target="_blank"
-    data-title="柯伊伯带"
-  />
-  <area
-    shape="poly"
-    coords="127,52,237,36,243,67,131,84"
-    href="https://baike.baidu.com/item/%E5%A5%A5%E5%B0%94%E7%89%B9%E4%BA%91"
-    target="_blank"
-    data-title="奥尔特云"
-  />
-  <area
-    shape="poly"
-    coords="90,90,102,38,126,82,142,141,110,149"
-    href="https://baike.baidu.com/item/%E9%95%BF%E5%91%A8%E6%9C%9F%E5%BD%97%E6%98%9F"
-    target="_blank"
-    data-title="长周期彗星"
+    v-for="item in areaList"
+    :shape="item.shape"
+    :coords="item.coords"
+    :href="item.href"
+    :target="item.target"
+    :data-title="item.title"
   />
 </map>
+
+<script setup>
+  const areaList = [
+    {
+      shape: "circle",
+      coords: "282,660,56",
+      href: "https://baike.baidu.com/item/%E6%9C%A8%E6%98%9F/222105",
+      target: "_blank",
+      title: "木星",
+    },
+    {
+      shape: "circle",
+      coords: "282,422,48",
+      href: "https://baike.baidu.com/item/%E5%9C%9F%E6%98%9F/136354",
+      target: "_blank",
+      title: "土星",
+    },
+    {
+      shape: "circle",
+      coords: "282,336,22",
+      href: "https://baike.baidu.com/item/%E5%A4%A9%E7%8E%8B%E6%98%9F/21805",
+      target: "_blank",
+      title: "天王星",
+    },
+    {
+      shape: "circle",
+      coords: "282,278,22",
+      href: "https://baike.baidu.com/item/%E6%B5%B7%E7%8E%8B%E6%98%9F/30351",
+      target: "_blank",
+      title: "海王星",
+    },
+    {
+      shape: "circle",
+      coords: "282,794,10",
+      href: "https://baike.baidu.com/item/%E7%81%AB%E6%98%9F/5627",
+      target: "_blank",
+      title: "火星",
+    },
+    {
+      shape: "circle",
+      coords: "282,822,14",
+      href: "https://baike.baidu.com/item/%E5%9C%B0%E7%90%83/6431",
+      target: "_blank",
+      title: "地球",
+    },
+    {
+      shape: "circle",
+      coords: "282,850,12",
+      href: "https://baike.baidu.com/item/%E9%87%91%E6%98%9F/19410",
+      target: "_blank",
+      title: "金星",
+    },
+    {
+      shape: "circle",
+      coords: "282,878,10",
+      href: "https://baike.baidu.com/item/%E6%B0%B4%E6%98%9F/135917",
+      target: "_blank",
+      title: "水星",
+    },
+    {
+      shape: "rect",
+      coords: "128,930,440,1000",
+      href: "https://baike.baidu.com/item/%E5%A4%AA%E9%98%B3/24010",
+      target: "_blank",
+      title: "太阳",
+    },
+    {
+      shape: "poly",
+      coords: "135,169,248,146,248,183,140,197",
+      href: "https://baike.baidu.com/item/%E6%9F%AF%E4%BC%8A%E4%BC%AF%E5%B8%A6",
+      target: "_blank",
+      title: "柯伊伯带",
+    },
+    {
+      shape: "poly",
+      coords: "127,52,237,36,243,67,131,84",
+      href: "https://baike.baidu.com/item/%E5%A5%A5%E5%B0%94%E7%89%B9%E4%BA%91",
+      target: "_blank",
+      title: "奥尔特云",
+    },
+    {
+      shape: "poly",
+      coords: "90,90,102,38,126,82,142,141,110,149",
+      href: "https://baike.baidu.com/item/%E9%95%BF%E5%91%A8%E6%9C%9F%E5%BD%97%E6%98%9F",
+      target: "_blank",
+      title: "长周期彗星",
+    },
+  ];
+</script>
 ```
+
+:::
