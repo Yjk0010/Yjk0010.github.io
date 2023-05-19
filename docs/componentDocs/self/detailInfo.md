@@ -12,5 +12,5 @@ import DetailInfo from "/components/DetailInfo/test.vue"
 <<< docs/components/DetailInfo/test.vue
 :::
 ::: details 组件源码
-<<< docs/components/DetailInfo/index.vue
+<<< docs/components/DetailInfo/DetailInfo.vue
 :::

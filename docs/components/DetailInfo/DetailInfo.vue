@@ -7,13 +7,13 @@
   <div class="detailInfo">
     <template v-for="item in infoConfig">
       <template v-if="item.type === 'line'">
-        <DetailLine
+        <Line
           v-if="show(info[item.key], item, info)"
           style="width: 100%; margin-bottom: 12px"
           :key="item.key"
           :title="item.label"
           :position="item.position"
-        ></DetailLine>
+        ></Line>
       </template>
       <div
         :key="item.key"
@@ -50,8 +50,9 @@
 </template>
 
 <script setup lang="ts">
-import DetailLine from "../Line/index.vue";
+import Line from "../Line/Line.vue";
 import type { infoConfigItem } from "docs/types";
+
 const props = withDefaults(
   defineProps<{
     infoConfig: infoConfigItem[];

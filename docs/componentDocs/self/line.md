@@ -13,7 +13,7 @@ import testLine from "/components/Line/test.vue"
 :::
 
 ::: details 组件源码
-<<< docs/components/Line/index.vue
+<<< docs/components/Line/Line.vue
 :::
 
 ::: details TSX 写法组件源码

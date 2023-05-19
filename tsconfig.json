@@ -12,7 +12,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,
-    "types": ["vitepress", "vue", "element-plus/global"],
+    "types": ["vitepress", "vue", "element-plus/global", "vite/client"],
     "baseUrl": "./",
     "paths": {
       "docs/*": ["docs/*"]

@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import DetailInfo from "./index.vue";
+import DetailInfo from "./DetailInfo.vue";
 import { ref, reactive } from "vue";
 import type { infoConfigItem } from "docs/types";
 const col = ref(2);

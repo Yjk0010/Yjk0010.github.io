@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Line from "/components/Line/index.vue";
+import Line from "./Line.vue";
 import LineTsx from "./index.tsx";
 </script>
 
