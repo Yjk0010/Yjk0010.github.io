@@ -9,8 +9,12 @@
       @mousewheel="handleBoxWheel"
       ref="viewerBox"
       v-show="isBoxShow"
-      @keyup.entry="handleBoxWheel"
     >
+      <div class="pic-viewer-box-info">
+        鼠标滚轮可缩放 <br />
+        选中图片可拖拽 <br />
+        点击非图片区域(键盘Esc)关闭
+      </div>
       <img
         class="pic-viewer-box-img"
         ref="image"
@@ -82,21 +86,20 @@ const boxShow = () => {
     top.value = (viewerBoxHeight - imageHeight) / 2;
   });
 };
+const handleScale = (wheel: number) => {
+  if (wheel > 0) {
+    scale.value = Math.max(0.2, scale.value - multiple / 5);
+  } else {
+    scale.value = Math.min(5, scale.value + multiple / 5);
+  }
+};
 const handleBoxWheel = (e: WheelEvent) => {
   e.preventDefault();
+  handleScale(e.deltaY);
 };
 const handleWheel = (e: WheelEvent) => {
   e.preventDefault();
-  console.log(multiple);
-
-  // 判断滚轮方向
-  if (e.deltaY > 0) {
-    // 缩小图片
-    scale.value = Math.max(0.2, scale.value - multiple / 5);
-  } else {
-    // 放大图片
-    scale.value = Math.min(5, scale.value + multiple / 5);
-  }
+  handleScale(e.deltaY);
 };
 
 const handleKeydown = (e: KeyboardEvent) => {
@@ -185,6 +188,11 @@ const startDrag = (e: MouseEvent) => {
     &-img {
       position: absolute;
       cursor: move;
+    }
+    &-info {
+      position: absolute;
+      right: 10px;
+      top: 10px;
     }
   }
 }

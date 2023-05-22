@@ -9,9 +9,6 @@ dependencies:
     version: 3.2.47
 
 devDependencies:
-  '@types/less':
-    specifier: ^3.0.3
-    version: 3.0.3
   '@types/node':
     specifier: ^18.15.13
     version: 18.15.13
@@ -782,10 +779,6 @@ packages:
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
-    dev: true
-
-  /@types/less@3.0.3:
-    resolution: {integrity: sha512-1YXyYH83h6We1djyoUEqTlVyQtCfJAFXELSKW2ZRtjHD4hQ82CC4lvrv5D0l0FLcKBaiPbXyi3MpMsI9ZRgKsw==}
     dev: true
 
   /@types/lodash-es@4.17.7:

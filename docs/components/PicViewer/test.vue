@@ -6,7 +6,7 @@
   ></PicViewer>
   <PicViewer
     title="标题"
-    picSrc="/assets/components/meizi-1.jpg"
+    picSrc="/assets/components/cloud.jpg"
     picAlt="picAlt"
   ></PicViewer>
 </template>
