@@ -12,5 +12,5 @@ import PicViewer from "/components/PicViewer/test.vue"
 <<< docs/components/PicViewer/test.vue
 :::
 ::: details 组件源码
-<<< docs/components/PicViewer/PicViewer.vue
+<<< docs/components/PicViewer/PicViewer.vue  
 :::
