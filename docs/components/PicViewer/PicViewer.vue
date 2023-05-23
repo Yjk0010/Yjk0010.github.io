@@ -39,7 +39,7 @@
 <script setup lang="ts">
 import Line from "../Line/Line.vue";
 // 因为vite打包图片URL获取问题 调用该组件的图片地址应使用不被打包的public/assets/文件下的不经过打包编译文件
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, nextTick, Ref } from "vue";
 withDefaults(
   defineProps<{
     title: string;
@@ -52,15 +52,15 @@ withDefaults(
     alt: "",
   }
 );
-const isBoxShow = ref(false);
-const scale = ref(1);
-const left = ref(0);
-const top = ref(0);
-const image = ref<HTMLImageElement | null>(null);
-const viewerBox = ref<HTMLDivElement | null>(null);
+const isBoxShow: Ref<boolean> = ref(false);
+const scale: Ref<number> = ref(1);
+const left: Ref<number> = ref(0);
+const top: Ref<number> = ref(0);
+const image: Ref<HTMLImageElement | null> = ref(null);
+const viewerBox: Ref<HTMLDivElement | null> = ref(null);
 
-let multiple = 0;
-const proportion = 0.75;
+let multiple: number = 0;
+const proportion: number = 0.75;
 
 const handleShowBox = () => {
   isBoxShow.value = !isBoxShow.value;
@@ -80,8 +80,9 @@ const boxShow = () => {
         width: 0,
         height: 0,
       };
-    const scaleWithValue = (viewerBoxWidth * proportion) / imageWidth;
-    const scaleHeightValue = (viewerBoxHeight * proportion) / imageHeight;
+    const scaleWithValue: number = (viewerBoxWidth * proportion) / imageWidth;
+    const scaleHeightValue: number =
+      (viewerBoxHeight * proportion) / imageHeight;
     multiple = +Math.min(scaleWithValue, scaleHeightValue).toFixed(2);
     scale.value = multiple;
 
@@ -119,10 +120,10 @@ onUnmounted(() => {
 });
 
 const useDragBox = () => {
-  const isDragging = ref(false);
-  const startPosition = { x: 0, y: 0 };
-  const startOffset = { x: 0, y: 0 };
-  let lastTimestamp = 0;
+  const isDragging: Ref<boolean> = ref(false);
+  const startPosition: { x: number; y: number } = { x: 0, y: 0 };
+  const startOffset: { x: number; y: number } = { x: 0, y: 0 };
+  let lastTimestamp: number = 0;
 
   const dragging = (event: MouseEvent) => {
     if (!isDragging.value) return;
