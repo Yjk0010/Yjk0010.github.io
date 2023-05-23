@@ -21,11 +21,11 @@ export default defineConfig({
   srcDir: 'docs',
   description: "Some simple notes",
   head: [
-    ['link', { rel: "icon", href: "/assets/favicon.ico" }],
+    ['link', { rel: "icon", href: "/favicon.ico" }],
   ],
 
   themeConfig: {
-    logo: '/assets/favicon.ico',
+    logo: '/favicon.ico',
     outline: [2, 3],
     search: {
       provider: 'local'

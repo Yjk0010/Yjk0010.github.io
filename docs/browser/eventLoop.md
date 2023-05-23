@@ -26,15 +26,11 @@
 
 为了避免相互影响，为了减少连环崩溃的几率，当启动浏览器后，它会自动启动多个进程。
 
-<Line title="浏览器进程线程" position="center"></Line>
-
-![image](./assets/eventLoop-1.jpg)
+<PicViewer title="浏览器进程线程" src="/assets/browser/eventLoop-1.jpg"/>
 
 > 可以在浏览器的任务管理器中查看当前的所有进程
 
-<Line title="控制台" position="center"></Line>
-
-![image](./assets/eventLoop-2.jpg)
+<PicViewer title="控制台" src="/assets/browser/eventLoop-2.jpg"/>
 
 chrome 为了买个页签的独立 每一个页签都是一个独立的进程
 
@@ -80,7 +76,7 @@ chrome 为了买个页签的独立 每一个页签都是一个独立的进程
 
 渲染主线程想出了一个绝妙的主意来处理这个问题：排队
 
-![image](./assets/eventLoop-3.jpg)
+<PicViewer title="任务队列排队" src="/assets/browser/eventLoop-3.jpg" alt=""/>
 
 1. 在最开始的时候，渲染主线程会进入一个无限循环
 2. 每一次循环会检查消息队列中是否有任务存在。如果有，就取出第一个任务执行，执行完一个后进入下一次循环；如果没有，则进入休眠状态。
@@ -102,13 +98,13 @@ chrome 为了买个页签的独立 每一个页签都是一个独立的进程
 
 如果让渲染主线程等待这些任务的时机达到，就会导致主线程长期处于「阻塞」的状态，从而导致浏览器「卡死」
 
-![image](./assets/eventLoop-4.jpg)
+<PicViewer title="阻塞情况展示" src="/assets/browser/eventLoop-4.jpg" alt=""/>
 
 **渲染主线程承担着极其重要的工作，无论如何都不能阻塞！**
 
 因此，浏览器选择**异步**来解决这个问题
 
-![image](./assets/eventLoop-5.jpg)
+<PicViewer title="异步处理" src="/assets/browser/eventLoop-5.jpg" alt=""/>
 
 使用异步的方式，**渲染主线程永不阻塞**
 

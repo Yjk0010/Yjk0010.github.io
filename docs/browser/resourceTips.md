@@ -15,11 +15,11 @@
 
 浏览器引擎有一段特殊的代码，称为解析器，用于将数据从一种格式转换为另一种格式。
 
-![image](./assets/resourceTips-1.jpg)
+<PicViewer title="解析器" src="/assets/browser/resourceTips-1.jpg" alt=""/>
 
 浏览器一点一点地构建 _DOM_。一旦第一块代码进来，它就会开始解析 _HTML_，将节点添加到树结构中。
 
-![gif](./assets/resourceTips-2.gif)
+<PicViewer title="Dom对象构建" src="/assets/browser/resourceTips-2.gif" alt=""/>
 
 构建出来的 _DOM_ 对象，实际上有 _2_ 个作用：
 
@@ -27,25 +27,25 @@
 
 - 作为外界的接口供外界使用，例如 _JavaScript_。当我们调用诸如 _document.getElementById_ 的方法时，返回的元素是一个 _DOM_ 节点。每个 _DOM_ 节点都有许多可以用来访问和更改它的函数，用户看到的内容也会相应地发生变化。
 
-![gif](./assets/resourceTips-3.gif)
+<PicViewer title="JS构建" src="/assets/browser/resourceTips-3.gif" alt=""/>
 
 _CSS_ 样式会被映射为 _CSSOM_（ _CSS_ 对象模型），它和 _DOM_ 很相似，但是针对的是 _CSS_ 而不是 _HTML_。
 
 在构建 _CSSOM_ 的时候，无法进行增量构建（不像构建 _DOM_ 一样，解析到一个 _DOM_ 节点就扔到 _DOM_ 树结构里面），因为 _CSS_ 规则是可以相互覆盖的，浏览器引擎需要经过复杂的计算才能弄清楚 _CSS_ 代码如何应用于 _DOM_。
 
-![image](assets/resourceTips-4.png)
+<PicViewer title="CSSOM 构建" src="/assets/browser/resourceTips-4.png" alt=""/>
 
 当浏览器正在构建 _DOM_ 时，如果它遇到 _HTML_ 中的 `<script>...</script>` 标记，它必须立即执行它。如果脚本是外部的，则必须先下载脚本。
 
 过去，为了执行脚本，必须暂停解析。解析会在 _JavaScript_ 引擎执行完脚本中的代码后再次启动。
 
-![image](assets/resourceTips-5.png)
+<PicViewer title="解析停止" src="/assets/browser/resourceTips-5.png" alt=""/>
 
 为什么解析必须停止呢？
 
 原因很简单，这是因为 _Javascript_ 脚本可以改变 _HTML_ 以及根据 _HTML_ 生成的 _DOM_ 树结构。例如，脚本可以通过使用 _document.createElement( )_ 来添加节点从而更改 _DOM_ 结构。
 
-![image](assets/resourceTips-6.gif)
+<PicViewer title="js操作变更dom" src="/assets/browser/resourceTips-6.gif" alt=""/>
 
 这也是为什么我们建议将 _script_ 标签写在 _body_ 元素结束标签前面的原因。
 
@@ -64,13 +64,13 @@ _CSS_ 样式会被映射为 _CSSOM_（ _CSS_ 对象模型），它和 _DOM_ 很�
 
 但是，如果脚本中需要获取一些尚未解析的样式信息怎么办？在 _JavaScript_ 中完全可以访问到 _DOM_ 节点的某些样式，或者使用 _JavaScript_ 直接访问 _CSSOM_。
 
-![image](assets/resourceTips-7.png)
+<PicViewer title="JS操作对dom和cssom的影响" src="/assets/browser/resourceTips-7.png" alt=""/>
 
 因此，_CSS_ 可能会根据文档中外部样式表和脚本的顺序阻止解析。如果在文档中的脚本之前放置了外部样式表，则 _DOM_ 和 _CSSOM_ 对象的构建可能会相互干扰。
 
 当解析器到达一个脚本标签时，在 _JavaScript_ 执行完成之前无法继续构建 _DOM_，然而如果这一段 _JavaScript_ 中涉及到访问和使用 _CSSOM_，那么必须等待 _CSS_ 文件被下载、解析并且 _CSSOM_ 可用。如果 _CSSOM_ 处于未可用状态，则会阻塞 _JavaScript_ 的执行。
 
-![image](assets/resourceTips-8.png)
+<PicViewer title="遇到js要操作的css时等待css加载" src="/assets/browser/resourceTips-8.png" alt=""/>
 
 （上图中 _JavaScript_ 的执行被 _CSS_ 构建 _CSSOM_ 的过程阻塞了）
 
@@ -80,7 +80,7 @@ _CSS_ 样式会被映射为 _CSSOM_（ _CSS_ 对象模型），它和 _DOM_ 很�
 
 这是因为没有 _CSS_ 的页面通常无法使用。如果浏览器向你展示了一个没有 _CSS_ 的凌乱页面，那么片刻之后就会进入一个有样式的页面，不断变化的内容和突然的视觉变化会给用户带来混乱的用户体验。
 
-![image](assets/resourceTips-9.gif)
+<PicViewer title="一个不舒服的加载页面过程" src="/assets/browser/resourceTips-9.gif" alt=""/>
 
 （这种糟糕的用户体验有一个名字，叫做“无样式内容闪现”，_Flash of Unstyled Content_，或者简称 _FOUC_ ）
 
@@ -108,7 +108,7 @@ _defer_ 表示加载后续文档元素的过程将和 _script.js_ 的加载并�
 
 具体加载瀑布图如下图所示：
 
-![image](assets/resourceTips-10.png)
+<PicViewer title="瀑布图" src="/assets/browser/resourceTips-10.png" alt=""/>
 
 ## _preload_
 
@@ -126,7 +126,7 @@ _preload_ 顾名思义就是一种预加载的方式，它通过声明向浏览�
 
 可以使用 _as_ 来指定将要预加载的内容类型。
 
-![image](assets/resourceTips-11.png)
+<PicViewer title="预加载" src="/assets/browser/resourceTips-11.png" alt=""/>
 
 _preload_ 指令的一些优点如下：
 
@@ -181,7 +181,7 @@ _preconnect_ 指令允许浏览器在 _HTTP_ 请求实际发送到服务器之�
 
 我们知道，浏览器要建立一个连接，一般需要经过 _DNS_ 查找，_TCP_ 三次握手和 _TLS_ 协商（如果是 _https_ 的话），这些过程都是需要相当的耗时的。所以 _preconnet_，就是一项使浏览器能够预先建立一个连接，等真正需要加载资源的时候就能够直接请求了。
 
-![image](assets/resourceTips-12.png)
+<PicViewer title="preconnect" src="/assets/browser/resourceTips-12.png" alt=""/>
 
 以下是为 _CDN URL_ 启用 _preconnect_ 的示例。
 

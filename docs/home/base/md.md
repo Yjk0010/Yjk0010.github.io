@@ -164,10 +164,20 @@ var a = 1;
 
 ## 图片
 
-![logo](/assets/logo.png "这是头像")
+![logo](/logo.png "这是头像")
 
 ```markdown
-![logo](/assets/logo.png "这是头像")
+![logo](/logo.png "这是头像")
+```
+
+## 图片组件展示
+
+> 具有查看，放大缩小，拖拽等功能
+
+<PicViewer title="这是头像" src="/logo.png" alt=""/>
+
+```javascript
+<PicViewer title="这是头像" src="/logo.png" alt="" />
 ```
 
 ## 超链接

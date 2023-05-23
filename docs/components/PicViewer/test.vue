@@ -1,13 +1,9 @@
 <template>
+  <PicViewer title="标题" src="/assets/no-img.jpg" alt="picAlt"></PicViewer>
   <PicViewer
     title="标题"
-    picSrc="/assets/components/no-img.jpg"
-    picAlt="picAlt"
-  ></PicViewer>
-  <PicViewer
-    title="标题"
-    picSrc="/assets/components/cloud.jpg"
-    picAlt="picAlt"
+    src="/assets/components/cloud.jpg"
+    alt="picAlt"
   ></PicViewer>
 </template>
 

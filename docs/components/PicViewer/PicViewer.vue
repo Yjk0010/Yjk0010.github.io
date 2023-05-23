@@ -1,8 +1,11 @@
 <template>
   <div class="pic-viewer">
-    <Line position="center" :title="title"></Line>
-    <img class="pic-viewer-img" @click="boxShow" :src="picSrc" :alt="picAlt" />
-    <div class="pic-viewer-title">{{ picAlt }}</div>
+    <Line v-if="title" position="center" :title="title"></Line>
+    <img class="pic-viewer-img" @click="boxShow" :src="src" :alt="alt" />
+    <div class="pic-viewer-title">
+      {{ alt || title }}
+      <span class="pic-viewer-title-text">({{ src.split("/").pop() }})</span>
+    </div>
     <div
       class="pic-viewer-box"
       @click="handleShowBox"
@@ -26,8 +29,8 @@
         @click.stop
         @mousewheel="handleWheel"
         @mousedown="startDrag"
-        :src="picSrc"
-        :alt="picAlt"
+        :src="src"
+        :alt="alt"
       />
     </div>
   </div>
@@ -36,17 +39,17 @@
 <script setup lang="ts">
 import Line from "../Line/Line.vue";
 // 因为vite打包图片URL获取问题 调用该组件的图片地址应使用不被打包的public/assets/文件下的不经过打包编译文件
-import { ref, reactive, computed, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
 withDefaults(
   defineProps<{
     title: string;
-    picSrc: string;
-    picAlt: string;
+    src: string;
+    alt?: string;
   }>(),
   {
     title: "",
-    picSrc: "",
-    picAlt: "",
+    src: "",
+    alt: "",
   }
 );
 const isBoxShow = ref(false);
@@ -57,6 +60,7 @@ const image = ref<HTMLImageElement | null>(null);
 const viewerBox = ref<HTMLDivElement | null>(null);
 
 let multiple = 0;
+const proportion = 0.75;
 
 const handleShowBox = () => {
   isBoxShow.value = !isBoxShow.value;
@@ -76,8 +80,8 @@ const boxShow = () => {
         width: 0,
         height: 0,
       };
-    const scaleWithValue = (viewerBoxWidth * 0.8) / imageWidth;
-    const scaleHeightValue = (viewerBoxHeight * 0.8) / imageHeight;
+    const scaleWithValue = (viewerBoxWidth * proportion) / imageWidth;
+    const scaleHeightValue = (viewerBoxHeight * proportion) / imageHeight;
     multiple = +Math.min(scaleWithValue, scaleHeightValue).toFixed(2);
     scale.value = multiple;
 
@@ -161,6 +165,7 @@ const startDrag = (e: MouseEvent) => {
   startPosition.y = e.pageY;
   startOffset.x = left.value;
   startOffset.y = top.value;
+  console.log(startPosition, startOffset);
 };
 </script>
 
@@ -176,6 +181,9 @@ const startDrag = (e: MouseEvent) => {
   &-title {
     text-align: center;
     font-size: 0.8rem;
+    &-text {
+      color: var(--vp-c-text-2);
+    }
   }
   &-box {
     position: fixed;

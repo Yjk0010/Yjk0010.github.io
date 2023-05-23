@@ -26,7 +26,7 @@
 
 下图可以直观的看出三者之间的区别:
 
-![image](../assets/main-1.jpg)
+<PicViewer title="加载过程" src="/assets/html/main-1.jpg" alt="" />
 
 其中 <span class="cor-in">蓝色</span> 代表 `js` 脚本`网络加载时间`, <span class="cor-da">红色</span> 代表 `js` 脚本`执行时间`, <span class="cor-tip">绿
 色</span> 代表 `html 解析`。

@@ -12,10 +12,10 @@
 
 - alt: 当图片资源失效时，将使用该属性的文字替代图片展示
 
-<img src="../assets/no-img.jpg" alt="此处无图" />
+<img src="/assets/no-img.jpg" alt="此处无图" />
 
 ```html
-<img src="../assets/no-img.jpg" alt="此处无图" />
+<img src="/assets/no-img.jpg" alt="此处无图" />
 ```
 
 ## 和 map figure 元素 连用
@@ -49,7 +49,7 @@
 <figure>
   <img
     usemap="#solarMap"
-    src="../assets/solarSystem.jpg"
+    src="/assets/html/solarSystem.jpg"
     alt="这是一张太阳系的图片"
   />
   <figcaption>
