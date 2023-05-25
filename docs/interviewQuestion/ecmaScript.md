@@ -4,8 +4,8 @@
 
 ### [JS 的数据类型](/js/base/dataType)
 
-### [toFixed 不准 解决方案](/js/base/toFixed) ~new
-
 ### [null 和 undefined 区别](/js/base/littleCase#null-和-undefined-区别)
 
-### [防抖节流](/js/base/debAndThr)
+### [toFixed 不准 解决方案](/js/advancedWay/toFixed)
+
+### [防抖节流](/js/advancedWay/debAndThr)

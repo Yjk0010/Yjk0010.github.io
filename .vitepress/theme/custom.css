@@ -70,3 +70,8 @@ strong {
   color: #cf8fef;
   font-weight: bold;
 }
+
+.vp-doc blockquote > ul,
+.vp-doc blockquote > ol {
+  color: var(--vp-c-text-2);
+}

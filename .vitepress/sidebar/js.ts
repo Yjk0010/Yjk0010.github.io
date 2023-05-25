@@ -13,11 +13,19 @@ export default [
     collapsed: false,
     items:
       [
+        { text: '特性', link: '/js/base/feature' },
         { text: '规范', link: '/js/base/criterion' },
         { text: '数据类型', link: '/js/base/dataType' },
-        { text: '特性', link: '/js/base/feature' },
-        { text: 'toFixed不精确', link: '/js/base/toFixed' },
-        { text: '防抖和节流', link: '/js/base/debAndThr' },
+        { text: '变量声明', link: '/js/base/variable' },
+      ]
+  },
+  {
+    text: '高级功法',
+    collapsed: false,
+    items:
+      [
+        { text: 'toFixed不精确', link: '/js/advancedWay/toFixed' },
+        { text: '防抖和节流', link: '/js/advancedWay/debAndThr' },
       ]
   },
   {
