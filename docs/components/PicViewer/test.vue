@@ -8,9 +8,9 @@
     src="/assets/components/fileImg-2.jpg"
   ></PicViewer>
   <PicViewer
-    title="静态(不加hash)路径"
+    title="静态(没指纹)路径"
     src="/assets/no-img.jpg"
-    alt="静态(打包不加hash)路径,但是不是相对路径不能让图片文件放到随意文件夹,这个开发生产都行"
+    alt="静态(没指纹)路径,但是不是相对路径不能让图片文件放到随意文件夹,这个开发生产都行"
   ></PicViewer>
   <PicViewer
     title="最简单的相对路径"
@@ -35,12 +35,12 @@
   <PicViewer
     title="imgUrl方法"
     :src="imgUrl('cloud')"
-    alt="这个开发行生产不行"
+    alt="这个开发行，生产环境 链接进入可以 但是 刷新页面就不行了"
   ></PicViewer>
   <PicViewer
-    title="computed"
+    title="computed计算属性"
     :src="imgUrlStrComputed"
-    alt="这个开发行生产不行"
+    alt="这个开发行，生产环境 链接进入可以 但是 刷新页面就不行了，单张图片切换比较爽多张图片就比较鸡肋"
   ></PicViewer>
 </template>
 
