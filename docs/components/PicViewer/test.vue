@@ -34,7 +34,7 @@
   ></PicViewer>
   <PicViewer
     title="imgUrl方法"
-    :src="imgUrl('cloud')"
+    :src="imgUrl('./assets/cloud.jpg')"
     alt="这个开发行生产不行"
   ></PicViewer>
   <PicViewer
@@ -60,9 +60,9 @@ for (const path in modules) {
   modImg.push(new URL(`${path}`, import.meta.url).href);
 }
 const imgUrl = (url: string) => {
-  const obj = new URL(`./assets/${url}.jpg`, import.meta.url);
+  const obj = new URL(`${url}`, import.meta.url);
   console.log(obj, "imgUrl");
-  return obj.pathname;
+  return obj.href;
 };
 const imgUrlStrComputed = computed(() => {
   const obj = new URL(`./assets/${imgUrlStr.value}.jpg`, import.meta.url);
