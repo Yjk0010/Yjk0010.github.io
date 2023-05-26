@@ -33,8 +33,13 @@
     alt="这个开发行生产不行"
   ></PicViewer>
   <PicViewer
-    title="modImg2 引入"
+    title="imgUrl方法"
     :src="imgUrl('cloud')"
+    alt="这个开发行生产不行"
+  ></PicViewer>
+  <PicViewer
+    title="computed"
+    :src="imgUrlStrComputed"
     alt="这个开发行生产不行"
   ></PicViewer>
 </template>
@@ -42,7 +47,7 @@
 <script setup lang="ts">
 import PicViewer from "./PicViewer.vue";
 import image from "./assets/no-img.jpg";
-import { computed } from "vue";
+import { ref, computed } from "vue";
 
 // vite提供
 const imageUrl = new URL("./assets/no-img.jpg", import.meta.url).href;
@@ -50,10 +55,18 @@ const imageUrl = new URL("./assets/no-img.jpg", import.meta.url).href;
 const modules = import.meta.glob("./assets/*.jpg");
 
 let modImg: any[] = [];
+const imgUrlStr = ref("no-img");
 for (const path in modules) {
   modImg.push(new URL(`${path}`, import.meta.url).href);
 }
 const imgUrl = (url: string) => {
-  return new URL(`./assets/${url}.jpg`, import.meta.url).href;
+  const obj = new URL(`./assets/${url}.jpg`, import.meta.url);
+  console.log(obj, "imgUrl");
+  return obj.pathname;
 };
+const imgUrlStrComputed = computed(() => {
+  const obj = new URL(`./assets/${imgUrlStr.value}.jpg`, import.meta.url);
+  console.log(obj, "imgUrlStrComputed");
+  return obj.pathname;
+});
 </script>
