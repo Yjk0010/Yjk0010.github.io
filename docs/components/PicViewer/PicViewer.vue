@@ -4,7 +4,7 @@
     <img class="pic-viewer-img" @click="boxShow" :src="src" :alt="alt" />
     <div class="pic-viewer-title">
       {{ alt || title }}
-      <span class="pic-viewer-title-text">({{ src.split("/").pop() }})</span>
+      <!-- <span class="pic-viewer-title-text">({{ src.split("/").pop() }})</span> -->
     </div>
     <div
       class="pic-viewer-box"
