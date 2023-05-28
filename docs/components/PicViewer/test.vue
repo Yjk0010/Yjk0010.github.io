@@ -29,8 +29,8 @@
   ></PicViewer>
   <PicViewer
     title="modImg1 引入"
-    :src="modImg[1]"
-    alt="这个开发行生产不行"
+    :src="modules[`./assets/cloud.jpg`]"
+    alt="cnjkncjkncksnck"
   ></PicViewer>
   <PicViewer
     title="imgUrl方法"
@@ -52,7 +52,11 @@ import { ref, computed } from "vue";
 // vite提供
 const imageUrl = new URL("./assets/no-img.jpg", import.meta.url).href;
 
-const modules = import.meta.glob("./assets/*.jpg");
+const modules = import.meta.glob("./assets/*.jpg", {
+  eager: true,
+  import: "default",
+});
+console.log(modules);
 
 let modImg: any[] = [];
 const imgUrlStr = ref("no-img");
