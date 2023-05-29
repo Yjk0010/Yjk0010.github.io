@@ -19,3 +19,24 @@ declare module '*.vue' {
   }
   export default vue
 }
+/// <reference types="jpg" />
+declare module '*.jpg' {
+  const jpg: {
+    readonly [key: string]: string
+  }
+  export default jpg
+}
+/// <reference types="png" />
+declare module '*.png' {
+  const png: {
+    readonly [key: string]: string
+  }
+  export default png
+}
+/// <reference types="gif" />
+declare module '*.gif' {
+  const gif: {
+    readonly [key: string]: string
+  }
+  export default gif
+}
