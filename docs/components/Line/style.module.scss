@@ -5,6 +5,9 @@
   .line-text {
     font-weight: bold;
   }
+  &-online {
+    transform: scaleY(0.5);
+  }
   &-left {
     margin-right: 12px;
   }

@@ -1,7 +1,12 @@
 <template>
   <div class="pic-viewer">
     <Line v-if="title" position="center" :title="title"></Line>
-    <img class="pic-viewer-img" @click="boxShow" :src="src" :alt="alt" />
+    <img
+      class="pic-viewer-img"
+      @click="boxShow"
+      :src="src"
+      :alt="alt || `这张图片害羞了`"
+    />
     <div class="pic-viewer-title">
       {{ alt || title }}
     </div>
@@ -181,9 +186,7 @@ const startDrag = (e: MouseEvent) => {
   &-title {
     text-align: center;
     font-size: 0.8rem;
-    &-text {
-      color: var(--vp-c-text-2);
-    }
+    color: var(--vp-c-text-2);
   }
   &-box {
     position: fixed;

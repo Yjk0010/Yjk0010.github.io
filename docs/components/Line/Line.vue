@@ -9,11 +9,11 @@
     <div v-if="isShow('left')" class="line-text line-left">
       {{ viewTitle("left") }}
     </div>
-    <div class="line" :style="computedLineStyle"></div>
+    <div class="line-online" :style="computedLineStyle"></div>
     <div v-if="isShow('center')" class="line-text line-center">
       {{ viewTitle("center") }}
     </div>
-    <div class="line" :style="computedLineStyle"></div>
+    <div class="line-online" :style="computedLineStyle"></div>
     <div v-if="isShow('right')" class="line-text line-right">
       {{ viewTitle("right") }}
     </div>

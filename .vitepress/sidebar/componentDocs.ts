@@ -14,7 +14,7 @@ export default [
       [
         { text: '线条', link: '/componentDocs/self/line' },
         { text: '详情展示', link: '/componentDocs/self/detailInfo' },
-        { text: '图片展示', link: '/componentDocs/self/picViewer' },
+        { text: '图片展示以及图片资源加载', link: '/componentDocs/self/picViewer' },
       ]
   },
 ]
