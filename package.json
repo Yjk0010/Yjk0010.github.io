@@ -1,6 +1,6 @@
 {
   "name": "Jinke Yan's Blog",
-  "version": "1.0.0-alpha.18",
+  "version": "1.0.0-beta.1",
   "description": "A blog used to record personal learning content and share it with everyone",
   "dependencies": {
     "element-plus": "^2.3.5",
