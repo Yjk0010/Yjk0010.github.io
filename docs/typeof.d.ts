@@ -40,3 +40,5 @@ declare module '*.gif' {
   }
   export default gif
 }
+/// <reference types="colorthief" />
+declare module 'colorthief'
