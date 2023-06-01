@@ -1,4 +1,6 @@
-## 复杂动画控制
+# 复杂动画控制
+
+## 展示
 
 <script setup>
 import complexAnimation from "./index.vue"
@@ -6,8 +8,10 @@ import complexAnimation from "./index.vue"
 
 <complexAnimation></complexAnimation>
 
-::: details 代码实现
+## 代码实现
+
+::: details 点击展开
 <<< docs/demo/complexAnimation/index.vue
 :::
 
-[视频讲解](https://www.douyin.com/user/MS4wLjABAAAAi2oukRVcHpgD-HbVdzsxE7tYykr91YuIKukR_X_Yy08EFWRQhRrECDF6FvbvT8Xa?is_search=0&list_name=follow&modal_id=7236345915043269948&nt=0)
+[视频讲解](https://www.douyin.com/user/MS4wLjABAAAAi2oukRVcHpgD-HbVdzsxE7tYykr91YuIKukR_X_Yy08EFWRQhRrECDF6FvbvT8Xa?modal_id=7236345915043269948)

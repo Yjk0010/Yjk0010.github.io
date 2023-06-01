@@ -14,6 +14,7 @@ export default [
       [
         { text: '粒子时钟', link: '/demo/particleClock/main' },
         { text: '复杂动画控制', link: '/demo/complexAnimation/main' },
+        { text: '无限视差滚动', link: '/demo/infiniteScroll/main' },
       ]
   },
 ]

@@ -1,4 +1,6 @@
-## 粒子时钟
+# 粒子时钟
+
+## 展示
 
 <script setup>
 import particleClock from "./index.vue"
@@ -6,7 +8,7 @@ import particleClock from "./index.vue"
 
 <particleClock></particleClock>
 
-::: details 代码实现
+::: details 点击展开
 <<< docs/demo/particleClock/index.vue
 :::
 

@@ -8,8 +8,8 @@
   // Example:
   "Print to details": {
     "scope": "markdown",
-    "prefix": "details",
-    "body": ["::: details details", "$1", ":::"],
-    "description": "md output to markdown"
+    "prefix": "mddetails",
+    "body": ["::: details 点击展开", "$1", ":::"],
+    "description": "md output to mddetails"
   }
 }
