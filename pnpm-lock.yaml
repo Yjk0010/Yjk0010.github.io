@@ -21,12 +21,18 @@ devDependencies:
   sass:
     specifier: ^1.62.1
     version: 1.62.1
+  typescript:
+    specifier: ^5.1.3
+    version: 5.1.3
   unplugin-auto-import:
     specifier: ^0.15.3
     version: 0.15.3
   unplugin-vue-components:
     specifier: ^0.24.1
     version: 0.24.1(vue@3.3.4)
+  vite:
+    specifier: ^4.3.9
+    version: 4.3.9(@types/node@18.16.16)(sass@1.62.1)
   vitepress:
     specifier: 1.0.0-beta.1
     version: 1.0.0-beta.1(@algolia/client-search@4.17.1)(@types/node@18.16.16)(sass@1.62.1)
@@ -1998,6 +2004,12 @@ packages:
   /tweetnacl@0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
     dev: false
+
+  /typescript@5.1.3:
+    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    dev: true
 
   /ufo@1.1.2:
     resolution: {integrity: sha512-TrY6DsjTQQgyS3E3dBaOXf0TpPD8u9FVrVYmKVegJuFw51n/YB9XPt+U6ydzFG5ZIN7+DIjPbNmXoBj9esYhgQ==}

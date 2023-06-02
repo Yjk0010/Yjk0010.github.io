@@ -41,7 +41,7 @@ const info = reactive({
   position: "type为line的时候label的显示位置 默认为左边",
   itemCol: "当前属性的在行中显示的列数 默认为 全局 col",
 });
-const infoConfig = [
+const infoConfig: Array<infoConfigItem> = [
   {
     label: "props介绍",
     key: "props",

@@ -55,7 +55,7 @@ import type { infoConfigItem } from "docs/types";
 
 const props = withDefaults(
   defineProps<{
-    infoConfig: infoConfigItem[];
+    infoConfig: Array<infoConfigItem>;
     info: any;
     col?: number;
     labelWidth?: string;

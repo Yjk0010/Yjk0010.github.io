@@ -7,4 +7,4 @@ export type color = colorRGB | colorRGBA | colorHEX;
 
 export type lineStyle = "solid" | "dashed" | "dotted";
 
-export type position = "left" | "right" | "center";
+export type position = "left" | "right" | "center" | undefined;

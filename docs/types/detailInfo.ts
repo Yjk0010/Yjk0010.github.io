@@ -1,3 +1,4 @@
+import type { position } from './base'
 export interface infoConfigItem {
   key: string;
   type?: "line" | "item";
@@ -8,6 +9,6 @@ export interface infoConfigItem {
   slotName?: string;
   wrap?: boolean;
   ellipsis?: boolean;
-  position?: string;
+  position?: position;
   col?: number;
 }

@@ -1,28 +1,52 @@
 <template>
-  <el-button @click="handleClick">更换图片</el-button>
-  <div class="grid" :style="style">
-    <div class="item" v-for="(url, i) in images">
-      <img
-        crossorigin="anonymous"
-        @mouseenter="handleMouseEnter($event, i)"
-        @mouseleave="handleMouseLeave"
-        :src="url"
-        :style="{
-          opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
-        }"
-      />
+  <div class="container">
+    <button @click="handleClick" class="cor-tip">更换图片</button>
+    <div class="grid" :style="style">
+      <div class="item" v-for="(url, i) in images">
+        <img
+          crossorigin="anonymous"
+          @mouseenter="handleMouseEnter($event, i)"
+          @mouseleave="handleMouseLeave"
+          :src="url"
+          :style="{
+            opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
+          }"
+        />
+      </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import ColorThief from "colorthief";
 import { ref, computed, reactive } from "vue";
 const colorThief = new ColorThief();
-const images: string[] = reactive([]);
+const images = reactive([]);
 for (let i = 0; i < 4; i++) {
   images.push(`https://picsum.photos/200/200?r=${i}`);
 }
+
+const handleMouseEnter = async (event, index) => {
+  hoverIndex.value = index;
+  // 得到这张图片的调色盘（前三种主要颜色）
+  const colors = await colorThief.getPalette(event.target, 3);
+  const [c1, c2, c3] = colors.map((c) => `rgb(${c[0]},${c[1]},${c[2]})`);
+  color1.value = c1;
+  color2.value = c2;
+  color3.value = c3;
+};
+const handleClick = () => {
+  images.splice(0);
+  for (let i = 4; i > 0; i--) {
+    images.push(`https://picsum.photos/200/200?r=${random(0, 100)}`);
+  }
+};
+const handleMouseLeave = () => {
+  hoverIndex.value = -1;
+  color1.value = "transparent";
+  color2.value = "transparent";
+  color3.value = "transparent";
+};
 const hoverIndex = ref(-1);
 const color1 = ref("transparent");
 const color2 = ref("transparent");
@@ -34,32 +58,8 @@ const style = computed(() => {
     "--c3": color3.value,
   };
 });
-const handleMouseEnter = async (event: MouseEvent, index: number) => {
-  hoverIndex.value = index;
-  // 得到这张图片的调色盘（前三种主要颜色）
-  const colors = await colorThief.getPalette(event.target, 3);
-  const [c1, c2, c3] = colors.map(
-    (c: number[]) => `rgb(${c[0]},${c[1]},${c[2]})`
-  );
-  color1.value = c1;
-  color2.value = c2;
-  color3.value = c3;
-};
-const handleMouseLeave = () => {
-  hoverIndex.value = -1;
-  color1.value = "transparent";
-  color2.value = "transparent";
-  color3.value = "transparent";
-};
-const handleClick = () => {
-  images.splice(0);
-  for (let i = 4; i > 0; i--) {
-    images.push(`https://picsum.photos/200/200?r=${random(0, 100)}`);
-  }
-  console.log(images);
-};
 // 获取min到max之间的随机数
-const random = (min: number, max: number) => {
+const random = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 </script>

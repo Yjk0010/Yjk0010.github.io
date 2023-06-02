@@ -8,10 +8,6 @@
 
 ## <span class="cor-tip">vue2</span> 数据响应式实现
 
-<script>
-import "./vue2PKvue3_js.js"
-</script>
-
 ### 响应式基础
 
 > 对于一个对象数据来说想要控制数据响应式就要实现其中一个最重要的点
