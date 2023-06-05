@@ -2,7 +2,7 @@
 
 ## 展示
 
-> 请鼠标移入当前图片
+> 请将鼠标移入当前图片，背景颜色将会跟随图片主色调展示
 
 <script setup>
 import test from "./index.vue"

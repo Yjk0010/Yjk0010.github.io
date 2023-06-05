@@ -1,18 +1,16 @@
 <template>
-  <div class="container">
-    <button @click="handleClick" class="cor-tip">更换图片</button>
-    <div class="grid" :style="style">
-      <div class="item" v-for="(url, i) in images">
-        <img
-          crossorigin="anonymous"
-          @mouseenter="handleMouseEnter($event, i)"
-          @mouseleave="handleMouseLeave"
-          :src="url"
-          :style="{
-            opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
-          }"
-        />
-      </div>
+  <button @click="handleClick" class="cor-tip button">更换图片</button>
+  <div class="grid" :style="style">
+    <div class="item" v-for="(url, i) in images">
+      <img
+        crossorigin="anonymous"
+        @mouseenter="handleMouseEnter($event, i)"
+        @mouseleave="handleMouseLeave"
+        :src="url"
+        :style="{
+          opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
+        }"
+      />
     </div>
   </div>
 </template>
@@ -20,14 +18,12 @@
 <script lang="ts" setup>
 import { ref, computed, reactive } from "vue";
 import quantize from "quantize";
+import { getRandomNum } from "/utils/index.ts";
 const images: string[] = reactive([]);
 for (let i = 0; i < 4; i++) {
   images.push(`https://picsum.photos/200/200?r=${i}`);
 }
-// 获取min到max之间的随机数
-const random = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
+
 const useQuantize = (pixels: number[], k: number = 5) => {
   // 存储颜色的数组
   const colors = [];
@@ -72,7 +68,7 @@ const handleMouseEnter = async (event: MouseEvent, index: number) => {
 const handleClick = () => {
   images.splice(0);
   for (let i = 4; i > 0; i--) {
-    images.push(`https://picsum.photos/200/200?r=${random(0, 100)}`);
+    images.push(`https://picsum.photos/200/200?r=${getRandomNum(0, 100)}`);
   }
 };
 const handleMouseLeave = () => {
@@ -95,6 +91,9 @@ const style = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+.button {
+  font-size: 1.2em;
+}
 .grid {
   width: 650px;
   margin-top: 20px;
@@ -128,7 +127,7 @@ const style = computed(() => {
     }
     &:hover {
       filter: drop-shadow(2px 2px 10px rgba(0, 0, 0, 0.5));
-      border-width: 5px;
+      border-width: 2px;
       transform: scale(1.1);
     }
   }
