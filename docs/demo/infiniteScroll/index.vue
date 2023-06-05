@@ -6,15 +6,16 @@
 import { ref, onMounted } from "vue";
 const scrollContainer = ref<HTMLElement>();
 const images: any[] = [
-  "/assets/demo/girl-1.jpg",
-  "/assets/demo/girl-2.jpg",
-  "/assets/demo/girl-3.jpg",
-  "/assets/demo/girl-4.jpg",
-  "/assets/demo/girl-5.jpg",
-  "/assets/demo/girl-6.jpg",
-  "/assets/demo/girl-7.jpg",
+  "/assets/demo/scenery-1.jpg",
+  "/assets/demo/scenery-2.jpg",
+  "/assets/demo/scenery-3.jpg",
+  "/assets/demo/scenery-4.jpg",
+  "/assets/demo/scenery-5.jpg",
+  "/assets/demo/scenery-6.jpg",
+  "/assets/demo/scenery-7.jpg",
+  "/assets/demo/scenery-8.jpg",
 ];
-let currentIndex: number = 1;
+let currentIndex: number = 0;
 const createImg = (index: number) => {
   const imgUrl = images[index];
   const item = document.createElement("div");

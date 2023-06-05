@@ -1,7 +1,7 @@
 <template>
   <PicViewer
     title="new URL(动态) 引入"
-    :src="imageMap.get(`./assets/girl-2.jpg`)"
+    :src="imageMap.get(`./assets/scenery-2.jpg`)"
   ></PicViewer>
 </template>
 

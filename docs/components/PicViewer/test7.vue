@@ -1,7 +1,7 @@
 <template>
   <PicViewer
     title="import.meta.glob 引入"
-    :src="importMetaGlob[`./assets/girl-5.jpg`]"
+    :src="importMetaGlob[`./assets/scenery-5.jpg`]"
   ></PicViewer>
 </template>
 
