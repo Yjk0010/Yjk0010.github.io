@@ -1,5 +1,8 @@
 <template>
-  <button @click="handleClick" class="cor-tip button">更换图片</button>
+  <blockquote>点击图片将会更换图片</blockquote>
+  <el-button @click="handleClick" class="cor-tip button"
+    >点击更换图片</el-button
+  >
   <div class="container">
     <div class="grid" :style="style">
       <div class="item" v-for="(url, i) in images">
@@ -8,6 +11,7 @@
           @mouseenter="handleMouseEnter($event, i)"
           @mouseleave="handleMouseLeave"
           :src="url"
+          @click="handleClick"
           :style="{
             opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
           }"
@@ -110,9 +114,6 @@ const getImage = () => {
 </script>
 
 <style lang="scss" scoped>
-.button {
-  font-size: 1.2em;
-}
 .container {
   $containerSize: 640px; // 容器尺寸
   position: relative;
