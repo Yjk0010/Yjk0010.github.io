@@ -10,6 +10,7 @@
       ></el-input-number>
     </div>
     <div class="view">
+      <div class="cor-tip">{{ formatMoney }}</div>
       <span>假如一度电是1块钱，你</span>
       <div class="cor-wa">
         {{ bigStringMoney }}
@@ -25,7 +26,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-const number = ref(521521521521.521);
+const number = ref(19940413.73);
 const bigStringMoney = computed(() => {
   return numberToBigChineseString(number.value);
 });
@@ -34,6 +35,14 @@ const bigStringKWh = computed(() => {
     isMoney: false,
     def: "数字超限",
     suffix: "千瓦时",
+  });
+});
+const formatMoney = computed(() => {
+  return number.value.toLocaleString("zh", {
+    maximumFractionDigits: 3,
+    minimumFractionDigits: 3,
+    style: "currency",
+    currency: "CNY",
   });
 });
 
