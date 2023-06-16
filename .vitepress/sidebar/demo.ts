@@ -18,6 +18,7 @@ export default [
         { text: '背景随图片变化 以及 loading', link: '/demo/backgroundForImage/main' },
         { text: '代码雨', link: '/demo/codeRain/main' },
         { text: '数字转大写', link: '/demo/numberToBig/main' },
+        { text: 'css滤镜', link: '/demo/cssFilter/main' },
       ]
   },
 ]

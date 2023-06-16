@@ -3,7 +3,7 @@
     <div class="input">
       <span>你现在有多少钱</span>
       <el-input-number
-        step="0.001"
+        :step="0.001"
         step-strictly
         style="width: 240px"
         v-model="number"
