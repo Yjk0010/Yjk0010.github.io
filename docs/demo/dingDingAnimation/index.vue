@@ -1,6 +1,6 @@
 <template>
   <div class="container" ref="containerScroll">
-    <div class="header">header</div>
+    <div class="header">这里是头部</div>
     <div class="content" ref="content">
       <div class="animation-container">
         <div class="waves" ref="waves"></div>
@@ -11,21 +11,28 @@
             :key="index"
             :ref="setItemsRef"
             class="list-item"
-          ></div>
+          >
+            {{ textList[index] }}
+          </div>
         </div>
       </div>
     </div>
-    <div class="footer">footer</div>
+    <div class="footer">这里是屁股</div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import * as THREE from "three";
 import { ref, onMounted } from "vue";
+// 水波效果
 const waves = ref<HTMLElement>();
+// 间距
 const separation = 150;
+// 横向数量
 const amountX = 50;
+// 纵向数量
 const amountY = 50;
+// three容器
 let container: HTMLElement;
 let camera: any;
 let scene: any;
@@ -36,14 +43,24 @@ let mouseX = 0;
 let mouseY = -280;
 let wavesWidth = 0;
 let wavesHeight = 0;
-
+/**
+ * 初始化波浪动画。
+ * - 创建一个容器并将其附加到波浪元素。
+ * - 设置相机和场景。
+ * - 创建粒子并将其添加到场景中。
+ * - 初始化渲染器并将其附加到容器。
+ */
 const wavesInit = () => {
   if (!waves.value) return;
+  // 创建一个用于动画的容器
   container = document.createElement("div");
   waves.value.appendChild(container);
+  // 设置相机
   camera = new THREE.PerspectiveCamera(80, wavesWidth / wavesHeight, 1, 6000);
   camera.position.z = 1200;
+  // 创建场景
   scene = new THREE.Scene();
+  // 设置粒子位置和比例
   const numParticles = amountX * amountY;
   const positions = new Float32Array(numParticles * 3);
   const scales = new Float32Array(numParticles);
@@ -59,27 +76,32 @@ const wavesInit = () => {
       j++;
     }
   }
+  // 创建粒子几何图形。
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
   geometry.setAttribute("scale", new THREE.BufferAttribute(scales, 1));
+  // 设置材质。
   const material: any = new THREE.ShaderMaterial({
     uniforms: {
-      //设置球的颜色
+      // 设置粒子颜色。
       color: { value: new THREE.Color("rgb(109,215,208)") },
     },
-    //控制球的大小
+    // 设置粒子大小和位置。
     vertexShader:
       "attribute float scale; void main() {vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );gl_PointSize = scale * ( 150.0 / - mvPosition.z );gl_Position = projectionMatrix * mvPosition;}",
+    // 设置粒子颜色。
     fragmentShader:
       "uniform vec3 color;void main() {if ( length( gl_PointCoord - vec2( 0.5, 0.5 ) ) > 0.475 ) discard;gl_FragColor = vec4( color, 1.0 );}",
   });
-  // 更改类型推断
+  // 创建粒子并将其添加到场景中。
   particles = new THREE.Points(geometry, material);
   scene.add(particles);
+  // 设置渲染器并将其附加到容器。
   wavesRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   wavesRenderer.setPixelRatio(window.devicePixelRatio);
   wavesRenderer.setSize(wavesWidth, wavesHeight);
   container.appendChild(wavesRenderer.domElement);
+  // 在容器上禁用触摸操作。
   container.style.touchAction = "none";
   // container.addEventListener("pointermove", onPointerMove);
 };
@@ -92,30 +114,44 @@ function wavesAnimate() {
   requestAnimationFrame(wavesAnimate);
   wavesRender();
 }
-function wavesRender() {
-  camera.position.x += (mouseX - camera.position.x) * 0.05;
-  camera.position.y += (-mouseY - camera.position.y) * 0.05;
-  camera.lookAt(scene.position);
+/**
+ * 渲染波浪动画。
+ * - 计算粒子的大小和位置。
+ * - 更新粒子的几何图形。
+ * - 渲染场景。
+ */
+const wavesRender = () => {
+  // 如果波浪元素不存在，则什么也不做。
+  if (!waves.value) return;
+
+  // 计算粒子的大小和位置。
+  let i = 0;
+  let j = 0;
   const positions = particles.geometry.attributes.position.array;
   const scales = particles.geometry.attributes.scale.array;
-  let i = 0,
-    j = 0;
   for (let ix = 0; ix < amountX; ix++) {
     for (let iy = 0; iy < amountY; iy++) {
       positions[i + 1] =
         Math.sin((ix + count) * 0.3) * 50 + Math.sin((iy + count) * 0.5) * 50;
       scales[j] =
-        (Math.sin((ix + count) * 0.3) + 1) * 20 +
-        (Math.sin((iy + count) * 0.5) + 1) * 20;
+        (Math.sin((ix + count) * 0.3) + 1) * 8 +
+        (Math.sin((iy + count) * 0.5) + 1) * 8;
       i += 3;
       j++;
     }
   }
+
+  // 更新粒子的几何图形。
   particles.geometry.attributes.position.needsUpdate = true;
   particles.geometry.attributes.scale.needsUpdate = true;
+
+  // 渲染场景。
   wavesRenderer.render(scene, camera);
+
+  // 更新计数器。
   count += 0.1;
-}
+};
+
 onMounted(() => {
   if (waves.value) {
     const { width, height } = waves.value.getBoundingClientRect();
@@ -133,6 +169,22 @@ function setItemsRef(el: any) {
   }
 }
 const orderList = [0, 1, 2, 3, 2, 1, 0, 0, 1, 2, 3, 2, 1, 0];
+const textList = [
+  "天",
+  "生",
+  "我",
+  "材",
+  "必",
+  "有",
+  "用",
+  "千",
+  "金",
+  "散",
+  "尽",
+  "还",
+  "复",
+  "来",
+];
 const content = ref<HTMLElement>();
 const list = ref<HTMLElement>();
 const containerScroll = ref<HTMLElement>();
@@ -210,13 +262,8 @@ function updateStyles() {
   }
 }
 onMounted(() => {
-  updateStyles();
-  containerScroll.value?.addEventListener("scroll", updateStyles);
   updateAnimationMap();
-  window.addEventListener("resize", () => {
-    updateAnimationMap();
-    updateStyles();
-  });
+  containerScroll.value?.addEventListener("scroll", updateStyles);
 });
 </script>
 
@@ -262,8 +309,12 @@ onMounted(() => {
       .list-item {
         width: 60%;
         aspect-ratio: 1/1;
-        background: #fff;
+        color: #fff;
         border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
         &:nth-child(3n + 1) {
           background: linear-gradient(#3e90f7, #246bf6);
         }
@@ -277,10 +328,10 @@ onMounted(() => {
     }
   }
   .header {
-    background-color: rgb(206, 144, 144);
+    background-color: rgb(110, 73, 73);
   }
   .content {
-    background-color: rgb(29, 26, 32);
+    background-color: rgb(38, 31, 46);
   }
   .footer {
     background-color: rgb(91, 155, 125);

@@ -29,10 +29,10 @@
 }
 .dark {
   --them-scrollbar-width: 10px;
-  --them-scrollbar-color: #989898;
-  --them-scrollbar-track-color: #888888;
-  --them-scrollbar-thumb-color: #585858;
-  --them-scrollbar-thumb-hover-color: #484848;
+  --them-scrollbar-color: #787878;
+  --them-scrollbar-track-color: #787878;
+  --them-scrollbar-thumb-color: #484848;
+  --them-scrollbar-thumb-hover-color: #383838;
 }
 
 * {
