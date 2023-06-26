@@ -123,7 +123,10 @@ function wavesAnimate() {
 const wavesRender = () => {
   // 如果波浪元素不存在，则什么也不做。
   if (!waves.value) return;
-
+  // 调整视角
+  camera.position.x += (mouseX - camera.position.x) * 0.05;
+  camera.position.y += (-mouseY - camera.position.y) * 0.05;
+  camera.lookAt(scene.position);
   // 计算粒子的大小和位置。
   let i = 0;
   let j = 0;
@@ -161,7 +164,7 @@ onMounted(() => {
     wavesAnimate();
   }
 });
-const animationMap = new Map();
+const animationListMap = new Map();
 const itemsRef = ref<HTMLElement[]>([]);
 function setItemsRef(el: any) {
   if (el) {
@@ -189,6 +192,13 @@ const content = ref<HTMLElement>();
 const list = ref<HTMLElement>();
 const containerScroll = ref<HTMLElement>();
 
+/**
+ * 根据传入值进行动态创建线性函数
+ * @param xStart x起始值
+ * @param xEnd x结束值
+ * @param yStart y起始值
+ * @param yEnd y结束值
+ */
 function createAnimation(
   xStart: number,
   xEnd: number,
@@ -205,65 +215,75 @@ function createAnimation(
     return yStart + ((x - xStart) / (xEnd - xStart)) * (yEnd - yStart);
   };
 }
-function updateAnimationMap() {
-  animationMap.clear();
-  if (!content.value || !list.value) return;
-  if (itemsRef.value.length === 0) {
-    return;
-  }
-  const playGroundRect = content.value.getBoundingClientRect();
-  const scrollY = window.scrollY;
-  const playGroundTop = playGroundRect.top + scrollY;
-  const playGroundBottom = playGroundRect.bottom + scrollY - window.innerHeight;
-
-  const listRect = list.value.getBoundingClientRect();
+const getListAnimation = (
+  scrollStart: number,
+  scrollEnd: number,
+  listWidth: number,
+  listHeight: number,
+  dom: HTMLElement
+) => {
+  scrollStart += +(dom.dataset?.order || 0) * 400;
+  const opacityAnimation = createAnimation(scrollStart, scrollEnd, 0, 1);
+  const opacity = (scroll: number) => {
+    return opacityAnimation(scroll);
+  };
+  const scaleAnimation = createAnimation(scrollStart, scrollEnd, 0.5, 1);
+  const xOffset = listWidth / 2 - dom.offsetLeft - dom.clientWidth / 2;
+  const yOffset = listHeight / 2 - dom.offsetTop - dom.clientHeight / 2;
+  const xAnimation = createAnimation(scrollStart, scrollEnd, xOffset, 0);
+  const yAnimation = createAnimation(scrollStart, scrollEnd, yOffset, 0);
+  const transform = (scroll: number) => {
+    return `translate(${xAnimation(scroll)}px,${yAnimation(
+      scroll
+    )}px) scale(${scaleAnimation(scroll)})`;
+  };
+  return {
+    opacity,
+    transform,
+  };
+};
+function updateMap() {
+  animationListMap.clear();
+  if (!content.value || !list.value || !waves.value) return;
+  const contentRect = content.value.getBoundingClientRect();
+  const scrollY = containerScroll.value?.scrollTop || 0;
+  const scrollStart = contentRect.top + scrollY;
+  const { height: itemHeight } = waves.value?.getBoundingClientRect();
+  const scrollEnd = contentRect.bottom + scrollY - itemHeight;
+  const { width: listWidth, height: listHeight } =
+    list.value.getBoundingClientRect();
   for (let i = 0; i < itemsRef.value.length; i++) {
-    const item = itemsRef.value[i];
-    const scrollStart = playGroundTop + Number(item.dataset.order) * 600;
-    const scrollEnd = playGroundBottom;
-    const itemWidth = item.clientWidth;
-    const itemHeight = item.clientHeight;
-    const itemLeft = item.offsetLeft;
-    const itemTop = item.offsetTop;
-    const opacityAnimation = createAnimation(scrollStart, scrollEnd, 0, 1);
-    const scaleAnimation = createAnimation(scrollStart, scrollEnd, 0.5, 1);
-    const translateXAnimation = createAnimation(
-      scrollStart,
-      scrollEnd,
-      listRect.width / 2 - itemLeft - itemWidth / 2,
-      0
+    const dom = itemsRef.value[i];
+    animationListMap.set(
+      dom,
+      getListAnimation(scrollStart, scrollEnd, listWidth, listHeight, dom)
     );
-    const translateYAnimation = createAnimation(
-      scrollStart,
-      scrollEnd,
-      listRect.height / 2 - itemTop - itemHeight / 2,
-      0
-    );
-    const animations = {
-      opacity: function (scrollY: number) {
-        return opacityAnimation(scrollY);
-      },
-      transform: function (scrollY: number) {
-        const scaled = scaleAnimation(scrollY);
-        const x = translateXAnimation(scrollY);
-        const y = translateYAnimation(scrollY);
-        return `translate(${x}px, ${y}px) scale(${scaled})`;
-      },
-    };
-    animationMap.set(item, animations);
   }
 }
+let lastTimestamp = 0;
 function updateStyles() {
+  // 获取当前滚动位置
   const scrollY = containerScroll.value?.scrollTop;
-  for (const [item, animations] of animationMap) {
-    for (const prop in animations) {
-      item.style[prop] = animations[prop](scrollY);
+  // 节流处理
+  requestAnimationFrame((timestamp) => {
+    // chrome 浏览器在滚动的时候都是大于16毫秒的 别的浏览器不清楚这个处理暂时保留
+    if (timestamp - lastTimestamp < 16) return;
+    lastTimestamp = timestamp;
+    // 循环设置当前滚动路径上面的动画方法
+    for (const [dom, animations] of animationListMap) {
+      for (const cssProp in animations) {
+        dom.style[cssProp] = animations[cssProp](scrollY);
+      }
     }
-  }
+  });
 }
 onMounted(() => {
-  updateAnimationMap();
+  updateMap();
   containerScroll.value?.addEventListener("scroll", updateStyles);
+  window.addEventListener("resize", () => {
+    updateMap();
+    updateStyles();
+  });
 });
 </script>
 
