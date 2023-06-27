@@ -1,6 +1,6 @@
 <template>
   <div class="container" ref="containerScroll">
-    <div class="header">这里是头部</div>
+    <div class="header" ref="header">请在这里滚动鼠标滚轮</div>
     <div class="content" ref="content">
       <div class="animation-container">
         <div class="waves" ref="waves"></div>
@@ -15,15 +15,29 @@
             {{ textList[index] }}
           </div>
         </div>
+        <div class="scatter-point" ref="scatterPoint">
+          <div
+            class="point"
+            v-for="(_, index) in 18"
+            :key="index"
+            :ref="setPointsRef"
+            :style="getPointStyle(index)"
+          ></div>
+        </div>
+        <div class="logo" ref="logo">
+          <img src="/logo.png" alt="" />
+          <p class="logo-text">JinKe Blog</p>
+        </div>
       </div>
     </div>
-    <div class="footer">这里是屁股</div>
+    <div class="footer">滚完了</div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import * as THREE from "three";
 import { ref, onMounted } from "vue";
+import { pointStyleList } from "./config.ts";
 // 水波效果
 const waves = ref<HTMLElement>();
 // 间距
@@ -165,10 +179,22 @@ onMounted(() => {
   }
 });
 const animationListMap = new Map();
+let animationPoint: Function = () => {};
+type AnimationLogo = {
+  transform: Function;
+  opacity: Function;
+};
+let animationLogo: AnimationLogo;
 const itemsRef = ref<HTMLElement[]>([]);
 function setItemsRef(el: any) {
   if (el) {
     itemsRef.value.push(el);
+  }
+}
+const pointsRef = ref<HTMLElement[]>([]);
+function setPointsRef(el: any) {
+  if (el) {
+    pointsRef.value.push(el);
   }
 }
 const orderList = [0, 1, 2, 3, 2, 1, 0, 0, 1, 2, 3, 2, 1, 0];
@@ -191,6 +217,68 @@ const textList = [
 const content = ref<HTMLElement>();
 const list = ref<HTMLElement>();
 const containerScroll = ref<HTMLElement>();
+const header = ref<HTMLElement>();
+const logo = ref<HTMLElement>();
+
+const randomHexColor = () => {
+  return Array.from({ length: 6 }).reduce((prev) => {
+    return prev + Math.floor(Math.random() * 16).toString(16);
+  }, "#");
+};
+
+const [leftMin, leftMax, topMin, topMax] = [30, 640, 30, 370];
+const randomOption = () => {
+  const left = Math.floor(Math.random() * (leftMax - leftMin + 1)) + leftMin;
+  const top = Math.floor(Math.random() * (topMax - topMin + 1)) + topMin;
+  return {
+    left,
+    top,
+  };
+};
+
+const [centerLeftMin, centerLeftMax, centerTopMin, centerTopMax] = [
+  200, 500, 50, 300,
+];
+const positionControl = () => {
+  let { left, top } = randomOption();
+  while (
+    left >= centerLeftMin &&
+    left <= centerLeftMax &&
+    top >= centerTopMin &&
+    top <= centerTopMax
+  ) {
+    const { left: newLeft, top: newTop } = randomOption();
+    left = newLeft;
+    top = newTop;
+  }
+  return {
+    left,
+    top,
+  };
+};
+
+const getPointStyle = (index: number) => {
+  // const widthNumber = 20 + Math.floor(Math.random() * 40);
+  // const width = `${widthNumber}px`;
+  // const { left, top } = positionControl();
+  // const background = `linear-gradient(135deg, ${randomHexColor()}, ${randomHexColor()})`;
+  // const borderRadius = `${widthNumber * 0.2}px`;
+  // return {
+  //   left: `${left}px`,
+  //   top: `${top}px`,
+  //   width,
+  //   borderRadius,
+  //   background,
+  // };
+
+  const { left, top, width, background } = pointStyleList[index];
+  return {
+    left: `${left}px`,
+    top: `${top}px`,
+    width: `${width}px`,
+    background,
+  };
+};
 
 /**
  * 根据传入值进行动态创建线性函数
@@ -242,14 +330,27 @@ const getListAnimation = (
     transform,
   };
 };
-function updateMap() {
-  animationListMap.clear();
-  if (!content.value || !list.value || !waves.value) return;
+const getPointAnimation = (scrollStart: number, scrollEnd: number) => {
+  animationPoint = pointAnimation(scrollStart, scrollEnd);
+};
+const getLogoAnimation = (scrollStart: number, scrollEnd: number) => {
+  animationLogo = logoAnimation(scrollStart, scrollEnd);
+};
+function updateAnimationMap() {
+  if (!content.value || !list.value || !header.value) return;
   const contentRect = content.value.getBoundingClientRect();
   const scrollY = containerScroll.value?.scrollTop || 0;
   const scrollStart = contentRect.top + scrollY;
-  const { height: itemHeight } = waves.value?.getBoundingClientRect();
-  const scrollEnd = contentRect.bottom + scrollY - itemHeight;
+  const { height: headerHeight } = header.value?.getBoundingClientRect();
+  const scrollEnd = contentRect.bottom + scrollY - headerHeight;
+  listAnimationMap(scrollStart, scrollEnd);
+  getPointAnimation(scrollStart - headerHeight, scrollEnd - headerHeight);
+  getLogoAnimation(scrollStart, scrollEnd - headerHeight);
+}
+
+function listAnimationMap(scrollStart: number, scrollEnd: number) {
+  animationListMap.clear();
+  if (!list.value) return;
   const { width: listWidth, height: listHeight } =
     list.value.getBoundingClientRect();
   for (let i = 0; i < itemsRef.value.length; i++) {
@@ -259,6 +360,23 @@ function updateMap() {
       getListAnimation(scrollStart, scrollEnd, listWidth, listHeight, dom)
     );
   }
+}
+function pointAnimation(scrollStart: number, scrollEnd: number) {
+  const translate3dZ = createAnimation(scrollStart, scrollEnd, 0, 500);
+  const transform = (scroll: number) => {
+    return `translate3d(-50%,-50%,${translate3dZ(scroll)}px)`;
+  };
+  return transform;
+}
+function logoAnimation(scrollStart: number, scrollEnd: number) {
+  const translateY = createAnimation(scrollStart, scrollEnd, 50, 700);
+  const scale = createAnimation(scrollStart, scrollEnd, 1, 5);
+
+  const transform = (scroll: number) => {
+    return `translate(-50%,${-translateY(scroll)}%) scale(${scale(scroll)})`;
+  };
+  const opacity = createAnimation(scrollStart, scrollEnd - 2500, 0.2, 1);
+  return { transform, opacity };
 }
 let lastTimestamp = 0;
 function updateStyles() {
@@ -275,13 +393,22 @@ function updateStyles() {
         dom.style[cssProp] = animations[cssProp](scrollY);
       }
     }
+    if (pointsRef.value) {
+      pointsRef.value.forEach((el) => {
+        el.style.transform = animationPoint(scrollY);
+      });
+    }
+    if (logo.value) {
+      logo.value.style.transform = animationLogo.transform(scrollY);
+      logo.value.style.opacity = animationLogo.opacity(scrollY);
+    }
   });
 }
 onMounted(() => {
-  updateMap();
+  updateAnimationMap();
   containerScroll.value?.addEventListener("scroll", updateStyles);
   window.addEventListener("resize", () => {
-    updateMap();
+    updateAnimationMap();
     updateStyles();
   });
 });
@@ -298,7 +425,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4em;
+    font-size: 2em;
   }
   .content {
     position: relative;
@@ -313,6 +440,36 @@ onMounted(() => {
       position: sticky;
       height: 400px;
       top: 0;
+      .scatter-point {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        perspective: 500px;
+        overflow: hidden;
+        z-index: 1;
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          height: 100%;
+          z-index: 2;
+          box-shadow: 0 0 200px 200px rgba(0, 0, 0, 0.4);
+        }
+        &::before {
+          left: 0;
+        }
+        &::after {
+          right: 0;
+        }
+        .point {
+          position: absolute;
+          aspect-ratio: 1/1;
+          border-radius: 10px;
+          transform: translate3d(-50%, -50%, 0);
+          border-radius: 6px;
+        }
+      }
       .list {
         position: absolute;
         top: 50%;
@@ -325,9 +482,11 @@ onMounted(() => {
         grid-template-columns: repeat(7, 1fr);
         grid-template-rows: repeat(2, 1fr);
         place-items: center;
+        z-index: 3;
       }
       .list-item {
         width: 60%;
+        // 为盒子规定了首选纵横比
         aspect-ratio: 1/1;
         color: #fff;
         border-radius: 10px;
@@ -336,14 +495,27 @@ onMounted(() => {
         justify-content: center;
         font-size: 2em;
         &:nth-child(3n + 1) {
-          background: linear-gradient(#3e90f7, #246bf6);
+          background: linear-gradient(135deg, #2e7fff, #2878f9);
         }
         &:nth-child(3n + 2) {
-          background: linear-gradient(#53b655, #469c50);
+          background: linear-gradient(135deg, #2dba48, #00a037);
         }
         &:nth-child(3n + 3) {
-          background: linear-gradient(#f3a93c, #f4ad3d);
+          background: linear-gradient(135deg, #ff5f00, #ff9207);
         }
+      }
+    }
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100px;
+      height: 100px;
+      z-index: 5;
+      .logo-text {
+        text-align: center;
+        line-height: 24px;
+        margin-top: 6px;
       }
     }
   }
