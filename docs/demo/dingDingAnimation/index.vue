@@ -15,6 +15,7 @@
             {{ textList[index] }}
           </div>
         </div>
+        <!-- 散点 -->
         <div class="scatter-point" ref="scatterPoint">
           <div
             class="point"
@@ -37,7 +38,8 @@
 <script lang="ts" setup>
 import * as THREE from "three";
 import { ref, onMounted } from "vue";
-import { pointStyleList } from "./config.ts";
+// 粒子位置数据
+import { pointStyleList, optionMinMax, textList, orderList } from "./config.ts";
 // 水波效果
 const waves = ref<HTMLElement>();
 // 间距
@@ -157,14 +159,11 @@ const wavesRender = () => {
       j++;
     }
   }
-
   // 更新粒子的几何图形。
   particles.geometry.attributes.position.needsUpdate = true;
   particles.geometry.attributes.scale.needsUpdate = true;
-
   // 渲染场景。
   wavesRenderer.render(scene, camera);
-
   // 更新计数器。
   count += 0.1;
 };
@@ -197,55 +196,46 @@ function setPointsRef(el: any) {
     pointsRef.value.push(el);
   }
 }
-const orderList = [0, 1, 2, 3, 2, 1, 0, 0, 1, 2, 3, 2, 1, 0];
-const textList = [
-  "天",
-  "生",
-  "我",
-  "材",
-  "必",
-  "有",
-  "用",
-  "千",
-  "金",
-  "散",
-  "尽",
-  "还",
-  "复",
-  "来",
-];
 const content = ref<HTMLElement>();
 const list = ref<HTMLElement>();
 const containerScroll = ref<HTMLElement>();
 const header = ref<HTMLElement>();
 const logo = ref<HTMLElement>();
-
+/**
+ * 生成随机颜色
+ */
 const randomHexColor = () => {
   return Array.from({ length: 6 }).reduce((prev) => {
     return prev + Math.floor(Math.random() * 16).toString(16);
   }, "#");
 };
-
-const [leftMin, leftMax, topMin, topMax] = [30, 640, 30, 370];
+/**
+ * 生成随机位置
+ */
 const randomOption = () => {
-  const left = Math.floor(Math.random() * (leftMax - leftMin + 1)) + leftMin;
-  const top = Math.floor(Math.random() * (topMax - topMin + 1)) + topMin;
+  const left =
+    Math.floor(
+      Math.random() * (optionMinMax.leftMax - optionMinMax.leftMin + 1)
+    ) + optionMinMax.leftMin;
+  const top =
+    Math.floor(
+      Math.random() * (optionMinMax.topMax - optionMinMax.topMin + 1)
+    ) + optionMinMax.topMin;
   return {
     left,
     top,
   };
 };
-
-const [centerLeftMin, centerLeftMax, centerTopMin, centerTopMax] = [
-  200, 500, 50, 300,
-];
+/**
+ * 随机位置控制方法 不允许落在中间位置
+ */
 const positionControl = () => {
   let { left, top } = randomOption();
   while (
-    left >= centerLeftMin &&
-    left <= centerLeftMax &&
-    top >= centerTopMin &&
-    top <= centerTopMax
+    left >= optionMinMax.centerLeftMin &&
+    left <= optionMinMax.centerLeftMax &&
+    top >= optionMinMax.centerTopMin &&
+    top <= optionMinMax.centerTopMax
   ) {
     const { left: newLeft, top: newTop } = randomOption();
     left = newLeft;
@@ -256,8 +246,8 @@ const positionControl = () => {
     top,
   };
 };
-
 const getPointStyle = (index: number) => {
+  // 随机生成的粒子位置 很丑 所以最后使用自定义数据渲染了
   // const widthNumber = 20 + Math.floor(Math.random() * 40);
   // const width = `${widthNumber}px`;
   // const { left, top } = positionControl();
@@ -279,7 +269,6 @@ const getPointStyle = (index: number) => {
     background,
   };
 };
-
 /**
  * 根据传入值进行动态创建线性函数
  * @param xStart x起始值
@@ -303,6 +292,14 @@ function createAnimation(
     return yStart + ((x - xStart) / (xEnd - xStart)) * (yEnd - yStart);
   };
 }
+/**
+ * 获取list动画
+ * @param scrollStart 滚动开始位置
+ * @param scrollEnd 结束位置
+ * @param listWidth 当前list宽度
+ * @param listHeight 当前list高度
+ * @param dom 单个item-dom
+ */
 const getListAnimation = (
   scrollStart: number,
   scrollEnd: number,
@@ -336,6 +333,9 @@ const getPointAnimation = (scrollStart: number, scrollEnd: number) => {
 const getLogoAnimation = (scrollStart: number, scrollEnd: number) => {
   animationLogo = logoAnimation(scrollStart, scrollEnd);
 };
+/**
+ * 更新动画方法
+ */
 function updateAnimationMap() {
   if (!content.value || !list.value || !header.value) return;
   const contentRect = content.value.getBoundingClientRect();
@@ -343,11 +343,13 @@ function updateAnimationMap() {
   const scrollStart = contentRect.top + scrollY;
   const { height: headerHeight } = header.value?.getBoundingClientRect();
   const scrollEnd = contentRect.bottom + scrollY - headerHeight;
+  // 从content位置开始 到content底部结束
   listAnimationMap(scrollStart, scrollEnd);
+  // 从头开始 到content上移一个都头部度结束
   getPointAnimation(scrollStart - headerHeight, scrollEnd - headerHeight);
+  // 从content开始 到content上移一个头部位置结束
   getLogoAnimation(scrollStart, scrollEnd - headerHeight);
 }
-
 function listAnimationMap(scrollStart: number, scrollEnd: number) {
   animationListMap.clear();
   if (!list.value) return;
@@ -371,13 +373,14 @@ function pointAnimation(scrollStart: number, scrollEnd: number) {
 function logoAnimation(scrollStart: number, scrollEnd: number) {
   const translateY = createAnimation(scrollStart, scrollEnd, 50, 700);
   const scale = createAnimation(scrollStart, scrollEnd, 1, 5);
-
   const transform = (scroll: number) => {
     return `translate(-50%,${-translateY(scroll)}%) scale(${scale(scroll)})`;
   };
-  const opacity = createAnimation(scrollStart, scrollEnd - 2500, 0.2, 1);
+  // 为了提前看到全貌 结束为止减少2500滚动位置
+  const opacity = createAnimation(scrollStart, scrollEnd - 2500, 0.4, 1);
   return { transform, opacity };
 }
+// 节流处理
 let lastTimestamp = 0;
 function updateStyles() {
   // 获取当前滚动位置
@@ -387,17 +390,19 @@ function updateStyles() {
     // chrome 浏览器在滚动的时候都是大于16毫秒的 别的浏览器不清楚这个处理暂时保留
     if (timestamp - lastTimestamp < 16) return;
     lastTimestamp = timestamp;
-    // 循环设置当前滚动路径上面的动画方法
+    // 循环设置当前滚动路径上面的list的动画
     for (const [dom, animations] of animationListMap) {
       for (const cssProp in animations) {
         dom.style[cssProp] = animations[cssProp](scrollY);
       }
     }
+    // 设置点动画
     if (pointsRef.value) {
       pointsRef.value.forEach((el) => {
         el.style.transform = animationPoint(scrollY);
       });
     }
+    // 设置logo动画
     if (logo.value) {
       logo.value.style.transform = animationLogo.transform(scrollY);
       logo.value.style.opacity = animationLogo.opacity(scrollY);
@@ -406,7 +411,9 @@ function updateStyles() {
 }
 onMounted(() => {
   updateAnimationMap();
+  // 监听滚动
   containerScroll.value?.addEventListener("scroll", updateStyles);
+  // 监听页面大小变化
   window.addEventListener("resize", () => {
     updateAnimationMap();
     updateStyles();
@@ -415,118 +422,5 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  height: 400px;
-  overflow-y: auto;
-  .header,
-  .footer {
-    position: relative;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-  }
-  .content {
-    position: relative;
-    height: 4000px;
-    .waves {
-      position: absolute;
-      bottom: -100px;
-      width: 100%;
-      height: 400px;
-    }
-    .animation-container {
-      position: sticky;
-      height: 400px;
-      top: 0;
-      .scatter-point {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-        perspective: 500px;
-        overflow: hidden;
-        z-index: 1;
-        &::before,
-        &::after {
-          content: "";
-          position: absolute;
-          height: 100%;
-          z-index: 2;
-          box-shadow: 0 0 200px 200px rgba(0, 0, 0, 0.4);
-        }
-        &::before {
-          left: 0;
-        }
-        &::after {
-          right: 0;
-        }
-        .point {
-          position: absolute;
-          aspect-ratio: 1/1;
-          border-radius: 10px;
-          transform: translate3d(-50%, -50%, 0);
-          border-radius: 6px;
-        }
-      }
-      .list {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        aspect-ratio: 2/1;
-        border-radius: 10px;
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        place-items: center;
-        z-index: 3;
-      }
-      .list-item {
-        width: 60%;
-        // 为盒子规定了首选纵横比
-        aspect-ratio: 1/1;
-        color: #fff;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2em;
-        &:nth-child(3n + 1) {
-          background: linear-gradient(135deg, #2e7fff, #2878f9);
-        }
-        &:nth-child(3n + 2) {
-          background: linear-gradient(135deg, #2dba48, #00a037);
-        }
-        &:nth-child(3n + 3) {
-          background: linear-gradient(135deg, #ff5f00, #ff9207);
-        }
-      }
-    }
-    .logo {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 100px;
-      height: 100px;
-      z-index: 5;
-      .logo-text {
-        text-align: center;
-        line-height: 24px;
-        margin-top: 6px;
-      }
-    }
-  }
-  .header {
-    background-color: rgb(110, 73, 73);
-  }
-  .content {
-    background-color: rgb(38, 31, 46);
-  }
-  .footer {
-    background-color: rgb(91, 155, 125);
-  }
-}
+@import "./index.scss";
 </style>
