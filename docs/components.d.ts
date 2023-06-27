@@ -10,13 +10,19 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> docs
     ElButton: typeof import('element-plus/lib')['ElButton']
     ElCol: typeof import('element-plus/lib')['ElCol']
     ElInput: typeof import('element-plus/lib')['ElInput']
     ElInputNumber: typeof import('element-plus/lib')['ElInputNumber']
     ElRow: typeof import('element-plus/lib')['ElRow']
+<<<<<<< HEAD
 =======
     ElInputNumber: typeof import('element-plus/lib')['ElInputNumber']
 >>>>>>> 8143d96acebac9b41023ddc6524bebf15bae4b37
+=======
+>>>>>>> docs
   }
 }
