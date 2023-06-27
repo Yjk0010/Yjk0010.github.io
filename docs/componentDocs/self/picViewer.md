@@ -12,12 +12,15 @@ import test7 from "/components/PicViewer/test7.vue"
 
 ## 图片组件展示
 
-> 妹子图片均通过 <span class="cor-tip">AI 生成</span>
+> 景色图片均通过 <span class="cor-tip">AI 生成</span>
 
-<PicViewer title="图片组件展示" src="/assets/components/girl-1.jpg"></PicViewer>
+<PicViewer title="图片组件展示" src="/assets/components/scenery-1.jpg"></PicViewer>
 
 ```javascript
-<PicViewer title="图片组件展示" src="/assets/components/girl-1.jpg"></PicViewer>
+<PicViewer
+  title="图片组件展示"
+  src="/assets/components/scenery-1.jpg"
+></PicViewer>
 ```
 
 ## vite 对图片加载引用的介绍
@@ -82,7 +85,7 @@ import test7 from "/components/PicViewer/test7.vue"
 主要代码
 
 ```javascript
-const imageUrl = new URL("./assets/girl-1.jpg", import.meta.url).href;
+const imageUrl = new URL("./assets/scenery-1.jpg", import.meta.url).href;
 ```
 
 - <span class="cor-da">缺点</span> 开发环境没问题，生产环境刷新页面之后丢失

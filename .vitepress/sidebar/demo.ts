@@ -15,7 +15,11 @@ export default [
         { text: '粒子时钟', link: '/demo/particleClock/main' },
         { text: '复杂动画控制', link: '/demo/complexAnimation/main' },
         { text: '无限视差滚动', link: '/demo/infiniteScroll/main' },
-        { text: '背景随图片变化', link: '/demo/backgroundForImage/main' },
+        { text: '背景随图片变化 以及 loading', link: '/demo/backgroundForImage/main' },
+        { text: '代码雨', link: '/demo/codeRain/main' },
+        { text: '数字转大写', link: '/demo/numberToBig/main' },
+        { text: 'css滤镜', link: '/demo/cssFilter/main' },
+        { text: '钉钉官网的滚动动画', link: '/demo/dingDingAnimation/main' },
       ]
   },
 ]

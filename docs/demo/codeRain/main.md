@@ -1,4 +1,4 @@
-# 复杂动画控制
+# 代码雨
 
 ## 展示
 
@@ -11,7 +11,7 @@ import demo from "./index.vue"
 ## 代码实现
 
 ::: details 点击展开
-<<< docs/demo/complexAnimation/index.vue
+<<< docs/demo/codeRain/index.vue
 :::
 
-[视频讲解](https://www.douyin.com/video/7236345915043269948)
+[视频讲解](https://www.douyin.com/video/7138624745553153311)

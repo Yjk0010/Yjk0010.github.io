@@ -131,7 +131,7 @@ const useDragBox = () => {
 
   const dragging = (event: MouseEvent) => {
     if (!isDragging.value) return;
-    window.requestAnimationFrame((timestamp) => {
+    requestAnimationFrame((timestamp) => {
       if (timestamp - lastTimestamp < 16) return;
       lastTimestamp = timestamp;
       left.value = startOffset.x + event.pageX - startPosition.x;

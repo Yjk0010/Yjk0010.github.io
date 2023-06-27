@@ -96,9 +96,11 @@ export default defineConfig({
     plugins: [
       vueJsx(),
       AutoImport({
-        resolvers: [ElementPlusResolver({
-          importStyle: "sass",
-        })],
+        resolvers: [
+          ElementPlusResolver({
+            importStyle: "sass",
+          }),
+        ],
       }),
       Components({
         dts: true,

@@ -1,4 +1,4 @@
-# 复杂动画控制
+# 数字转大写
 
 ## 展示
 
@@ -11,7 +11,7 @@ import demo from "./index.vue"
 ## 代码实现
 
 ::: details 点击展开
-<<< docs/demo/complexAnimation/index.vue
+<<< docs/demo/numberToBig/index.vue
 :::
 
-[视频讲解](https://www.douyin.com/video/7236345915043269948)
+[视频讲解](https://www.douyin.com/video/7212234302401170743)

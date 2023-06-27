@@ -1,5 +1,5 @@
 <template>
-  <PicViewer title="imgUrl方法" :src="imageUrl('girl-3.jpg')"></PicViewer>
+  <PicViewer title="imgUrl方法" :src="imageUrl('scenery-3.jpg')"></PicViewer>
 </template>
 
 <script lang="ts" setup>

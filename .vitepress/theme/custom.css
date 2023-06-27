@@ -21,6 +21,18 @@
   --vp-font-family-mono: DingTalkJinBuTi, ui-monospace, SFMono-Regular,
     "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
     monospace;
+  --them-scrollbar-width: 10px;
+  --them-scrollbar-color: #f2f2f2;
+  --them-scrollbar-thumb-color: #c0c0c0;
+  --them-scrollbar-track-color: #f2f2f2;
+  --them-scrollbar-thumb-hover-color: #a0a0a0;
+}
+.dark {
+  --them-scrollbar-width: 10px;
+  --them-scrollbar-color: #787878;
+  --them-scrollbar-track-color: #787878;
+  --them-scrollbar-thumb-color: #484848;
+  --them-scrollbar-thumb-hover-color: #383838;
 }
 
 * {
@@ -74,4 +86,58 @@ strong {
 .vp-doc blockquote > ul,
 .vp-doc blockquote > ol {
   color: var(--vp-c-text-2);
+}
+
+/* Webkit 浏览器（如 Chrome、Safari） */
+::-webkit-scrollbar {
+  width: var(--them-scrollbar-width);
+  background-color: var(--them-scrollbar-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--them-scrollbar-thumb-color);
+  border-radius: calc(var(--them-scrollbar-width) / 2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--them-scrollbar-thumb-hover-color);
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--them-scrollbar-track-color);
+}
+
+/* Firefox */
+/* 注意：Firefox 需要使用 scrollbar-width 属性来控制滚动条的宽度 */
+/* 这里使用 ::-moz-scrollbar 和 scrollbar-width 属性来定义样式 */
+/* scrollbar-color 属性用于设置滑块的颜色，只在 Firefox 64 及更高版本中支持 */
+/* 对于较旧的 Firefox 版本，可以使用 -moz-appearance 和 background-color 属性来设置滚动条样式 */
+/* 你可以根据需要调整这些属性的值 */
+/* 更多信息请参考 Firefox 官方文档：https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scrollbars */
+* {
+  scrollbar-width: thin;
+}
+
+/* Edge 和 IE */
+/* 注意：Edge 和 IE 浏览器需要使用 -ms- 前缀来设置滚动条样式 */
+/* 更多信息请参考 Microsoft 官方文档：https://docs.microsoft.com/en-us/windows/win32/controls/how-to-create-custom-scroll-bars */
+/* 以下样式仅为示例，请根据需要进行调整 */
+/* 如果需要更精确的控制，可以使用 JavaScript 来创建自定义滚动条 */
+/* 不过请注意，某些版本的 IE 并不支持自定义滚动条样式 */
+*::-ms-scrollbar {
+  width: var(--them-scrollbar-width);
+  background-color: var(--them-scrollbar-color);
+}
+
+*::-ms-scrollbar-thumb {
+  background-color: var(--them-scrollbar-thumb-color);
+  border-radius: calc(var(--them-scrollbar-width) / 2);
+}
+
+*::-ms-scrollbar-thumb:hover {
+  background-color: var(--them-scrollbar-thumb-hover-color);
+}
+
+*::-ms-scrollbar-track {
+  background-color: var(--them-scrollbar-track-color);
 }

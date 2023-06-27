@@ -16,7 +16,7 @@
     "types": ["vitepress", "vite/client", "vue", "element-plus/global"],
     "baseUrl": "./",
     "paths": {
-      "docs/*": ["docs/*"]
+      "/*": ["docs/*"]
     },
     "lib": ["ESNext", "DOM", "DOM.Iterable"]
   },

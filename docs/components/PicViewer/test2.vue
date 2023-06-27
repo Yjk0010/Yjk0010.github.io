@@ -1,5 +1,5 @@
 <template>
-  <PicViewer title="最简单的相对路径" src="./assets/girl-1.jpg"></PicViewer>
+  <PicViewer title="最简单的相对路径" src="./assets/scenery-1.jpg"></PicViewer>
 </template>
 
 <script lang="ts" setup>

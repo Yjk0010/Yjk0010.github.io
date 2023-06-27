@@ -40,11 +40,5 @@ declare module '*.gif' {
   }
   export default gif
 }
-/// <reference types="colorthief" />
-declare module 'colorthief' {
-  type Color = [number, number, number];
-  export default class ColorThief {
-    getColor: (img: any) => Color;
-    getPalette: (img: any, quality?: number) => Color[];
-  }
-}
+/// <reference types="quantize" />
+declare module 'quantize'

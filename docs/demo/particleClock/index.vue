@@ -6,6 +6,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import { getRandomNum } from "/utils/index.ts";
 const canvasRef = ref<HTMLCanvasElement>();
 
 onMounted(() => {
@@ -16,17 +17,13 @@ onMounted(() => {
   const getText = (): string => {
     return new Date().toTimeString().substring(0, 8);
   };
-  // 获取[min,max]之间的随机数
-  const getRandomNum = (min: number, max: number): number => {
-    return Math.floor(Math.random() * (max + 1 - min) + min);
-  };
   const canvas: HTMLCanvasElement = canvasRef.value;
   const ctx = canvas.getContext("2d", {
     // 频繁访问像素点优化配置
     willReadFrequently: true,
   });
   // 初始化画布大小
-  const initCanvansSize = () => {
+  const initCanvasSize = () => {
     canvas.width = 650 * devicePixelRatio;
     canvas.height = 650 * devicePixelRatio;
   };
@@ -103,11 +100,11 @@ onMounted(() => {
       const gap = 4;
       for (let i = 0; i < width; i += gap) {
         for (let j = 0; j < height; j += gap) {
-          const inedx = (i + j * width) * 4;
-          const r = data[inedx];
-          const g = data[inedx + 1];
-          const b = data[inedx + 2];
-          const a = data[inedx + 3];
+          const index = (i + j * width) * 4;
+          const r = data[index];
+          const g = data[index + 1];
+          const b = data[index + 2];
+          const a = data[index + 3];
           if (r === 0 && g === 0 && b === 0 && a === 255) {
             points.push([i, j]);
           }
@@ -160,7 +157,7 @@ onMounted(() => {
     requestAnimationFrame(draw);
   };
   if (!particles.length) {
-    initCanvansSize();
+    initCanvasSize();
     draw();
     console.log("启动");
   }
