@@ -1,10 +1,9 @@
 import { PropsType } from './PolygonScoreTypes';
 
-const dpr = devicePixelRatio;
 
 function useConfig(ctx: CanvasRenderingContext2D, props: Required<PropsType>) {
   // 设置字体类型和大小
-  const fontSize = 16 * dpr;
+  const fontSize = 16;
   const fontFamily = 'PingFangSC-Regular, sans-serif';
   ctx.font = `${fontSize}px ${fontFamily}`;
   // 多行文字间隙
@@ -20,11 +19,11 @@ function useConfig(ctx: CanvasRenderingContext2D, props: Required<PropsType>) {
   // 获取需要预留的文字空间
   const textSpace = Math.max(maxTextWidth, maxTextHeight);
   // 文字与内圆的间距
-  const textPadding = 8 * dpr;
+  const textPadding = 8;
   // 得到圆的半径
   const radius = ctx.canvas.width / 2 - textSpace - textPadding;
   // 线
-  const lineWidth = 1 * dpr;
+  const lineWidth = 1;
   const lineColor = '#e5e5e5';
   // 背景
   const bgColor = '#10b981';

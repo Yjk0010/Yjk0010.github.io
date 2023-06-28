@@ -1,8 +1,8 @@
 <template>
   <canvas
     ref="canvasRef"
-    :width="size * dpr"
-    :height="size * dpr"
+    :width="size"
+    :height="size"
     :style="{
       width: `${size}px`,
       height: `${size}px`,
@@ -14,7 +14,6 @@
 import { ref, watchEffect, onUnmounted } from "vue";
 import { PropsType } from "./PolygonScoreTypes";
 import { draw } from "./PolygonScoreHooks";
-const dpr = devicePixelRatio;
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const props = withDefaults(defineProps<PropsType>(), {
   size: 300,
