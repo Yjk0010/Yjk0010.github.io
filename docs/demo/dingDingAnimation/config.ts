@@ -1,10 +1,10 @@
-const lanzi = `linear-gradient(135deg,#002d9c,#8f35ff)`
-const lan = `linear-gradient(135deg,#004fff,#007fff)`
-const qianlan = `linear-gradient(135deg,#56ece4,#09baff)`
-const lv = `linear-gradient(135deg,#00ebb6,#00ba46)`
-const huang = `linear-gradient(135deg,#ffc400,#ff9200)`
-const cheng = `linear-gradient(135deg,#ff5f00,#ff8d16)`
-const zi = `linear-gradient(135deg,#e58dff,#8f35ff)`
+const lanzi = `linear-gradient(135deg, #002d9c, #8f35ff)`
+const lan = `linear-gradient(135deg, #004fff, #007fff)`
+const qianlan = `linear-gradient(135deg, #56ece4, #09baff)`
+const lv = `linear-gradient(135deg, #00ebb6, #00ba46)`
+const huang = `linear-gradient(135deg, #ffc400, #ff9200)`
+const cheng = `linear-gradient(135deg, #ff5f00, #ff8d16)`
+const zi = `linear-gradient(135deg, #e58dff, #8f35ff)`
 export const pointStyleList = [
   {
     left: 50,
@@ -52,7 +52,7 @@ export const pointStyleList = [
     left: 330,
     top: 150,
     width: 20,
-    background: lan,
+    background: cheng,
   },
   {
     left: 330,
@@ -115,3 +115,36 @@ export const pointStyleList = [
     background: cheng,
   },
 ]
+const [centerLeftMin, centerLeftMax, centerTopMin, centerTopMax] = [
+  200, 500, 50, 300,
+];
+const [leftMin, leftMax, topMin, topMax] = [30, 640, 30, 370];
+export const optionMinMax = {
+  centerLeftMin,
+  centerLeftMax,
+  centerTopMin,
+  centerTopMax,
+  leftMin,
+  leftMax,
+  topMin,
+  topMax,
+}
+// 展示文字
+export const textList = [
+  "天",
+  "生",
+  "我",
+  "材",
+  "必",
+  "有",
+  "用",
+  "千",
+  "金",
+  "散",
+  "尽",
+  "还",
+  "复",
+  "来",
+];
+// 控制先后动画展示位置
+export const orderList = [0, 1, 2, 3, 2, 1, 0, 0, 1, 2, 3, 2, 1, 0];

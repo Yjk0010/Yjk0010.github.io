@@ -1,0 +1,117 @@
+.container {
+  height: 400px;
+  overflow-y: auto;
+  .header,
+  .footer {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+  }
+  .content {
+    position: relative;
+    height: 4000px;
+    .waves {
+      position: absolute;
+      bottom: -100px;
+      width: 100%;
+      height: 400px;
+    }
+    .animation-container {
+      position: sticky;
+      height: 400px;
+      top: 0;
+      .scatter-point {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        // 设置3D变换
+        transform-style: preserve-3d;
+        // 设置观察者视角距离
+        perspective: 500px;
+        overflow: hidden;
+        z-index: 1;
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          height: 100%;
+          z-index: 2;
+          box-shadow: 0 0 200px 200px rgba(0, 0, 0, 0.4);
+        }
+        &::before {
+          left: 0;
+        }
+        &::after {
+          right: 0;
+        }
+        .point {
+          position: absolute;
+          // 为盒子规定了首选纵横比
+          aspect-ratio: 1/1;
+          border-radius: 10px;
+          transform: translate3d(-50%, -50%, 0);
+          border-radius: 6px;
+        }
+      }
+      .list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        aspect-ratio: 2/1;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        place-items: center;
+        z-index: 3;
+      }
+      .list-item {
+        width: 60%;
+        // 为盒子规定了首选纵横比
+        aspect-ratio: 1/1;
+        color: #fff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2em;
+        &:nth-child(3n + 1) {
+          background: linear-gradient(135deg, #2e7fff, #2878f9);
+        }
+        &:nth-child(3n + 2) {
+          background: linear-gradient(135deg, #2dba48, #00a037);
+        }
+        &:nth-child(3n + 3) {
+          background: linear-gradient(135deg, #ff5f00, #ff9207);
+        }
+      }
+    }
+    .logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100px;
+      height: 100px;
+      z-index: 5;
+      .logo-text {
+        text-align: center;
+        line-height: 24px;
+        margin-top: 6px;
+      }
+    }
+  }
+  .header {
+    background-color: rgb(110, 73, 73);
+  }
+  .content {
+    background-color: rgb(38, 31, 46);
+  }
+  .footer {
+    background-color: rgb(91, 155, 125);
+  }
+}
