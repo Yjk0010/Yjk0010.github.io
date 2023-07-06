@@ -4,8 +4,10 @@
 
 <script setup>
 import demo from "./index.vue"
+import card from "./flipCard.vue"
 </script>
 
+<card></card>
 <demo></demo>
 
 ::: details 点击展开
