@@ -5,10 +5,16 @@
 <script setup>
 import demo from "./index.vue"
 import card from "./flipCard.vue"
+import {ref} from 'vue'
+const refCount = ref(0)
+const countChange = ()=>{
+    refCount.value+=1
+}
 </script>
 
-<card></card>
-<demo></demo>
+<card :total="8" :current="refCount"></card>
+<button @click="countChange">+++</button>
+<demo ></demo>
 
 ::: details 点击展开
 <<< docs/demo/particleClock/index.vue

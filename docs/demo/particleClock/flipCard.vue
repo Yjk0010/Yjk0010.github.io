@@ -1,40 +1,48 @@
 <template>
-  <div class="container">
-    <div class="card start-top">2</div>
-    <div class="card start-btm">2</div>
-    <!-- <div class="card end-top">3</div>
-    <div class="card end-btn">3</div> -->
-  </div>
+  <ul :class="['flip-card', { dark: isDark }]">
+    <li
+      class="item"
+      v-for="(item, key) in total + 1"
+      :class="{ active: active === key, before: key === before }"
+      :key="item"
+    >
+      <div class="up">
+        <div class="shadow"></div>
+        <div class="number">{{ key }}</div>
+      </div>
+      <div class="down">
+        <div class="shadow"></div>
+        <div class="number">{{ key }}</div>
+      </div>
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-const props = withDefaults(defineProps<{}>(), {});
+import { computed } from "vue";
+import { useData } from "vitepress";
+const { isDark } = useData();
+const props = withDefaults(
+  defineProps<{
+    total?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+    current?: number;
+  }>(),
+  {
+    total: 9,
+    current: 0,
+  }
+);
+const active = computed(() => {
+  return Math.abs(props.current % (props.total + 1));
+});
+const before = computed(() => {
+  return active.value ? active.value - 1 : props.total;
+});
 </script>
 
 <style lang="scss" scoped>
-.container {
-  position: relative;
-  --container-width: 60px;
-  width: var(--container-width);
-  height: var(--container-width);
-  .card {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    line-height: var(--container-width);
-    text-align: center;
-    font-size: 2em;
-    background-color: black;
-    overflow: hidden;
-  }
-  .start-top {
-  }
-  .start-btm {
-    top: 50%;
-    line-height: 0;
-    transform: rotateX(30deg);
-    transform-origin: center top;
-  }
+.vp-doc li + li {
+  margin: 0;
 }
+@import "./flipCard.scss";
 </style>
