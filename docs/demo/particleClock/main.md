@@ -1,22 +1,23 @@
 # 粒子时钟
 
-## 展示
-
 <script setup>
-import demo from "./index.vue"
-import card from "./flipCard.vue"
+  import demo from "./index.vue"
+import cardTest from "./cardTest.vue"
 import festivalCountdown from "./festivalCountdown.vue"
-import {ref} from 'vue'
-const refCount = ref(0)
-const countChange = ()=>{
-    refCount.value+=1
-}
+
 </script>
 
-<card :total="8" :current="refCount"></card>
-<button @click="countChange">+++</button>
-<demo ></demo>
+## 翻转卡片展示
+
+<cardTest/>
+
+## 小长假倒计时
+
 <festivalCountdown/>
+
+## 粒子时钟
+
+<demo ></demo>
 
 ::: details 点击展开
 <<< docs/demo/particleClock/index.vue

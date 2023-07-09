@@ -27,7 +27,13 @@
   --them-scrollbar-track-color: #f2f2f2;
   --them-scrollbar-thumb-hover-color: #a0a0a0;
 }
-.dark {
+html.dark {
+  --el-color-primary: rgb(16, 185, 129);
+  --el-color-primary-light-3: #58cea7;
+  --el-color-primary-light-5: #88dcc0;
+  --el-color-primary-light-7: #b7ead9;
+  --el-color-primary-light-8: #cff1e6;
+  --el-color-primary-dark-2: #0d9467;
   --them-scrollbar-width: 10px;
   --them-scrollbar-color: #787878;
   --them-scrollbar-track-color: #787878;

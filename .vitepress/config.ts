@@ -93,6 +93,21 @@ export default defineConfig({
     build: {
       minify: false
     },
+    css: {
+      modules: {
+        localsConvention: 'camelCase'
+      },
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "/style/element/index.scss" as *;`,
+        },
+      },
+    },
+    server: {
+      hmr: {
+        overlay: false
+      }
+    },
     plugins: [
       vueJsx(),
       AutoImport({
@@ -107,15 +122,5 @@ export default defineConfig({
         resolvers: [ElementPlusResolver({ ssr: true, importStyle: "sass" })],
       }),
     ],
-    css: {
-      modules: {
-        localsConvention: 'camelCase'
-      },
-    },
-    server: {
-      hmr: {
-        overlay: false
-      }
-    },
   },
 })

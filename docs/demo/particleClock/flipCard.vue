@@ -2,17 +2,17 @@
   <ul :class="['flip-card', { dark: isDark }]">
     <li
       class="item"
-      v-for="(item, key) in total + 1"
-      :class="{ active: active === key, before: key === before }"
+      v-for="(item, key) in totalList"
+      :class="{ active: active === item, before: item === before }"
       :key="item"
     >
       <div class="up">
         <div class="shadow"></div>
-        <div class="number">{{ key }}</div>
+        <div class="number">{{ item }}</div>
       </div>
       <div class="down">
         <div class="shadow"></div>
-        <div class="number">{{ key }}</div>
+        <div class="number">{{ item }}</div>
       </div>
     </li>
   </ul>
@@ -26,17 +26,31 @@ const props = withDefaults(
   defineProps<{
     total?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
     current?: number;
+    countdown?: boolean;
   }>(),
   {
     total: 9,
     current: 0,
+    countdown: false,
   }
 );
 const active = computed(() => {
-  return Math.abs(props.current % (props.total + 1));
+  if (props.countdown) {
+    return props.current < 0 ? 0 : props.current;
+  } else {
+    return props.current > props.total ? props.total : props.current;
+  }
 });
 const before = computed(() => {
-  return active.value ? active.value - 1 : props.total;
+  if (props.countdown) {
+    return active.value < props.total ? active.value + 1 : 0;
+  } else {
+    return active.value ? active.value - 1 : props.total;
+  }
+});
+const totalList = computed(() => {
+  const list = Array.from({ length: props.total + 1 }, (_, i) => i);
+  return props.countdown ? list.reverse() : list;
 });
 </script>
 
