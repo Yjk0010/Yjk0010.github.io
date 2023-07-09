@@ -7,7 +7,7 @@
       </div>
       <div class="item" v-for="score in scores" :key="score[0]">
         <span>{{ score[0] }}：</span>
-        <input type="range" min="0" :max="maxScore" v-model="score[1]" />
+        <el-slider class="slider" :min="0" :max="maxScore" v-model="score[1]" />
         <span>{{ score[1] }}</span>
       </div>
     </div>
@@ -40,7 +40,7 @@ function remove() {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .demo {
   display: flex;
   flex-direction: column;
@@ -53,9 +53,15 @@ function remove() {
   align-items: start;
   row-gap: 10px;
   width: 300px;
-}
-.controls input {
-  width: 200px;
+  .item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .slider {
+      width: 180px;
+    }
+  }
 }
 .btn-box {
   display: flex;
