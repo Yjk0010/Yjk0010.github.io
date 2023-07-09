@@ -20,6 +20,7 @@ export default [
         { text: '数字转大写', link: '/demo/numberToBig/main' },
         { text: 'css滤镜', link: '/demo/cssFilter/main' },
         { text: '钉钉官网的滚动动画', link: '/demo/dingDingAnimation/main' },
+        { text: '雷达图', link: '/demo/radar/main' },
       ]
   },
 ]
