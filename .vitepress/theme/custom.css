@@ -36,10 +36,11 @@ html:root {
 }
 html.dark {
   --el-color-primary: #10b981;
-  --el-color-primary-light-3: #58cea7;
-  --el-color-primary-light-5: #88dcc0;
-  --el-color-primary-light-7: #b7ead9;
-  --el-color-primary-light-8: #cff1e6;
+  --el-color-primary-light-3: #30705b;
+  --el-color-primary-light-5: #578b7a;
+  --el-color-primary-light-7: #638076;
+  --el-color-primary-light-8: #6d7e78;
+  --el-color-primary-light-9: #242726;
   --el-color-primary-dark-2: #0d9467;
   --them-scrollbar-width: 10px;
   --them-scrollbar-color: #787878;
