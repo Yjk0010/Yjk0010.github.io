@@ -129,7 +129,7 @@ const convertDigitsToChinese = (numStr: string): string => {
  *
  * @param {number} num - 数字
  * @param {object} [obj={}] - 配置对象，可选
- * @param {boolean} [obj.isMoney=false] - 是否转换成货币格式，可选，默认为 false
+ * @param {boolean} [obj.isMoney=true] - 是否转换成货币格式，可选，默认为 true
  * @param {string} [obj.suffix=''] - 后缀，可选，默认为空字符串
  * @param {string} [obj.def=''] - 默认字符串，可选，默认为空字符串
  * @returns {string} 转换后的中文字符串
