@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 const scrollContainer = ref<HTMLElement>();
-const images: any[] = [
+const images: string[] = [
   "/assets/demo/scenery-1.jpg",
   "/assets/demo/scenery-2.jpg",
   "/assets/demo/scenery-3.jpg",

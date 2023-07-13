@@ -1,9 +1,9 @@
 <template>
   <div class="cardTest">
-    <el-button type="text" @click="countChange">加一下</el-button>
+    <el-button @click="countChange">加一下</el-button>
     <flipCard :total="8" :current="refCount"></flipCard>
     <flipCard :total="8" :current="refCount2" countdown></flipCard>
-    <el-button type="text" @click="countChange2">减一下</el-button>
+    <el-button @click="countChange2">减一下</el-button>
   </div>
 </template>
 

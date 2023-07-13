@@ -40,5 +40,12 @@ declare module '*.gif' {
   }
   export default gif
 }
+/// <reference types="svg" />
+declare module '*.svg' {
+  const svg: {
+    readonly [key: string]: string
+  }
+  export default svg
+}
 /// <reference types="quantize" />
 declare module 'quantize'

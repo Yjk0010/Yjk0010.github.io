@@ -1,7 +1,7 @@
-# 粒子时钟
+# 卡片返转计时 + 粒子时钟
 
 <script setup>
-  import demo from "./index.vue"
+import demo from "./index.vue"
 import cardTest from "./cardTest.vue"
 import festivalCountdown from "./festivalCountdown.vue"
 
@@ -11,16 +11,33 @@ import festivalCountdown from "./festivalCountdown.vue"
 
 <cardTest/>
 
+::: details 翻转卡片组件 代码 点击展开
+模板 和 逻辑
+
+<<< docs/demo/particleClock/flipCard.vue
+
+样式 和 动画
+
+<<< docs/demo/particleClock/flipCard.scss
+:::
+::: details 翻转卡片调用 代码 点击展开
+<<< docs/demo/particleClock/cardTest.vue
+:::
+
 ## 小长假倒计时
 
 <festivalCountdown/>
 
+::: details 小长假倒计时 代码 点击展开
+<<< docs/demo/particleClock/festivalCountdown.vue
+:::
+
 ## 粒子时钟
 
-<demo ></demo>
+<demo></demo>
 
-::: details 点击展开
+::: details 粒子时钟 代码 点击展开
 <<< docs/demo/particleClock/index.vue
 :::
 
-[视频讲解](https://www.douyin.com/video/7238231456416402748)
+[粒子时钟 视频讲解](https://www.douyin.com/video/7238231456416402748)

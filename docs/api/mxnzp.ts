@@ -17,6 +17,9 @@ export const getFestival = async (year: number) => {
         reject({ msg });
       }
     }).catch((err) => {
+      getFestival(year).then((res) => {
+        resolve(res)
+      })
       reject({ err })
     })
   })
