@@ -9,17 +9,17 @@ import testLine from "/components/Line/test.vue"
 <testLine></testLine>
 
 ::: details 调用代码展示
-<<< docs/components/Line/test.vue
+<<< @/components/Line/test.vue
 :::
 
 ::: details 组件源码
-<<< docs/components/Line/Line.vue
+<<< @/components/Line/Line.vue
 :::
 
 ::: details TSX 写法组件源码
-<<< docs/components/Line/index.tsx
+<<< @/components/Line/index.tsx
 :::
 
 ::: details 样式外联
-<<< docs/components/Line/style.module.scss
+<<< @/components/Line/style.module.scss
 :::

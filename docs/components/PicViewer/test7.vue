@@ -9,7 +9,7 @@
 import PicViewer from "./PicViewer.vue";
 // import.meta.glob 引入
 const importMetaGlob: Record<string, string> = import.meta.glob(
-  ["./assets/*.jpg", "./assets/*.png", "./assets/*.gif"],
+  ["./assets/scenery-5.jpg"],
   {
     eager: true,
     import: "default",

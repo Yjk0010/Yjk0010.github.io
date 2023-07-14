@@ -9,8 +9,12 @@ import DetailInfo from "/components/DetailInfo/test.vue"
 <DetailInfo></DetailInfo>
 
 ::: details 调用代码展示
-<<< docs/components/DetailInfo/test.vue
+
+<<< @/components/DetailInfo/test.vue
+
 :::
 ::: details 组件源码
-<<< docs/components/DetailInfo/DetailInfo.vue
+
+<<< @/components/DetailInfo/DetailInfo.vue
+
 :::

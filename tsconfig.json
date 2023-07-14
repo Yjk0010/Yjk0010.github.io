@@ -11,12 +11,15 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noUnusedLocals": false, // 不再对引入但未使用的方法进行报错
+    "noUnusedParameters": false, // 不再对引入但未使用的方法进行报错
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "types": ["vitepress", "vite/client", "vue", "element-plus/global"],
     "baseUrl": "./",
     "paths": {
-      "/*": ["docs/*"]
+      "/*": ["docs/*"],
+      "docs/*": ["docs/*"]
     },
     "lib": ["ESNext", "DOM", "DOM.Iterable"]
   },

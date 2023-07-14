@@ -12,7 +12,7 @@ import demo from "./index.vue"
 
 ::: details 点击展开
 
-<!-- <<< docs/demo/xxxxx/index.vue -->
+<!-- <<< @/demo/xxxxx/index.vue -->
 
 :::
 

@@ -11,7 +11,7 @@ import demo from "./index.vue"
 ## 代码实现
 
 ::: details 点击展开
-<<< docs/demo/numberToBig/index.vue
+<<< @/demo/numberToBig/index.vue
 :::
 
 [视频讲解](https://www.douyin.com/video/7212234302401170743)

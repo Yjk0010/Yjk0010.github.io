@@ -19,7 +19,7 @@
     "unplugin-icons": "^0.16.3",
     "unplugin-vue-components": "^0.24.1",
     "vite": "^4.3.9",
-    "vitepress": "1.0.0-beta.1"
+    "vitepress": "1.0.0-beta.5"
   },
   "scripts": {
     "dev": "vitepress dev",

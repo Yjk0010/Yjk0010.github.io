@@ -9,16 +9,16 @@ import demo from "./index.vue"
 <demo></demo>
 
 ::: details 调用代码 点击展开
-<<< docs/demo/radar/index.vue
+<<< @/demo/radar/index.vue
 :::
 ::: details 组件代码 点击展开
-<<< docs/demo/radar/PolygonScore.vue
+<<< @/demo/radar/PolygonScore.vue
 :::
 ::: details JS 控制代码 点击展开
-<<< docs/demo/radar/PolygonScoreHooks.ts
+<<< @/demo/radar/PolygonScoreHooks.ts
 :::
 ::: details TS 类型 点击展开
-<<< docs/demo/radar/PolygonScoreTypes.ts
+<<< @/demo/radar/PolygonScoreTypes.ts
 :::
 
 [视频讲解](https://www.douyin.com/video/7232224120665132348)

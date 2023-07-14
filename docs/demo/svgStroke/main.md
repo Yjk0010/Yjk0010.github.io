@@ -13,7 +13,7 @@ import demo from "./index.vue"
 ## 代码实现
 
 ::: details 点击展开
-<<< docs/demo/svgStroke/index.vue
+<<< @/demo/svgStroke/index.vue
 :::
 
 [视频讲解](https://www.douyin.com/video/7253061032011124000)

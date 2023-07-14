@@ -97,11 +97,6 @@ export default defineConfig({
       modules: {
         localsConvention: 'camelCase'
       },
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "/style/element/index.scss" as *;`,
-        },
-      },
     },
     server: {
       hmr: {

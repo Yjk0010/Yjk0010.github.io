@@ -37,6 +37,7 @@ const nowFestivalText = ref("");
 const loading = ref(false);
 const diffDayList = ref([0, 0, 0]);
 const diffTimeList = ref([0, 0, 0, 0, 0, 0]);
+let onLineTime = 0;
 const getRecentlyFestival = () => {
   loading.value = true;
   const nowDate = new Date();
@@ -80,6 +81,12 @@ const getRecentlyFestival = () => {
       let diffDayStrLength = diffDayStr.length;
       for (let len = 3; len--; ) {
         diffDayList.value[len] = +diffDayStr[--diffDayStrLength] || 0;
+      }
+    })
+    .catch(() => {
+      onLineTime++;
+      if (onLineTime < 4) {
+        setTimeout(getRecentlyFestival, 1000);
       }
     })
     .finally(() => {

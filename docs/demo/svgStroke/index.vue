@@ -25,9 +25,8 @@
       </svg>
     </div>
 
-    <el-button @click="isTrue = !isTrue">{{
-      !isTrue ? "启动动画" : "隐藏"
-    }}</el-button>
+    <el-button @click="isTrue = true">启动动画</el-button>
+    <el-button @click="isTrue = false">隐藏</el-button>
   </div>
 </template>
 

@@ -9,7 +9,7 @@ import demo from "./index.vue"
 <demo></demo>
 
 ::: details 点击展开
-<<< docs/demo/cssFilter/index.vue
+<<< @/demo/cssFilter/index.vue
 :::
 
 [视频讲解](https://www.douyin.com/video/7113019983558479115)
