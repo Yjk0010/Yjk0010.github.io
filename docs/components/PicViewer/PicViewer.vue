@@ -4,7 +4,7 @@
     <img
       class="pic-viewer-img"
       @click="boxShow"
-      :src="src"
+      :src="imgSrc"
       :alt="alt || `这张图片害羞了`"
     />
     <div class="pic-viewer-title">
@@ -33,7 +33,7 @@
         @click.stop
         @mousewheel="handleWheel"
         @mousedown="startDrag"
-        :src="src"
+        :src="imgSrc"
         :alt="alt"
       />
     </div>
@@ -42,17 +42,21 @@
 
 <script setup lang="ts">
 import Line from "../Line/Line.vue";
+import { useData } from "vitepress";
+const { isDark } = useData();
 // 因为vite打包图片URL获取问题 调用该组件的图片地址应使用不被打包的public/assets/文件下的不经过打包编译文件
-import { ref, onMounted, onUnmounted, nextTick, Ref } from "vue";
-withDefaults(
+import { ref, onMounted, computed, onUnmounted, nextTick, Ref } from "vue";
+const props = withDefaults(
   defineProps<{
     title: string;
     src: string;
+    darkSrc?: string;
     alt?: string;
   }>(),
   {
     title: "",
     src: "",
+    darkSrc: "",
     alt: "",
   }
 );
@@ -65,6 +69,10 @@ const viewerBox: Ref<HTMLDivElement | null> = ref(null);
 
 let multiple: number = 0;
 const proportion: number = 0.75;
+
+const imgSrc = computed(() => {
+  return isDark.value ? props.darkSrc || props.src : props.src;
+});
 
 const handleShowBox = () => {
   isBoxShow.value = !isBoxShow.value;
