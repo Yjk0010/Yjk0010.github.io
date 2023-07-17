@@ -19,7 +19,7 @@
 import { useData } from "vitepress";
 import { ref, computed, onMounted, onUnmounted } from "vue";
 const { isDark } = useData();
-console.log(isDark.value);
+const drawTime = 60;
 
 // 随机颜色
 const fontColors: string[] = [
@@ -34,6 +34,7 @@ const fontColors: string[] = [
   "#FF4444",
   "#CC0000",
 ];
+// 随机颜色
 const getRandomColor = (): string => {
   return fontColors[Math.floor(Math.random() * fontColors.length)];
 };
@@ -47,6 +48,7 @@ let ctx: CanvasRenderingContext2D | null = null;
 let width = 0;
 let height = 0;
 let intervalId: any = null;
+// 随机值
 const getRandomChar = (): string => {
   return showCode.value[Math.floor(Math.random() * showCode.value.length)];
 };
@@ -58,26 +60,29 @@ const handleClick = () => {
     columnCount = Math.floor(width / columnWidth);
     columnNextIndexes = new Array(columnCount);
     columnNextIndexes.fill(1);
-    intervalId = setInterval(draw, 40);
+    intervalId = setInterval(draw, drawTime);
   }
 };
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 onMounted(() => {
   showCode.value = code.value;
   if (canvasRef.value) {
+    // 创建画布进行绘画
     ctx = canvasRef.value.getContext("2d");
     canvasRef.value.width = 640;
     canvasRef.value.height = 640;
     width = canvasRef.value.clientHeight;
     height = canvasRef.value.height;
+    // 根据列宽计算列数
     columnCount = Math.floor(width / columnWidth);
     columnNextIndexes = new Array(columnCount);
     columnNextIndexes.fill(1);
   }
-  intervalId = setInterval(draw, 40);
+  intervalId = setInterval(draw, drawTime);
 });
 const draw = () => {
   if (ctx) {
+    // 每次画布都画一个0.1 多画几次就盖住了原来的 就显示出渐渐消失的感觉
     ctx.fillStyle = isDark.value
       ? "rgba(0, 0, 0, 0.1)"
       : "rgba(255, 255, 255, 0.1)";
