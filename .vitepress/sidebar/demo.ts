@@ -22,6 +22,7 @@ export default [
         { text: '钉钉官网的滚动动画', link: '/demo/dingDingAnimation/main' },
         { text: '雷达图', link: '/demo/radar/main' },
         { text: 'svg描边动画', link: '/demo/svgStroke/main' },
+        { text: '闪光边框', link: '/demo/borderLight/main' },
       ]
   },
 ]
