@@ -3,6 +3,8 @@
 <script setup>
 import asyncInfection from "./asyncInfection.vue"
 import demo from "./index.vue"
+import timeLine from "./assets/timeLine.jpg"
+import timeLine_dark from "./assets/timeLine_dark.jpg"
 </script>
 
 ## 什么是异步传染？
@@ -69,6 +71,30 @@ main();
 <span class="cor-tip">这就叫异步传染</span>
 
 ## 原因解释
+
+先看看上面的伪代码的按照时间线调用顺序。
+
+<PicViewer title="时间线调用" alt=" " :src="timeLine" :darkSrc="timeLine_dark"></PicViewer>
+
+> 调用栈使用情况是 **main->f3->f2->f1->getData** 在这出现异步操作。  
+> 然后等异步结束之后。  
+> 执行栈在一步一步 **getData->f1->f2->f3->main** 释放执行栈空间。
+
+但是我们要消除异步的传染性，首先就得把当前函数变成`同步函数`。  
+但是`同步函数`的话将不会等待异步处理，所以我们要开始讲解了。。。
+
+## 首先是设计思维
+
+遇到这样的要求，其实路最重要。
+
+- 首先第一点，处理异步
+  - 遇到异步的时候应该停止，并且告诉使用者这是个同步函数，那么这个操作就要报错处理
+  - 但是报错处理时候，我们仍然还是要发异步请求
+  - 虽然报错导致函数停止在 getData 函数中，但是看图 如果异步请求发送了 那么网络请求就会继续走完他的生命周期
+  - 然后等到网络请求成功之后将结果保存在一个变量中
+- 第二点，处理报错
+  - 通过报错返回的内容控制函数重新执行
+  -
 
 <demo></demo>
 
