@@ -23,6 +23,7 @@ export default [
         { text: '雷达图', link: '/demo/radar/main' },
         { text: 'svg描边动画', link: '/demo/svgStroke/main' },
         { text: '闪光边框', link: '/demo/borderLight/main' },
+        { text: '处理异步传染', link: '/demo/solveAsyncInfection/main' },
       ]
   },
 ]

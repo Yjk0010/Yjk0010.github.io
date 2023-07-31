@@ -87,6 +87,10 @@ input {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 em {
   color: #09a0ec;
   font-weight: bold;
