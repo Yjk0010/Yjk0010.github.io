@@ -1,14 +1,22 @@
+<template>
+  <div class="cor-tip">全部代码位置</div>
+</template>
+
+<script setup>
+// 判断是否是对象
+function isObject(obj) {
+  return Object.prototype.toString.call(obj) === "[object Object]";
+}
+
 console.log("\n--------------代码块1--------------\n");
 
 var obj1 = {
   a: 1,
 };
-
+// 更改a的值
 obj1.a = 4;
-// 无输出 无法知晓其访问了 obj1.a
 
 console.log("输出 a = ", obj1.a);
-// 输出 a =  4
 
 console.log("\n--------------代码块2--------------\n");
 
@@ -34,13 +42,10 @@ Object.defineProperty(obj1, "a", {
     }
   },
 });
-
+// 更改a属性的值
 obj1.a = 5;
-// 设置a =  5
 
 console.log("打印 a =", obj1.a);
-// 读取 a = 5
-// 打印 a = 5
 
 console.log("\n--------------代码块3--------------\n");
 
@@ -58,7 +63,7 @@ function observe_defineProperty(obj) {
     // for in 循环遍历对象 会遍历原型链上的所有可枚举属性 这边做一个判断 只要当前对象属性
     if (Object.hasOwnProperty.call(obj, key)) {
       let element = obj[key];
-      if (vue_isObject(element)) {
+      if (isObject(element)) {
         // 递归
         observe_defineProperty(element);
       }
@@ -82,18 +87,13 @@ function observe_defineProperty(obj) {
 }
 // 观察
 observe_defineProperty(obj2);
+// 更改a属性的值
 obj2.a = 4;
-// 设置 a =  4
 console.log("打印 a =", obj2.a);
-// 读取 a = 4
-// 打印 a = 4
+console.log("\n------------\n");
+// 更改b对象中c属性的值
 obj2.b.c = 5;
-// 读取 b = {"c":3}
-// 设置 c =  5
 console.log("打印 b.c =", obj2.b.c);
-// 读取 b = {"c":5}
-// 读取 c = 5
-// 打印 b.c = 5
 
 console.log("\n--------------代码块4--------------\n");
 
@@ -103,19 +103,17 @@ var obj3 = {
     c: 3,
   },
 };
-// 判断是否是对象
-function vue_isObject(obj) {
-  return Object.prototype.toString.call(obj) === "[object Object]";
-}
+
 // 观察
 function observe_proxy(obj) {
   // 创建一个代理
   const proxy = new Proxy(obj, {
     get(target, key) {
       // vue3 在这里处理的东西写在下面 vue3 get中做了什么  // [!code hl]
-      let value = target[key];
+      // 使用 Reflect.get 获取属性值
+      let value = Reflect.get(target, key);
       //当访问到对象的属性时创建一个代理
-      if (vue_isObject(value)) {
+      if (isObject(value)) {
         value = observe_proxy(value);
       }
       console.log("读取", key, "=", value);
@@ -125,7 +123,8 @@ function observe_proxy(obj) {
       // vue3 在这里处理的东西写在下面 vue3 set中做了什么  // [!code hl]
       if (value !== target[key]) {
         console.log("设置", key, "=", value);
-        target[key] = value;
+        // 使用 Reflect.set 设置属性值
+        Reflect.set(target, key, value);
         return value;
       }
     },
@@ -134,17 +133,11 @@ function observe_proxy(obj) {
 }
 // 观察
 const proxy = observe_proxy(obj3);
+// 更改a属性的值
 proxy.a = 4;
-// 设置 a =  4
 console.log("打印 a =", proxy.a);
-// 读取 a = 4
-// 打印 a = 4
+console.log("\n------------\n");
+// 更改b对象中c属性的值
 proxy.b.c = 5;
-// 读取 b = Proxy(Object) {c: 3}
-// 设置 c =  5
 console.log("打印 b.c =", proxy.b.c);
-// 读取 b = Proxy(Object) {c: 5}
-// 读取 c = 5
-// 打印 b.c = 5
-
-export default {};
+</script>

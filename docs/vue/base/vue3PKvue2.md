@@ -1,4 +1,4 @@
-# vue3 对比 vue2
+# 数据响应式原理的比较
 
 ## <span class="cor-da">核心</span> Object.defineProperty <Badge type="tip">vue2</Badge> Proxy <Badge type="tip">vue3</Badge>
 
@@ -18,12 +18,11 @@ console.log("\n--------------代码块1--------------\n");
 var obj1 = {
   a: 1,
 };
-
+// 更改a的值
 obj1.a = 4;
-// 无输出 无法知晓其访问了 obj1.a
 
 console.log("输出 a = ", obj1.a);
-// 输出 a =  4
+// 控制台有打印结果 如要查看请自行打开
 ```
 
 :::
@@ -59,13 +58,11 @@ Object.defineProperty(obj1, "a", {
     }
   },
 });
-
+// 更改a属性的值
 obj1.a = 5;
-// 设置a =  5
 
 console.log("打印 a =", obj1.a);
-// 读取 a = 5
-// 打印 a = 5
+// 控制台有打印结果 如要查看请自行打开
 ```
 
 > 这种方法可以知道这边调用 `obj1` 的属性 `a`
@@ -77,6 +74,9 @@ console.log("打印 a =", obj1.a);
 > 下面是 vue2 observe 实现代码
 
 ```javascript
+function isObject(obj) {
+  return Object.prototype.toString.call(obj) === "[object Object]";
+}
 console.log("\n--------------代码块3--------------\n");
 
 var obj2 = {
@@ -90,22 +90,22 @@ var obj2 = {
 function observe_defineProperty(obj) {
   // 便利对象的属性
   for (const key in obj) {
-    // for in 循环遍历对象 会遍历原型链上的所有可枚举属性 这边判断 只要当前的对象属性
+    // for in 循环遍历对象 会遍历原型链上的所有可枚举属性 这边做一个判断 只要当前对象属性
     if (Object.hasOwnProperty.call(obj, key)) {
       let element = obj[key];
-      if (vue_isObject(element)) {
+      if (isObject(element)) {
         // 递归
         observe_defineProperty(element);
       }
       // 数据监听拦截
       Object.defineProperty(obj, key, {
         get() {
-          // vue2 在这里处理的东西写在下面 vue2 get中做了什么  // [!code ++]
+          // vue2 在这里处理的东西写在下面 vue2 get中做了什么  // [!code hl]
           console.log("读取", key, "=", JSON.stringify(element));
           return element;
         },
         set(value) {
-          // vue2 在这里处理的东西写在下面 vue2 set中做了什么  // [!code ++]
+          // vue2 在这里处理的东西写在下面 vue2 set中做了什么  // [!code hl]
           if (value !== element) {
             console.log("设置", key, "=", value);
             element = value;
@@ -117,18 +117,14 @@ function observe_defineProperty(obj) {
 }
 // 观察
 observe_defineProperty(obj2);
+// 更改a属性的值
 obj2.a = 4;
-// 设置 a =  4
 console.log("打印 a =", obj2.a);
-// 读取 a = 4
-// 打印 a = 4
+console.log("\n------------\n");
+// 更改b对象中c属性的值
 obj2.b.c = 5;
-// 读取 b = {"c":3}
-// 设置 c =  5
 console.log("打印 b.c =", obj2.b.c);
-// 读取 b = {"c":5}
-// 读取 c = 5
-// 打印 b.c = 5
+// 控制台有打印结果 如要查看请自行打开
 ```
 
 > 通过 **observe_defineProperty** 递归实现对于对象属性的监听和拦截  
@@ -162,6 +158,10 @@ console.log("打印 b.c =", obj2.b.c);
 > 下面代码实现了 vue3 的数据劫持
 
 ```javascript
+// 判断是否是对象
+function isObject(obj) {
+  return Object.prototype.toString.call(obj) === "[object Object]";
+}
 console.log("\n--------------代码块4--------------\n");
 
 var obj3 = {
@@ -170,29 +170,28 @@ var obj3 = {
     c: 3,
   },
 };
-// 判断是否是对象
-function vue_isObject(obj) {
-  return Object.prototype.toString.call(obj) === "[object Object]";
-}
+
 // 观察
 function observe_proxy(obj) {
   // 创建一个代理
   const proxy = new Proxy(obj, {
     get(target, key) {
-      // vue3 在这里处理的东西写在下面 vue3 get中做了什么  // [!code ++]
-      let value = target[key];
+      // vue3 在这里处理的东西写在下面 vue3 get中做了什么  // [!code hl]
+      // 使用 Reflect.get 获取属性值
+      let value = Reflect.get(target, key);
       //当访问到对象的属性时创建一个代理
-      if (vue_isObject(value)) {
+      if (isObject(value)) {
         value = observe_proxy(value);
       }
       console.log("读取", key, "=", value);
       return value;
     },
     set(target, key, value) {
-      // vue3 在这里处理的东西写在下面 vue3 set中做了什么  // [!code ++]
+      // vue3 在这里处理的东西写在下面 vue3 set中做了什么  // [!code hl]
       if (value !== target[key]) {
         console.log("设置", key, "=", value);
-        target[key] = value;
+        // 使用 Reflect.set 设置属性值
+        Reflect.set(target, key, value);
         return value;
       }
     },
@@ -201,18 +200,14 @@ function observe_proxy(obj) {
 }
 // 观察
 const proxy = observe_proxy(obj3);
+// 更改a属性的值
 proxy.a = 4;
-// 设置 a =  4
 console.log("打印 a =", proxy.a);
-// 读取 a = 4
-// 打印 a = 4
+console.log("\n------------\n");
+// 更改b对象中c属性的值
 proxy.b.c = 5;
-// 读取 b = Proxy(Object) {c: 3}
-// 设置 c =  5
 console.log("打印 b.c =", proxy.b.c);
-// 读取 b = Proxy(Object) {c: 5}
-// 读取 c = 5
-// 打印 b.c = 5
+// 控制台有打印结果 如要查看请自行打开
 ```
 
 > 通过 **observe_proxy** 实现了对于对象属性的监听和拦截  
@@ -241,5 +236,11 @@ console.log("打印 b.c =", proxy.b.c);
 - <span class="cor-tip">vue3</span> 通过 **Proxy** 实现对所有属性的监听 <span class="cor-da">无需递归遍历</span>
 
 ::: details 整体代码
-<<< @/vue/vue2PKvue3_js.js
+<<< @/vue/base/vue3PKvue2.vue
 :::
+
+<script setup>
+import vue3PKvue2 from "./vue3PKvue2.vue"
+</script>
+
+<vue3PKvue2></vue3PKvue2>

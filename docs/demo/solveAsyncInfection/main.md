@@ -1,7 +1,6 @@
 # 处理异步传染 <Badge type="tip">听说好像是个字节面试题</Badge>
 
 <script setup>
-import asyncInfection from "./asyncInfection.vue"
 import demo from "./index.vue"
 import timeLine from "./assets/timeLine.jpg"
 import timeLine_dark from "./assets/timeLine_dark.jpg"
@@ -15,10 +14,10 @@ import thinking_dark from "./assets/thinking_dark.jpg"
 
 先展示一个异步代码，实现了点击之后将异步获取图片。
 
-<asyncInfection></asyncInfection>
+<demo></demo>
 
 ::: details 点击展开 代码展示
-<<< @/demo/solveAsyncInfection/asyncInfection.vue
+<<< @/demo/solveAsyncInfection/index.vue
 :::
 
 该功能代码中主要方法就是 **getImage(获取图片)** 方法，但是在它书写的时候由于是异步处理，
