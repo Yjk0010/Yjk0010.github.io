@@ -424,7 +424,8 @@ Vue3 的 Key 值影响比较直观
 **patchUnkeyedChildren** 方法中直接就是最简单的遍历循环
 
 - 长度一致就原地<span class="cor-tip">patch 更新(不重新渲染 dom)</span>
-- 长度不一致就行进行 -<span class="cor-da">unmountChildren 卸载(删除 dom)</span>-<span class="cor-wa">mountChildren 挂载(添加 dom)</span>
+- 新比旧`短了`就执行<span class="cor-da">unmountChildren 卸载(删除 dom)</span>
+- 新比旧`长了`就执行<span class="cor-wa">mountChildren 挂载(添加 dom)</span>
   - 没有经过**任何**的<span class="cor-tip">dom diff</span>算法加速处理。
 
 **patchKeyedChildren** 方法中 使用了<span class="cor-tip">dom diff</span>算法
