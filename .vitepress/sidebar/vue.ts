@@ -14,6 +14,7 @@ export default [
       [
         { text: '基础知识', link: '/vue/base/main' },
         { text: '响应式原理的', link: '/vue/base/vue3PKvue2' },
+        { text: 'Dom Diff算法', link: '/vue/base/domDiff' },
       ]
   },
   {
