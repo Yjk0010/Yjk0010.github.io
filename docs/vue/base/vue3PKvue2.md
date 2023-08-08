@@ -235,12 +235,12 @@ console.log("打印 b.c =", proxy.b.c);
 - <span class="cor-tip">vue2</span> 通过 **Object.defineProperty** 实现对已有属性的监听 <span class="cor-da">需要递归遍历</span>
 - <span class="cor-tip">vue3</span> 通过 **Proxy** 实现对所有属性的监听 <span class="cor-da">无需递归遍历</span>
 
-::: details 整体代码
-<<< @/vue/base/vue3PKvue2.vue
-:::
-
 <script setup>
 import vue3PKvue2 from "./vue3PKvue2.vue"
 </script>
 
 <vue3PKvue2></vue3PKvue2>
+
+::: details 整体代码
+<<< @/vue/base/vue3PKvue2.vue
+:::
