@@ -95,9 +95,9 @@ const infoConfig = [
 
 > 这个同层级比较规则 vue2 和 vue3 实现略有不同
 
-### vue2 实现过程<Badge type="tip">2.6.14</Badge>
+### Vue2 实现过程<Badge type="tip">2.6.14</Badge>
 
-> 下面代码是 vue2 的代码实现过程
+> 下面代码是 Vue2 Diff 的代码实现
 
 ::: details 点击这里展开主要代码 有注释 [点击这里查看官方源码](https://github1s.com/vuejs/vue/blob/v2.6.14/src/core/vdom/patch.js#L404)
 
@@ -359,3 +359,7 @@ oldKeyToIdx = {
 #### 例子缺陷
 
 该例子没有展现出 `addVnodes` 方法 因为这样的情况是要 <span class="cor-tip">新节点</span> 的数量比 <span class="cor-wa">旧节点</span> 数量多的时候才会出现。(这个好理解)
+
+### Vue3 实现过程 <Badge type="tip">3.3.4</Badge>
+
+> 下面是 Vue3 Diff 的代码实现
