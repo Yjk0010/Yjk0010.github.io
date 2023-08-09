@@ -9,7 +9,7 @@ export default [
   },
   {
     text: 'vue2 ~~ vue3',
-    collapsed: true,
+    collapsed: false,
     items:
       [
         { text: '基础知识', link: '/vue/base/main' },
@@ -19,14 +19,14 @@ export default [
   },
   {
     text: 'vue2',
-    collapsed: false,
+    collapsed: true,
     items:
       [
       ]
   },
   {
     text: 'vue3',
-    collapsed: false,
+    collapsed: true,
     items:
       [
         { text: 'vue3 中的 jsx 写法', link: '/vue/vue3/vueJsx' },

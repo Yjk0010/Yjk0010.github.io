@@ -1,5 +1,73 @@
 # Dom Diff 算法
 
+<script setup>
+  import {ref} from "vue"
+import DetailInfo from "/components/DetailInfo/DetailInfo.vue"
+
+const info = ref({
+  oldStartIdx:"旧列表头指针",
+  oldEndIdx:"旧列表尾指针",
+  newStartIdx:"新列表头指针",
+  newEndIdx:"新列表尾指针",
+  patchVnode:"节点原地更新方法，对dom操作影响小",
+  addVnodes:"循环调用 patchVnode",
+  createElm:"创建新节点方法",
+  removeVnodes:"删除节点，以及解绑节点上的钩子函数",
+  idxInOld:'当前 新列表 key 对应的 旧列表索引',
+  oldCh:"旧列表",
+  newStartVnode:"当前新节点",
+})
+const infoConfig = [
+  {
+    label: "oldStartIdx",
+    key: "oldStartIdx",
+  },
+  {
+    label: "oldEndIdx",
+    key: "oldEndIdx",
+  },
+  {
+    label: "newStartIdx",
+    key: "newStartIdx",
+  },
+  {
+    label: "newEndIdx",
+    key: "newEndIdx",
+  },
+  {
+    label: "patchVnode",
+    key: "patchVnode",
+    col:1
+  },
+  {
+    label: "addVnodes",
+    key: "addVnodes",
+  },
+  {
+    label: "createElm",
+    key: "createElm",
+  },
+  {
+    label: "removeVnodes",
+    key: "removeVnodes",
+    col:1
+  },
+  {
+    label: "idxInOld",
+    key: "idxInOld",
+    col:1
+  },
+  {
+    label: "oldCh",
+    key: "oldCh",
+  },
+  {
+    label: "newStartVnode",
+    key: "newStartVnode",
+  },
+]
+</script>
+
 ## 为什么要有 Dom Diff 算法
 
 > Vue 实现 DOM Diff 算法的主要原因有:
@@ -218,8 +286,76 @@ function updateChildren(
 
 :::
 
-#### 为了方便理解我这边放上图解过程
+#### 为了方便理解我这边给上流程图
 
-假设现在有节点 **1,2,3,4,5,6,7** 经过操作变成了 **1,2,5,6,8,7**
+<span class="cor-tip">Vue2 Dom Diff</span> 过程主要是由 **while 循环** 和 **循环后处理** 两个部分构成  
+下面我通过流程图解释了这段代码简要的流程处理
 
-diff 过程是这样的：
+::: details 点击展开 流程图中的单词解释
+<DetailInfo :info="info" labelWidth="120px" :col="2" :infoConfig="infoConfig"></DetailInfo>
+:::
+
+<PicViewer title="diff处理流程 while循环流程图" src="/assets/vue/vue2_diff_while.png" darkSrc="/assets/vue/vue2_diff_while-dark.png" alt="  "/>
+<PicViewer title="diff处理流程 循环后处理流程图" src="/assets/vue/vue2_diff_end.png" darkSrc="/assets/vue/vue2_diff_end-dark.png" alt="  "/>
+
+#### 这边用一个例子展示比较过程
+
+假设现在有节点 **1,2,3,4,5,6,7** 经过操作变成了 **1,6,4,8,2,7**
+
+初始化开始之后呈现当前状态
+
+- <span style="color:#a5d8ff">蓝色</span>节点是 <span class="cor-wa">旧的虚拟 dom 节点</span>
+- <span style="color:#ffec99">黄色</span>节点是 <span class="cor-tip">新的虚拟 dom 节点</span>
+- <span style="color:#b2f2bb">变成绿色</span>说明 **diff 成功 已经更新**
+
+<PicViewer title="初始状态" src="/assets/vue/vue2_diff-1.png" darkSrc="/assets/vue/vue2_diff-dark1.png" alt=" "/>
+第一次循环 **头头比较** <span class="cor-tip">成功</span>  执行`patchVnode` **两个头指针 右移**
+<PicViewer title="第一次比较之后状态" src="/assets/vue/vue2_diff-2.png" darkSrc="/assets/vue/vue2_diff-dark2.png" alt="  "/>
+第二次循环 **尾尾比较** <span class="cor-tip">成功</span>  执行`patchVnode` **两个尾指针 左移**
+<PicViewer title="第二次比较之后状态" src="/assets/vue/vue2_diff-3.png" darkSrc="/assets/vue/vue2_diff-dark3.png" alt="  "/>
+第三次循环 **头尾比较** <span class="cor-tip">成功</span>  执行`patchVnode` **旧节点头指针右移 新节点尾指针左移**
+<PicViewer title="第三次比较之后状态" src="/assets/vue/vue2_diff-4.png" darkSrc="/assets/vue/vue2_diff-dark4.png" alt="  "/>
+第四次循环 **尾头比较** <span class="cor-tip">成功</span>  执行`patchVnode` **旧节点尾指针左移 新节点头指针右移**
+<PicViewer title="第四次比较之后状态" src="/assets/vue/vue2_diff-5.png" darkSrc="/assets/vue/vue2_diff-dark5.png" alt="  "/>
+第五次循环 **进入复杂比较** 创建 <span class="cor-tip">oldKeyToIdx</span> 对象
+
+```javascript
+oldKeyToIdx = {
+  3: 2,
+  4: 3,
+  5: 4,
+};
+```
+
+当前新节点的 **key 为 4**，取得 <span class="cor-wa">旧列表</span> **下标为 3 的节点** 判断两个节点是否 <span class="cor-tip">相同</span>
+
+发现 <span class="cor-tip">相同</span>
+
+执行 `patchVnode` 并 将 <span class="cor-wa">旧节点</span> 列表 当前下标置为 `undefined` 然后 **新节点头指针右移**
+
+<PicViewer title="第五次比较之后状态" src="/assets/vue/vue2_diff-6.png" darkSrc="/assets/vue/vue2_diff-dark6.png" alt="  "/>
+第六次循环 **进入复杂比较**
+
+当前新节点的 **key 为 8**，未取得 <span class="cor-wa">旧列表</span> 中节点
+
+执型 `createElm` 创建一个 <span class="cor-tip">新节点</span> 然后 **新节点头指针右移**
+
+<PicViewer title="第六次比较之后状态" src="/assets/vue/vue2_diff-7.png" darkSrc="/assets/vue/vue2_diff-dark7.png" alt="  "/>
+
+因 **newStartIdx > newEndIdx** 终止循环 进入 <span class="cor-tip">循环后处理</span>
+
+<span class="cor-tip">此时新节点列表已经生成</span>
+
+<PicViewer title="循环后处理时" src="/assets/vue/vue2_diff-8.png" darkSrc="/assets/vue/vue2_diff-dark8.png" alt="  "/>
+
+因为 **newStartIdx > newEndIdx** 可知是 <span class="cor-wa">新节点指针作用</span> <span class="cor-da">停止循环</span>
+
+因此要卸载 <span class="cor-wa">旧节点</span> 并取消其上的 <span class="cor-tip">钩子函数</span>
+
+#### 结果
+
+最终形成 **1,6,4,8,2,7** 这样的新节点列表
+
+#### 例子缺陷
+
+该例子没有展现出 `addVnodes` 方法 因为这样的情况是要 <span class="cor-tip">新节点</span> 的数量比 <span class="cor-wa">旧节点</span> 数量多的时候才会出现。(这个好理解)
