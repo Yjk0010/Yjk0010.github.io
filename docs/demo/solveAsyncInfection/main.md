@@ -2,10 +2,10 @@
 
 <script setup>
 import demo from "./index.vue"
-import timeLine from "./assets/timeLine.jpg"
-import timeLine_dark from "./assets/timeLine_dark.jpg"
-import thinking from "./assets/thinking.jpg"
-import thinking_dark from "./assets/thinking_dark.jpg"
+import timeLine from "./assets/timeLine.png"
+import timeLine_dark from "./assets/timeLine-dark.png"
+import thinking from "./assets/thinking.png"
+import thinking_dark from "./assets/thinking-dark.png"
 </script>
 
 ## 什么是异步传染？
