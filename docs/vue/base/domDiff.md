@@ -1,7 +1,7 @@
 # Dom Diff 算法
 
 <script setup>
-  import {ref} from "vue"
+import {ref} from "vue"
 import DetailInfo from "/components/DetailInfo/DetailInfo.vue"
 
 const info = ref({
@@ -487,10 +487,10 @@ const patchKeyedChildren = (
   // [i ... e2 + 1]: a b [e d c h] f g
   // i = 2, e1 = 4, e2 = 5
   else {
-    const s1 = i; // prev starting index
-    const s2 = i; // next starting index
+    const s1 = i; // 设置旧节点遍历起始位
+    const s2 = i; // 设置新节点当前头部索引位置
 
-    // 5.1 build key:index map for newChildren
+    // 5.1 创建一个新节点位置映射表
     const keyToNewIndexMap: Map<string | number | symbol, number> = new Map();
     for (i = s2; i <= e2; i++) {
       const nextChild = (c2[i] = optimized
@@ -508,34 +508,30 @@ const patchKeyedChildren = (
       }
     }
 
-    // 5.2 loop through old children left to be patched and try to patch
-    // matching nodes & remove nodes that are no longer present
+    // 5.2 遍历旧节点列表 进行patch 和删除节点
     let j;
     let patched = 0;
-    const toBePatched = e2 - s2 + 1;
-    let moved = false;
-    // used to track whether any node has moved
-    let maxNewIndexSoFar = 0;
-    // works as Map<newIndex, oldIndex>
-    // Note that oldIndex is offset by +1
-    // and oldIndex = 0 is a special value indicating the new node has
-    // no corresponding old node.
-    // used for determining longest stable subsequence
+    const toBePatched = e2 - s2 + 1; // 需要遍历的长度
+    let moved = false; // 用于跟踪是否有任何节点已移动
+    let maxNewIndexSoFar = 0; // 用来判断当前节点是否需要移动
+    // 新建 新旧节点位置映射表
     const newIndexToOldIndexMap = new Array(toBePatched);
-    for (i = 0; i < toBePatched; i++) newIndexToOldIndexMap[i] = 0;
+    for (i = 0; i < toBePatched; i++) newIndexToOldIndexMap[i] = 0; // 设置初始值为0
 
+    // 遍历需要遍历的旧节点列表
     for (i = s1; i <= e1; i++) {
       const prevChild = c1[i];
       if (patched >= toBePatched) {
-        // all new children have been patched so this can only be a removal
+        // 容错处理 当遍历节点大于 遍历长度的时候进行卸载操作
         unmount(prevChild, parentComponent, parentSuspense, true);
         continue;
       }
       let newIndex;
       if (prevChild.key != null) {
+        // 通过旧节点列表 获取新节点位置映射表对应的index
         newIndex = keyToNewIndexMap.get(prevChild.key);
       } else {
-        // key-less node, try to locate a key-less node of the same type
+        // 在没有key 的容错方案
         for (j = s2; j <= e2; j++) {
           if (
             newIndexToOldIndexMap[j - s2] === 0 &&
@@ -546,10 +542,13 @@ const patchKeyedChildren = (
           }
         }
       }
+      // 没找到进行卸载操作
       if (newIndex === undefined) {
         unmount(prevChild, parentComponent, parentSuspense, true);
       } else {
+        // 找到了之后将s1 + 1的值赋值到 新旧节点位置映射表
         newIndexToOldIndexMap[newIndex - s2] = i + 1;
+        // 判断是否有元素移动
         if (newIndex >= maxNewIndexSoFar) {
           maxNewIndexSoFar = newIndex;
         } else {
@@ -570,20 +569,21 @@ const patchKeyedChildren = (
       }
     }
 
-    // 5.3 move and mount
-    // generate longest stable subsequence only when nodes have moved
+    // 5.3 移动和创建
+    // 仅当节点移动时生成最长的稳定子序列
     const increasingNewIndexSequence = moved
       ? getSequence(newIndexToOldIndexMap)
       : EMPTY_ARR;
     j = increasingNewIndexSequence.length - 1;
-    // looping backwards so that we can use last patched node as anchor
+    // 后序遍历 以便于节点修补
     for (i = toBePatched - 1; i >= 0; i--) {
       const nextIndex = s2 + i;
       const nextChild = c2[nextIndex] as VNode;
       const anchor =
         nextIndex + 1 < l2 ? (c2[nextIndex + 1] as VNode).el : parentAnchor;
+      // 在新旧节点位置映射表 中发现值为0 新增节点
       if (newIndexToOldIndexMap[i] === 0) {
-        // mount new
+        // 新创建
         patch(
           null,
           nextChild,
@@ -596,9 +596,8 @@ const patchKeyedChildren = (
           optimized
         );
       } else if (moved) {
-        // move if:
-        // There is no stable subsequence (e.g. a reverse)
-        // OR current node is not among the stable sequence
+        // 在没有稳定的子序列（例如反向）
+        // OR当前节点不在稳定序列中
         if (j < 0 || i !== increasingNewIndexSequence[j]) {
           move(nextChild, container, anchor, MoveType.REORDER);
         } else {
