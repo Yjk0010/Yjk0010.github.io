@@ -288,8 +288,7 @@ function updateChildren(
 
 #### 为了方便理解我这边给上流程图
 
-<span class="cor-tip">Vue2 Dom Diff</span> 过程主要是由 **while 循环** 和 **循环后处理** 两个部分构成  
-下面我通过流程图解释了这段代码简要的流程处理
+<span class="cor-tip">Vue2 Dom Diff</span> 过程主要是由 **while 循环** 和 **循环后处理** 两个部分构成
 
 ::: details 点击展开 流程图中的单词解释
 <DetailInfo :info="info" labelWidth="120px" :col="2" :infoConfig="infoConfig"></DetailInfo>
@@ -298,11 +297,9 @@ function updateChildren(
 <PicViewer title="diff处理流程 while循环流程图" src="/assets/vue/vue2_diff_while.png" darkSrc="/assets/vue/vue2_diff_while-dark.png" alt="  "/>
 <PicViewer title="diff处理流程 循环后处理流程图" src="/assets/vue/vue2_diff_end.png" darkSrc="/assets/vue/vue2_diff_end-dark.png" alt="  "/>
 
-#### 这边用一个例子展示比较过程
+#### <span class="cor-tip">这边用一个例子展示比较过程</span>
 
 假设现在有节点 **1,2,3,4,5,6,7** 经过操作变成了 **1,6,4,8,2,7**
-
-初始化开始之后呈现当前状态
 
 - <span style="color:#a5d8ff">蓝色</span> 节点是 <span class="cor-pr">旧的虚拟 dom 节点</span>
 - <span style="color:#ffec99">黄色</span> 节点是 <span class="cor-wa">新的虚拟 dom 节点</span>
@@ -354,11 +351,11 @@ oldKeyToIdx = {
 
 #### 结果
 
-最终形成 **1,6,4,8,2,7** 这样的新节点列表
+复杂遍历过程之中 只 <span class="cor-da">删除了</span> **3,5 节点**， <span class="cor-tip">添加了</span> **8 节点**， <span class="cor-pr">复制</span> **4,6 节点**。<span class="cor-da">高效的完成了新旧节点的遍历转换</span>。
 
 #### 例子缺陷
 
-该例子没有展现出 `addVnodes` 方法 因为这样的情况是要 <span class="cor-tip">新节点</span> 的数量比 <span class="cor-wa">旧节点</span> 数量多的时候才会出现。(这个好理解)
+> 该例子没有展现出 `addVnodes` 方法 因为这样的情况是要 <span class="cor-tip">新节点</span> 的数量比 <span class="cor-wa">旧节点</span> 数量多的时候才会出现。(这个好理解)
 
 ### Vue3 实现过程 <Badge type="tip">3.3.4</Badge>
 
@@ -621,7 +618,7 @@ const patchKeyedChildren = (
 
 > 从流程上看 Vue3 相较于 Vue2 简化了很多但是性能上却另有提升，主要是分情况处理了仅添加和仅删除的情况，以及通过最长递增子序列来进行 dom 移动最小化的减少了 dom 的处理。
 
-#### 这边用一个例子展示比较过程
+#### <span class="cor-tip">这边用一个例子展示比较过程</span>
 
 假设现在有节点 **n1,n2,n3,n4,n5,n6,n7** 经过操作变成了 **n1,n6,n4,n5,n8,n7**
 
@@ -641,7 +638,7 @@ const patchKeyedChildren = (
 
 <PicViewer title="处理情况改变" src="/assets/vue/vue3_diff-2.png" darkSrc="/assets/vue/vue3_diff-dark2.png" alt=" "/>
 
-- <span class="cor-tip">i 递增</span> 为 **1**
+- **此时 i = 1**
 - <span class="cor-pr">节点 n2</span> 和 <span class="cor-wa">节点 n6</span> <span class="cor-in">不相等</span>
 - <span class="cor-da">结束</span> <span class="cor-tip">预处理前置节点</span>
 - **开始进行** <span class="cor-tip">预处理后置节点</span>
@@ -651,7 +648,7 @@ const patchKeyedChildren = (
 - <span class="cor-pr">旧节点索引</span> **e1 = 6**
 - <span class="cor-wa">新节点索引</span> **e2 = 5**
 - <span class="cor-tip">n7 节点相同</span> <span class="cor-da">patch</span> <span class="cor-tip">n7</span>
-- **继续处理** <span class="cor-tip">预处理后置节点</span> **e1--** **e2--**
+- **继续处理** <span class="cor-tip">预处理后置节点</span> `e1--` `e2--`
 
 <PicViewer title="处理情况改变" src="/assets/vue/vue3_diff-4.png" darkSrc="/assets/vue/vue3_diff-dark4.png" alt=" "/>
 
@@ -736,7 +733,7 @@ const patchKeyedChildren = (
 <PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-7.png" darkSrc="/assets/vue/vue3_diff-dark7.png" alt=" "/>
 
 - **此时 s1 = 3 , s2 = 1**
-- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n4** 取得 <span class="cor-wa">新节点索引值 2</span> 将 **s1+1 = 4** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **2 - s2 = 1** 的 **位置**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n4** 取得 <span class="cor-wa">新节点索引值 2</span> 将 **s1+1** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **2 - s2** 的 **位置**
 - <span class="cor-tip">patch 节点 n4</span>
 - **判断** <span class="cor-da">当前最远位置值</span> **0 < 2** 将**其值置**为 **2**
 - <span class="cor-tip">继续</span> `s1++`
@@ -744,7 +741,7 @@ const patchKeyedChildren = (
 <PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-8.png" darkSrc="/assets/vue/vue3_diff-dark8.png" alt=" "/>
 
 - **此时 s1 = 4 , s2 = 1**
-- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n5** 取得 <span class="cor-wa">新节点索引值 3</span> 将 **s1+1 = 5** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **3 - s2 = 2** 的 **位置**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n5** 取得 <span class="cor-wa">新节点索引值 3</span> 将 **s1+1** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **3 - s2** 的 **位置**
 - <span class="cor-tip">patch 节点 n5</span>
 - **判断** <span class="cor-da">当前最远位置值</span> **2 < 3** 将**其值置**为 **3**
 - <span class="cor-tip">继续</span> `s1++`
@@ -752,9 +749,9 @@ const patchKeyedChildren = (
 <PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-9.png" darkSrc="/assets/vue/vue3_diff-dark9.png" alt=" "/>
 
 - **此时 s1 = 5 , s2 = 1**
-- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n6** 取得 <span class="cor-wa">新节点索引值 1</span> 将 **s1+1 = 6** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **1 - s2 = 0** 的 **位置**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n6** 取得 <span class="cor-wa">新节点索引值 1</span> 将 **s1+1** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **1 - s2** 的 **位置**
 - <span class="cor-tip">patch 节点 n6</span>
-- **判断** <span class="cor-da">当前最远位置值</span> **3 > 1** 将**移动标识**为 **true**
+- **判断** <span class="cor-da">当前最远位置值</span> **3 > 1** 将 <span class="cor-pr">移动标识置为</span> **true**
 - <span class="cor-tip">继续</span> `s1++`
 
 <PicViewer title="diff处理 新旧节点关系映射表倒序遍历" src="/assets/vue/vue3_diff-10.png" darkSrc="/assets/vue/vue3_diff-dark10.png" alt=" "/>
@@ -763,7 +760,7 @@ const patchKeyedChildren = (
 - **s1 > e1** <span class="cor-da">结束</span> <span class="cor-tip">旧节点列表遍历</span>
 - 原有节点已经 <span class="cor-da">patch</span> 完毕了，剩下就是 <span class="cor-tip">新增</span> 和 <span class="cor-pr">移动</span> 节点了
 - 因为 **移动标识** 是 **true**
-- <span class="cor-wa">基于</span> <span class="cor-pr">新旧节点关系映射表</span> 取出其 <span class="cor-tip">最长递增子序列</span>
+- <span class="cor-wa">基于</span> <span class="cor-pr">新旧节点关系映射表</span> 取出其 <span class="cor-tip">最长递增子序列</span> **[4,5]** <span class="cor-da">此处返回的是其索引值</span> **[1,2]**
 - 然后 <span class="cor-tip">倒序遍历</span> <span class="cor-pr">新旧节点关系映射表</span>
 - <span class="cor-tip">创建</span> <span class="cor-pr">新旧节点关系映射表</span> <span class="cor-da">索引</span> **i = 3** , <span class="cor-tip">最长递增子序列</span> <span class="cor-da">索引</span> **j = 1**
 - **此时 i = 3** 对应 **n8 节点** <span class="cor-pr">新旧节点关系映射表</span> 中 **值为 0**, 说明 **节点 n8** 是一个 <span class="cor-tip">新增节点</span> <span class="cor-tip">新增 n8</span>
@@ -784,14 +781,14 @@ const patchKeyedChildren = (
 <PicViewer title="diff处理 新旧节点关系映射表倒序遍历" src="/assets/vue/vue3_diff-13.png" darkSrc="/assets/vue/vue3_diff-dark13.png" alt=" "/>
 
 - **此时 i = 0 , j = -1**
-- 因为 **j < 0** 所以 **执型** <span class="cor-pr">move</span>
+- 因为 **j < 0** 所以 **执型** <span class="cor-pr">move 函数</span>
 - 将 <span class="cor-pr">n6 移动到 新节点列表</span> **对应位置**
 - <span class="cor-tip">继续</span> `i-- = -1` 小于 0 <span class="cor-da">停止倒序遍历</span>
 - **至此遍历结束**
 
-#### 总结
+#### 结果
 
-- 复杂遍历过程之中 只 <span class="cor-da">删除了</span> n2,n3 节点， <span class="cor-tip">添加了</span> n8 节点， <span class="cor-pr">移动了</span> n6 节点。**极高效的完成了新旧节点的遍历转换**。
+- 复杂遍历过程之中 只 <span class="cor-da">删除了</span> **n2,n3 节点**， <span class="cor-tip">添加了</span> **n8 节点**， <span class="cor-pr">移动了</span> **n6 节点**。<span class="cor-da">极高效的完成了新旧节点的遍历转换</span>。
 
 ## 总结
 
