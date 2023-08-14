@@ -82,6 +82,10 @@ html.dark {
   color: var(--vp-c-red-light);
   font-weight: bold;
 }
+.cor-pr {
+  color: #409eff;
+  font-weight: bold;
+}
 
 input {
   background-color: rgba(0, 0, 0, 0.3);
