@@ -13,7 +13,6 @@ import vue from "./sidebar/vue"
 import webpack from "./sidebar/webpack"
 import componentDocs from "./sidebar/componentDocs"
 import example from "./sidebar/example"
-import interviewQuestion from "./sidebar/interviewQuestion"
 
 
 // https://vitepress.dev/reference/site-config
@@ -43,7 +42,7 @@ export default defineConfig({
       // { text: 'TYPESCRIPT', link: '/ts/main', activeMatch: '/ts' },
       { text: 'VUE', link: '/vue/main', activeMatch: '/vue' },
       // { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
-      { text: '面试题', link: '/interviewQuestion/main', activeMatch: '/interviewQuestion' },
+      // { text: '面试题', link: '/interviewQuestion/main', activeMatch: '/interviewQuestion' },
       { text: '例子', link: '/example/main', activeMatch: '/example' },
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
@@ -57,7 +56,6 @@ export default defineConfig({
       '/vue': vue,
       '/webpack': webpack,
       '/componentDocs': componentDocs,
-      '/interviewQuestion': interviewQuestion,
       '/example': example,
       '/aboutMe': [
         {
