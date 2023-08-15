@@ -1,4 +1,4 @@
-# 数字转大写
+# xxxxx
 
 ## 展示
 
@@ -11,7 +11,9 @@ import demo from "./index.vue"
 ## 代码实现
 
 ::: details 点击展开
-<<< @/demo/numberToBig/index.vue
+
+<!-- <<< @/example/demo/xxxxx/index.vue -->
+
 :::
 
-[视频讲解](https://www.douyin.com/video/7212234302401170743)
+[视频讲解](https://www.douyin.com/video/xxxxx)

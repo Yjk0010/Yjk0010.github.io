@@ -14,14 +14,14 @@ import festivalCountdown from "./festivalCountdown.vue"
 ::: details 翻转卡片组件 代码 点击展开
 模板 和 逻辑
 
-<<< @/demo/particleClock/flipCard.vue
+<<< @/example/demo/particleClock/flipCard.vue
 
 样式 和 动画
 
-<<< @/demo/particleClock/flipCard.scss
+<<< @/example/demo/particleClock/flipCard.scss
 :::
 ::: details 翻转卡片调用 代码 点击展开
-<<< @/demo/particleClock/cardTest.vue
+<<< @/example/demo/particleClock/cardTest.vue
 :::
 
 ## 小长假倒计时
@@ -29,7 +29,7 @@ import festivalCountdown from "./festivalCountdown.vue"
 <festivalCountdown/>
 
 ::: details 小长假倒计时 代码 点击展开
-<<< @/demo/particleClock/festivalCountdown.vue
+<<< @/example/demo/particleClock/festivalCountdown.vue
 :::
 
 ## 粒子时钟
@@ -37,7 +37,7 @@ import festivalCountdown from "./festivalCountdown.vue"
 <demo></demo>
 
 ::: details 粒子时钟 代码 点击展开
-<<< @/demo/particleClock/index.vue
+<<< @/example/demo/particleClock/index.vue
 :::
 
 [粒子时钟 视频讲解](https://www.douyin.com/video/7238231456416402748)

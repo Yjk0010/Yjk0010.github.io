@@ -17,7 +17,7 @@ import thinking_dark from "./assets/thinking-dark.png"
 <demo></demo>
 
 ::: details 点击展开 代码展示
-<<< @/demo/solveAsyncInfection/index.vue
+<<< @/example/demo/solveAsyncInfection/index.vue
 :::
 
 该功能代码中主要方法就是 **getImage(获取图片)** 方法，但是在它书写的时候由于是异步处理，

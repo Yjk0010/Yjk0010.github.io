@@ -12,7 +12,7 @@ import demo from "./index.vue"
 
 ::: details 点击展开
 
-<<< @/demo/borderLight/index.vue
+<<< @/example/demo/borderLight/index.vue
 
 :::
 

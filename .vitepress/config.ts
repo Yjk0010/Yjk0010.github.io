@@ -12,7 +12,7 @@ import ts from "./sidebar/ts"
 import vue from "./sidebar/vue"
 import webpack from "./sidebar/webpack"
 import componentDocs from "./sidebar/componentDocs"
-import demo from "./sidebar/demo"
+import example from "./sidebar/example"
 import interviewQuestion from "./sidebar/interviewQuestion"
 
 
@@ -43,9 +43,8 @@ export default defineConfig({
       // { text: 'TYPESCRIPT', link: '/ts/main', activeMatch: '/ts' },
       { text: 'VUE', link: '/vue/main', activeMatch: '/vue' },
       // { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
-      { text: '组件', link: '/componentDocs/main', activeMatch: '/componentDocs' },
       { text: '面试题', link: '/interviewQuestion/main', activeMatch: '/interviewQuestion' },
-      { text: 'DEMO', link: '/demo/main', activeMatch: '/demo' },
+      { text: '例子', link: '/example/main', activeMatch: '/example' },
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
     sidebar: {
@@ -59,7 +58,7 @@ export default defineConfig({
       '/webpack': webpack,
       '/componentDocs': componentDocs,
       '/interviewQuestion': interviewQuestion,
-      '/demo': demo,
+      '/example': example,
       '/aboutMe': [
         {
           text: '关于我',
