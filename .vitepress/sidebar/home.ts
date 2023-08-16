@@ -1,20 +1,32 @@
-export default [
+import type { DefaultTheme } from 'vitepress'
+
+export default (): DefaultTheme.SidebarItem[] => [
   {
     text: 'Main Page',
     collapsed: false,
+    base: '/home/',
     items:
       [
-        { text: '(•̀ᴗ•́)و ̑̑', link: '/home/main' },
+        { text: '(•̀ᴗ•́)و ̑̑', link: 'main' },
       ]
   },
   {
     text: '小知识',
     collapsed: false,
+    base: '/home/',
     items:
       [
-        { text: 'vitepress markdown 语法', link: '/home/base/md' },
-        // { text: 'HTTP', link: '/home/base/http' },
-        { text: '路径的写法', link: '/home/base/route' },
+        { text: 'vitepress markdown 语法', link: 'md' },
+      ]
+  },
+  {
+    text: '关于我',
+    collapsed: true,
+    base: '/home/aboutMe/',
+    items:
+      [
+        { text: '非常规介绍', link: 'main' },
+        { text: '个人简介', link: 'selfDesc' },
       ]
   },
 ]

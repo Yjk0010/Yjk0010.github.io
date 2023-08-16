@@ -14,7 +14,7 @@ hero:
       link: /home/main
     - theme: alt
       text: 围观一下博主
-      link: /aboutMe/main
+      link: /home/aboutMe/main
 
 features:
   - icon:

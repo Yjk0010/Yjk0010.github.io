@@ -4,15 +4,12 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import home from "./sidebar/home"
-import browser from "./sidebar/browser"
-import html from "./sidebar/html"
-import css from "./sidebar/css"
+import basic from "./sidebar/basic"
 import js from "./sidebar/js"
-import ts from "./sidebar/ts"
 import vue from "./sidebar/vue"
-import webpack from "./sidebar/webpack"
 import example from "./sidebar/example"
 import algorithm from "./sidebar/algorithm"
+
 
 
 // https://vitepress.dev/reference/site-config
@@ -27,48 +24,27 @@ export default defineConfig({
 
   themeConfig: {
     logo: '/favicon.ico',
-    outline: [2, 3],
+    outline: [2, 4],
     search: {
       provider: 'local'
     },
     outlineTitle: '目录导航',
     nav: [
-      { text: '开始', link: '/' },
-      { text: '主页', link: '/home/main', activeMatch: '/home' },
-      { text: '浏览器', link: '/browser/main', activeMatch: '/browser' },
-      { text: 'HTML', link: '/html/main', activeMatch: '/html' },
-      { text: 'CSS', link: '/css/main', activeMatch: '/css' },
-      { text: 'JAVASCRIPT', link: '/js/main', activeMatch: '/js' },
-      // { text: 'TYPESCRIPT', link: '/ts/main', activeMatch: '/ts' },
-      { text: 'VUE', link: '/vue/main', activeMatch: '/vue' },
-      // { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
-      // { text: '面试题', link: '/interviewQuestion/main', activeMatch: '/interviewQuestion' },
-      { text: '算法', link: '/algorithm/main', activeMatch: '/algorithm' },
+      { text: 'Jinke Blog', link: '/' },
+      { text: '介绍页', link: '/home/main', activeMatch: '/home/' },
+      { text: '基石', link: '/basic/main', activeMatch: '/basic/' },
+      { text: 'JAVASCRIPT', link: '/js/main', activeMatch: '/js/' },
+      { text: 'VUE', link: '/vue/main', activeMatch: '/vue/' },
+      { text: '算法', link: '/algorithm/main', activeMatch: '/algorithm/' },
       { text: '例子', link: '/example/main', activeMatch: '/example' },
-      // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
     sidebar: {
-      '/home': home,
-      '/browser': browser,
-      '/html': html,
-      '/css': css,
-      '/js': js,
-      '/ts': ts,
-      '/vue': vue,
-      '/webpack': webpack,
-      '/algorithm': algorithm,
-      '/example': example,
-      '/aboutMe': [
-        {
-          text: '关于我',
-          collapsed: false,
-          items:
-            [
-              { text: '首页', link: '/aboutMe/main' },
-              { text: '个人简介', link: '/aboutMe/selfDesc' },
-            ]
-        },
-      ]
+      '/home/': { base: '/home/', items: home() },
+      '/basic/': { base: '/basic/', items: basic() },
+      '/js/': { base: '/js/', items: js() },
+      '/vue/': { base: '/vue/', items: vue() },
+      '/algorithm/': { base: '/algorithm/', items: algorithm() },
+      '/example/': { base: '/example/', items: example() },
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Yjk0010/Yjk0010.github.io' },

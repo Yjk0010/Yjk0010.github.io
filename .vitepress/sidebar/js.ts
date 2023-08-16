@@ -1,40 +1,37 @@
-export default [
+import type { DefaultTheme } from 'vitepress'
+export default (): DefaultTheme.SidebarItem[] => [
   {
     text: 'Main Page',
     collapsed: false,
+    base: '/js/',
     items:
       [
-        { text: '介绍', link: '/js/main' },
-        { text: '小知识点', link: '/js/base/littleCase' },
+        { text: '介绍', link: 'main' },
+        { text: '小知识点', link: 'littleCase' },
+        { text: '小问题', link: 'littleQuestion' },
       ]
   },
   {
     text: '基础',
     collapsed: false,
+    base: '/js/base/',
     items:
       [
-        { text: '特性', link: '/js/base/feature' },
-        { text: '规范', link: '/js/base/criterion' },
-        { text: '数据类型', link: '/js/base/dataType' },
-        { text: '变量声明', link: '/js/base/variable' },
+        { text: '特性', link: 'feature' },
+        { text: '规范', link: 'criterion' },
+        { text: '数据类型', link: 'dataType' },
+        { text: '变量声明', link: 'variable' },
       ]
   },
   {
     text: '高级功法',
     collapsed: false,
+    base: '/js/advancedWay/',
     items:
       [
-        { text: 'toFixed不精确', link: '/js/advancedWay/toFixed' },
-        { text: '防抖和节流', link: '/js/advancedWay/debAndThr' },
+        { text: 'toFixed不精确', link: 'toFixed' },
+        { text: '防抖和节流', link: 'debAndThr' },
       ]
   },
-  {
-    text: '变态题',
-    collapsed: false,
-    items:
-      [
-        { text: '变态题', link: '/js/AbnormalQ/44Q' },
-      ]
-  }
 ]
 
