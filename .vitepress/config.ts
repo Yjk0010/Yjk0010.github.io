@@ -11,8 +11,8 @@ import js from "./sidebar/js"
 import ts from "./sidebar/ts"
 import vue from "./sidebar/vue"
 import webpack from "./sidebar/webpack"
-import componentDocs from "./sidebar/componentDocs"
 import example from "./sidebar/example"
+import algorithm from "./sidebar/algorithm"
 
 
 // https://vitepress.dev/reference/site-config
@@ -43,6 +43,7 @@ export default defineConfig({
       { text: 'VUE', link: '/vue/main', activeMatch: '/vue' },
       // { text: 'WEBPACK', link: '/webpack/main', activeMatch: '/webpack' },
       // { text: '面试题', link: '/interviewQuestion/main', activeMatch: '/interviewQuestion' },
+      { text: '算法', link: '/algorithm/main', activeMatch: '/algorithm' },
       { text: '例子', link: '/example/main', activeMatch: '/example' },
       // { text: '关于我', link: '/aboutMe/main', activeMatch: '/aboutMe' },
     ],
@@ -55,7 +56,7 @@ export default defineConfig({
       '/ts': ts,
       '/vue': vue,
       '/webpack': webpack,
-      '/componentDocs': componentDocs,
+      '/algorithm': algorithm,
       '/example': example,
       '/aboutMe': [
         {
