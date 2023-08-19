@@ -2,7 +2,7 @@
 
 ## 什么是 HTML
 
-### 全称: Hyper Text Markup Language
+<span class="cor-da">全称: Hyper Text Markup Language</span>
 
 > 查询 <span class="cor-tip">HTML</span> 最新消息 传送门 [MDN HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
 
@@ -50,7 +50,7 @@ HTML 是 W3C 组织定义的语言标准：HTML 是用于描述<span class="cor-
 
 - 属性 = 属性名 + 属性值
 
-### 属性的分类：
+### 属性的分类
 
 - 局部属性：某些元素特有的属性
 - 全局属性：所有元素通用

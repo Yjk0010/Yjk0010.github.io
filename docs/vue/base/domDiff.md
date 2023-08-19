@@ -286,7 +286,9 @@ function updateChildren(
 
 :::
 
-#### 为了方便理解我这边给上流程图
+#### 流程图
+
+> 为了方便理解我这边给上流程图
 
 <span class="cor-tip">Vue2 Dom Diff</span> 过程主要是由 **while 循环** 和 **循环后处理** 两个部分构成
 
@@ -297,7 +299,7 @@ function updateChildren(
 <PicViewer title="diff处理流程 while循环流程图" src="/assets/vue/vue2_diff_while.png" darkSrc="/assets/vue/vue2_diff_while-dark.png" alt="  "/>
 <PicViewer title="diff处理流程 循环后处理流程图" src="/assets/vue/vue2_diff_end.png" darkSrc="/assets/vue/vue2_diff_end-dark.png" alt="  "/>
 
-#### <span class="cor-tip">这边用一个例子展示比较过程</span>
+#### <span class="cor-tip">例子展示比较过程</span>
 
 假设现在有节点 **1,2,3,4,5,6,7** 经过操作变成了 **1,6,4,8,2,7**
 
@@ -612,13 +614,15 @@ const patchKeyedChildren = (
 
 :::
 
-#### 为了方便理解我这边给上流程图
+#### 流程图
+
+> 为了方便理解我这边给上流程图
 
 <PicViewer title="diff处理流程" src="/assets/vue/vue3_diff_flow.png" darkSrc="/assets/vue/vue3_diff_flow-dark.png" alt="  "/>
 
 > 从流程上看 Vue3 相较于 Vue2 简化了很多但是性能上却另有提升，主要是分情况处理了仅添加和仅删除的情况，以及通过最长递增子序列来进行 dom 移动最小化的减少了 dom 的处理。
 
-#### <span class="cor-tip">这边用一个例子展示比较过程</span>
+#### <span class="cor-tip">例子展示比较过程</span>
 
 假设现在有节点 **n1,n2,n3,n4,n5,n6,n7** 经过操作变成了 **n1,n6,n4,n5,n8,n7**
 
