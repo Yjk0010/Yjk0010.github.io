@@ -33,6 +33,17 @@ html:root {
   --them-scrollbar-thumb-color: #c0c0c0;
   --them-scrollbar-track-color: #f2f2f2;
   --them-scrollbar-thumb-hover-color: #a0a0a0;
+  --vp-c-brand: var(--vp-c-green);
+  --vp-c-brand: var(--vp-c-green);
+  --vp-c-brand-light: var(--vp-c-green-light);
+  --vp-c-brand-lighter: var(--vp-c-green-lighter);
+  --vp-c-brand-lightest: var(--vp-c-green-lightest);
+  --vp-c-brand-dark: var(--vp-c-green-dark);
+  --vp-c-brand-darker: var(--vp-c-green-darker);
+  --vp-c-brand-darkest: var(--vp-c-green-darkest);
+  --vp-c-brand-dimm-1: var(--vp-c-green-dimm-1);
+  --vp-c-brand-dimm-2: var(--vp-c-green-dimm-2);
+  --vp-c-brand-dimm-3: var(--vp-c-green-dimm-3);
 }
 html.dark {
   --el-color-primary: #10b981;
@@ -80,6 +91,10 @@ html.dark {
 }
 .cor-da {
   color: var(--vp-c-red-light);
+  font-weight: bold;
+}
+.cor-pr {
+  color: #409eff;
   font-weight: bold;
 }
 

@@ -1,7 +1,7 @@
 # Dom Diff 算法
 
 <script setup>
-import {ref} from "vue"
+  import {ref} from "vue"
 import DetailInfo from "/components/DetailInfo/DetailInfo.vue"
 
 const info = ref({
@@ -288,8 +288,7 @@ function updateChildren(
 
 #### 为了方便理解我这边给上流程图
 
-<span class="cor-tip">Vue2 Dom Diff</span> 过程主要是由 **while 循环** 和 **循环后处理** 两个部分构成  
-下面我通过流程图解释了这段代码简要的流程处理
+<span class="cor-tip">Vue2 Dom Diff</span> 过程主要是由 **while 循环** 和 **循环后处理** 两个部分构成
 
 ::: details 点击展开 流程图中的单词解释
 <DetailInfo :info="info" labelWidth="120px" :col="2" :infoConfig="infoConfig"></DetailInfo>
@@ -298,15 +297,13 @@ function updateChildren(
 <PicViewer title="diff处理流程 while循环流程图" src="/assets/vue/vue2_diff_while.png" darkSrc="/assets/vue/vue2_diff_while-dark.png" alt="  "/>
 <PicViewer title="diff处理流程 循环后处理流程图" src="/assets/vue/vue2_diff_end.png" darkSrc="/assets/vue/vue2_diff_end-dark.png" alt="  "/>
 
-#### 这边用一个例子展示比较过程
+#### <span class="cor-tip">这边用一个例子展示比较过程</span>
 
 假设现在有节点 **1,2,3,4,5,6,7** 经过操作变成了 **1,6,4,8,2,7**
 
-初始化开始之后呈现当前状态
-
-- <span style="color:#a5d8ff">蓝色</span>节点是 <span class="cor-wa">旧的虚拟 dom 节点</span>
-- <span style="color:#ffec99">黄色</span>节点是 <span class="cor-tip">新的虚拟 dom 节点</span>
-- <span style="color:#b2f2bb">变成绿色</span>说明 **diff 成功 已经更新**
+- <span style="color:#a5d8ff">蓝色</span> 节点是 <span class="cor-pr">旧的虚拟 dom 节点</span>
+- <span style="color:#ffec99">黄色</span> 节点是 <span class="cor-wa">新的虚拟 dom 节点</span>
+- <span style="color:#b2f2bb">变成绿色</span> 说明 <span class="cor-tip">diff 成功 已经更新</span>
 
 <PicViewer title="初始状态" src="/assets/vue/vue2_diff-1.png" darkSrc="/assets/vue/vue2_diff-dark1.png" alt=" "/>
 第一次循环 **头头比较** <span class="cor-tip">成功</span>  执行`patchVnode` **两个头指针 右移**
@@ -354,11 +351,11 @@ oldKeyToIdx = {
 
 #### 结果
 
-最终形成 **1,6,4,8,2,7** 这样的新节点列表
+复杂遍历过程之中 只 <span class="cor-da">删除了</span> **3,5 节点**， <span class="cor-tip">添加了</span> **8 节点**， <span class="cor-pr">复制</span> **4,6 节点**。<span class="cor-da">高效的完成了新旧节点的遍历转换</span>。
 
 #### 例子缺陷
 
-该例子没有展现出 `addVnodes` 方法 因为这样的情况是要 <span class="cor-tip">新节点</span> 的数量比 <span class="cor-wa">旧节点</span> 数量多的时候才会出现。(这个好理解)
+> 该例子没有展现出 `addVnodes` 方法 因为这样的情况是要 <span class="cor-tip">新节点</span> 的数量比 <span class="cor-wa">旧节点</span> 数量多的时候才会出现。(这个好理解)
 
 ### Vue3 实现过程 <Badge type="tip">3.3.4</Badge>
 
@@ -487,15 +484,16 @@ const patchKeyedChildren = (
   // [i ... e2 + 1]: a b [e d c h] f g
   // i = 2, e1 = 4, e2 = 5
   else {
-    const s1 = i; // 设置旧节点遍历起始位
-    const s2 = i; // 设置新节点当前头部索引位置
+    const s1 = i; // 记录旧节点列表遍历开始节点索引
+    const s2 = i; // 记录新节点列表遍历开始节点索引
 
-    // 5.1 创建一个新节点位置映射表
+    // 5.1 创建 新节点位置映射表
     const keyToNewIndexMap: Map<string | number | symbol, number> = new Map();
     for (i = s2; i <= e2; i++) {
       const nextChild = (c2[i] = optimized
         ? cloneIfMounted(c2[i] as VNode)
         : normalizeVNode(c2[i]));
+      // key值重复的提示
       if (nextChild.key != null) {
         if (__DEV__ && keyToNewIndexMap.has(nextChild.key)) {
           warn(
@@ -508,30 +506,32 @@ const patchKeyedChildren = (
       }
     }
 
-    // 5.2 遍历旧节点列表 进行patch 和删除节点
+    // 5.2 遍历需要patch的节点以及删除不存在的节点
     let j;
     let patched = 0;
-    const toBePatched = e2 - s2 + 1; // 需要遍历的长度
-    let moved = false; // 用于跟踪是否有任何节点已移动
-    let maxNewIndexSoFar = 0; // 用来判断当前节点是否需要移动
-    // 新建 新旧节点位置映射表
+    // 记录需要处理节点的长度
+    const toBePatched = e2 - s2 + 1;
+    // 用于跟踪是有有任何节点移动
+    let moved = false;
+    // 当前距离新节点最远位置  用来判断是否需要移动
+    let maxNewIndexSoFar = 0;
+    // 新旧节点位置映射表 注意内部存储的值是 是s1+1的值  因为0是一个 特殊值  用来判断是否是新增节点
     const newIndexToOldIndexMap = new Array(toBePatched);
-    for (i = 0; i < toBePatched; i++) newIndexToOldIndexMap[i] = 0; // 设置初始值为0
+    for (i = 0; i < toBePatched; i++) newIndexToOldIndexMap[i] = 0;
 
-    // 遍历需要遍历的旧节点列表
     for (i = s1; i <= e1; i++) {
       const prevChild = c1[i];
       if (patched >= toBePatched) {
-        // 容错处理 当遍历节点大于 遍历长度的时候进行卸载操作
+        // 所有的节点在之前处理已经全部patch过 如果再出现那就是需要删除的节点
         unmount(prevChild, parentComponent, parentSuspense, true);
         continue;
       }
+      // 新节点的位置索引
       let newIndex;
       if (prevChild.key != null) {
-        // 通过旧节点列表 获取新节点位置映射表对应的index
         newIndex = keyToNewIndexMap.get(prevChild.key);
       } else {
-        // 在没有key 的容错方案
+        // 无KEY得时候查找
         for (j = s2; j <= e2; j++) {
           if (
             newIndexToOldIndexMap[j - s2] === 0 &&
@@ -542,18 +542,18 @@ const patchKeyedChildren = (
           }
         }
       }
-      // 没找到进行卸载操作
       if (newIndex === undefined) {
+        // 未找到key进行删除操作
         unmount(prevChild, parentComponent, parentSuspense, true);
       } else {
-        // 找到了之后将s1 + 1的值赋值到 新旧节点位置映射表
+        // 找到值之后放入 新旧节点位置映射表 中 并根据最远位置判断是否需要移动
         newIndexToOldIndexMap[newIndex - s2] = i + 1;
-        // 判断是否有元素移动
         if (newIndex >= maxNewIndexSoFar) {
           maxNewIndexSoFar = newIndex;
         } else {
           moved = true;
         }
+        // 并patch更新
         patch(
           prevChild,
           c2[newIndex] as VNode,
@@ -565,25 +565,25 @@ const patchKeyedChildren = (
           slotScopeIds,
           optimized
         );
+        // 更新指针右移
         patched++;
       }
     }
 
-    // 5.3 移动和创建
+    // 5.3 移动和挂载
     // 仅当节点移动时生成最长的稳定子序列
     const increasingNewIndexSequence = moved
       ? getSequence(newIndexToOldIndexMap)
       : EMPTY_ARR;
     j = increasingNewIndexSequence.length - 1;
-    // 后序遍历 以便于节点修补
+    // 倒序遍历以方便使用最后一个节点为根节点方便循序
     for (i = toBePatched - 1; i >= 0; i--) {
       const nextIndex = s2 + i;
       const nextChild = c2[nextIndex] as VNode;
       const anchor =
         nextIndex + 1 < l2 ? (c2[nextIndex + 1] as VNode).el : parentAnchor;
-      // 在新旧节点位置映射表 中发现值为0 新增节点
       if (newIndexToOldIndexMap[i] === 0) {
-        // 新创建
+        // 新节点挂载
         patch(
           null,
           nextChild,
@@ -596,8 +596,9 @@ const patchKeyedChildren = (
           optimized
         );
       } else if (moved) {
-        // 在没有稳定的子序列（例如反向）
-        // OR当前节点不在稳定序列中
+        // 在以下情况下移动：
+        // 没有 最长递增子序列（例如反向）
+        // 当前节点不在 最长递增子序列中
         if (j < 0 || i !== increasingNewIndexSequence[j]) {
           move(nextChild, container, anchor, MoveType.REORDER);
         } else {
@@ -610,3 +611,185 @@ const patchKeyedChildren = (
 ```
 
 :::
+
+#### 为了方便理解我这边给上流程图
+
+<PicViewer title="diff处理流程" src="/assets/vue/vue3_diff_flow.png" darkSrc="/assets/vue/vue3_diff_flow-dark.png" alt="  "/>
+
+> 从流程上看 Vue3 相较于 Vue2 简化了很多但是性能上却另有提升，主要是分情况处理了仅添加和仅删除的情况，以及通过最长递增子序列来进行 dom 移动最小化的减少了 dom 的处理。
+
+#### <span class="cor-tip">这边用一个例子展示比较过程</span>
+
+假设现在有节点 **n1,n2,n3,n4,n5,n6,n7** 经过操作变成了 **n1,n6,n4,n5,n8,n7**
+
+- <span style="color:#a5d8ff">蓝色</span> 节点是 <span class="cor-pr">旧的虚拟 dom 节点</span>
+- <span style="color:#ffec99">黄色</span> 节点是 <span class="cor-wa">新的虚拟 dom 节点</span>
+- <span style="color:#ffc9c9">红色</span> 节点是 <span class="cor-da">当前选中比较的节点</span>
+- <span style="color:#b2f2bb">变成绿色</span> 说明 <span class="cor-tip">diff 成功 已经更新</span>
+
+<PicViewer title="预处理前置节点" src="/assets/vue/vue3_diff-1.png" darkSrc="/assets/vue/vue3_diff-dark1.png" alt=" "/>
+
+- <span class="cor-tip">创建遍历索引</span> **i = 0**
+- <span class="cor-pr">创建旧节点结束索引</span> **e1 = 6**
+- <span class="cor-wa">创建新节点结束索引</span> **e2 = 5**
+- **开始** <span class="cor-tip">预处理前置节点</span>
+- <span class="cor-tip">n1 节点相同</span> <span class="cor-da">patch</span> <span class="cor-tip">n1</span>
+- **继续处理** <span class="cor-tip">预处理前置节点</span> `i++`
+
+<PicViewer title="处理情况改变" src="/assets/vue/vue3_diff-2.png" darkSrc="/assets/vue/vue3_diff-dark2.png" alt=" "/>
+
+- **此时 i = 1**
+- <span class="cor-pr">节点 n2</span> 和 <span class="cor-wa">节点 n6</span> <span class="cor-in">不相等</span>
+- <span class="cor-da">结束</span> <span class="cor-tip">预处理前置节点</span>
+- **开始进行** <span class="cor-tip">预处理后置节点</span>
+
+<PicViewer title="预处理后置节点" src="/assets/vue/vue3_diff-3.png" darkSrc="/assets/vue/vue3_diff-dark3.png" alt=" "/>
+
+- <span class="cor-pr">旧节点索引</span> **e1 = 6**
+- <span class="cor-wa">新节点索引</span> **e2 = 5**
+- <span class="cor-tip">n7 节点相同</span> <span class="cor-da">patch</span> <span class="cor-tip">n7</span>
+- **继续处理** <span class="cor-tip">预处理后置节点</span> `e1--` `e2--`
+
+<PicViewer title="处理情况改变" src="/assets/vue/vue3_diff-4.png" darkSrc="/assets/vue/vue3_diff-dark4.png" alt=" "/>
+
+- <span class="cor-pr">旧节点索引</span> **el = 5**
+- <span class="cor-wa">新节点索引</span> **e2 = 4**
+- <span class="cor-pr">节点 n6</span> 和 <span class="cor-wa">节点 n8</span> <span class="cor-in">不相等</span>
+- <span class="cor-da">结束</span> <span class="cor-tip">预处理后置节点</span>
+
+> <span class="cor-tip">仅新增</span> 和 <span class="cor-da">仅删除</span> 情况无法进入复杂处理 展示如下
+
+::: details 这里是仅新增的情况
+
+处理旧节点列表为 **n1,n7** 新节点列表为 **n1,n6,n4,n5,n8,n7**
+
+<PicViewer title="预处理后置节点" src="/assets/vue/vue3_diff-21.png" darkSrc="/assets/vue/vue3_diff-dark21.png" alt=" "/>
+
+- <span class="cor-tip">预处理前置节点</span> 已省略 直接过度到 <span class="cor-tip">预处理后置节点</span>
+- <span class="cor-tip">索引</span> **i = 1**
+- <span class="cor-pr">旧节点索引</span> **el = 1**
+- <span class="cor-wa">新节点索引</span> **e2 = 5**
+- <span class="cor-da">patch</span> <span class="cor-tip">n7</span>
+- **继续** <span class="cor-tip">预处理后置节点</span>
+
+<PicViewer title="仅新增判断" src="/assets/vue/vue3_diff-22.png" darkSrc="/assets/vue/vue3_diff-dark22.png" alt=" "/>
+
+- <span class="cor-tip">索引</span> **i = 1**
+- <span class="cor-pr">旧节点索引</span> **el = 0**
+- <span class="cor-wa">新节点索引</span> **e2 = 4**
+- <span class="cor-pr">节点 n1</span> 和 <span class="cor-wa">节点 n8</span> <span class="cor-in">不相等</span>
+- <span class="cor-da">结束</span> <span class="cor-tip">预处理后置节点</span>
+- 但 **此时可以发现** 当 **i > e1 && i <= e2** 即可证明剩下节点即为 <span class="cor-tip">仅新增节点</span>
+- 所以只需要对 **n6,n4,n5,n8** 进行 **新增即可**。
+
+<PicViewer title="新增操作" src="/assets/vue/vue3_diff-23.png" darkSrc="/assets/vue/vue3_diff-dark23.png" alt=" "/>
+:::
+
+::: details 这里是仅删除的情况
+处理旧节点列表为 **n1,n2,n3,n4,n5,n6,n7** 新节点列表为 **n1,n7**
+
+<PicViewer title="预处理后置节点" src="/assets/vue/vue3_diff-31.png" darkSrc="/assets/vue/vue3_diff-dark31.png" alt=" "/>
+
+- <span class="cor-tip">预处理前置节点</span> 已省略 直接过度到 <span class="cor-tip">预处理后置节点</span>
+- <span class="cor-tip">索引</span> **i = 1**
+- <span class="cor-pr">旧节点索引</span> **el = 6**
+- <span class="cor-wa">新节点索引</span> **e2 = 1**
+- <span class="cor-da">patch</span> <span class="cor-tip">n7</span>
+- **继续** <span class="cor-tip">预处理后置节点</span>
+
+<PicViewer title="仅新增判断" src="/assets/vue/vue3_diff-32.png" darkSrc="/assets/vue/vue3_diff-dark32.png" alt=" "/>
+
+- <span class="cor-tip">索引</span> **i = 1**
+- <span class="cor-pr">旧节点索引</span> **el = 5**
+- <span class="cor-wa">新节点索引</span> **e2 = 0**
+- <span class="cor-pr">节点 n6</span> 和 <span class="cor-wa">节点 n1</span> <span class="cor-in">不相等</span>
+- <span class="cor-da">结束</span> <span class="cor-tip">预处理后置节点</span>
+- 但 **此时可以发现** 当 **i > e2 && i <= e1** 即可证明剩下节点即为 <span class="cor-tip">仅删除节点</span>
+- 所以只需要对 **n2,n3,n4,n5,n6** 进行 **删除即可**。
+
+<PicViewer title="删除操作" src="/assets/vue/vue3_diff-33.png" darkSrc="/assets/vue/vue3_diff-dark33.png" alt=" "/>
+:::
+
+> 这里就是 <span class="cor-da">其他复杂情况 也就是 diff 处理核心</span> 了
+
+<PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-5.png" darkSrc="/assets/vue/vue3_diff-dark5.png" alt=" "/>
+
+- <span class="cor-tip">创建</span> **s1 = s2 = i = 1**
+- <span class="cor-tip">创建</span> <span class="cor-wa">新节点位置映射表</span> 如图
+- <span class="cor-tip">创建</span> <span class="cor-pr">新旧节点位置映射表</span> 如图
+- <span class="cor-pr">设置</span> **当前最远位置 = 0**
+- <span class="cor-pr">设置</span> **移动标识 = false**
+- <span class="cor-tip">开始</span> <span class="cor-wa">遍历旧节点列表</span>
+- **此时 s1 = 1**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-da">未找到</span> **n2** <span class="cor-da">删除 n2 节点</span>
+- <span class="cor-tip">继续</span> `s1++`
+
+<PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-6.png" darkSrc="/assets/vue/vue3_diff-dark6.png" alt=" "/>
+
+- **此时 s1 = 2**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-da">未找到</span> **n3** <span class="cor-da">删除 n3 节点</span>
+- <span class="cor-tip">继续</span> `s1++`
+
+<PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-7.png" darkSrc="/assets/vue/vue3_diff-dark7.png" alt=" "/>
+
+- **此时 s1 = 3 , s2 = 1**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n4** 取得 <span class="cor-wa">新节点索引值 2</span> 将 **s1+1** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **2 - s2** 的 **位置**
+- <span class="cor-tip">patch 节点 n4</span>
+- **判断** <span class="cor-da">当前最远位置值</span> **0 < 2** 将**其值置**为 **2**
+- <span class="cor-tip">继续</span> `s1++`
+
+<PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-8.png" darkSrc="/assets/vue/vue3_diff-dark8.png" alt=" "/>
+
+- **此时 s1 = 4 , s2 = 1**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n5** 取得 <span class="cor-wa">新节点索引值 3</span> 将 **s1+1** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **3 - s2** 的 **位置**
+- <span class="cor-tip">patch 节点 n5</span>
+- **判断** <span class="cor-da">当前最远位置值</span> **2 < 3** 将**其值置**为 **3**
+- <span class="cor-tip">继续</span> `s1++`
+
+<PicViewer title="diff处理 旧节点遍历" src="/assets/vue/vue3_diff-9.png" darkSrc="/assets/vue/vue3_diff-dark9.png" alt=" "/>
+
+- **此时 s1 = 5 , s2 = 1**
+- **在** <span class="cor-wa">新节点位置映射表</span> 中 <span class="cor-tip">找到</span> **n6** 取得 <span class="cor-wa">新节点索引值 1</span> 将 **s1+1** 的值 放入 <span class="cor-pr">新旧节点映射表</span> 索引为 **1 - s2** 的 **位置**
+- <span class="cor-tip">patch 节点 n6</span>
+- **判断** <span class="cor-da">当前最远位置值</span> **3 > 1** 将 <span class="cor-pr">移动标识置为</span> **true**
+- <span class="cor-tip">继续</span> `s1++`
+
+<PicViewer title="diff处理 新旧节点关系映射表倒序遍历" src="/assets/vue/vue3_diff-10.png" darkSrc="/assets/vue/vue3_diff-dark10.png" alt=" "/>
+
+- **此时 s1 = 6 , e1 = 5**
+- **s1 > e1** <span class="cor-da">结束</span> <span class="cor-tip">旧节点列表遍历</span>
+- 原有节点已经 <span class="cor-da">patch</span> 完毕了，剩下就是 <span class="cor-tip">新增</span> 和 <span class="cor-pr">移动</span> 节点了
+- 因为 **移动标识** 是 **true**
+- <span class="cor-wa">基于</span> <span class="cor-pr">新旧节点关系映射表</span> 取出其 <span class="cor-tip">最长递增子序列</span> **[4,5]** <span class="cor-da">此处返回的是其索引值</span> **[1,2]**
+- 然后 <span class="cor-tip">倒序遍历</span> <span class="cor-pr">新旧节点关系映射表</span>
+- <span class="cor-tip">创建</span> <span class="cor-pr">新旧节点关系映射表</span> <span class="cor-da">索引</span> **i = 3** , <span class="cor-tip">最长递增子序列</span> <span class="cor-da">索引</span> **j = 1**
+- **此时 i = 3** 对应 **n8 节点** <span class="cor-pr">新旧节点关系映射表</span> 中 **值为 0**, 说明 **节点 n8** 是一个 <span class="cor-tip">新增节点</span> <span class="cor-tip">新增 n8</span>
+- <span class="cor-tip">继续</span> `i--`
+
+<PicViewer title="diff处理 新旧节点关系映射表倒序遍历" src="/assets/vue/vue3_diff-11.png" darkSrc="/assets/vue/vue3_diff-dark11.png" alt=" "/>
+
+- **此时 i = 2 , j = 1**
+- 因为 <span class="cor-tip">最长递增子序列的第 j 位的值</span> 与 **i** 相等 **所以** `j--`
+- <span class="cor-tip">继续</span> `i--`
+
+<PicViewer title="diff处理 新旧节点关系映射表倒序遍历" src="/assets/vue/vue3_diff-12.png" darkSrc="/assets/vue/vue3_diff-dark12.png" alt=" "/>
+
+- **此时 i = 1 , j = 0**
+- 因为 <span class="cor-tip">最长递增子序列的第 j 位的值</span> 与 **i** 相等 **所以** `j--`
+- <span class="cor-tip">继续</span> `i--`
+
+<PicViewer title="diff处理 新旧节点关系映射表倒序遍历" src="/assets/vue/vue3_diff-13.png" darkSrc="/assets/vue/vue3_diff-dark13.png" alt=" "/>
+
+- **此时 i = 0 , j = -1**
+- 因为 **j < 0** 所以 **执型** <span class="cor-pr">move 函数</span>
+- 将 <span class="cor-pr">n6 移动到 新节点列表</span> **对应位置**
+- <span class="cor-tip">继续</span> `i-- = -1` 小于 0 <span class="cor-da">停止倒序遍历</span>
+- **至此遍历结束**
+
+#### 结果
+
+- 复杂遍历过程之中 只 <span class="cor-da">删除了</span> **n2,n3 节点**， <span class="cor-tip">添加了</span> **n8 节点**， <span class="cor-pr">移动了</span> **n6 节点**。<span class="cor-da">极高效的完成了新旧节点的遍历转换</span>。
+
+## 总结
+
+> Dom Diff 算法 Vue3 相较于 Vue2 中 针对 新增 删除 ，以及 复杂 diff 中的最长递增子序列都增加了对 dom 处理的速度。

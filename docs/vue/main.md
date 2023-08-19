@@ -30,4 +30,4 @@
 
 总之,<span class="cor-tip">Vue</span>是一个易用、灵活且高效的前端框架,可以快速构建界面丰富的单页应用。它非常适合快速开发项目。
 
-##<span class="cor-da">尤大大镇楼</span>[twitter](https://twitter.com/youyuxi) [github](https://github.com/yyx990803)
+## <span class="cor-da">尤大大镇楼</span>[twitter](https://twitter.com/youyuxi) [github](https://github.com/yyx990803)
