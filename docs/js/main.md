@@ -22,7 +22,7 @@
 
 > ECMA-262 标准后来也被另一个国际标准化组织 `ISO`(International Organization for Standardization)批准, 标准号是 **ISO-16262**
 
-## ECMAScript
+## ECMAScript 历程
 
 <span class="cor-wa">1997 年 7 月</span> **ECMAScript 1.0** 发布。
 
@@ -46,6 +46,8 @@
 
 > 这是因为 `TC39` 委员会计划, 以后每年发布一个 `ECMAScript` 的版本, 下一个版本在 _2016_ 年发布, 称为“**ECMAScript 2016**”, _2017_ 年发布“**ECMAScript 2017**”, 以此类推。
 
-### 现在是 <span class="cor-wa">2023</span> 年 `ECMAScript` 已经发布到 **ES13** _ECMAScript 2022_
+## 现在
 
-_JS 语言之父_ -> <span class="cor-da">Brendan Eich</span> -> [to github](https://github.com/BrendanEich)
+<span class="cor-wa">2023</span> 年 `ECMAScript` 已经发布到 **ES13** <span class="cor-pr">ECMAScript 2022</span>
+
+<span class="cor-pr">JS 语言之父</span> -> <span class="cor-da">Brendan Eich</span> -> [to github](https://github.com/BrendanEich)

@@ -18,7 +18,9 @@
  浏览器使用自己的怪异模式解析渲染页面。  
  在怪异模式中, 页面以一种比较宽松的向后兼容的方式显示。
 
-## script 标签中 defer 和 async 的区别
+## defer 和 async
+
+<span class="cor-da">script 标签中 defer 和 async 的区别</span>
 
 > 如果没有 defer 或 async 属性, 浏览器会立即加载并执行相应的脚本。
 > 它不会等待后续加载的文档元素, 读取到就会开始加载和执行, 这样
