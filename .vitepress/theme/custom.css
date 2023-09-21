@@ -1,16 +1,7 @@
 @font-face {
   font-family: DingTalkJinBuTi;
-  src: url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.eot)
-      format("embedded-opentype"),
-    /* 阿里那边404了 */
-      /* url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.otf)
-      format("opentype"), */
-      url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.ttf)
-      format("TrueType"),
-    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.woff)
-      format("woff"),
-    url(https://puhuiti.oss-cn-hangzhou.aliyuncs.com/DingTalkJinBuTi/DingTalkJinBuTi-Regular/DingTalkJinBuTi-Regular.woff2)
-      format("woff2");
+  src: url("/style/font/DingTalkJinBuTi.ttf") format("TrueType"),
+    url("/style/font/DingTalkSans.ttf") format("TrueType");
 }
 
 html:root {
