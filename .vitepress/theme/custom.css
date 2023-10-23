@@ -69,7 +69,7 @@ html.dark {
 }
 
 .cor-tip {
-  color: var(--vp-c-green-light);
+  color: #34d399;
   font-weight: bold;
 }
 .cor-in {
@@ -77,11 +77,11 @@ html.dark {
   font-weight: bold;
 }
 .cor-wa {
-  color: var(--vp-c-yellow-light);
+  color: #facc15;
   font-weight: bold;
 }
 .cor-da {
-  color: var(--vp-c-red-light);
+  color: #fb7185;
   font-weight: bold;
 }
 .cor-pr {
@@ -98,18 +98,18 @@ input {
 }
 
 em {
-  color: #09a0ec;
+  color: #39a7e0;
   font-weight: bold;
 }
 
 strong {
-  color: #cf8fef;
+  color: #37cac5;
   font-weight: bold;
 }
 
 .vp-doc blockquote > ul,
 .vp-doc blockquote > ol {
-  color: var(--vp-c-text-2);
+  color: rgba(60, 60, 67, 0.7);
 }
 
 /* Webkit 浏览器（如 Chrome、Safari） */
