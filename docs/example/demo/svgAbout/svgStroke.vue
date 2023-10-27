@@ -16,7 +16,6 @@
           class="p"
         />
         <path d="m103,35c59.02702,-19 116.24324,10 136,53" class="p" />
-        <path d="m166,263" class="p" />
         <path d="m173,262c36.81579,-7 55.31579,-20 71,-61" class="p" />
         <path
           d="m93,178c0.47945,10.86931 11.0274,23.41081 35,21.32056"
@@ -38,7 +37,7 @@ const isTrue = ref(false);
 const svgStroke = ref<SVGSVGElement>();
 onMounted(() => {
   if (svgStroke.value) {
-    const paths: SVGPathElement[] = Array.from(
+    const paths = Array.from(
       svgStroke.value?.children || []
     ) as SVGPathElement[];
     for (const path of paths) {

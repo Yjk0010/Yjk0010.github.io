@@ -35,7 +35,7 @@ export default (): DefaultTheme.SidebarItem[] => [
         { text: 'css滤镜', link: 'cssFilter/main' },
         { text: '钉钉官网的滚动动画', link: 'dingDingAnimation/main' },
         { text: '雷达图', link: 'radar/main' },
-        { text: 'svg描边动画', link: 'svgStroke/main' },
+        { text: 'svg部分', link: 'svgAbout/main' },
         { text: '闪光边框', link: 'borderLight/main' },
         { text: '处理异步传染', link: 'solveAsyncInfection/main' },
       ]
