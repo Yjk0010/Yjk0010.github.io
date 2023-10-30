@@ -24,9 +24,9 @@ function useConfig(ctx: CanvasRenderingContext2D, props: Required<PropsType>) {
   const radius = ctx.canvas.width / 2 - textSpace - textPadding;
   // 线
   const lineWidth = 1;
-  const lineColor = '#e5e5e5';
+  const lineColor = '#bdc4fc';
   // 背景
-  const bgColor = '#10b981';
+  const bgColor = '#a8b1ff';
   return {
     fontSize,
     fontFamily,
