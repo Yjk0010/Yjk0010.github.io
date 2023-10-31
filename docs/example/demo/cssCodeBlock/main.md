@@ -6,7 +6,7 @@ import flexMargin from "./flexMargin.vue"
 
 ## 超出隐藏
 
-<style>
+<style module>
 .w110{
   width:110px;
 }
@@ -22,13 +22,31 @@ import flexMargin from "./flexMargin.vue"
   -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
 }
+.css-box{
+  display:inline-block;
+  margin-right:12px;
+  width:100px;
+  height:30px;
+  background-color:blueviolet;
+  line-height: 2;
+}
+.css-box-son{
+  height:inherit;
+  background-color:cadetblue;
+}
+.css-box-son2{
+  background-color:cadetblue;
+}
+.css-box-son3 {
+  line-height: initial;
+}
 </style>
 
 ### 单行超出显示省略
 
 ::: details 例子 点击展开
 
-<div class="w110 text-ellipsis">
+<div :class="[$style.w110,$style.textEllipsis]">
   单行超出显示省略
 </div>
 
@@ -50,7 +68,7 @@ import flexMargin from "./flexMargin.vue"
 
 ::: details 例子 点击展开
 
-<div class="w110 multiline-ellipsis">
+<div :class="[$style.w110,$style.multilineEllipsis]">
   一行 <br/>
   又一行 <br/>
   多行超出显示省略
@@ -96,30 +114,7 @@ import flexMargin from "./flexMargin.vue"
 all: unset;
 ```
 
-<div style=""></div>
-
 ## 控制继承
-
-<style>
-  .box{
-    display:inline-block;
-    margin-right:12px;
-    width:100px;
-    height:30px;
-    background-color:blueviolet;
-    line-height: 2;
-  }
-  .box-son{
-    height:inherit;
-    background-color:cadetblue;
-  }
-  .box-son2{
-    background-color:cadetblue;
-  }
-  .box-son3 {
-    line-height: initial;
-  }
-</style>
 
 - <span class="cor-wa">inherit</span>: `inherit` 用于将样式属性设置为继承自其父元素的值。如果你将某个元素的属性设置为 inherit，那么它将继承其父元素的相同属性值。
 
@@ -129,32 +124,32 @@ all: unset;
 > 但是设置了 `inherit` 的子元素高度继承了父元素高度  
 > 看 son son2 的对比
 
-<div class="box"><div class="box-son">inherit</div></div>
-<div class="box"><div class="box-son2">非 inherit</div></div>
+<div :class="$style.cssBox"><div :class="$style.cssBoxSon">inherit</div></div>
+<div :class="$style.cssBox"><div :class="$style.cssBoxSon2">非 inherit</div></div>
 
 ```html
 <style>
-  .box {
+  .css-box {
     display: inline-block;
     margin-right: 12px;
     width: 100px;
     height: 30px;
     background-color: blueviolet;
   }
-  .box-son {
+  .css-box-son {
     height: inherit;
     background-color: cadetblue;
   }
-  .box-son2 {
+  .css-box-son2 {
     background-color: cadetblue;
   }
 </style>
 
-<div class="box">
-  <div class="box-son">inherit</div>
+<div class="css-box">
+  <div class="css-box-son">inherit</div>
 </div>
-<div class="box">
-  <div class="box-son2">inherit</div>
+<div class="css-box">
+  <div class="css-box-son2">inherit</div>
 </div>
 ```
 
@@ -168,12 +163,12 @@ all: unset;
 > 但是设置了 `initial` 直接将自己的 `line-height` 改变为浏览器默认值  
 > 看 son3 son4 的对比
 
-<div class="box"><div class="box-son3">initial</div></div>
-<div class="box"><div class="box-son4">非 initial</div></div>
+<div :class="$style.cssBox"><div :class="$style.cssBoxSon3">initial</div></div>
+<div :class="$style.cssBox"><div >非 initial</div></div>
 
 ```html
 <style>
-  .box {
+  .css-box {
     display: inline-block;
     margin-right: 12px;
     width: 100px;
@@ -181,16 +176,16 @@ all: unset;
     background-color: blueviolet;
     line-height: 2;
   }
-  .box-son3 {
+  .css-box-son3 {
     line-height: initial;
   }
 </style>
 
-<div class="box">
-  <div class="box-son3">inherit</div>
+<div class="css-box">
+  <div class="css-box-son3">inherit</div>
 </div>
-<div class="box">
-  <div class="box-son4">inherit</div>
+<div class="css-box">
+  <div>inherit</div>
 </div>
 ```
 
