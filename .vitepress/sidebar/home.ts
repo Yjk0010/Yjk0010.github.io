@@ -2,13 +2,8 @@ import type { DefaultTheme } from 'vitepress'
 
 export default (): DefaultTheme.SidebarItem[] => [
   {
-    text: 'Main Page',
-    collapsed: false,
-    base: '/home/',
-    items:
-      [
-        { text: '(•̀ᴗ•́)و ̑̑', link: 'main' },
-      ]
+    text: '(•̀ᴗ•́)و ̑̑',
+    link: 'main',
   },
   {
     text: '小知识',

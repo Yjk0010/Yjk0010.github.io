@@ -8,7 +8,7 @@ import basic from "./sidebar/basic"
 import js from "./sidebar/js"
 import vue from "./sidebar/vue"
 import example from "./sidebar/example"
-import algorithm from "./sidebar/algorithm"
+import highOrder from "./sidebar/highOrder"
 
 
 
@@ -35,7 +35,7 @@ export default defineConfig({
       { text: '基石', link: '/basic/main', activeMatch: '/basic/' },
       { text: 'JAVASCRIPT', link: '/js/main', activeMatch: '/js/' },
       { text: 'VUE', link: '/vue/main', activeMatch: '/vue/' },
-      { text: '算法', link: '/algorithm/main', activeMatch: '/algorithm/' },
+      { text: '高阶', link: '/highOrder/main', activeMatch: '/highOrder/' },
       { text: '例子', link: '/example/main', activeMatch: '/example' },
     ],
     sidebar: {
@@ -43,7 +43,7 @@ export default defineConfig({
       '/basic/': { base: '/basic/', items: basic() },
       '/js/': { base: '/js/', items: js() },
       '/vue/': { base: '/vue/', items: vue() },
-      '/algorithm/': { base: '/algorithm/', items: algorithm() },
+      '/highOrder/': { base: '/highOrder/', items: highOrder() },
       '/example/': { base: '/example/', items: example() },
     },
     socialLinks: [
