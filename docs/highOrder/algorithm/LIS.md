@@ -78,7 +78,7 @@ function getSequence(arr: number[]): number[] {
 
 ### 使用算法
 
-在上述代码中 使用到的 算法有 [动态规划](/algorithm/main.html#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-dynamic-programming) [二分查找](/algorithm/main.html#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-binary-search) [贪心算法](/algorithm/main.html#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-greedy-algorithm) [回溯修正](/algorithm/main.html#%E5%9B%9E%E6%BA%AF%E4%BF%AE%E6%AD%A3-backtracking)
+在上述代码中 使用到的 算法有 [动态规划](/highOrder/algorithm/main.html#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-dynamic-programming) [二分查找](/highOrder/algorithm/main.html#%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE-binary-search) [贪心算法](/highOrder/algorithm/main.html#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95-greedy-algorithm) [回溯修正](/highOrder/algorithm/main.html#%E5%9B%9E%E6%BA%AF%E4%BF%AE%E6%AD%A3-backtracking)
 
 ### 简要流程描述为
 
