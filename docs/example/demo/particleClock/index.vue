@@ -8,6 +8,9 @@
 import { ref, onMounted } from "vue";
 import { getRandomNum } from "/utils/index.ts";
 const canvasRef = ref<HTMLCanvasElement>();
+// 设置设备像素比为1 兼容高清屏
+const devicePixelRatio = 1;
+// const devicePixelRatio = window.devicePixelRatio || 1;
 
 onMounted(() => {
   if (!canvasRef.value) {

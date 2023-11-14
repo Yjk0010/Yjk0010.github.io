@@ -11,6 +11,7 @@ export default (): DefaultTheme.SidebarItem[] => [
     items:
       [
         { text: '介绍', link: 'main' },
+        { text: '单例模式', link: 'singleton/main' },
       ]
   },
   {
