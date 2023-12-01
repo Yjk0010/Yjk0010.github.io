@@ -1,17 +1,24 @@
 <template>
   <div class="container">
     <div class="input">
-      <span>你现在有多少钱</span>
+      <span>颗粒度</span>
+      <el-input style="width: 80px" v-model="step" readonly></el-input>
+      <Plus />
+      <el-icon><Plus /></el-icon>
+      <br />
+      <br />
       <el-input-number
-        :step="0.001"
+        :step="step"
         step-strictly
         style="width: 240px"
         v-model="number"
       ></el-input-number>
     </div>
     <div class="view">
-      <div class="cor-tip">{{ formatMoney }}</div>
-      <span>假如一度电是1块钱，你</span>
+      <span>你现在有</span>
+      <span class="cor-tip">{{ formatMoney }}</span>
+      <br />
+      <span class="cor-in">假如一度电是1块钱，你</span>
       <div class="cor-wa">
         {{ bigStringMoney }}
       </div>
@@ -26,6 +33,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
+const step = ref(1);
 const number = ref(19940413.73);
 const bigStringMoney = computed(() => {
   return numberToBigChineseString(number.value);

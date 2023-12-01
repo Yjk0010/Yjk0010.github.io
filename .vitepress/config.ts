@@ -3,12 +3,15 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Icons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 import home from "./sidebar/home"
 import basic from "./sidebar/basic"
 import js from "./sidebar/js"
 import vue from "./sidebar/vue"
 import example from "./sidebar/example"
 import highOrder from "./sidebar/highOrder"
+import Inspect from 'vite-plugin-inspect'
 
 
 
@@ -85,12 +88,24 @@ export default defineConfig({
           ElementPlusResolver({
             importStyle: "sass",
           }),
+          IconsResolver({
+            prefix: 'Icon',
+          }),
         ],
       }),
       Components({
         dts: true,
-        resolvers: [ElementPlusResolver({ ssr: true, importStyle: "sass" })],
+        resolvers: [
+          ElementPlusResolver({ ssr: true, importStyle: "sass" }),
+          IconsResolver({
+            enabledCollections: ['ep'],
+          }),
+        ],
       }),
+      Icons({
+        autoInstall: true,
+      }),
+      Inspect()
     ],
   },
 })

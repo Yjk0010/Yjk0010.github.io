@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: Jinke Yan 's 博客
+  name: 闫金科的博客
   text: (°ー°〃)
   tagline: 不积跬步无以至千里。-- 荀子
   image:
