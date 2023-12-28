@@ -21,6 +21,7 @@ export default defineConfig({
   lang: 'zh-CN',
   srcDir: 'docs',
   description: "Some simple notes",
+  lastUpdated: true,
   head: [
     ['link', { rel: "icon", href: "/favicon.ico" }],
   ],
