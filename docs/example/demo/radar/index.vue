@@ -20,23 +20,26 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
+import { ref } from "vue";
 import PolygonScore from "./PolygonScore.vue";
 import { PolygonScores } from "./PolygonScoreTypes";
 const size = ref(300);
 const maxScore = ref(100);
-const scores = reactive<PolygonScores>([]);
+const scores = ref<PolygonScores>([]);
 for (let i = 0; i < 5; i++) {
-  scores.push([`数据${i + 1}`, Math.floor(Math.random() * maxScore.value)]);
+  scores.value.push([
+    `数据${i + 1}`,
+    Math.floor(Math.random() * maxScore.value),
+  ]);
 }
 function add() {
-  scores.push([
-    `数据${scores.length + 1}`,
+  scores.value.push([
+    `数据${scores.value.length + 1}`,
     Math.floor(Math.random() * maxScore.value),
   ]);
 }
 function remove() {
-  scores.pop();
+  scores.value.pop();
 }
 </script>
 
