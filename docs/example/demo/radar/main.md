@@ -21,4 +21,4 @@ import demo from "./index.vue"
 <<< @/example/demo/radar/PolygonScoreTypes.ts
 :::
 
-[视频讲解](https://www.douyin.com/video/7232224120665132348)
+[视频讲解](https://www.douyin.com/video/7244160617014201600)
