@@ -1,0 +1,191 @@
+@keyframes turn-down {
+  0% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes turn-up {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-90deg);
+  }
+}
+
+@keyframes zIndex {
+  0% {
+    z-index: 2;
+  }
+  5% {
+    z-index: 4;
+  }
+  100% {
+    z-index: 4;
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.flip-card {
+  --flip-card-width: 60px;
+  --flip-card-height: 90px;
+  --flip-card-radius: 6px;
+  --flip-card-line-height: 1px;
+  --flip-card-animation-time: 0.5s;
+  --flip-card-number-color: #333;
+  --flip-card-number-background-color: #ddd;
+  --flip-card-box-shadow-color: rgba(0, 0, 0, 0.6);
+  --flip-card-line-color: rgba(200, 200, 200, 0.4);
+  --flip-card-flip-shadow-color: rgba(50, 50, 50, 0.1);
+  --flip-card-flip-shadow-color2: rgba(50, 50, 50, 1);
+  &.dark {
+    --flip-card-number-color: #ccc;
+    --flip-card-number-background-color: #333;
+    --flip-card-box-shadow-color: rgba(0, 0, 0, 0.7);
+    --flip-card-line-color: rgba(0, 0, 0, 0.4);
+    --flip-card-flip-shadow-color: rgba(0, 0, 0, 0.1);
+    --flip-card-flip-shadow-color2: rgba(0, 0, 0, 1);
+  }
+  position: relative;
+  margin: 5px;
+  width: var(--flip-card-width);
+  height: var(--flip-card-height);
+  font-size: 80px;
+  font-weight: bold;
+  line-height: calc(var(--flip-card-height) - var(--flip-card-line-height));
+  border-radius: var(--flip-card-radius);
+  box-shadow: 0 1px 10px var(--flip-card-box-shadow-color);
+  &:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: var(--flip-card-line-height);
+    top: 50%;
+    left: 0;
+    background-color: var(--flip-card-line-color);
+    z-index: 5;
+  }
+
+  .item {
+    list-style: none;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 200px;
+    &.active,
+    &:first-child {
+      z-index: 2;
+    }
+    .up,
+    .down {
+      z-index: 1;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      overflow: hidden;
+    }
+    .up {
+      transform-origin: 50% 100%;
+      top: 0;
+    }
+    .down {
+      transform-origin: 50% 0%;
+      bottom: 0;
+      transition: opacity 0.3s;
+      border-radius: 0 0 var(--flip-card-radius) var(--flip-card-radius);
+    }
+    .number {
+      position: absolute;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 200%;
+      color: var(--flip-card-number-color);
+      text-shadow: 0 1px 2px var(--flip-card-number-color);
+      text-align: center;
+      background-color: var(--flip-card-number-background-color);
+      border-radius: var(--flip-card-radius);
+    }
+    .up .number {
+      top: 0;
+    }
+    .down .number {
+      bottom: 0;
+    }
+    &.before {
+      z-index: 3;
+    }
+    &.active {
+      animation: zIndex calc(1s - var(--flip-card-animation-time))
+        var(--flip-card-animation-time) linear both;
+      z-index: 2;
+    }
+    &.before .up {
+      z-index: 2;
+      animation: turn-up var(--flip-card-animation-time) linear both;
+    }
+    &.active .down {
+      z-index: 2;
+      animation: turn-down calc(1s - var(--flip-card-animation-time))
+        var(--flip-card-animation-time) linear both;
+    }
+  }
+  .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  .before .up .shadow {
+    background: linear-gradient(
+      var(--flip-card-flip-shadow-color) 0%,
+      var(--flip-card-flip-shadow-color2) 100%
+    );
+    animation: show var(--flip-card-animation-time) linear both;
+  }
+  .active .up .shadow {
+    background: linear-gradient(
+      var(--flip-card-flip-shadow-color) 0%,
+      var(--flip-card-flip-shadow-color2) 100%
+    );
+    animation: hide var(--flip-card-animation-time) 0.3s linear both;
+  }
+  .before .down .shadow {
+    background: linear-gradient(
+      var(--flip-card-flip-shadow-color2) 0%,
+      var(--flip-card-flip-shadow-color) 100%
+    );
+    animation: show var(--flip-card-animation-time) linear both;
+  }
+  .active .down .shadow {
+    background: linear-gradient(
+      var(--flip-card-flip-shadow-color2) 0%,
+      var(--flip-card-flip-shadow-color) 100%
+    );
+    animation: hide var(--flip-card-animation-time) 0.3s linear both;
+  }
+}

@@ -1,0 +1,21 @@
+.line {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  .line-text {
+    font-weight: bold;
+  }
+  &-online {
+    transform: scaleY(0.5);
+  }
+  &-left {
+    margin-right: 12px;
+  }
+  &-center {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+  &-right {
+    margin-left: 12px;
+  }
+}

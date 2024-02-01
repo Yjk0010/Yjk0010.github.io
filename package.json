@@ -1,0 +1,34 @@
+{
+  "name": "yan-jin-ke_blog",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "A blog used to record personal learning content and share it with everyone",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "tsc": "tsc",
+    "tsc--w": "tsc --watch"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "element-plus": "^2.5.3",
+    "quantize": "^1.0.2",
+    "three": "^0.160.1",
+    "vue": "^3.4.15"
+  },
+  "devDependencies": {
+    "@iconify-json/ep": "^1.1.14",
+    "@types/node": "^20.11.7",
+    "@types/three": "^0.160.0",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "sass": "^1.70.0",
+    "typescript": "^5.3.3",
+    "unplugin-auto-import": "^0.17.5",
+    "unplugin-icons": "^0.18.2",
+    "unplugin-vue-components": "^0.26.0",
+    "vite": "^5.0.12",
+    "vite-plugin-inspect": "^0.8.3",
+    "vitepress": "1.0.0-rc.40"
+  }
+}
