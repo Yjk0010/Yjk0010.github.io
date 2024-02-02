@@ -6,38 +6,22 @@
   // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
   // Placeholders with the same ids are connected.
   // Example:
-  "Print to scriptEle": {
-    "scope": "markdown",
-    "prefix": "elescript",
-    "body": ["<script>", "$1", "</script>"],
+  "Print to jk-color-purple": {
+    "scope": "css,scss,sass,vue,js,ts,md",
+    "prefix": "--jk-color-purple",
+    "body": ["var(--jk-color-purple)"],
     "description": "md output to markdown"
   },
-  "Print to span": {
-    "scope": "markdown,html",
-    "prefix": "elespan",
-    "body": ["<span>$1</span>"],
+  "Print to jk-color-blue": {
+    "scope": "css,scss,sass,vue,js,ts,md",
+    "prefix": "--jk-color-blue",
+    "body": ["var(--jk-color-blue)"],
     "description": "md output to markdown"
   },
-  "Print to div": {
-    "scope": "markdown,html",
-    "prefix": "elediv",
-    "body": ["<div>$1</div>"],
-    "description": "md output to markdown"
-  },
-  "Print to style": {
-    "scope": "markdown,html",
-    "prefix": "mdstyle",
-    "body": ["<style module>$1</style>"],
-    "description": "md output to markdown"
-  },
-  "Print to scriptSetup": {
-    "scope": "markdown,html,vue",
-    "prefix": "elescriptSetup",
-    "body": [
-      "<script setup>",
-      "import $1 from \"/components/$2\"",
-      "</script>"
-    ],
+  "Print to jk-color-yellow": {
+    "scope": "css,scss,sass,vue,js,ts,md",
+    "prefix": "--jk-color-yellow",
+    "body": ["var(--jk-color-yellow)"],
     "description": "md output to markdown"
   }
 }

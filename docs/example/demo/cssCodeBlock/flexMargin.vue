@@ -41,15 +41,15 @@
       text-align: center;
 
       &:nth-child(3n + 1) {
-        background-color: #f0904c;
+        background-color: var(--jk-color-yellow);
       }
 
       &:nth-child(3n + 2) {
-        background-color: cadetblue;
+        background-color: var(--jk-color-blue);
       }
 
       &:nth-child(3n + 3) {
-        background-color: #b195ca;
+        background-color: var(--jk-color-purple);
       }
     }
   }

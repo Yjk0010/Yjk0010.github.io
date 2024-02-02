@@ -20,6 +20,9 @@ html:root {
   --them-scrollbar-thumb-color: #c0c0c0;
   --them-scrollbar-track-color: #f2f2f2;
   --them-scrollbar-thumb-hover-color: #a0a0a0;
+  --jk-color-purple: #b195ca;
+  --jk-color-blue: cadetblue;
+  --jk-color-yellow: #f0904c;
 }
 
 html.dark {

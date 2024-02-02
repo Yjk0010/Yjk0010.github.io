@@ -6,6 +6,7 @@ import js from "./js"
 import vue from "./vue"
 import highOrder from "./highOrder"
 import example from "./example"
+import greatExamples from "./greatExamples"
 
 export const nav: DefaultTheme.NavItem[] = [
   { text: 'Jinke Blog', link: '/' },
@@ -15,6 +16,8 @@ export const nav: DefaultTheme.NavItem[] = [
   { text: 'VUE', link: '/vue/main', activeMatch: '/vue/' },
   { text: '高阶', link: '/highOrder/main', activeMatch: '/highOrder/' },
   { text: '例子', link: '/example/main', activeMatch: '/example' },
+  { text: '奇技淫巧', link: '/greatExamples/main', activeMatch: '/greatExamples' },
+
 ]
 export const sidebar: DefaultTheme.Sidebar = {
   '/home/': { base: '/home/', items: home() },
@@ -23,5 +26,6 @@ export const sidebar: DefaultTheme.Sidebar = {
   '/vue/': { base: '/vue/', items: vue() },
   '/highOrder/': { base: '/highOrder/', items: highOrder() },
   '/example/': { base: '/example/', items: example() },
+  '/greatExamples/': { base: '/greatExamples/', items: greatExamples() },
 }
 
