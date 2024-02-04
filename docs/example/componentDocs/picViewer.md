@@ -1,11 +1,11 @@
 <script setup>
-import test1 from "@/components/PicViewer/test1.vue"
-import test2 from "@/components/PicViewer/test2.vue"
-import test3 from "@/components/PicViewer/test3.vue"
-import test4 from "@/components/PicViewer/test4.vue"
-import test5 from "@/components/PicViewer/test5.vue"
-import test6 from "@/components/PicViewer/test6.vue"
-import test7 from "@/components/PicViewer/test7.vue"
+import test1 from "docs/components/PicViewer/test1.vue"
+import test2 from "docs/components/PicViewer/test2.vue"
+import test3 from "docs/components/PicViewer/test3.vue"
+import test4 from "docs/components/PicViewer/test4.vue"
+import test5 from "docs/components/PicViewer/test5.vue"
+import test6 from "docs/components/PicViewer/test6.vue"
+import test7 from "docs/components/PicViewer/test7.vue"
 </script>
 
 # 图片组件
@@ -60,7 +60,7 @@ import test7 from "@/components/PicViewer/test7.vue"
 <test1></test1>
 
 ::: details 调用代码展示
-<<< ../../../src/components/PicViewer/test1.vue
+<<< @/components/PicViewer/test1.vue
 :::
 
 ### 第二种 - 相对路径
@@ -75,7 +75,7 @@ import test7 from "@/components/PicViewer/test7.vue"
 <test2></test2>
 
 ::: details 调用代码展示
-<<< ../../../src/components/PicViewer/test2.vue
+<<< @/components/PicViewer/test2.vue
 :::
 
 ### 第三种 - new URL(静态)
@@ -97,7 +97,7 @@ const imageUrl = new URL("./assets/scenery-1.jpg", import.meta.url).href;
 <test3></test3>
 
 ::: details 调用代码展示
-<<< ../../../src/components/PicViewer/test3.vue
+<<< @/components/PicViewer/test3.vue
 :::
 
 ### 第四种 - new URL(动态)
@@ -132,7 +132,7 @@ for (const path in newURLAll) {
 <test4></test4>
 
 ::: details 调用代码展示
-<<< ../../../src/components/PicViewer/test4.vue
+<<< @/components/PicViewer/test4.vue
 :::
 
 ### 第五种 - imageUrl 方法
@@ -158,7 +158,7 @@ const imageUrl = (url: string) => {
 <test5></test5>
 
 ::: details 调用代码展示
-<<< ../../../src/components/PicViewer/test5.vue
+<<< @/components/PicViewer/test5.vue
 :::
 
 ### 第六种 - import
@@ -174,7 +174,7 @@ const imageUrl = (url: string) => {
 <test6></test6>
 
 ::: details 调用代码展示
-<<< ../../../src/components/PicViewer/test6.vue
+<<< @/components/PicViewer/test6.vue
 :::
 
 ### 第七种 - import.meta.glob
@@ -203,7 +203,7 @@ import.meta.glob(["./assets/*.jpg", "./assets/*.png", "./assets/*.gif"], {
 <test7></test7>
 
 ::: details 调用代码展示
-<<< ../../../src/components/PicViewer/test7.vue
+<<< @/components/PicViewer/test7.vue
 :::
 
 ## 总结

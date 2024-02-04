@@ -232,19 +232,21 @@ console.log("打印 b.c =", proxy.b.c);
 ## 总结
 
 - **响应式原理**需要获取属性的 _访问_ 和 _更改_
-- <TText>vue2</TText> 通过 **Object.defineProperty** 实现对已有属性的监听 <TText type="danger">需要递归遍历</TText>
-- <TText>vue3</TText> 通过 **Proxy** 实现对所有属性的监听 <TText type="danger">无需递归遍历</TText>
+- <TText>vue2</TText> 
+  通过 **Object.defineProperty** 实现对已有属性的监听 <TText type="danger">需要递归遍历</TText>
+- <TText>vue3</TText> 
+  通过 **Proxy** 实现对所有属性的监听 <TText type="danger">无需递归遍历</TText>
 
 
 <vue3PKvue2></vue3PKvue2>
 
 ::: details 整体代码
-<<< ../../../src/demo/vue3PKvue2.vue
+<<< ./vue3PKvue2.vue
 :::
 
 
 <script setup>
-import vue3PKvue2 from "@/demo/vue3PKvue2.vue"
+import vue3PKvue2 from "./vue3PKvue2.vue"
 </script>
 
 
