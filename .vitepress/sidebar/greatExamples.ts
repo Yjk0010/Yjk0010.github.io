@@ -6,27 +6,25 @@ export default (): DefaultTheme.SidebarItem[] => [
   },
   {
     text: '其他技巧',
-    collapsed: false,
+    collapsed: true,
     base: '/greatExamples/others/',
     items: [
       { text: '小点子', link: 'main' },
     ]
   },
   {
-    text: '混合技巧',
-    collapsed: false,
-    base: '/greatExamples/hybrid/',
+    text: '前端技巧',
+    collapsed: true,
+    base: '/greatExamples/web/',
     items: [
       { text: '小点子', link: 'main' },
       { text: '拖拽', link: 'drag/main' },
-    ]
-  },
-  {
-    text: 'html技巧',
-    collapsed: false,
-    base: '/greatExamples/html/',
-    items: [
-      { text: '小点子', link: 'main' },
+      {
+        text: 'html', base: '/greatExamples/web/html/', items:
+          [
+            { text: '小点子', link: 'main' },
+          ]
+      },
     ]
   },
 ]
