@@ -18,32 +18,30 @@ onMounted(() => {
 
   if (dragImg && box2 && box1) {
     // dragImg 监听dragstart
-    dragImg.addEventListener('dragstart', (dragEvent) => {
-      (dragEvent as DragEvent).dataTransfer?.setData('text/plain', dragImg.id);
+    dragImg.addEventListener('dragstart', (event) => {
+      const dragEvent = event as DragEvent;
+      dragEvent.dataTransfer?.setData('text/plain', dragImg.id);
     });
-
     // 阻止默认行为以允许放置
-    box1.addEventListener('dragover', (dragEvent) => {
-      dragEvent.preventDefault();
+    box1.addEventListener('dragover', (event) => {
+      event.preventDefault();
     });
-
     // 获取拖动的数据并将其放置到所选的放置目标中
-    box1.addEventListener('drop', (dragEvent) => {
-      dragEvent.preventDefault();
-      const data = (dragEvent as DragEvent).dataTransfer?.getData('text/plain') as string;
+    box1.addEventListener('drop', (event) => {
+      event.preventDefault();
+      const dragEvent = event as DragEvent;
+      const data = dragEvent.dataTransfer?.getData('text/plain') as string;
       box1.appendChild(document.getElementById(data) as HTMLElement);
     });
-
     // 阻止默认行为以允许放置
-    box2.addEventListener('dragover', (dragEvent) => {
-      dragEvent.preventDefault();
+    box2.addEventListener('dragover', (event) => {
+      event.preventDefault();
     });
-
     // 获取拖动的数据并将其放置到所选的放置目标中
-    box2.addEventListener('drop', (dragEvent) => {
-      dragEvent.preventDefault();
-      dragEvent.preventDefault();
-      const data = (dragEvent as DragEvent).dataTransfer?.getData('text/plain') as string;
+    box2.addEventListener('drop', (event) => {
+      event.preventDefault();
+      const dragEvent = event as DragEvent;
+      const data = dragEvent.dataTransfer?.getData('text/plain') as string;
       box2.appendChild(document.getElementById(data) as HTMLElement);
     });
 
