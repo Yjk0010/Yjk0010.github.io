@@ -21,7 +21,6 @@ export default (): DefaultTheme.SidebarItem[] => [
     base: '/vue/vue2/',
     items:
       [
-        { text: '测试', link: 'markdown' },
       ]
   },
   {

@@ -21,7 +21,6 @@ export default (): DefaultTheme.SidebarItem[] => [
     base: '/example/demo/',
     items:
       [
-        { text: 'css常用代码块', link: 'cssCodeBlock/main' },
         { text: '卡片返转计时+粒子时钟', link: 'particleClock/main' },
         { text: '复杂动画控制', link: 'complexAnimation/main' },
         { text: '无限视差滚动', link: 'infiniteScroll/main' },

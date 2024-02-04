@@ -26,7 +26,6 @@ const viteConfig: UserConfig = {
   resolve: {
     alias: {
       'docs': resolve('docs/'),
-      '@': resolve('src/')
     }
   },
   ssr: {

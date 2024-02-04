@@ -2,7 +2,7 @@
 
 <script setup>
   import {ref} from "vue"
-import DetailInfo from "@/components/DetailInfo/index.vue"
+import DetailInfo from "docs/components/DetailInfo/index.vue"
 
 const info = ref({
   oldStartIdx:"旧列表头指针",

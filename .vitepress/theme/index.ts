@@ -4,8 +4,8 @@ import 'element-plus/theme-chalk/dark/css-vars.css'
 import "./custom.css"
 import MyLayout from './Layout.vue'
 
-import TypeText from "@/components/TypeText/index.vue";
-import PicViewer from "@/components/PicViewer/index.vue";
+import TypeText from "docs/components/TypeText/index.vue";
+import PicViewer from "docs/components/PicViewer/index.vue";
 export default {
   extends: DefaultTheme,
   enhanceApp({ app }) {

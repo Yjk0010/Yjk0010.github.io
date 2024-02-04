@@ -23,6 +23,8 @@ html:root {
   --jk-color-purple: #b195ca;
   --jk-color-blue: cadetblue;
   --jk-color-yellow: #f0904c;
+  --em-color: #ce4ecd;
+  --strong-color: #30c19b;
 }
 
 html.dark {
@@ -38,16 +40,18 @@ html.dark {
   --them-scrollbar-track-color: #787878;
   --them-scrollbar-thumb-color: #484848;
   --them-scrollbar-thumb-hover-color: #383838;
+  --em-color: #d592e2;
+  --strong-color: #37cac5;
 }
 
 /* 加粗 */
 strong {
-  color: #37cac5;
+  color: var(--strong-color);
 }
 
 /* 斜体 */
 em {
-  color: #39a7e0;
+  color: var(--em-color);
 }
 
 .pointer {
