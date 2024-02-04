@@ -4,5 +4,6 @@
 /.vitepress/.temp
 /node_modules
 /docs/components.d.ts
+/docs/auto-imports.d.ts
 **.zip
 cache
