@@ -1,46 +1,29 @@
 <template>
   <div class="pic-viewer">
     <Line v-if="title" position="center" :title="title"></Line>
-    <img
-      class="pic-viewer-img"
-      @click="boxShow"
-      :src="imgSrc"
-      :alt="alt || `这张图片害羞了`"
-    />
+    <img class="pic-viewer-img" @click="boxShow" :src="imgSrc" :alt="alt || `这张图片害羞了`" />
     <div class="pic-viewer-title">
       {{ alt || title }}
     </div>
-    <div
-      class="pic-viewer-box"
-      @click="handleShowBox"
-      @mousewheel="handleBoxWheel"
-      ref="viewerBox"
-      v-show="isBoxShow"
-    >
+    <div class="pic-viewer-box" @click="handleShowBox" @mousewheel="handleBoxWheel" ref="viewerBox" v-show="isBoxShow">
       <div class="pic-viewer-box-info">
         鼠标滚轮可缩放 <br />
         选中图片可拖拽 <br />
         点击非图片区域(键盘Esc)关闭
       </div>
-      <img
-        class="pic-viewer-box-img"
-        ref="image"
-        :style="{
-          transform: `scale(${scale})`,
-          left: `${left}px`,
-          top: `${top}px`,
-        }"
-        @click.stop
-        @mousewheel="handleWheel"
-        @mousedown="startDrag"
-        :src="imgSrc"
-        :alt="alt"
-      />
+      <img class="pic-viewer-box-img" ref="image" :style="{
+        transform: `scale(${scale})`,
+        left: `${left}px`,
+        top: `${top}px`,
+      }" @click.stop @mousewheel="handleWheel" @mousedown="startDrag" :src="imgSrc" :alt="alt" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: "PicViewer",
+});
 import Line from "../Line/Line.vue";
 import { useData } from "vitepress";
 const { isDark } = useData();
@@ -187,15 +170,18 @@ const startDrag = (e: MouseEvent) => {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   &-img {
     margin: 8px 0;
     cursor: pointer;
   }
+
   &-title {
     text-align: center;
     font-size: 0.8rem;
     color: var(--vp-c-text-2);
   }
+
   &-box {
     position: fixed;
     top: 0;
@@ -204,10 +190,12 @@ const startDrag = (e: MouseEvent) => {
     bottom: 0;
     z-index: 30;
     background-color: rgba(0, 0, 0, 0.5);
+
     &-img {
       position: absolute;
       cursor: move;
     }
+
     &-info {
       position: absolute;
       right: 10px;

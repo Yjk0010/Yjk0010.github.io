@@ -5,6 +5,9 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: "TypeText",
+});
 withDefaults(defineProps<{
   type?: "info" | "tip" | "success" | "warning" | "danger";
 }>(), {

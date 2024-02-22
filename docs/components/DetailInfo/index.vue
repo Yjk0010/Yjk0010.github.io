@@ -31,6 +31,10 @@
 import Line from "../Line/Line.vue";
 import type { infoConfigItem } from "docs/types/index.ts";
 
+defineOptions({
+  name: "DetailInfo",
+});
+
 const props = withDefaults(
   defineProps<{
     infoConfig: Array<infoConfigItem>;
