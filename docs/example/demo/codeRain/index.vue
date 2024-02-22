@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { useData } from "vitepress";
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 const { isDark } = useData();
 const drawTime = 60;
 

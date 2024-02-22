@@ -28,6 +28,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.11.7
     version: 20.11.7
+  '@types/quantize':
+    specifier: ^1.0.2
+    version: 1.0.2
   '@types/three':
     specifier: ^0.160.0
     version: 0.160.0
@@ -1030,6 +1033,10 @@ packages:
     resolution: {integrity: sha512-GPmeN1C3XAyV5uybAf4cMLWT9fDWcmQhZVtMFu7OR32WjrqGG+Wnk2V1d0bmtUyE/Zy1QJ9BxyiTih9z8Oks8A==}
     dependencies:
       undici-types: 5.26.5
+    dev: true
+
+  /@types/quantize@1.0.2:
+    resolution: {integrity: sha512-dABtiRbR6TY6ViDvzPj9etP49GRBNGr8tFF2E08a4wgF6l+UdVjuNGemZj7kOcdbO8Mz3ER+LONw2Z7stsN5Kg==}
     dev: true
 
   /@types/stats.js@0.17.3:

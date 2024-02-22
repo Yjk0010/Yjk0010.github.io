@@ -90,7 +90,7 @@ function getSequence(arr: number[]): number[] {
 
 ### 举例说明
 
-<TText type="warning">原数组</TText> 为 **[1, 3, 10, 20, 30, 7, 8]** <TText>最长递增子序列</TText> 为 **[1, 3, 10, 20, 30]**
+<TText type="warning">原数组</TText> 是 <TText type="danger">[1, 3, 10, 20, 30, 7, 8]</TText> <TText>最长递增子序列</TText> 为 **[1, 3, 10, 20, 30]**
 
 <PicViewer title="初始状态" src="/assets/algorithm/LIS-1.png" darkSrc="/assets/algorithm/LIS-dark1.png" alt=" "/>
 

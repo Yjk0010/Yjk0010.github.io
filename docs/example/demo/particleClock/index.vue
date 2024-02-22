@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { getRandomNum } from "/utils/index.ts";
+import { getRandomNum } from "docs/utils/index.ts";
 const canvasRef = ref<HTMLCanvasElement>();
 // 设置设备像素比为1 兼容高清屏
 const devicePixelRatio = 1;

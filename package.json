@@ -20,6 +20,7 @@
   "devDependencies": {
     "@iconify-json/ep": "^1.1.14",
     "@types/node": "^20.11.7",
+    "@types/quantize": "^1.0.2",
     "@types/three": "^0.160.0",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "sass": "^1.70.0",

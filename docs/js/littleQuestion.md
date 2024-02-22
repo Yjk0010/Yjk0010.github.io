@@ -673,7 +673,7 @@ x();
 
 也就是说 最后会返回这个调用者(this), 可是 当 x 执行的时候是上下文不是数组了而是是全局. 那么最后返回的应该是 `window`.
 
-但是在浏览器调用的时候应该是对 this 做了检查 毕竟 this 不是数组的时候豪斯不能调用 reverse 方法的
+但是在浏览器调用的时候应该是对 this 做了检查 毕竟 this 不是数组的时候，是不能调用 reverse 方法的
 
 <TText type="warning">答案</TText> <TText type="danger">TypeError: Cannot convert undefined or null to object</TText>
 

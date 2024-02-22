@@ -1,5 +1,27 @@
 # 小技巧汇总
 
+## data- 属性
+
+利用 `data-` 属性存储数据* 可以在任何 `HTML` 元素上使用 <TText type="danger">data-*</TText> 属性来存储自定义数据。这种方式可以让 `HTML、CSS 和 JavaScript` 之间共享数据。
+
+<div data-jk="JK">这里展示了css选中效果</div>
+
+<style module>
+[data-jk="JK"] {
+    color: var(--jk-color-purple);
+}
+</style>
+
+``` html
+<div data-jk="JK">这里展示了css选中效果</div>
+```
+
+``` css
+/* css选中方式 */
+[data-jk="JK"] {
+    color: var(--jk-color-purple);
+}
+```
 
 ## 下载链接
 

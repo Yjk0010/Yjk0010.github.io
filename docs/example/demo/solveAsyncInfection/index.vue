@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { getRandomNum } from "/utils/index.ts";
+import { getRandomNum } from "docs/utils/index.ts";
 // 默认图片
 const imgUrl = ref("/assets/no-img.jpg");
 // loading控制
