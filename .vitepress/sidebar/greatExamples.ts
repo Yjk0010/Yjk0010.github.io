@@ -28,7 +28,7 @@ export default (): DefaultTheme.SidebarItem[] => [
       {
         text: 'css', base: '/greatExamples/web/css/', items:
           [
-            { text: '代码块', link: 'main' },
+            { text: '小点子', link: 'main' },
             { text: 'flex+margin', link: 'flexMargin/main' },
           ]
       },

@@ -77,19 +77,5 @@
 <input type="color" value="#e66465">
 ```
 
-## 布尔属性
-
-> 某些属性，只有两种状态.这种属性叫做布尔属性
-- 例如： `video` 元素的 <TText type="success">autoplay</TText>
-
-1. 不写--为不设置该属性
-2. 取值为属性名--为设置该属性为 <TText type="success">true</TText>
-
-```html
-<!-- autoplay  控制video的自动播放 -->
-<video autoplay></video>
-<!-- 等同于 -->
-<video autoplay="true"></video>
-```
 
 
