@@ -33,6 +33,7 @@ export default (): DefaultTheme.SidebarItem[] => [
         { text: 'svg部分', link: 'svgAbout/main' },
         { text: '闪光边框', link: 'borderLight/main' },
         { text: '处理异步传染', link: 'solveAsyncInfection/main' },
+        { text: '守岁共此时', link: 'atTimeGuardYear/main' },
       ]
   },
 ]
