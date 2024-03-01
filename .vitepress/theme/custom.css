@@ -15,7 +15,7 @@ html:root {
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Helvetica, Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --them-scrollbar-width: 10px;
+  --them-scrollbar-width: 6px;
   --them-scrollbar-color: #f2f2f2;
   --them-scrollbar-thumb-color: #c0c0c0;
   --them-scrollbar-track-color: #f2f2f2;
@@ -35,7 +35,7 @@ html.dark {
   --el-color-primary-light-8: #e2e4fc;
   --el-color-primary-light-9: #2c2d30;
   --el-color-primary-dark-2: #6068a8;
-  --them-scrollbar-width: 10px;
+  --them-scrollbar-width: 6px;
   --them-scrollbar-color: #787878;
   --them-scrollbar-track-color: #787878;
   --them-scrollbar-thumb-color: #484848;
@@ -64,12 +64,12 @@ em {
 /* Webkit 浏览器（如 Chrome、Safari） */
 ::-webkit-scrollbar {
   width: var(--them-scrollbar-width);
-  background-color: var(--them-scrollbar-color);
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: var(--them-scrollbar-thumb-color);
   border-radius: calc(var(--them-scrollbar-width) / 2);
+  transition: all 0.2s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -88,7 +88,7 @@ em {
 /* 你可以根据需要调整这些属性的值 */
 /* 更多信息请参考 Firefox 官方文档：https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scrollbars */
 * {
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
 }
 
 /* Edge 和 IE */

@@ -65,6 +65,7 @@ async function confirm(desc: InteractiveDescriptor) {
       title: desc.title,
       confirmButtonText: '确定',
       showClose: false,
+      lockScroll: false,
       center: true,
       closeOnClickModal: false,
     };
@@ -115,6 +116,7 @@ const restart = () => {
   ElMessageBox.confirm('确定重新开始？', '提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
+    lockScroll: false,
     type: 'warning',
     center: true,
   }).then(() => {
