@@ -23,5 +23,11 @@
     "prefix": "--jk-color-yellow",
     "body": ["var(--jk-color-yellow)"],
     "description": "md output to markdown"
+  },
+  "Print to --jk-box-shadow": {
+    "scope": "css,scss,sass,vue,js,ts,md",
+    "prefix": "--jk-box-shadow",
+    "body": ["var(--jk-box-shadow)"],
+    "description": "md output to markdown"
   }
 }

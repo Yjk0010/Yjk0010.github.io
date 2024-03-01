@@ -17,7 +17,7 @@ const card = defineProps<Card>();
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.5s, opacity 0.5s, left 0.5s, top 0.5s;
-  /* filter: drop-shadow(0 0 0.5rem rgba(231, 229, 229, 0.333)); */
+  box-shadow: 0.1rem 0.1rem 0.3rem var(--jk-box-shadow);
 }
 
 .card.keep-top {

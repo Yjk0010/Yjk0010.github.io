@@ -135,7 +135,6 @@ const restart = () => {
   }
 
   .title {
-    color: #fff;
     text-align: center;
     margin: 50px auto;
   }

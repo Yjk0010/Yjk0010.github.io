@@ -23,6 +23,7 @@ html:root {
   --jk-color-purple: #ffa2c8;
   --jk-color-blue: #6fcacd;
   --jk-color-yellow: #ffd059;
+  --jk-box-shadow: rgba(0, 0, 0, 0.2);
   --em-color: #ce4ecd;
   --strong-color: #30c19b;
 }
@@ -43,6 +44,7 @@ html.dark {
   --jk-color-purple: #c8638c;
   --jk-color-blue: #2e9fa2;
   --jk-color-yellow: #af8d35;
+  --jk-box-shadow: rgba(255, 255, 255, 0.5);
   --em-color: #d592e2;
   --strong-color: #37cac5;
 }
