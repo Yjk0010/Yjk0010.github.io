@@ -57,5 +57,3 @@ export const diffDate = (prevDate: Date, nextDate: Date): DiffReturn => {
   }
 }
 
-
-

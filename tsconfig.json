@@ -42,7 +42,8 @@
     "docs/**/*.tsx",
     "docs/**/*.vue",
     ".vitepress/**/*.ts",
-    ".vitepress/**/*.mts"
+    ".vitepress/**/*.mts",
+    "auto-imports.d.ts"
   ],
   "exclude": ["**/node_modules/**", "**/dist/**"]
 }

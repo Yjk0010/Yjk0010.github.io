@@ -12,13 +12,16 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "@vueuse/core": "^10.9.0",
     "element-plus": "^2.5.3",
+    "lodash-es": "^4.17.21",
     "quantize": "^1.0.2",
     "three": "^0.160.1",
     "vue": "^3.4.15"
   },
   "devDependencies": {
     "@iconify-json/ep": "^1.1.14",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20.11.7",
     "@types/quantize": "^1.0.2",
     "@types/three": "^0.160.0",

@@ -10,20 +10,26 @@ import Inspect from 'vite-plugin-inspect'
 
 const viteConfig: UserConfig = {
   optimizeDeps: {
-    include: ['element-plus'], // 如果使用了 Element Plus，需要将它列入 optimizeDeps 的配置中
+    // 将 element-plus 依赖包列入生产环境下的预优化范围。Vite 会对其进行依赖分析，把它需要的依赖预加载到浏览器缓存中。
+    include: ['element-plus'],
   },
   css: {
+    // 开启css模块化
     modules: {
+      // css模块化命名规范为驼峰
       localsConvention: 'camelCase'
     },
   },
   server: {
+    // 更改启动port
     port: 9527,
     hmr: {
+      // 取消报错浮窗提示
       overlay: false
     }
   },
   resolve: {
+    // 路径别名
     alias: {
       'docs': resolve('docs/'),
     }
@@ -33,7 +39,9 @@ const viteConfig: UserConfig = {
     noExternal: ['element-plus']
   },
   plugins: [
+    // jsx
     vueJsx(),
+    // 自动引入
     AutoImport({
       resolvers: [
         ElementPlusResolver(),
@@ -42,6 +50,7 @@ const viteConfig: UserConfig = {
         }),
       ],
     }),
+    // 自动注册
     Components({
       dts: true,
       resolvers: [
@@ -51,9 +60,11 @@ const viteConfig: UserConfig = {
         ElementPlusResolver(),
       ],
     }),
+    // 自动注册
     Icons({
       autoInstall: true,
     }),
+    // 开发展示代码转化结果
     Inspect()
   ],
   build: {
