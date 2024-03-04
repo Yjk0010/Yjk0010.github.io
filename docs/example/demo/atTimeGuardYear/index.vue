@@ -1,19 +1,48 @@
 <template>
   <div class="atTimeGuardYear">
     <div class="buttons">
-      <el-button type="warning" @click="restart" :disabled="isLoading">
-        重新开始
-      </el-button>
+      <el-popover :visible="restartShow" placement="top" :width="280" trigger="click">
+        <p>要重新开始魔术?</p>
+        <div style="text-align: right;">
+          <el-button size="small" text @click="restartShow = false">取消</el-button>
+          <el-button size="small" type="primary" @click="restart">确定</el-button>
+        </div>
+        <template #reference>
+          <el-button type="warning" @click="restartShow = true" :disabled="hasDoIt">
+            重新开始
+          </el-button>
+        </template>
+      </el-popover>
     </div>
     <div class="buttons">
-      <el-button type="primary" @click="handlePrev" :disabled="!ctx.hasPrev || isLoading">
+      <el-button type="primary" @click="handlePrev" :disabled="!ctx.hasPrev || hasDoIt">
         上一步
       </el-button>
-      <el-button type="primary" @click="handleNext" :disabled="!ctx.hasNext || isLoading">
+      <el-button type="primary" @click="handleNext" :disabled="!ctx.hasNext || hasDoIt">
         下一步
       </el-button>
     </div>
-    <div class="option"></div>
+    <div class="option">
+      <div style="text-align: center;" v-html="optionDescriptor?.title"></div>
+      <div>{{ optionDescriptor?.getDesc }}</div>
+
+      <template v-if="optionDescriptor?.type !== 'none'">
+        <template v-if="optionDescriptor?.type === 'radio'">
+          <el-radio-group v-model="optionValue" v-if="!optionDescriptor.isDoIt">
+            <el-radio-button v-for="item in optionDescriptor.payload.options" :label="item.value" :key="item.label">{{
+        item.label }}</el-radio-button>
+          </el-radio-group>
+        </template>
+
+        <template v-else-if="optionDescriptor?.type === 'number'">
+          <template v-if="!optionDescriptor.isDoIt">
+            <el-input-number :max="optionDescriptor?.payload.max" v-model="optionValue"></el-input-number>
+          </template>
+        </template>
+        <el-button v-if="!optionDescriptor?.isDoIt" type="success" :disabled="!hasDoIt" @click="doIt">Do
+          It!</el-button>
+      </template>
+    </div>
     <h1 class="title">
       {{ ctx.currentIndex + 1 }} / {{ ctx.stages.length }}
       {{ ctx.currentStage.name }}
@@ -25,105 +54,69 @@
 </template>
 
 <script setup lang="ts">
-import type { ElMessageBoxOptions } from "element-plus"
+defineOptions({
+  name: 'atTimeGuardYear'
+})
 import CardDesk from './CardDesk.vue';
-import { h, reactive, ref } from 'vue';
+import { reactive, ref, computed } from 'vue';
 import { InteractiveDescriptor, StageContext } from './stages';
 let ctx = reactive(new StageContext(500));
 const isLoading = ref(false);
-play();
-async function play() {
+const optionValue = ref(0);
+const optionDescriptor = ref<InteractiveDescriptor>({
+  type: 'none',
+  title: '',
+  payload: null,
+  getOptions: () => void 0,
+  isDoIt: false
+});
+const opt = ref();
+const restartShow = ref(false)
+const play = async () => {
+  console.log(ctx);
+
+  restartShow.value = false;
   if (isLoading.value) return;
-  isLoading.value = true;
-  const desc = ctx.getInteractiveDescriptor();
-  if (desc.type === 'none') {
-    const opt = desc.getOptions();
-    await ctx.play(opt);
+  optionDescriptor.value = ctx.getInteractiveDescriptor();
+  if (optionDescriptor.value.type === 'none') {
+    isLoading.value = true;
+    opt.value = optionDescriptor.value.getOptions();
+    await ctx.play(opt.value);
+    isLoading.value = false;
   } else {
-    const opt = await confirm(desc);
-    await ctx.play(opt);
+    if (!optionDescriptor.value.isDoIt) {
+      isLoading.value = true
+    }
+    opt.value = optionDescriptor.value.getOptions();
+    optionValue.value = optionDescriptor.value.payload.defaultValue
+    opt.value.next()
   }
+}
+play();
+const doIt = async () => {
+  await ctx.play(opt.value.next(optionValue.value).value)
   isLoading.value = false;
 }
-function handleNext() {
+const handleNext = async () => {
   ctx.next();
   play();
 }
 
-function handlePrev() {
+const handlePrev = () => {
   ctx.undo();
   ctx.prev();
-}
-
-const optionValue = ref(0);
-const payload = reactive({});
-
-async function confirm(desc: InteractiveDescriptor) {
-  return new Promise(async (resolve) => {
-    const v = ref<number>();
-    const options: ElMessageBoxOptions = {
-      title: desc.title,
-      confirmButtonText: '确定',
-      showClose: false,
-      lockScroll: false,
-      center: true,
-      closeOnClickModal: false,
-    };
-    if (desc.type === 'number') {
-      v.value = desc.payload.defaultValue;
-      options.message = () =>
-        h(ElInputNumber, {
-          modelValue: v.value,
-          min: desc.payload.min,
-          max: desc.payload.max,
-          step: 1,
-          stepStrictly: true,
-          valueOnClear: desc.payload.defaultValue,
-          'onUpdate:modelValue': (cur) => {
-            if (cur === undefined || cur === null) return;
-            v.value = cur!;
-          },
-        });
-    } else if (desc.type === 'radio') {
-      v.value = desc.payload.defaultValue;
-      options.message = () =>
-        h(
-          ElRadioGroup,
-          {
-            modelValue: v.value,
-            'onUpdate:modelValue': (cur) => {
-              v.value = +cur;
-            },
-          },
-          () => desc.payload.options.map((option: any) =>
-            h(
-              ElRadioButton,
-              {
-                label: option.value,
-                border: true,
-              },
-              () => option.label
-            )
-          )
-        );
-    }
-    await ElMessageBox(options);
-    resolve(desc.getOptions(v.value));
-  });
+  optionDescriptor.value = ctx.getInteractiveDescriptor();
+  opt.value = optionDescriptor.value.getOptions();
 }
 
 const restart = () => {
-  ElMessageBox.confirm('确定重新开始？', '提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    lockScroll: false,
-    type: 'warning',
-    center: true,
-  }).then(() => {
-    ctx = reactive(new StageContext(500));
-    play();
-  });
+  ctx = reactive(new StageContext(500));
+  play();
 }
+
+const hasDoIt = computed(() => {
+  return isLoading.value || (ctx.hasGetInteractiveDescriptor() ? false : !optionDescriptor.value.isDoIt)
+})
 </script>
 
 <style lang="scss" scoped>
@@ -148,10 +141,15 @@ const restart = () => {
   }
 
   .option {
-    height: 50px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+
+    &>* {
+      margin-top: 10px;
+    }
   }
 }
 </style>
