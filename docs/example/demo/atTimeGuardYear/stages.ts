@@ -2,6 +2,8 @@ import { createCard, createRandomCards } from './card';
 import { Desk, initDesk } from './desk';
 import { cloneDeep, random } from 'lodash-es';
 
+
+// 模板字符串tag方法
 function valueTag(strings: TemplateStringsArray, ...keys: any[]): string {
   let result = [strings[0]];
   keys.forEach((key, i) => {
@@ -10,23 +12,26 @@ function valueTag(strings: TemplateStringsArray, ...keys: any[]): string {
   return result.join('');
 }
 
+// 延时函数
 function delay(duration = 1000) {
   return new Promise((resolve) => {
     setTimeout(resolve, duration);
   });
 }
 
+// 交互描述符
 export interface InteractiveDescriptor {
   type: 'radio' | 'number' | 'none';
   title: string;
   payload: any;
-  getOptions(interactive?: any): any;
-  getDesc?: string;
   isDoIt: boolean,
+  getOperation(interactive?: any): any;
+  getDesc?: string;
   value?: number,
   desc?: string;
 }
 
+// 步骤顺序
 export class StageContext {
   public stages: Stage[];
   public currentIndex = 0;
@@ -55,15 +60,18 @@ export class StageContext {
   get currentStage() {
     return this.stages[this.currentIndex];
   }
+  // 获取当前交互描述内容
   getInteractiveDescriptor() {
     return this.currentStage.getInteractiveDescriptor();
   }
+  // 执型动作
   async play(options?: any) {
     await this.currentStage.play(options);
   }
   undo() {
     this.currentStage.undo();
   }
+  // 获取当前是否已经交互过
   hasGetInteractiveDescriptor() {
     return this.currentStage.isInteractiveDescriptor;
   }
@@ -80,18 +88,23 @@ export class StageContext {
 }
 
 export abstract class Stage {
+  // 是否已经交互过判定
   private hasGetInteractiveDescriptor = false;
+  // 初始状态
   private initialDesk: Desk | null = null;
+  // 结束状态
   private playedDesk: Desk | null = null;
+  // 交互描述默认内容
   protected defaultDescriptor: InteractiveDescriptor = {
     type: 'none',
     title: '',
     payload: null,
-    getOptions: () => void 0,
+    getOperation: () => void 0,
     getDesc: '',
     isDoIt: false
   };
   constructor(public ctx: StageContext, public name: string) { }
+  // 获取交互描述内容 带缓存
   getInteractiveDescriptor(): InteractiveDescriptor {
     if (this.hasGetInteractiveDescriptor) {
       return this.defaultDescriptor;
@@ -100,12 +113,15 @@ export abstract class Stage {
     this.hasGetInteractiveDescriptor = true;
     return desc;
   }
+  // 用于子级重写方法
   _getInteractiveDescriptor(): InteractiveDescriptor {
     return this.defaultDescriptor;
   }
+  // 获取是否已经交互过
   get isInteractiveDescriptor() {
     return this.hasGetInteractiveDescriptor;
   }
+  // 定义抽象方法 泳衣继承重写
   abstract _play(options: any): Promise<void> | void;
   async play(options: any): Promise<void> {
     if (!this.initialDesk) {
@@ -134,7 +150,7 @@ class InitialStage extends Stage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "随机选取4张扑克牌"
+      title: "随机选取 <strong>4张扑克牌</strong> "
     }
     return this.defaultDescriptor
   }
@@ -158,7 +174,7 @@ class ShuffleStage extends Stage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "将扑克牌随机打乱"
+      title: "将扑克牌 <strong>随机打乱</strong>"
     }
     return this.defaultDescriptor
   }
@@ -180,7 +196,7 @@ class TearStage extends Stage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "将扑克牌撕成两份"
+      title: "将扑克牌 <strong>撕成两份</strong>"
     }
     return this.defaultDescriptor
   }
@@ -209,7 +225,7 @@ class ConcatStage extends Stage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "将扑克牌并叠在一起"
+      title: "将扑克牌 <strong>并叠在一起</strong>"
     }
     return this.defaultDescriptor
   }
@@ -219,6 +235,7 @@ class ConcatStage extends Stage {
   }
 }
 
+// 将牌放到牌堆底部
 class TakeCardsToTail extends Stage {
   async _play(takeNumber: number) {
     for (let i = 0; i < takeNumber; i++) {
@@ -245,12 +262,12 @@ class NameStage extends TakeCardsToTail {
         max: 10,
       },
       isDoIt: false,
-      getOptions: function* () {
+      getOperation: function* () {
         let value: number
         value = yield
         this.value = value
         this.isDoIt = true
-        this.getDesc = valueTag`名字长度为 ${this.value} ，取 ${this.value} 张牌放置到牌堆底部`
+        this.getDesc = valueTag`填写的，名字 <strong>长度为${this.value}</strong> ，取 <em>${this.value}张牌</em> 放置到牌堆底部`
         return value
       },
     }
@@ -261,10 +278,9 @@ class NameStage extends TakeCardsToTail {
   }
 }
 
+// 将牌放到牌堆中间
 abstract class InsertStage extends Stage {
   _play(takeNumber: number) {
-    console.log(takeNumber, 'takeNumber');
-
     const cards = this.ctx.desk.line1Cards;
     if (takeNumber > cards.length - 2 || takeNumber <= 0) {
       return;
@@ -287,8 +303,8 @@ class TakeThreeCardsToMiddle extends InsertStage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "将前三张牌放在牌堆中间",
-      getOptions: () => 3,
+      title: "将 <strong>前三张牌</strong> 放在 <strong>牌堆中间</strong> ",
+      getOperation: () => 3,
     };
     return this.defaultDescriptor;
   }
@@ -302,7 +318,7 @@ class ConcealStage extends Stage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "取出牌堆顶的牌，放置在一旁",
+      title: "取出 <strong>牌堆顶的牌</strong> ，<strong>放置一旁</strong>",
     };
     return this.defaultDescriptor;
   }
@@ -326,11 +342,11 @@ class LocationChooseStage extends InsertStage {
         ],
       },
       isDoIt: false,
-      getOptions: function* () {
+      getOperation: function* () {
         let value: number
         this.value = value = yield
         this.isDoIt = true
-        this.getDesc = valueTag`${this.payload.options.find((item: any) => this.value === item.value).label} ，取 ${this.value} 张牌插入牌堆中间`
+        this.getDesc = valueTag`<strong>${this.payload.options.find((item: any) => this.value === item.value).label}</strong> ，取 <em>${this.value}</em> 张牌插入 <em>牌堆中间</em> `
         return value
       }
     };
@@ -341,6 +357,7 @@ class LocationChooseStage extends InsertStage {
   }
 }
 
+// 丢牌
 class ThrowHeadCardsStage extends Stage {
   async _play(takeNumber: number) {
     for (let i = 0; i < takeNumber; i++) {
@@ -363,11 +380,11 @@ class SexChooseStage extends ThrowHeadCardsStage {
         ],
       },
       isDoIt: false,
-      getOptions: function* () {
+      getOperation: function* () {
         let value: number
         this.value = value = yield
         this.isDoIt = true
-        this.getDesc = valueTag`选择 ${this.payload.options.find((item: any) => this.value === item.value).label} ，丢弃牌堆顶 ${this.value} 张牌`
+        this.getDesc = valueTag` <strong>${this.payload.options.find((item: any) => this.value === item.value).label}生</strong> ，<em>丢弃牌堆顶 ${this.value}</em> 张牌`
         return value
       }
     };
@@ -384,8 +401,8 @@ class SevenWordsSpellStage extends TakeCardsToTail {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "念出“见证奇迹的时刻”7个字，<br/> 每念一个字，就取牌堆顶一张牌放置在牌堆底",
-      getOptions: () => 7,
+      title: "念出 <strong>“见证奇迹的时刻”</strong> 7个字，<br/> 每念一个字，就 <em>取牌堆顶一张牌放置在牌堆底</em>",
+      getOperation: () => 7,
     };
     return this.defaultDescriptor;
   }
@@ -428,7 +445,7 @@ class KeepOneStage extends Stage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "重复 “好运留下来,烦恼扔出去” , 从牌堆顶开始，<br/> “好运留下来” 将牌堆顶的一张牌放在牌堆底，<br/> “烦恼扔出去” 扔掉牌堆顶的一张牌，<br/> 重复以上操作直到只剩一张牌",
+      title: "重复 <strong>“好运留下来,烦恼扔出去”</strong> , 从牌堆顶开始，<br/> “好运留下来” 将 <em>牌堆顶的一张牌放在牌堆底</em>，<br/> “烦恼扔出去”  <em>扔掉牌堆顶的一张牌</em>，<br/> <strong>重复以上操作</strong>直到<em>只剩一张牌</em>",
     }
     return this.defaultDescriptor;
   }

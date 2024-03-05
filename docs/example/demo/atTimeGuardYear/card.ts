@@ -112,7 +112,7 @@ export function createCard(
     tear,
   };
 }
-
+// 随机抽牌
 export function createRandomCards(count: number): Card[] {
   if (count > cardValues.length) {
     throw new Error(`count should be less than ${cardValues.length}`);

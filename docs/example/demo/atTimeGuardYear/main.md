@@ -24,3 +24,35 @@ import demo from "./index.vue"
 [魔术代码实现 视频讲解](https://www.douyin.com/search/渡一Web前端学习频道_还原春晚刘谦魔术)
 
 <demo></demo>
+
+
+::: details 主vue文件代码
+<<< ./index.vue
+:::
+
+::: details Card.vue card组件代码
+<<< ./Card.vue
+:::
+
+::: details CardDesk.vue card 魔术桌面代码
+<<< ./CardDesk.vue
+:::
+
+::: details stages.ts 步骤类代码
+<<< ./stages.ts
+:::
+
+::: details useRenderCards Hooks代码
+<<< ./useRenderCards.ts
+:::
+
+::: details card.ts card类 代码
+<<< ./card.ts
+:::
+
+::: details desk.ts 魔术桌面代码
+<<< ./desk.ts
+:::
+
+
+
