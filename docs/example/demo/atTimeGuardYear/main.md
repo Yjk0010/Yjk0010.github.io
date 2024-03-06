@@ -4,9 +4,10 @@
 import demo from "./index.vue"
 </script>
 
+## 视频
 [魔术 视频](https://www.douyin.com/search/刘谦_2024_守岁共此时)
 
-## 魔术操作步骤：
+## 操作步骤
 - 步骤 1：<TText type="tip">选牌</TText> 随机选取 <TText type="danger"> 4 </TText> 张扑克牌。
 - 步骤 2：<TText type="tip">洗牌</TText> 将牌随机打乱。
 - 步骤 3：<TText type="tip">撕牌</TText> 将扑克牌撕成两份。
@@ -21,11 +22,14 @@ import demo from "./index.vue"
 - 完成：检查此牌和放置在一旁的牌是否吻合。 <TText type="warning">若吻合，则魔术成功</TText>
 
 
+## 代码视频介绍
 [魔术代码实现 视频讲解](https://www.douyin.com/search/渡一Web前端学习频道_还原春晚刘谦魔术)
 
+
+## 展示
 <demo></demo>
 
-
+## 代码展示
 ::: details 主vue文件代码
 <<< ./index.vue
 :::

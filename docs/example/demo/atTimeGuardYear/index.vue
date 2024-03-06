@@ -29,7 +29,7 @@
       <template v-if="operationDescriptor?.type !== 'none'">
         <template v-if="operationDescriptor?.type === 'radio'">
           <el-radio-group v-model="operationValue" v-if="!operationDescriptor.isDoIt">
-            <el-radio-button v-for="item in operationDescriptor.payload.operations" :label="item.value"
+            <el-radio-button v-for="item in operationDescriptor.payload.options" :label="item.value"
               :key="item.label">{{ item.label }}
             </el-radio-button>
           </el-radio-group>
@@ -37,12 +37,13 @@
 
         <template v-else-if="operationDescriptor?.type === 'number'">
           <template v-if="!operationDescriptor.isDoIt">
-            <el-input-number :max="operationDescriptor?.payload.max" v-model="operationValue">
+            <el-input-number :max="operationDescriptor?.payload.max" :min="operationDescriptor?.payload.min"
+              v-model="operationValue">
             </el-input-number>
           </template>
         </template>
         <el-button v-if="!operationDescriptor?.isDoIt" type="success" :disabled="!hasDoIt" @click="doIt">
-          Do It!
+          Just Do It!
         </el-button>
       </template>
     </div>
@@ -150,7 +151,7 @@ const hasDoIt = computed(() => {
 
   .title {
     text-align: center;
-    margin: 50px auto;
+    margin-top: 30px;
   }
 
   .desk {
@@ -161,8 +162,8 @@ const hasDoIt = computed(() => {
     margin-top: 50px;
   }
 
-  .option {
-    height: 80px;
+  .operation {
+    height: 96px;
     display: flex;
     align-items: center;
     justify-content: center;
