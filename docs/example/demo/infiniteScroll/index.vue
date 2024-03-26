@@ -64,35 +64,49 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .scroll-container {
-  width: 400px;
-  height: 700px;
+  --width: 400px;
+  --height: 700px;
+
+  @media (max-width: 768px) {
+    --width: 250px;
+    --height: 500px;
+  }
+
+  width: var(--width);
+  height: var(--height);
   position: relative;
   overflow: hidden;
   cursor: n-resize;
+
   ::v-deep(.item) {
     position: absolute;
-    width: 400px;
-    height: 700px;
+    width: var(--width);
+    height: var(--height);
     overflow: hidden;
     transition: 1s ease-in-out;
+
     img {
       position: absolute;
-      width: 400px;
-      height: 700px;
+      width: var(--width);
+      height: var(--height);
       transition: 1s ease-in-out;
     }
+
     &.prev,
     &.next {
       z-index: 1;
       height: 0;
     }
+
     &.next {
       bottom: 0;
+
       img {
         bottom: 0;
         transform: translateY(10%);
       }
     }
+
     &.prev {
       img {
         transform: translateY(-10%);
@@ -100,14 +114,17 @@ onMounted(() => {
     }
   }
 }
+
 .scroll-up {
   ::v-deep(.item) {
     &.prev {
       height: 700px;
+
       img {
         transform: translateY(0);
       }
     }
+
     &.current {
       img {
         transform: translateY(10%);
@@ -115,14 +132,17 @@ onMounted(() => {
     }
   }
 }
+
 .scroll-down {
   ::v-deep(.item) {
     &.next {
       height: 700px;
+
       img {
         transform: translateY(0);
       }
     }
+
     &.current {
       img {
         transform: translateY(-10%);

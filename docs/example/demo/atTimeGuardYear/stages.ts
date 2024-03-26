@@ -445,7 +445,7 @@ class KeepOneStage extends Stage {
   _getInteractiveDescriptor(): InteractiveDescriptor {
     this.defaultDescriptor = {
       ...this.defaultDescriptor,
-      title: "重复 <strong>“好运留下来,烦恼扔出去”</strong> , 从牌堆顶开始，<br/> “好运留下来” 将 <em>牌堆顶的一张牌放在牌堆底</em>，<br/> “烦恼扔出去”  <em>扔掉牌堆顶的一张牌</em>，<br/> <strong>重复以上操作</strong>直到<em>只剩一张牌</em>",
+      title: "重复<strong>“好运留下来,烦恼扔出去”</strong>,<br/>从牌堆顶开始，<br/>“好运留下来”将<em>堆顶的牌放在堆底</em>，<br/>“烦恼扔出去”<em>扔掉堆顶的一张牌</em>，<br/><strong>重复以上操作</strong>直到<em>只剩一张牌</em>",
     }
     return this.defaultDescriptor;
   }

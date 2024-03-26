@@ -1,12 +1,6 @@
 <template>
   <div class="borderLight" ref="borderLight">
-    <div
-      class="card"
-      ref="cardsRef"
-      :class="isDark ? 'dark' : ''"
-      v-for="(item, key) in cardsConfig"
-      :key="key"
-    >
+    <div class="card" ref="cardsRef" :class="isDark ? 'dark' : ''" v-for="(item, key) in cardsConfig" :key="key">
       <div class="inner">
         {{ item }}
       </div>
@@ -52,39 +46,42 @@ onBeforeMount(() => {
 
 <style lang="scss" scoped>
 .borderLight {
-  width: 680px;
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
   border-radius: 6px;
+
   .card {
     position: relative;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: inherit;
     aspect-ratio: 8/5;
     overflow: hidden;
+
     &.dark {
       background-color: rgba(255, 255, 255, 0.1);
+
       .inner {
         background-color: #222;
       }
     }
+
     &::after {
       content: "";
       position: absolute;
       width: 100%;
       height: 150%;
-      top: var(--top, 1000px);
-      left: var(--left, 1000px);
-      background: radial-gradient(
-        closest-side circle,
-        rgba(16, 185, 129, 0.8),
-        transparent
-      );
+      top: var(--top, 200%);
+      left: var(--left, 200%);
+      background: radial-gradient(closest-side circle,
+          rgba(16, 185, 129, 0.8),
+          transparent);
       transform: translate(-50%, -50%);
       border-radius: inherit;
       z-index: 2;
     }
+
     .inner {
       position: absolute;
       border-radius: inherit;

@@ -171,8 +171,11 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .content {
-  // 中心渐变
   background: url("/assets/demo/bg-1.jpg") no-repeat;
   background-size: cover;
+
+  .canvas {
+    width: 100%;
+  }
 }
 </style>

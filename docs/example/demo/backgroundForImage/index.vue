@@ -6,8 +6,8 @@
       <div class="item" v-for="(url, i) in images">
         <img crossorigin="anonymous" @mouseenter="handleMouseEnter($event, i)" @mouseleave="handleMouseLeave" :src="url"
           @click="handleClick" :style="{
-            opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
-          }" />
+    opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
+  }" />
       </div>
       <transition name="fade">
         <div class="mask" v-show="loading">
@@ -23,7 +23,6 @@ import { ref, computed, reactive, onMounted, nextTick } from "vue";
 import quantize from "quantize";
 import type { RgbPixel } from "quantize";
 import { getRandomNum } from "docs/utils/index.ts";
-import { HtmlHTMLAttributes } from "vue";
 const address = "https://picsum.photos/200/200";
 const images: string[] = reactive([]);
 const loading = ref(true);
@@ -110,6 +109,13 @@ const getImage = () => {
 <style lang="scss" scoped>
 .container {
   $containerSize: 640px; // 容器尺寸
+  $paddingSize: 80px;
+
+  @media (max-width: 768px) {
+    $containerSize: 320px;
+    $paddingSize: 20px;
+  }
+
   position: relative;
   width: $containerSize;
   height: $containerSize;
@@ -118,11 +124,11 @@ const getImage = () => {
 
   .grid {
     width: $containerSize;
-    padding: 80px;
+    padding: $paddingSize;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    grid-gap: 80px;
+    grid-gap: $paddingSize;
     background: linear-gradient(-61.8deg,
         var(--c1) 0%,
         var(--c2) 20%,

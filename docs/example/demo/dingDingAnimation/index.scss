@@ -23,6 +23,7 @@
       position: sticky;
       height: 400px;
       top: 0;
+      overflow: hidden;
       .scatter-point {
         position: absolute;
         width: 100%;
@@ -62,6 +63,9 @@
         left: 50%;
         transform: translate(-50%, -50%);
         width: 80%;
+        @media (max-width: 768px) {
+          width: 98%;
+        }
         aspect-ratio: 2/1;
         border-radius: 10px;
         display: grid;
@@ -71,9 +75,12 @@
         z-index: 3;
       }
       .list-item {
-        width: 60%;
         // 为盒子规定了首选纵横比
         aspect-ratio: 1/1;
+        padding: 10px;
+        @media (max-width: 768px) {
+          padding: 2px;
+        }
         color: #fff;
         border-radius: 10px;
         display: flex;

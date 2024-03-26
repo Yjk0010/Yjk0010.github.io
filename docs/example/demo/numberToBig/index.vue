@@ -2,8 +2,8 @@
   <div class="container">
     <div class="input">
       <div class="input-title">
-        <span>颗粒度</span>
-        <el-input style="width: 360px;" v-model="step" readonly>
+        <div>颗粒度</div>
+        <el-input style="width: 300px;" v-model="step" readonly>
           <template #prepend>
             <el-icon class="pointer" size="24" @click="stepMin">
               <i-ep-Remove />
@@ -17,7 +17,7 @@
         </el-input>
       </div>
       <br />
-      <br />
+      <div>金额</div>
       <el-input-number :step="step" :min="0" style="width: 240px" v-model="number"></el-input-number>
     </div>
     <div class="view">
@@ -229,7 +229,6 @@ const numberToBigChineseString = (
   }
 
   .input-title {
-    display: flex;
     align-items: center;
   }
 }

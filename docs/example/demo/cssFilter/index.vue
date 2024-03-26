@@ -9,81 +9,42 @@
     </div>
     <div class="card">
       <div class="title">增加高斯模糊 - blur</div>
-      <el-input-number
-        v-model="blurNumber"
-        :min="0"
-        :max="Infinity"
-      ></el-input-number>
+      <el-input-number v-model="blurNumber" :min="0" :max="Infinity"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleBlur" />
     </div>
     <div class="card">
       <div class="title">明暗调节 - brightness</div>
-      <el-input-number
-        v-model="brightnessNumber"
-        :step="10"
-        :min="0"
-        :max="Infinity"
-      ></el-input-number>
+      <el-input-number v-model="brightnessNumber" :step="10" :min="0" :max="Infinity"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleBrightness" />
     </div>
     <div class="card">
       <div class="title">对比度调节 - contrast</div>
-      <el-input-number
-        v-model="contrastNumber"
-        :step="10"
-        :min="0"
-        :max="Infinity"
-      ></el-input-number>
+      <el-input-number v-model="contrastNumber" :step="10" :min="0" :max="Infinity"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleContrast" />
     </div>
     <div class="card">
       <div class="title">灰度调节 - grayscale</div>
-      <el-input-number
-        v-model="grayscaleNumber"
-        :step="10"
-        :min="0"
-        :max="100"
-      ></el-input-number>
+      <el-input-number v-model="grayscaleNumber" :step="10" :min="0" :max="100"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleGrayscale" />
     </div>
     <div class="card">
       <div class="title">色调调节 - hue-rotate</div>
-      <el-input-number
-        v-model="hueRotateNumber"
-        :step="10"
-        :min="0"
-        :max="360"
-      ></el-input-number>
+      <el-input-number v-model="hueRotateNumber" :step="10" :min="0" :max="360"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleHueRotate" />
     </div>
     <div class="card">
       <div class="title">反色调调节 - invert</div>
-      <el-input-number
-        v-model="invertNumber"
-        :step="10"
-        :min="0"
-        :max="100"
-      ></el-input-number>
+      <el-input-number v-model="invertNumber" :step="10" :min="0" :max="100"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleInvert" />
     </div>
     <div class="card">
       <div class="title">透明度调节 - opacity</div>
-      <el-input-number
-        v-model="opacityNumber"
-        :step="10"
-        :min="0"
-        :max="100"
-      ></el-input-number>
+      <el-input-number v-model="opacityNumber" :step="10" :min="0" :max="100"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleOpacity" />
     </div>
     <div class="card">
       <div class="title">图像饱和度 - saturate</div>
-      <el-input-number
-        v-model="saturateNumber"
-        :step="10"
-        :min="0"
-        :max="Infinity"
-      ></el-input-number>
+      <el-input-number v-model="saturateNumber" :step="10" :min="0" :max="Infinity"></el-input-number>
       <img class="logo" src="./firefox.svg" :style="styleSaturate" />
     </div>
   </div>
@@ -205,15 +166,22 @@ const containerStyle = computed(() => {
   align-items: left;
   justify-content: left;
   flex-wrap: wrap;
+
   .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 46%;
+
+    @media (max-width: 768px) {
+      width: 96%;
+    }
+
     box-shadow: 0 0 10px var(--cardShadowColor);
     border-radius: 6px;
     margin: 2%;
+
     &.one {
       width: 100%;
       display: grid;
@@ -221,35 +189,38 @@ const containerStyle = computed(() => {
       grid-template-rows: auto 1fr;
       grid-gap: 0;
       justify-items: center;
+
       .title {
         grid-column: 1 / 3;
         text-align: center;
       }
     }
   }
+
   .logo {
     width: 200px;
     height: 200px;
   }
+
   .no-img {
     width: 200px;
     height: 200px;
-    clip-path: polygon(
-      50% 0%,
-      61% 35%,
-      98% 35%,
-      68% 57%,
-      79% 91%,
-      50% 70%,
-      21% 91%,
-      32% 57%,
-      2% 35%,
-      39% 35%
-    );
+    clip-path: polygon(50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%);
   }
+
   img {
     margin: 10px 0;
   }
+
   .title {
     margin: 12px;
   }

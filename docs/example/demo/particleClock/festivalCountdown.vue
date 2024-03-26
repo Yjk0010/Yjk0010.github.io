@@ -143,4 +143,17 @@ onUnmounted(() => {
     font-size: 32px;
   }
 }
+
+// 媒体查询
+@media (max-width: 768px) {
+  .festivalCountdown {
+
+    .show-clock,
+    .day,
+    .clock {
+      flex-wrap: wrap;
+      font-size: 24px;
+    }
+  }
+}
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <el-row style="align-items: center">
-      <el-col :span="4" style="text-align: right">展示代码</el-col>
-      <el-col :span="1"></el-col>
-      <el-col :span="12">
+    <el-row style="align-items: center" :gutter="10">
+      <el-col :span="4" :xs="24" style="text-align: right">展示代码</el-col>
+      <el-col :span="1" :xs="0"></el-col>
+      <el-col :span="12" :xs="24">
         <el-input type="textarea" v-model="code" :rows="3"></el-input>
       </el-col>
-      <el-col :span="1"></el-col>
-      <el-col :span="3">
+      <el-col :span="1" :xs="0"></el-col>
+      <el-col :span="3" :xs="24">
         <el-button @click="handleClick">重新来</el-button>
       </el-col>
     </el-row>
@@ -71,7 +71,7 @@ onMounted(() => {
     ctx = canvasRef.value.getContext("2d");
     canvasRef.value.width = 640;
     canvasRef.value.height = 640;
-    width = canvasRef.value.clientHeight;
+    width = canvasRef.value.width;
     height = canvasRef.value.height;
     // 根据列宽计算列数
     columnCount = Math.floor(width / columnWidth);
@@ -113,9 +113,7 @@ onUnmounted(() => {
 .container {
   .bg {
     margin-top: 20px;
-    $canvasSize: 640px;
-    width: $canvasSize;
-    height: $canvasSize;
+    width: 100%;
   }
 }
 </style>

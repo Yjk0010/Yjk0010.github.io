@@ -1,42 +1,25 @@
 <template>
   <div class="svgLine">
-    <svg class="lineSvg" viewbox="0 0 660 200">
-      <linearGradient id="PF" x1="0" y1="50%" x2="100%" y2="50%">
-        <stop offset="0%" stop-color="rgba(250,113,133,0)" />
-        <stop offset="100%" stop-color="rgba(250,113,133,1)" />
-      </linearGradient>
-      <linearGradient id="NF" x1="0" y1="50%" x2="100%" y2="50%">
-        <stop offset="0%" stop-color="rgba(52,211,153,0)" />
-        <stop offset="100%" stop-color="rgba(52,211,153,1)" />
-      </linearGradient>
-      <path
-        :d="isPF(type) ? PFPath : NFPath"
-        id="path"
-        fill="none"
-        :stroke-width="rectHeight"
-        :class="['line-path']"
-      />
-      <rect
-        v-if="show"
-        :width="rectWidth"
-        :height="rectHeight"
-        :rx="rectHeight / 2"
-        :y="-rectHeight / 2"
-        :x="-rectWidth / 2"
-        v-for="num in pointNumber"
-        :key="num"
-        :fill="`url(#${type})`"
-      >
-        <animateMotion
-          rotate="auto"
-          :dur="pointDur"
-          repeatCount="indefinite"
-          :begin="lineMoveStartTime(num)"
-        >
-          <mpath href="#path" />
-        </animateMotion>
-      </rect>
-    </svg>
+    <div class="content">
+      <svg class="lineSvg" viewbox="0 0 660 200" preserveAspectRatio="none">
+        <linearGradient id="PF" x1="0" y1="50%" x2="100%" y2="50%">
+          <stop offset="0%" stop-color="rgba(250,113,133,0)" />
+          <stop offset="100%" stop-color="rgba(250,113,133,1)" />
+        </linearGradient>
+        <linearGradient id="NF" x1="0" y1="50%" x2="100%" y2="50%">
+          <stop offset="0%" stop-color="rgba(52,211,153,0)" />
+          <stop offset="100%" stop-color="rgba(52,211,153,1)" />
+        </linearGradient>
+        <path :d="isPF(type) ? PFPath : NFPath" id="path" fill="none" :stroke-width="rectHeight"
+          :class="['line-path']" />
+        <rect v-if="show" :width="rectWidth" :height="rectHeight" :rx="rectHeight / 2" :y="-rectHeight / 2"
+          :x="-rectWidth / 2" v-for="num in pointNumber" :key="num" :fill="`url(#${type})`">
+          <animateMotion rotate="auto" :dur="pointDur" repeatCount="indefinite" :begin="lineMoveStartTime(num)">
+            <mpath href="#path" />
+          </animateMotion>
+        </rect>
+      </svg>
+    </div>
     <div class="btn">
       <span>光效流动方向</span>
       <span>{{ type }}</span>
@@ -143,22 +126,37 @@ const changePointDur = (flag: boolean) => {
 
 <style lang="scss" scoped>
 .svgLine {
+  width: 100%;
+
+  .content {
+    overflow-x: auto;
+  }
+
   .lineSvg {
     width: 660px;
     height: 200px;
+
   }
+
   .line-path {
     fill: none;
     stroke-linejoin: round;
     stroke-linecap: round;
     stroke: rgba(160, 160, 160, 0.2);
   }
+
   .btn {
-    width: 500px;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     grid-gap: 10px;
-    .el-button + .el-button {
+
+    .el-button+.el-button {
       margin-left: 0;
     }
   }
