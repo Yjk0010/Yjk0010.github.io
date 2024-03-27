@@ -71,10 +71,18 @@
 
 ## input标签：颜色选择器
 
-<input type="color" value="#e66465">
+<input type="color" v-model="colorRef">
+
+<span :style="{ color:colorRef }">{{ colorRef }}</span>
+
+<script setup>
+import { ref } from "vue"
+const colorRef = ref("#e66465")
+</script>
 
 ``` html
-<input type="color" value="#e66465">
+<input type="color" v-model="colorRef">
+<span :style="{ color:colorRef }">{{ colorRef }}</span>
 ```
 
 

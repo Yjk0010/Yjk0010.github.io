@@ -176,8 +176,8 @@ run(main);
 
 ## 优缺点
 
-<TText>优点</TText>：编写代码时直接编写同步代码即可，不需要使用 **async、await**  
-<TText type="danger">缺点</TText>：函数需要多次重复执行，**async、await** 只需要执行一次。假如函数有其他大量计算，将影响性能  
-<TText type="warning">共同点</TText>：仍然是异步有结果后，才能真正进行下一步操作
+- <TText>优点</TText>：编写代码时直接编写同步代码即可，不需要使用 **async、await**  
+- <TText type="danger">缺点</TText>：函数需要多次重复执行，**async、await** 只需要执行一次。假如函数有其他大量计算，将影响性能    
+- <TText type="warning">共同点</TText>：仍然是异步有结果后，才能真正进行下一步操作
 
 [视频讲解](https://www.douyin.com/search/渡一前端必修课_消除异步的传染性)
