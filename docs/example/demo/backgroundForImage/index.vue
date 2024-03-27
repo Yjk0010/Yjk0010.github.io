@@ -214,7 +214,7 @@ const getImage = () => {
       }
 
       @mixin setBallDiff($i) {
-        @if $i < $n +1 {
+        @if $i < ($n + 1) {
           &:nth-child(#{$i}) {
             transform: rotate($stepDeg * $i) translateY(-$loadingSize);
 
