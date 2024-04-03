@@ -241,12 +241,12 @@ console.log("打印 b.c =", proxy.b.c);
 <vue3PKvue2></vue3PKvue2>
 
 ::: details 整体代码
-<<< ./vue3PKvue2.vue
+<<< ./components/vue3PKvue2.vue
 :::
 
 
 <script setup>
-import vue3PKvue2 from "./vue3PKvue2.vue"
+import vue3PKvue2 from "./components/vue3PKvue2.vue"
 </script>
 
 

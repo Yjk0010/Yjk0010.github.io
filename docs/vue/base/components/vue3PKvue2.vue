@@ -3,7 +3,6 @@
 </template>
 
 <script setup>
-import { ElButton, ElNotification } from "element-plus";
 
 const consoleLog = () => {
   // 判断是否是对象

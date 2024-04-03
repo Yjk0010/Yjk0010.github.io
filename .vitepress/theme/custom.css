@@ -116,3 +116,21 @@ em {
 *::-ms-scrollbar-track {
   background-color: var(--them-scrollbar-track-color);
 }
+
+input {
+  background-color: rgba(200, 200, 200, 0.8);
+  border-radius: 6px;
+  padding: 2px 8px;
+  margin: 0 12px;
+}
+.dark input {
+  background-color: rgba(50, 50, 50, 0.8);
+}
+
+input:focus {
+  background-color: #d4befa;
+}
+
+.dark input:focus {
+  background-color: #034c5d;
+}
