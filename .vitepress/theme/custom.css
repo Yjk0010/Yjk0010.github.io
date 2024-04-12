@@ -117,20 +117,20 @@ em {
   background-color: var(--them-scrollbar-track-color);
 }
 
-input {
+.input-prettify {
   background-color: rgba(200, 200, 200, 0.8);
   border-radius: 6px;
   padding: 2px 8px;
   margin: 0 12px;
 }
-.dark input {
+.dark .input-prettify {
   background-color: rgba(50, 50, 50, 0.8);
 }
 
-input:focus {
+.input-prettify:focus {
   background-color: #d4befa;
 }
 
-.dark input:focus {
+.dark .input-prettify:focus {
   background-color: #034c5d;
 }

@@ -134,14 +134,14 @@ type 属性: reset、submit、button, 默认值 submit
     <legend>账号信息</legend>
     <p>
       用户账号：
-      <input type="text" value="aaaaa" readonly>
+      <input class="input-prettify" type="text" value="aaaaa" readonly>
     </p>
      </fieldset>
     <fieldset>
     <legend>密码信息</legend>
     <p>
       用户密码：
-      <input type="password">
+      <input class="input-prettify" type="password">
     </p>
   </fieldset>
 </form>
@@ -171,16 +171,20 @@ type 属性: reset、submit、button, 默认值 submit
 
 元素聚焦时的样式
 
- <input type="text" value="focus">
+ <input class="input-prettify" type="text" value="focus">
 
 ```css
-input:focus {
-  background-color: #10b981;
+.input-prettify:focus {
+  background-color: #d4befa;
+}
+
+.dark .input-prettify:focus {
+  background-color: #034c5d;
 }
 ```
 
 ```html
-<input type="text" value="focus" />
+<input class="input-prettify" type="text" value="focus" />
 ```
 
 - checked
