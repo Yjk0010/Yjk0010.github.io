@@ -14,6 +14,7 @@ export default (): DefaultTheme.SidebarItem[] => [
         { text: '响应式原理的', link: 'vue3PKvue2' },
         { text: 'Dom Diff算法', link: 'domDiff' },
         { text: '修饰符', link: 'modifiers' },
+        { text: 'v-for 和 v-if 为啥不共存', link: 'Vif' },
       ]
   },
   {
