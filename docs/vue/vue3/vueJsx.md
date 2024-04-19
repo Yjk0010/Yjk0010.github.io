@@ -45,13 +45,13 @@ const element = (name) => <h1>Hello, {name || "Word"}</h1>;
 ### 使用三目运算符
 
 ```javascript
-const element = title ? <span>{{ title }}</TText> : null;
+const element = title ? <span>{{ title }}</span> : null;
 ```
 
 > 以上代码等效于：
 
 ```javascript
-const element = title && <span>{{ title }}</TText>;
+const element = title && <span>{{ title }}</span>;
 ```
 
 ## 列表渲染

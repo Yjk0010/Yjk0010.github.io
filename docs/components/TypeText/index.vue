@@ -36,7 +36,7 @@ withDefaults(defineProps<{
   }
 
   &.danger {
-    color: var(--vp-c-red-1);
+    color: var(--vp-c-red-2);
   }
 }
 </style>
