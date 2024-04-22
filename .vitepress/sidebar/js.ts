@@ -31,6 +31,7 @@ export default (): DefaultTheme.SidebarItem[] => [
       [
         { text: 'toFixed不精确', link: 'toFixed' },
         { text: '防抖和节流', link: 'debAndThr' },
+        { text: '函数重载', link: 'functionOverLoading' },
       ]
   },
 ]
