@@ -6,8 +6,8 @@
       <div class="item" v-for="(url, i) in images">
         <img crossorigin="anonymous" @mouseenter="handleMouseEnter($event, i)" @mouseleave="handleMouseLeave" :src="url"
           @click="handleClick" :style="{
-    opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
-  }" />
+            opacity: hoverIndex === -1 ? 1 : i === hoverIndex ? 1 : 0.2,
+          }" />
       </div>
       <transition name="fade">
         <div class="mask" v-show="loading">
@@ -116,11 +116,14 @@ const getImage = () => {
     $paddingSize: 20px;
   }
 
-  position: relative;
-  width: $containerSize;
-  height: $containerSize;
-  margin-top: 20px;
-  overflow: hidden;
+  & {
+    position: relative;
+    width: $containerSize;
+    height: $containerSize;
+    margin-top: 20px;
+    overflow: hidden;
+  }
+
 
   .grid {
     width: $containerSize;
