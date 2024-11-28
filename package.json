@@ -1,6 +1,6 @@
 {
   "name": "yan-jin-ke_blog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "A blog used to record personal learning content and share it with everyone",
   "scripts": {
