@@ -2,11 +2,11 @@ import type { DefaultTheme } from 'vitepress'
 
 export default (): DefaultTheme.SidebarItem[] => [
   {
-    text: '储能学习框架',
+    text: '新能源',
     link: 'main',
   },
   {
-    text: '能源管理',
+    text: '新能源相关电力学知识',
     collapsed: false,
     base: '/newEnergy/knowledge/',
     items:
@@ -21,6 +21,16 @@ export default (): DefaultTheme.SidebarItem[] => [
     items:
       [
         { text: 'EMS', link: 'EMS' },
+      ]
+  },
+  {
+    text: '储能大类',
+    collapsed: true,
+    base: '/newEnergy/ES/',
+    items:
+      [
+        { text: '储能基础知识', link: 'base' },
+        { text: '锂离子储能行业上下游产业链', link: 'IndustryChain' },
       ]
   },
 ]

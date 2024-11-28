@@ -50,13 +50,19 @@ const top: Ref<number> = ref(0);
 const image: Ref<HTMLImageElement | null> = ref(null);
 const viewerBox: Ref<HTMLDivElement | null> = ref(null);
 
+// 缩放倍率
 let multiple: number = 0;
+// 图片缩放比例
 const proportion: number = 0.75;
+// 缩放增加步长  取值 0 - 0.2 越大 缩放越快 越小 越慢
+const stepSize: number = 0.08;
 
+// 图片地址 切换  亮暗模式时候 切换 亮暗模式下不同的  图片地址
 const imgSrc = computed(() => {
   return isDark.value ? props.darkSrc || props.src : props.src;
 });
 
+// 点击图片 图片弹出
 const handleShowBox = () => {
   isBoxShow.value = !isBoxShow.value;
 };
@@ -65,16 +71,21 @@ const boxShow = () => {
   isBoxShow.value = true;
   scale.value = 1;
   nextTick(() => {
+    // 获取viewerBox 宽高
     const { width: viewerBoxWidth, height: viewerBoxHeight } =
       viewerBox.value?.getBoundingClientRect() || {
         width: 0,
         height: 0,
       };
+
+    // 获取image 宽高
     const { width: imageWidth, height: imageHeight } =
       image.value?.getBoundingClientRect() || {
         width: 0,
         height: 0,
       };
+
+    // 计算默认弹出缩放这样不至于图片太大  太小时  显示内容过于怪异
     const scaleWithValue: number = (viewerBoxWidth * proportion) / imageWidth;
     const scaleHeightValue: number =
       (viewerBoxHeight * proportion) / imageHeight;
@@ -87,16 +98,19 @@ const boxShow = () => {
   });
 };
 const handleScale = (wheel: number) => {
+  // 滚轮滚动  放大缩小图片
   if (wheel > 0) {
-    scale.value = Math.max(0.2, scale.value - multiple / 5);
+    scale.value = Math.max(0.2, scale.value - multiple * stepSize);
   } else {
-    scale.value = Math.min(5, scale.value + multiple / 5);
+    scale.value = Math.min(5, scale.value + multiple * stepSize);
   }
 };
+//  滚轮缩放
 const handleBoxWheel = (e: WheelEvent) => {
   e.preventDefault();
   handleScale(e.deltaY);
 };
+//   滚轮缩放
 const handleWheel = (e: WheelEvent) => {
   e.preventDefault();
   handleScale(e.deltaY);
